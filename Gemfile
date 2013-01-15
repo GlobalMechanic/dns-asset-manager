@@ -15,7 +15,6 @@ gem "cancan"
 gem 'meta_search'
 
 # Models
-gem 'paperclip'
 gem 'paper_trail'
 gem 'acts-as-taggable-on', '~> 2.3.3'
 

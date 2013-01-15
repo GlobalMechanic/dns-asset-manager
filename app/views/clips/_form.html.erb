@@ -55,12 +55,6 @@
     <%= f.label :video %>
     <%= f.text_field :video %>
   </div>
-  <div class="field">
-    <% if @clip.thumbnail? %>
-    <%= image_tag @clip.thumbnail.url %><br />
-    <% end %>
-    <%= f.file_field :thumbnail %>
-  </div>
   <div class="actions">
     <%= f.submit %>
     <%= link_to 'Destroy', @clip, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -1,6 +1,5 @@
 class Clip < ActiveRecord::Base
 	has_paper_trail
-  has_attached_file :thumbnail
 
   acts_as_taggable_on :keywords, :techniques
 
@@ -10,7 +9,6 @@ class Clip < ActiveRecord::Base
 
   attr_accessible :description,
                   :title,
-                  :thumbnail,
                   :video,
                   :image,
                   :director,
