@@ -31,7 +31,6 @@
         <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %></li>
       </ul>
       <ul id="secondary">
-        <!-- <li><%= link_to 'Browse', clips_url %></li> -->
         <li>
         <% if @current_reel && @current_reel.title? %>
           Now viewing: <%= link_to @current_reel.title, edit_reel_path(@current_reel) %> <%= link_to '×', close_reel_path(@current_reel) %>
@@ -85,6 +84,26 @@
     <%= content_tag(:p, alert, :class => 'alert') if alert %>
     <%= content_tag :h2, @title if @title %>
     <%= yield %>
+  </div>
+  <div id="upload-form">
+    <%= form_for Clip.new, :html => { :multipart => true } do |f| %>
+      <h3>New Clip</h3>
+      <% # <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" /> %>
+      <% # <input type="file" id="fileselect" name="fileselect[]" multiple="multiple" /> %>
+      <div class="field">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </div>
+      <div class="field">
+        <div id="filez">
+        </div>
+        <% # f.label :file %>
+        <% # f.file_field :thumbnail %>
+      </div>
+      <div class="field">
+        <%= f.submit 'Upload' %>
+      </div>
+    <% end %>
   </div>
 </body>
 </html>
