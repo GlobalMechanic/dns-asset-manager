@@ -30,6 +30,6 @@ class Clip < ActiveRecord::Base
  before_create :default_name
   
   def default_name
-    self.title ||= File.basename(asset.filename, '.*').titleize if asset
+    self.title ||= File.basename(asset.filename, '.*') if asset
   end
 end

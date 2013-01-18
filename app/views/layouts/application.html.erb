@@ -91,10 +91,6 @@
       <% # <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" /> %>
       <% # <input type="file" id="fileselect" name="fileselect[]" multiple="multiple" /> %>
       <div class="field">
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-      </div>
-      <div class="field">
         <%= f.label :asset %>
         <%= f.file_field :asset, multiple: true, name: "clip[asset]" %>
       </div>
