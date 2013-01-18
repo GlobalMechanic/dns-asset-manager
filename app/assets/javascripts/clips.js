@@ -75,14 +75,17 @@ $(document).ready(function() {
         $('#new_clip').get(0).appendChild(image);
       };
       reader.readAsDataURL(data.files[0]);
-      return data.submit();
+      data.submit();
     },
     progress: function(e, data) {
       var progress;
       if (data.context) {
         progress = parseInt(data.loaded / data.total * 100, 10);
-        return data.context.find('.bar').css('width', progress + '%');
+        data.context.find('.bar').css('width', progress + '%');
       }
+    },
+    done: function (e, data) {
+      data.context.find('.progress').removeClass('active').addClass('progress-success')
     }
   });
 
