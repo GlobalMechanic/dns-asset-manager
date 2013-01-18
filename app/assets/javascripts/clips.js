@@ -61,13 +61,32 @@ $(document).ready(function() {
     }
   });
 
-  // File uploads.
-  // $('body').bind('dragover', function(e) {
-  //   console.log(e);
-  //   window.tylor = e;
-  //   return false;
-  // });
+  $('#new_clip').fileupload({
+    dataType: 'json',
+    add: function(e, data) {
+      $('body').addClass('drop');
+      data.context = $(tmpl("template-upload", data.files[0]));
+      $('#new_clip').append(data.context);
+      var reader = new FileReader();
+      reader.onload = function (event) {
+        var image = new Image();
+        image.src = event.target.result;
+        image.width = 80;
+        $('#new_clip').get(0).appendChild(image);
+      };
+      reader.readAsDataURL(data.files[0]);
+      return data.submit();
+    },
+    progress: function(e, data) {
+      var progress;
+      if (data.context) {
+        progress = parseInt(data.loaded / data.total * 100, 10);
+        return data.context.find('.bar').css('width', progress + '%');
+      }
+    }
+  });
 
+  // Do it without jQuery.
   // document.addEventListener('dragover', function(e) {
   //   console.log('drag');
   //   gmDrag = e;
@@ -85,61 +104,38 @@ $(document).ready(function() {
   //   console.log(e.dataTransfer.files); // There we are.
   // });
 
-  $('body').bind('dragover', function(e) {
-    $('body').addClass('drop');
-    return false; // preventDefault() please.
-  });
-  $('body').bind('dragend', function(e) {
-    $('body').removeClass('drop');
-    return false; // preventDefault() please.
-  });
-
-  $('body').bind('drop', function(e) {
-    $('body').addClass('drop');
-    $.each(e.originalEvent.dataTransfer.files, function(index, file) {
-      // Write out title.
-      $('#clip_title').val(file.name.replace(/.(png|jpg)$/, ''));
-      //$('<p>').html(file.name + ' ' + file.size + ' ' + file.type).appendTo($('#filez'));
-
-      // Append a preview maybe.
-      var reader = new FileReader();
-      reader.onload = function (event) {
-        var image = new Image();
-        image.src = event.target.result;
-        image.width = 80;
-        $('#filez').get(0).appendChild(image);
-      };
-      reader.readAsDataURL(file);
-
-      // Set upload field.
-      $('<input id="clip_thumbnail" name="clip[thumbnail]" type="file" value="' + file.name + '">').appendTo($('#filez'));
-    });
-    //$('#clip_thumbnail').get(0).files[0] = e.originalEvent.dataTransfer.files[0];
-    $('#clip_title').focus();
-    return false;
-  });
-
+  // This was working quite well, but we can't dump these files into the field.
   // $('body').bind('dragover', function(e) {
   //   $('body').addClass('drop');
-  // }).bind('dragleave', function(e) {
+  //   return false; // preventDefault() please.
+  // });
+  // $('body').bind('dragend', function(e) {
   //   $('body').removeClass('drop');
+  //   return false; // preventDefault() please.
   // });
 
   // $('body').bind('drop', function(e) {
-  //   e.originalEvent.preventDefault();
-  //   e.originalEvent.stopPropagation();
-  //   console.log(e.dataTransfer.files)
-  // });
+  //   $('body').addClass('drop');
+  //   $.each(e.originalEvent.dataTransfer.files, function(index, file) {
+  //     // Write out title.
+  //     $('#clip_title').val(file.name.replace(/.(png|jpg)$/, ''));
+  //     //$('<p>').html(file.name + ' ' + file.size + ' ' + file.type).appendTo($('#filez'));
 
-  // $('#drop').bind('dragleave', function(e) {
-  //   $('body').removeClass('drop');
-  // });
+  //     // Append a preview maybe.
+  //     var reader = new FileReader();
+  //     reader.onload = function (event) {
+  //       var image = new Image();
+  //       image.src = event.target.result;
+  //       image.width = 80;
+  //       $('#filez').get(0).appendChild(image);
+  //     };
+  //     reader.readAsDataURL(file);
 
-  // $('#drop').bind('drop', function(e) {
-  //   //e.originalEvent.preventDefault();
-  //   //console.log(e);
-  //   window.tylor = e;
-  //   e.preventDefault();
+  //     // Set upload field.
+  //     $('<input id="clip_thumbnail" name="clip[thumbnail]" type="file" value="' + file.name + '">').appendTo($('#filez'));
+  //   });
+  //   //$('#clip_thumbnail').get(0).files[0] = e.originalEvent.dataTransfer.files[0];
+  //   $('#clip_title').focus();
   //   return false;
   // });
 

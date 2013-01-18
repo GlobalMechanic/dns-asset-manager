@@ -20,7 +20,7 @@ class ClipsController < ApplicationController
     elsif ['technique', 'keyword'].include? params[:where]
       @clips = @search.order('title').uniq  
     else
-      @clips = @search.order('title').uniq
+      @clips = @search.order('created_at DESC')
     end
 
     if @current_reel

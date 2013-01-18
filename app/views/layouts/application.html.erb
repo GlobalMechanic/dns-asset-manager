@@ -65,7 +65,7 @@
         </div>
       </div>
     </nav>
-    <% if @search && Clip.count > 0 %>
+    <% if false && @search && Clip.count > 0 %>
       <%= form_for @search do |f| %>
         <%= select_tag(:where, options_for_select([['All', 'all'], ['Title', 'title'], ['Director', 'director'], ['Client', 'client'], ['Technique', 'technique'], ['Tag', 'keyword'], ['Category', 'category']], params[:where])) %>
         <%= f.text_field :title_or_client_or_director_or_description_or_category_or_keywords_taggings_tag_name_contains, :class => 'facet' + (params[:where].blank? || params[:where] == 'all' ?  ' show' :  '') %>
@@ -95,15 +95,19 @@
         <%= f.text_field :title %>
       </div>
       <div class="field">
-        <div id="filez">
-        </div>
-        <% # f.label :file %>
-        <% # f.file_field :thumbnail %>
+        <%= f.label :asset %>
+        <%= f.file_field :asset, multiple: true, name: "clip[asset]" %>
       </div>
       <div class="field">
         <%= f.submit 'Upload' %>
       </div>
     <% end %>
   </div>
+  <script id="template-upload" type="text/x-tmpl">
+  <div class="upload">
+    {%= o.name %}
+    <div class="progress"><div class="bar" style="width: 0%;"></div></div>
+  </div>
+  </script>
 </body>
 </html>

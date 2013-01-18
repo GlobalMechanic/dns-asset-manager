@@ -5,7 +5,7 @@
   <%= link_to 'Add to Reel', reel_clip_path(reel, clip), method: :post, :draggable => false, :id => 'clip-' + clip.id.to_s, :class => 'reel add' %>
   <% end %>
   <div class="title"><%= clip.title %></div>
-  <img class="default" draggable="false" src="http://globalmechanic.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" width="188" height="106">
+  <%= image_tag clip.asset_url(:thumb).to_s, :class => 'default', :draggable => 'false' %>
   <div class="extended">
     <div class="title"><%= clip.title %></div>
     <video src="http://globalmechanic.com/clip/movies/<%= clip.video %>" controls="controls" preload="none"></video>

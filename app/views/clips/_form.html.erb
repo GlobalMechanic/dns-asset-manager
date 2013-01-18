@@ -55,6 +55,10 @@
     <%= f.label :video %>
     <%= f.text_field :video %>
   </div>
+  <div class="field">
+    <%= f.label :asset %>
+    <%= f.file_field :asset, multiple: true, name: "clip[asset]" %>
+  </div>
   <div class="actions">
     <%= f.submit %>
     <%= link_to 'Destroy', @clip, method: :delete, data: { confirm: 'Are you sure?' } %>

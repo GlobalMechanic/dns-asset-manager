@@ -1,5 +1,6 @@
 class Clip < ActiveRecord::Base
 	has_paper_trail
+  mount_uploader :asset, AssetUploader
 
   acts_as_taggable_on :keywords, :techniques
 
@@ -18,8 +19,11 @@ class Clip < ActiveRecord::Base
                   :month,
                   :active,
                   :category,
-                  :legacy_id
+                  :legacy_id,
+                  :keyword_list,
+                  :technique_list,
+                  :asset
 
-  validates :title, :presence => true,
-                    :length => { :minimum => 5 }
+  #validates :title, :presence => true,
+  #                  :length => { :minimum => 5 }
 end

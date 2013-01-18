@@ -3,6 +3,8 @@
 
 <h1><%= @clip.title %></h1>
 
+<div><%= image_tag @clip.asset_url(:thumb).to_s %></div>
+
 <div class="clip-single">
   <div class="meta">
     <img src="http://globalmechanic.com/clip/thumbnails/<%= @clip.image %>" />

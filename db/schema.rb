@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115013828) do
+ActiveRecord::Schema.define(:version => 20130117230540) do
 
   create_table "clips", :force => true do |t|
     t.string   "director"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20130115013828) do
     t.boolean  "active"
     t.string   "category"
     t.integer  "legacy_id"
+    t.string   "asset"
   end
 
   create_table "reel_clips", :force => true do |t|

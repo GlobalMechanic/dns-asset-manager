@@ -17,6 +17,8 @@ gem 'meta_search'
 # Models
 gem 'paper_trail'
 gem 'acts-as-taggable-on', '~> 2.3.3'
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Frontend
 gem 'zeroclipboard-rails'
@@ -33,6 +35,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-fileupload-rails'
 end
 
 gem 'jquery-rails'
