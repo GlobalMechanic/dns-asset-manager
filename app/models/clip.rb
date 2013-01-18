@@ -26,4 +26,10 @@ class Clip < ActiveRecord::Base
 
   #validates :title, :presence => true,
   #                  :length => { :minimum => 5 }
+
+ before_create :default_name
+  
+  def default_name
+    self.title ||= File.basename(asset.filename, '.*').titleize if asset
+  end
 end
