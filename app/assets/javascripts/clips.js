@@ -61,18 +61,17 @@ $(document).ready(function() {
     }
   });
 
+  $('body').addClass('drop');
   $('#new_clip').fileupload({
     dataType: 'json',
     add: function(e, data) {
       $('body').addClass('drop');
       data.context = $(tmpl("template-upload", data.files[0]));
-      $('#new_clip').append(data.context);
+      $('#upload-form .clips').append(data.context);
       var reader = new FileReader();
       reader.onload = function (event) {
-        var image = new Image();
-        image.src = event.target.result;
-        image.width = 80;
-        $('#new_clip').get(0).appendChild(image);
+        var image = $('<img width="80">').attr('src', : event.target.result);
+        data.context.find('.image').append(image);
       };
       reader.readAsDataURL(data.files[0]);
       data.submit();

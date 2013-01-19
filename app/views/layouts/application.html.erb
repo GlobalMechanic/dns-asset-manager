@@ -80,29 +80,35 @@
     <% end %>
   </header>
     <% end %>
-    <%= content_tag(:p, notice, :class => 'notice') if notice %>
-    <%= content_tag(:p, alert, :class => 'alert') if alert %>
+    <%= content_tag :p, notice, :class => 'notice' if notice %>
+    <%= content_tag :p, alert, :class => 'alert' if alert %>
     <%= content_tag :h2, @title if @title %>
     <%= yield %>
   </div>
   <div id="upload-form">
-    <%= form_for Clip.new, :html => { :multipart => true } do |f| %>
+    <div class="inner">
       <h3>New Clip</h3>
-      <% # <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" /> %>
-      <% # <input type="file" id="fileselect" name="fileselect[]" multiple="multiple" /> %>
-      <div class="field">
-        <%= f.label :asset %>
-        <%= f.file_field :asset, multiple: true, name: "clip[asset]" %>
+      <%= form_for Clip.new, :html => { :multipart => true } do |f| %>
+        <div class="field">
+          <%= f.label :asset, 'Choose a file or drag and drop' %>
+          <%= f.file_field :asset, multiple: true, name: "clip[asset]" %>
+        </div>
+      <% end %>
+      <textarea placeholder="Notes"></textarea>
+      <input type="text" placeholder="Season">
+      <input type="text" placeholder="Episode">
+      <input type="text" placeholder="Scene">
+      <div class="clips">
       </div>
-      <div class="field">
-        <%= f.submit 'Upload' %>
-      </div>
-    <% end %>
+    </div>
   </div>
   <script id="template-upload" type="text/x-tmpl">
-  <div class="upload">
-    {%= o.name %}
-    <div class="progress progress-striped active"><div class="bar" style="width: 0%;"></div></div>
+  <div style="clear: both; margin: 10px 0;" class="upload">
+    <div style="float: left;" class="image"></div>
+    <div style="margin-left: 90px;">
+      <div>{%= o.name %}</div>
+      <div class="progress progress-striped active"><div class="bar" style="width: 0%;"></div></div>
+    </div>
   </div>
   </script>
 </body>

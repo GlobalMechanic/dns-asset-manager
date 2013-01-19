@@ -13,7 +13,7 @@ body.drop #upload-form {
   display: block;
 }
 
-#upload-form form {
+#upload-form .inner {
   width: 400px;
   background: white;
   margin: 80px auto 0 auto;
