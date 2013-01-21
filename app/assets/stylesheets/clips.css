@@ -161,6 +161,7 @@ body.reels.edit .clip img {
   display: block;
 }
 
+.batch-form { display: none; }
 .clip-uploads .row {
   clear: both;
   margin: 10px 0;

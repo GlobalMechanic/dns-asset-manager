@@ -66,8 +66,9 @@ $(document).ready(function() {
     dataType: 'json',
     add: function(e, data) {
       $('body').addClass('drop');
+      //$('.batch-form').show();
       data.context = $(tmpl("template-upload", data.files[0]));
-      $('#upload-form .clips').append(data.context);
+      $('#upload-form .clip-uploads').append(data.context);
       var reader = new FileReader();
       reader.onload = function (event) {
         var image = $('<img width="80">').attr('src', event.target.result);
