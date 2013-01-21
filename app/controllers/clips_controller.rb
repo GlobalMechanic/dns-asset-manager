@@ -110,4 +110,11 @@ class ClipsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def batch
+    respond_to do |format|
+      format.html { render json: params }
+      format.json { render json: params }
+    end
+  end
 end

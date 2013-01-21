@@ -6,7 +6,11 @@ AssetManager::Application.routes.draw do
     resources :users #, :only => [:index, :edit]
   end
 
-  resources :clips
+  resources :clips do
+    collection do
+      post 'batch'
+    end
+  end
   resources :versions
 
   resources :reels do

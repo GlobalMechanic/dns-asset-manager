@@ -95,12 +95,22 @@
         </div>
       <% end %>
       <div class="batch-form">
-        <textarea placeholder="Notes"></textarea>
+        <%= form_tag :controller => "clips", :action => "batch" do %>
+          <div class="field">
+            <%= text_field_tag :title, nil, :placeholder => 'Title' %>
+          </div>
+          <dove class="field">
+            <%= submit_tag 'Save and Close' %>
+          </dove>
+        
+        <!-- <textarea placeholder="Notes"></textarea>
         <input type="text" placeholder="Season">
         <input type="text" placeholder="Episode">
-        <input type="text" placeholder="Scene">
-      </div>
-      <div class="clip-uploads">
+        <input type="text" placeholder="Scene"> -->
+
+          <div class="clip-uploads"></div>
+          <input type="submit" value="Save and Close">
+        <% end %>
       </div>
     </div>
   </div>
