@@ -61,7 +61,7 @@ $(document).ready(function() {
     }
   });
 
-  $('body').addClass('drop');
+  //$('body').addClass('drop');
   $('#new_clip').fileupload({
     dataType: 'json',
     add: function(e, data) {
