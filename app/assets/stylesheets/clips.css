@@ -161,6 +161,17 @@ body.reels.edit .clip img {
   display: block;
 }
 
+.clip-uploads .row {
+  clear: both;
+  margin: 10px 0;
+}
+.clip-uploads .image {
+  float: left;
+}
+.clip-uploads .title {
+  margin-left: 90px;
+}
+
 @-webkit-keyframes progress-bar-stripes {
   from {
     background-position: 40px 0;

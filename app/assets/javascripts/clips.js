@@ -70,7 +70,7 @@ $(document).ready(function() {
       $('#upload-form .clips').append(data.context);
       var reader = new FileReader();
       reader.onload = function (event) {
-        var image = $('<img width="80">').attr('src', : event.target.result);
+        var image = $('<img width="80">').attr('src', event.target.result);
         data.context.find('.image').append(image);
       };
       reader.readAsDataURL(data.files[0]);
