@@ -95,7 +95,7 @@
         </div>
       <% end %>
       <div class="batch-form">
-        <%= form_tag :controller => "clips", :action => "batch" do %>
+        <% # form_tag :controller => "clips", :action => "batch" do %>
           <div class="field">
             <%= text_field_tag :title, nil, :placeholder => 'Title' %>
           </div>
@@ -110,7 +110,7 @@
 
           <div class="clip-uploads"></div>
           <input type="submit" value="Save and Close">
-        <% end %>
+        <% # end %>
       </div>
     </div>
   </div>
