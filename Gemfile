@@ -18,6 +18,7 @@ gem 'meta_search'
 gem 'paper_trail'
 gem 'acts-as-taggable-on', '~> 2.3.3'
 gem 'carrierwave'
+gem 'paperclip'
 gem 'mini_magick'
 
 # Frontend
