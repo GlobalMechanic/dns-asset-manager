@@ -18,7 +18,7 @@
 <body class="<%= params[:controller].parameterize %> <%= params[:action].parameterize %>">
   <div class="container">
     <% if user_signed_in? %>
-    <header>
+    <header class="top-bar">
     <nav class="clearfix">
       <ul id="primary">
         <li><%= link_to 'Clips', clips_path %></li>
@@ -94,14 +94,13 @@
           <%= f.file_field :asset, multiple: true, name: "clip[asset]" %>
         </div>
       <% end %>
-      <div class="batch-form">
+      <div class="batch">
         <% # form_tag :controller => "clips", :action => "batch" do %>
+        <div id="batch-form">
           <div class="field">
             <%= text_field_tag :title, nil, :placeholder => 'Title' %>
           </div>
-          <dove class="field">
-            <%= submit_tag 'Save and Close' %>
-          </dove>
+        </div>
         
         <!-- <textarea placeholder="Notes"></textarea>
         <input type="text" placeholder="Season">
@@ -109,17 +108,24 @@
         <input type="text" placeholder="Scene"> -->
 
           <div class="clip-uploads"></div>
-          <input type="submit" value="Save and Close">
+          <div class="field">
+            <%= submit_tag 'Save and Close', :id => 'update-uploads' %>
+          </div>
         <% # end %>
       </div>
     </div>
   </div>
   <script id="template-upload" type="text/x-tmpl">
   <div class="row">
-    <div class="image"></div>
-    <div class="title">
-      <div>{%= o.name %}</div>
-      <div class="progress progress-striped active"><div class="bar" style="width: 0%;"></div></div>
+    <header>
+      <div class="image"></div>
+      <div class="title">
+        <div>{%= o.name %}</div>
+        <div class="progress progress-striped active"><div class="bar" style="width: 0%;"></div></div>
+      </div>
+    </header>
+    <div class="override">
+      <%= text_field_tag :title, nil, :placeholder => 'Title' %>
     </div>
   </div>
   </script>

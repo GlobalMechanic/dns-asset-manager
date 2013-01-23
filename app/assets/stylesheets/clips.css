@@ -165,6 +165,15 @@ body.reels.edit .clip img {
   clear: both;
   margin: 10px 0;
 }
+
+.clip-uploads .row .override {
+  display: none;
+}
+
+.clip-uploads .row.show .override {
+  display: block;
+}
+
 .clip-uploads .image {
   float: left;
 }

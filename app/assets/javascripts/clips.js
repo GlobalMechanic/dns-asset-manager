@@ -61,7 +61,7 @@ $(document).ready(function() {
     }
   });
 
-  // $('body').addClass('drop');
+  gm.uploads = [];
   $('#new_clip').fileupload({
     dataType: 'json',
     add: function(e, data) {
@@ -85,8 +85,34 @@ $(document).ready(function() {
       }
     },
     done: function (e, data) {
-      data.context.find('.progress').removeClass('active').addClass('progress-success')
+      data.context.find('.progress').removeClass('active').addClass('progress-success');
+      gm.uploads.push(data);
     }
+  });
+
+  $('#update-uploads').click(function() {
+    //$('#batch-form input').attr('name')
+    $.each(gm.uploads, function(i, upload) {
+      var clip = {};
+      $('#batch-form input').each(function (j, input) {
+        var attribute = upload.context.find('input[name=' + $(input).attr('name') + ']').val();
+        if (attribute !== '' || $(input).val() !== '') {
+          clip[$(input).attr('name')] = attribute == '' ? $(input).val() : attribute;
+        }
+      });
+      $.ajax('/clips/' + upload.result.id + '.json', {
+        type: 'PUT',
+        data: { clip: clip },
+        success: function() {
+          $('body').removeClass('drop');
+        }
+      });
+    });
+    return false;
+  });
+
+  $('.row').live('click', function() {
+    $(this).addClass('show');
   });
 
   // Do it without jQuery.
