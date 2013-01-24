@@ -168,6 +168,7 @@ body.reels.edit .clip img {
 
 .clip-uploads .row .override {
   display: none;
+  clear: both;
 }
 
 .clip-uploads .row.show .override {

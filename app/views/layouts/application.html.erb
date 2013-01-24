@@ -95,12 +95,11 @@
         </div>
       <% end %>
       <div class="batch">
-        <% # form_tag :controller => "clips", :action => "batch" do %>
-        <div id="batch-form">
+        <form id="batch-form">
           <div class="field">
             <%= text_field_tag :title, nil, :placeholder => 'Title' %>
           </div>
-        </div>
+        </form>
         
         <!-- <textarea placeholder="Notes"></textarea>
         <input type="text" placeholder="Season">
@@ -111,7 +110,6 @@
           <div class="field">
             <%= submit_tag 'Save and Close', :id => 'update-uploads' %>
           </div>
-        <% # end %>
       </div>
     </div>
   </div>

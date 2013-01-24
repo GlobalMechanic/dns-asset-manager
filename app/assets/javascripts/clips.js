@@ -90,7 +90,7 @@ $(document).ready(function() {
     }
   });
 
-  $('#update-uploads').click(function() {
+  var submitBatch = function() {
     //$('#batch-form input').attr('name')
     $.each(gm.uploads, function(i, upload) {
       var clip = {};
@@ -109,7 +109,10 @@ $(document).ready(function() {
       });
     });
     return false;
-  });
+  };
+  $('#batch-form').submit(submitBatch);
+  $('#update-uploads').click(submitBatch);
+
 
   $('.row').live('click', function() {
     $(this).addClass('show');
