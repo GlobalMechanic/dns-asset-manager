@@ -91,7 +91,6 @@ $(document).ready(function() {
   });
 
   var submitBatch = function() {
-    //$('#batch-form input').attr('name')
     $.each(gm.uploads, function(i, upload) {
       var clip = {};
       $('#batch-form input, #batch-form textarea').each(function (j, input) {
@@ -117,58 +116,5 @@ $(document).ready(function() {
   $('.row').live('click', function() {
     $(this).addClass('show');
   });
-
-  // Do it without jQuery.
-  // document.addEventListener('dragover', function(e) {
-  //   console.log('drag');
-  //   gmDrag = e;
-  //   e.preventDefault();
-  //   console.log(e.target.files);
-  //   console.log(e.dataTransfer.files); // There we are.
-  // });
-
-  // document.addEventListener('drop', function(e) {
-  //   console.log('drop');
-  //   gmDrop = e;
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   //console.log(e.target.files);
-  //   console.log(e.dataTransfer.files); // There we are.
-  // });
-
-  // This was working quite well, but we can't dump these files into the field.
-  // $('body').bind('dragover', function(e) {
-  //   $('body').addClass('drop');
-  //   return false; // preventDefault() please.
-  // });
-  // $('body').bind('dragend', function(e) {
-  //   $('body').removeClass('drop');
-  //   return false; // preventDefault() please.
-  // });
-
-  // $('body').bind('drop', function(e) {
-  //   $('body').addClass('drop');
-  //   $.each(e.originalEvent.dataTransfer.files, function(index, file) {
-  //     // Write out title.
-  //     $('#clip_title').val(file.name.replace(/.(png|jpg)$/, ''));
-  //     //$('<p>').html(file.name + ' ' + file.size + ' ' + file.type).appendTo($('#filez'));
-
-  //     // Append a preview maybe.
-  //     var reader = new FileReader();
-  //     reader.onload = function (event) {
-  //       var image = new Image();
-  //       image.src = event.target.result;
-  //       image.width = 80;
-  //       $('#filez').get(0).appendChild(image);
-  //     };
-  //     reader.readAsDataURL(file);
-
-  //     // Set upload field.
-  //     $('<input id="clip_thumbnail" name="clip[thumbnail]" type="file" value="' + file.name + '">').appendTo($('#filez'));
-  //   });
-  //   //$('#clip_thumbnail').get(0).files[0] = e.originalEvent.dataTransfer.files[0];
-  //   $('#clip_title').focus();
-  //   return false;
-  // });
 
 });
