@@ -10,6 +10,10 @@ class Clip < ActiveRecord::Base
 
   attr_accessible :description,
                   :title,
+                  :season,
+                  :episode,
+                  :scene,
+                  :shot,
                   :video,
                   :image,
                   :director,
