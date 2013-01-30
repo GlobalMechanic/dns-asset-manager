@@ -21,6 +21,12 @@ body.drop #upload-form {
   box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
+
+#upload-form input[type='text'].inline {
+  width: 187px;
+  display: inline-block;
+}
+
 #clip_search {
   margin-bottom: 0;
 }
@@ -180,11 +186,6 @@ body.reels.edit .clip img {
 }
 .clip-uploads .title {
   margin-left: 90px;
-}
-
-#batch-form input[type='text'].inline {
-  width: 187px;
-  display: inline-block;
 }
 
 @-webkit-keyframes progress-bar-stripes {
