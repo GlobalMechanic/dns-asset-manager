@@ -97,7 +97,7 @@
       <div class="batch">
         <form id="batch-form">
           <div class="field">
-            <%= text_field_tag :title, nil, :placeholder => 'Title' %>
+            <%= render :partial => 'shared/clip-form' %>
           </div>
         </form>
         
@@ -123,7 +123,7 @@
       </div>
     </header>
     <div class="override">
-      <%= text_field_tag :title, nil, :placeholder => 'Title' %>
+      <%= render :partial => 'shared/clip-form' %>
     </div>
   </div>
   </script>

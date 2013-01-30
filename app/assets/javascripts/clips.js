@@ -94,8 +94,8 @@ $(document).ready(function() {
     //$('#batch-form input').attr('name')
     $.each(gm.uploads, function(i, upload) {
       var clip = {};
-      $('#batch-form input').each(function (j, input) {
-        var attribute = upload.context.find('input[name=' + $(input).attr('name') + ']').val();
+      $('#batch-form input, #batch-form textarea').each(function (j, input) {
+        var attribute = upload.context.find('input[name=' + $(input).attr('name') + '], textarea[name=' + $(input).attr('name') + ']').val();
         if (attribute !== '' || $(input).val() !== '') {
           clip[$(input).attr('name')] = attribute == '' ? $(input).val() : attribute;
         }
