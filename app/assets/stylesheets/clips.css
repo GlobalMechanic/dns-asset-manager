@@ -181,6 +181,10 @@ body.reels.edit .clip img {
   display: block;
 }
 
+.clip-uploads .row.success {
+  background: green;
+}
+
 .clip-uploads .image {
   float: left;
 }

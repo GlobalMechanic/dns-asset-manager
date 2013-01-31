@@ -66,7 +66,6 @@ $(document).ready(function() {
     dataType: 'json',
     add: function(e, data) {
       $('body').addClass('drop');
-      //$('.batch-form').show();
       data.context = $(tmpl("template-upload", data.files[0]));
       $('#upload-form .clip-uploads').append(data.context);
       var reader = new FileReader();
@@ -103,7 +102,10 @@ $(document).ready(function() {
         type: 'PUT',
         data: { clip: clip },
         success: function() {
-          $('body').removeClass('drop');
+          upload.context.addClass('success');
+          if ($('.clip-uploads .row:not(.success)').length === 0) {
+            $('body').removeClass('drop');
+          }
         }
       });
     });
