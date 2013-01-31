@@ -114,8 +114,10 @@ $(document).ready(function() {
   $('#batch-form').submit(submitBatch);
   $('#update-uploads').click(submitBatch);
 
-
-  $('.row').live('click', function() {
+  $('.row:not(.show)').live('click', function() {
+    $(this).find('input, textarea').each(function(i, input) {
+      $(input).val($('#batch-form').find('input[name=' + $(input).attr('name') + '], textarea[name=' + $(input).attr('name') + ']').val());
+    });
     $(this).addClass('show');
   });
 

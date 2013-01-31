@@ -96,9 +96,7 @@
       <% end %>
       <div class="batch">
         <form id="batch-form">
-          <div class="field">
             <%= render :partial => 'shared/clip-form' %>
-          </div>
         </form>
         <div class="clip-uploads"></div>
         <div class="field">
@@ -116,9 +114,9 @@
         <div class="progress progress-striped active"><div class="bar" style="width: 0%;"></div></div>
       </div>
     </header>
-    <div class="override">
+    <form class="override">
       <%= render :partial => 'shared/clip-form' %>
-    </div>
+    </form>
   </div>
   </script>
 </body>
