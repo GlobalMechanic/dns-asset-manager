@@ -1,12 +1,12 @@
 $(document).ready(function() {
 
-  // Clip add/remove click events.
-  $('.clip .reel').click(function(e) {
-    var $clip = $(this);
-    $clip.toggleClass('add').toggleClass('remove').addClass('loading');
-    if ($clip.hasClass('add')) {
+  // Asset add/remove click events.
+  $('.asset .reel').click(function(e) {
+    var $asset = $(this);
+    $asset.toggleClass('add').toggleClass('remove').addClass('loading');
+    if ($asset.hasClass('add')) {
       $.ajax({
-        url: $clip.attr('href') + '.json',
+        url: $asset.attr('href') + '.json',
         type: 'DELETE',
         success: function(data) {
           if (data > 0) {
@@ -15,13 +15,13 @@ $(document).ready(function() {
           else {
            $('#create-reel').removeClass('show'); 
           }
-          $clip.removeClass('loading');
+          $asset.removeClass('loading');
         }
       });
     }
-    else if ($clip.hasClass('remove')) {
+    else if ($asset.hasClass('remove')) {
       $.ajax({
-        url: $clip.attr('href') + '.json',
+        url: $asset.attr('href') + '.json',
         type: 'POST',
         success: function(data) {
           if (data > 0) {
@@ -30,7 +30,7 @@ $(document).ready(function() {
           else {
            $('#create-reel').removeClass('show'); 
           }
-          $clip.removeClass('loading');
+          $asset.removeClass('loading');
         }
       });
     }
@@ -38,9 +38,9 @@ $(document).ready(function() {
   });
 
   // Handle video player.
-  $('.clip .default, .clip .title').click(function(e) {
-    if ($(this).parents('.clip').hasClass('open')) {
-      $(this).parents('.clip').removeClass('open');
+  $('.asset .default, .asset .title').click(function(e) {
+    if ($(this).parents('.asset').hasClass('open')) {
+      $(this).parents('.asset').removeClass('open');
       $(this).parent().find('video').each(function() {
         this.pause();
         if (this.currentTime > 0) {
@@ -49,25 +49,25 @@ $(document).ready(function() {
       });
     }
     else {
-      $('.clip.open video').each(function () {
+      $('.asset.open video').each(function () {
           this.pause();
           if (this.currentTime > 0) {
             this.currentTime = 0;
           }
       });
-      $('.clip.open').removeClass('open');
-      $(this).parents('.clip').addClass('open');
+      $('.asset.open').removeClass('open');
+      $(this).parents('.asset').addClass('open');
       $(this).parent().find('video').get(0).play();
     }
   });
 
   gm.uploads = [];
-  $('#new_clip').fileupload({
+  $('#new_asset').fileupload({
     dataType: 'json',
     add: function(e, data) {
       $('body').addClass('drop');
       data.context = $(tmpl("template-upload", data.files[0]));
-      $('#upload-form .clip-uploads').append(data.context);
+      $('#upload-form .asset-uploads').append(data.context);
       var reader = new FileReader();
       reader.onload = function (event) {
         var image = $('<img width="80">').attr('src', event.target.result);
@@ -91,19 +91,19 @@ $(document).ready(function() {
 
   var submitBatch = function() {
     $.each(gm.uploads, function(i, upload) {
-      var clip = {};
+      var asset = {};
       $('#batch-form input, #batch-form textarea').each(function (j, input) {
         var attribute = upload.context.find('input[name=' + $(input).attr('name') + '], textarea[name=' + $(input).attr('name') + ']').val();
         if (attribute !== '' || $(input).val() !== '') {
-          clip[$(input).attr('name')] = attribute == '' ? $(input).val() : attribute;
+          asset[$(input).attr('name')] = attribute == '' ? $(input).val() : attribute;
         }
       });
-      $.ajax('/clips/' + upload.result.id + '.json', {
+      $.ajax('/assets/' + upload.result.id + '.json', {
         type: 'PUT',
-        data: { clip: clip },
+        data: { asset: asset },
         success: function() {
           upload.context.addClass('success');
-          if ($('.clip-uploads .row:not(.success)').length === 0) {
+          if ($('.asset-uploads .row:not(.success)').length === 0) {
             $('body').removeClass('drop');
           }
         }

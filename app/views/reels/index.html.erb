@@ -1,21 +1,21 @@
 <% @reels.each do |reel| %>
-<div id="reel-<%= reel.slug %>" class="reel-id clips">
+<div id="reel-<%= reel.slug %>" class="reel-id assets">
   <h2><%= link_to reel.title, open_reel_path(reel) %></h2>
   <% if can? :destroy, reel %>
   <%= link_to 'Destroy', reel, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
-  <%= content_tag(:p, 'No clips yet.') unless reel.clips.length > 0 %>
-  <% reel.clips.each_with_index do |clip, index| %>
-  <div class="clip" draggable="true">
-    <% if @current_reel.clips.exists?(clip) %>
-    <%= link_to 'Remove from Reel', reel_clip_path(@current_reel, clip), method: :delete, :draggable => false, :id => 'clip-' + clip.id.to_s, :class => 'reel remove' %>
+  <%= content_tag(:p, 'No assets yet.') unless reel.assets.length > 0 %>
+  <% reel.assets.each_with_index do |asset, index| %>
+  <div class="asset" draggable="true">
+    <% if @current_reel.assets.exists?(asset) %>
+    <%= link_to 'Remove from Reel', reel_asset_path(@current_reel, asset), method: :delete, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel remove' %>
     <% else %>
-    <%= link_to 'Add to Reel', reel_clip_path(@current_reel, clip), method: :post, :draggable => false, :id => 'clip-' + clip.id.to_s, :class => 'reel add' %>
+    <%= link_to 'Add to Reel', reel_asset_path(@current_reel, asset), method: :post, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel add' %>
     <% end %>
 
-    <%= link_to clip, :draggable => false do %>
-      <div class="title"><%= clip.title %></div>
-      <img draggable="false" src="http://globalmechanic.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" width="188" height="106" />
+    <%= link_to asset, :draggable => false do %>
+      <div class="title"><%= asset.title %></div>
+      <img draggable="false" src="http://globalmechanic.com/asset/thumbnails/<%= asset.image %>" alt="<%= asset.title %>" width="188" height="106" />
       <!-- <img draggable="false" src="/assets/188x106.png" alt="Placeholder"> -->
     <% end %>
   </div>

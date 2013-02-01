@@ -10,15 +10,15 @@
   <%= csrf_meta_tags %>
   <script type="text/javascript">
     <%
-    clip_hash = Hash.new
-    @clips.each {|clip| clip_hash[clip.id] = clip }
+    asset_hash = Hash.new
+    @assets.each {|asset| asset_hash[asset.id] = asset }
     %>
     var gm = gm || {
       root_url: '<%= root_url %>',
       controller: '<%= params[:controller] %>',
       action: '<%= params[:action] %>',
       reel: <%=h raw(@reel.to_json) %>,
-      clips: <%=h raw(clip_hash.to_json) %>
+      assets: <%=h raw(asset_hash.to_json) %>
     };
   </script>
 </head>

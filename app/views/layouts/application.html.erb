@@ -21,7 +21,7 @@
     <header class="top-bar">
     <nav class="clearfix">
       <ul id="primary">
-        <li><%= link_to 'Clips', clips_path %></li>
+        <li><%= link_to 'Assets', assets_path %></li>
         <li><%= link_to 'Reels', reels_path %></li>
         <% if can? :manage, User %>
         <li><%= link_to 'Users', users_path %></li>
@@ -35,7 +35,7 @@
         <% if @current_reel && @current_reel.title? %>
           Now viewing: <%= link_to @current_reel.title, edit_reel_path(@current_reel) %> <%= link_to '×', close_reel_path(@current_reel) %>
         <% else %>
-          <%= link_to 'Create my Reel', edit_reel_path(@current_reel), :id => 'create-reel', :class => (@current_reel.clips.length > 0 ? 'show' : '') %>
+          <%= link_to 'Create my Reel', edit_reel_path(@current_reel), :id => 'create-reel', :class => (@current_reel.assets.length > 0 ? 'show' : '') %>
           <%= form_for @current_reel do |f| %>
             <%= f.text_field :title %>
             <%= f.submit 'Create' %>
@@ -65,16 +65,16 @@
         </div>
       </div>
     </nav>
-    <% if false && @search && Clip.count > 0 %>
+    <% if false && @search && Asset.count > 0 %>
       <%= form_for @search do |f| %>
         <%= select_tag(:where, options_for_select([['All', 'all'], ['Title', 'title'], ['Director', 'director'], ['Client', 'client'], ['Technique', 'technique'], ['Tag', 'keyword'], ['Category', 'category']], params[:where])) %>
         <%= f.text_field :title_or_client_or_director_or_description_or_category_or_keywords_taggings_tag_name_contains, :class => 'facet' + (params[:where].blank? || params[:where] == 'all' ?  ' show' :  '') %>
         <%= f.text_field :title_contains, :class => 'facet' + (params[:where] == 'title' ?  ' show' :  '') %>
-        <%= f.collection_select(:director_equals, Clip.all.map {|clip| clip[:director].titleize }.uniq.sort, :downcase, :to_s, {:include_blank => 'All Directors'}, { :class => 'facet' + (params[:where] == 'director' ?  ' show' :  '')  }) %>
-        <%= f.collection_select(:category_equals, Clip.all.map {|clip| clip[:category].titleize }.uniq.sort, :downcase, :to_s, {:include_blank => 'All Categories'}, { :class => 'facet' + (params[:where] == 'category' ?  ' show' :  '') }) %>
-        <%= f.collection_select(:client_equals, Clip.all.map(&:client).uniq.reject!(&:blank?).map{|client| client.titleize }.sort, :downcase, :to_s, {:include_blank => 'All Clients'}, {:class => 'facet' + (params[:where] == 'client' ?  ' show' :  '') }) %>
-        <%= f.collection_select(:techniques_taggings_tag_name_contains, Clip.technique_counts.map(&:name).map{|tag| tag.titleize }.uniq.sort, :to_s, :to_s, {:include_blank => 'All Techniques'}, {:class => 'facet' + (params[:where] == 'technique' ?  ' show' :  '') }) %>
-        <%= f.collection_select(:keywords_taggings_tag_name_contains, Clip.keyword_counts.map(&:name).map{|tag| tag.titleize }.uniq.sort, :to_s, :to_s, {:include_blank => 'All Keywords'}, {:class => 'facet' + (params[:where] == 'keyword' ?  ' show' :  '') }) %>
+        <%= f.collection_select(:director_equals, Asset.all.map {|asset| asset[:director].titleize }.uniq.sort, :downcase, :to_s, {:include_blank => 'All Directors'}, { :class => 'facet' + (params[:where] == 'director' ?  ' show' :  '')  }) %>
+        <%= f.collection_select(:category_equals, Asset.all.map {|asset| asset[:category].titleize }.uniq.sort, :downcase, :to_s, {:include_blank => 'All Categories'}, { :class => 'facet' + (params[:where] == 'category' ?  ' show' :  '') }) %>
+        <%= f.collection_select(:client_equals, Asset.all.map(&:client).uniq.reject!(&:blank?).map{|client| client.titleize }.sort, :downcase, :to_s, {:include_blank => 'All Clients'}, {:class => 'facet' + (params[:where] == 'client' ?  ' show' :  '') }) %>
+        <%= f.collection_select(:techniques_taggings_tag_name_contains, Asset.technique_counts.map(&:name).map{|tag| tag.titleize }.uniq.sort, :to_s, :to_s, {:include_blank => 'All Techniques'}, {:class => 'facet' + (params[:where] == 'technique' ?  ' show' :  '') }) %>
+        <%= f.collection_select(:keywords_taggings_tag_name_contains, Asset.keyword_counts.map(&:name).map{|tag| tag.titleize }.uniq.sort, :to_s, :to_s, {:include_blank => 'All Keywords'}, {:class => 'facet' + (params[:where] == 'keyword' ?  ' show' :  '') }) %>
         <%= f.submit 'Search' %>
       <% end %>
     <% end %>
@@ -87,18 +87,18 @@
   </div>
   <div id="upload-form">
     <div class="inner">
-      <h3>New Clip</h3>
-      <%= form_for Clip.new, :html => { :multipart => true } do |f| %>
+      <h3>New Asset</h3>
+      <%= form_for Asset.new, :html => { :multipart => true } do |f| %>
         <div class="field">
           <%= f.label :asset, 'Choose a file or drag and drop' %>
-          <%= f.file_field :asset, multiple: true, name: "clip[asset]" %>
+          <%= f.file_field :asset, multiple: true, name: "asset[asset]" %>
         </div>
       <% end %>
       <div class="batch">
         <form id="batch-form">
-            <%= render :partial => 'shared/clip-form' %>
+            <%= render :partial => 'shared/asset-form' %>
         </form>
-        <div class="clip-uploads"></div>
+        <div class="asset-uploads"></div>
         <div class="field">
           <%= submit_tag 'Save and Close', :id => 'update-uploads' %>
         </div>
@@ -115,7 +115,7 @@
       </div>
     </header>
     <form class="override">
-      <%= render :partial => 'shared/clip-form' %>
+      <%= render :partial => 'shared/asset-form' %>
     </form>
   </div>
   </script>

@@ -1,0 +1,43 @@
+<%= link_to 'Back to Assets', assets_path %>
+<%= link_to 'Edit Asset', edit_asset_path(@asset) %>
+
+<h1><%= @asset.title %></h1>
+
+<div><%= image_tag @asset.asset_url(:thumb).to_s %></div>
+
+<div class="asset-single">
+  <div class="meta">
+    <img src="http://globalmechanic.com/asset/thumbnails/<%= @asset.image %>" />
+    <div><strong>Title:</strong> <%= @asset.title %></div>
+    <div><strong>Director:</strong> <%= @asset.director %></div>
+    <div><strong>Agency:</strong> <%= @asset.agency %></div>
+    <div><strong>Client:</strong> <%= @asset.client %></div>
+    <div><strong>Keywords:</strong> <%= @asset.keyword_list.join(', ') %></div>
+    <div><strong>Techniques:</strong> <%= @asset.technique_list.join(', ') %></div>
+    <div><strong>Date:</strong> <%= @asset.month %> <%= @asset.year %></div>
+    <div><strong>Description:</strong></div>
+    <div><%= @asset.description %></div>
+  </div>
+  <video src="http://globalmechanic.com/asset/movies/<%= @asset.video %>" controls></video>
+  <div>
+    <strong>Versions:</strong>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Action</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @asset.versions.reverse.each do |version| %>
+        <tr>
+          <td><%= version.id %></td>
+          <td><%= version.event %></td>
+          <td><%= version.created_at %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -6,8 +6,8 @@ AssetManager::Application.routes.draw do
     resources :users #, :only => [:index, :edit]
   end
 
-  resources :clips
-  # resources :clips do
+  resources :assets
+  # resources :assets do
   #   collection do
   #     post 'batch'
   #   end
@@ -15,8 +15,8 @@ AssetManager::Application.routes.draw do
   resources :versions
 
   resources :reels do
-    match ':clip_id' => 'reel_clips#add', :constraints => { :clip_id => /\d+/ }, :via => [:post, :get], :as => :clip
-    match ':clip_id' => 'reel_clips#remove', :constraints => { :clip_id => /\d+/ }, :via => [:delete], :as => :clip
+    match ':asset_id' => 'reel_assets#add', :constraints => { :asset_id => /\d+/ }, :via => [:post, :get], :as => :asset
+    match ':asset_id' => 'reel_assets#remove', :constraints => { :asset_id => /\d+/ }, :via => [:delete], :as => :asset
     member do
       post 'sort'
       get 'close'
@@ -75,7 +75,7 @@ AssetManager::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "clips#index"
+  root :to => "assets#index"
 
   # See how all your routes lay out with "rake routes"
 

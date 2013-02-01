@@ -30,18 +30,18 @@
     </div>
   <% end %>
 
-  <% unless @reel.clips.length > 0 %>
-  <%= content_tag(:p, 'No clips yet.') %>
+  <% unless @reel.assets.length > 0 %>
+  <%= content_tag(:p, 'No assets yet.') %>
   <% else %>
-  <%= render 'shared/clips' %>
+  <%= render 'shared/assets' %>
   <% end %>
 </div>
 
 <script type="text/javascript">
-var clip = new ZeroClipboard.Client();
-clip.setText('<%= reel_url %>');
-clip.glue('copy-link');
-clip.addEventListener('complete', function(client, text) {
+var asset = new ZeroClipboard.Client();
+asset.setText('<%= reel_url %>');
+asset.glue('copy-link');
+asset.addEventListener('complete', function(client, text) {
   $('#copy-link').text('Copied Link').css({ color: 'green' })
 });
 </script>

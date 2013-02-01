@@ -27,29 +27,29 @@ body.drop #upload-form {
   display: inline-block;
 }
 
-#clip_search {
+#asset_search {
   margin-bottom: 0;
 }
 
-#clip_search #where,
-#clip_search .facet,
-#clip_search input[type='submit'] {
+#asset_search #where,
+#asset_search .facet,
+#asset_search input[type='submit'] {
   display: inline-block;
 }
-#clip_search .facet { display: none; }
-#clip_search .facet.show { display: inline-block; }
+#asset_search .facet { display: none; }
+#asset_search .facet.show { display: inline-block; }
 
 .meta img {
   float: left;
   margin-right: 10px;
 }
 
-.clips { clear: both; }
-.clips h2 {
+.assets { clear: both; }
+.assets h2 {
   clear: both;
   padding-top: 1em;
 }
-.clip  {
+.asset  {
   color: #222;
   background: #eee;
   width: 188px;
@@ -59,23 +59,23 @@ body.drop #upload-form {
   float: left;
   margin: 0 2px 4px 2px;
 }
-.slots .clip {
+.slots .asset {
   margin: 10px 0 4px 0;
 }
-body.reels.edit .clip,
-body.reels.edit .clip img {
+body.reels.edit .asset,
+body.reels.edit .asset img {
   cursor:hand;
   cursor:grab;
   cursor:-moz-grab;
   cursor:-webkit-grab;
 }
 
-.clip.dragged { opacity: 0.4; }
+.asset.dragged { opacity: 0.4; }
 
-.clip a { text-decoration: none; }
-.clip a:hover { color: #666; }
+.asset a { text-decoration: none; }
+.asset a:hover { color: #666; }
 
-.clip .title {
+.asset .title {
   font-size: 16px;
   width: 143px;
   padding: 11px 0 8px 5px;
@@ -84,12 +84,12 @@ body.reels.edit .clip img {
   white-space: nowrap;
 }
 
-.clip video {
+.asset video {
   margin: 10px 0;
   width: 100%;
 }
 
-.clip .reel {
+.asset .reel {
   -webkit-transition: background-position-y, background-color 0.1s linear;
   background: #eee url('add-remove.png') no-repeat;
   position: absolute;
@@ -100,16 +100,16 @@ body.reels.edit .clip img {
   display: block;
   text-indent: -9999px;
 }
-.clip .reel.loading { background-color: #ddd; }
-.clip .reel.add { background-position: top left; }
-.clip .reel.add:hover { background-position: top right; }
-.clip .reel.remove { background-position: bottom left; background-color: #999; }
-.clip .reel.remove:hover { background-position: bottom right; }
+.asset .reel.loading { background-color: #ddd; }
+.asset .reel.add { background-position: top left; }
+.asset .reel.add:hover { background-position: top right; }
+.asset .reel.remove { background-position: bottom left; background-color: #999; }
+.asset .reel.remove:hover { background-position: bottom right; }
 
-.clip .extended {
+.asset .extended {
   display: none;
 }
-.clip.open .extended {
+.asset.open .extended {
   width: 380px;
   height: 296px;
   display: block;
@@ -119,21 +119,21 @@ body.reels.edit .clip img {
   left: 0;
   z-index: 1;
 }
-.clips .clip:nth-child(5n+5) .extended {
+.assets .asset:nth-child(5n+5) .extended {
   left: auto;
   right: 0;
 }
 
-.clip .extended .title {
+.asset .extended .title {
   background: #ffe;
   width: auto;
 }
-.clip.open .reel {
+.asset.open .reel {
   right: -192px;
   z-index: 2;
   background-color: #ffe;
 }
-.clips .clip:nth-child(5n+5).open .reel {
+.assets .asset:nth-child(5n+5).open .reel {
   right: 0;
 }
 
@@ -163,32 +163,32 @@ body.reels.edit .clip img {
   width: 238px;
   left: -48px;
 }
-.clips.dragging .slot .region {
+.assets.dragging .slot .region {
   display: block;
 }
 
-.clip-uploads .row {
+.asset-uploads .row {
   clear: both;
   margin: 10px 0;
 }
 
-.clip-uploads .row .override {
+.asset-uploads .row .override {
   display: none;
   clear: both;
 }
 
-.clip-uploads .row.show .override {
+.asset-uploads .row.show .override {
   display: block;
 }
 
-.clip-uploads .row.success {
+.asset-uploads .row.success {
   background: green;
 }
 
-.clip-uploads .image {
+.asset-uploads .image {
   float: left;
 }
-.clip-uploads .title {
+.asset-uploads .title {
   margin-left: 90px;
 }
 

@@ -6,9 +6,9 @@ class VersionsController < ApplicationController
   def show
     @version = Version.find(params[:id])
     @version.object = YAML.load(@version.object).except('created_at', 'updated_at', 'id');
-    @clip = Clip.new(@version.object)
+    @asset = Asset.new(@version.object)
     respond_to do |format|
-      format.html { render :template => "clips/show" }
+      format.html { render :template => "assets/show" }
       format.json { render json: @version }
     end
   end

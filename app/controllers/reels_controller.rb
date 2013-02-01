@@ -17,7 +17,7 @@ class ReelsController < ApplicationController
   # GET /reels/1.json
   def show
     @reel = Reel.find(params[:id])
-    @clips = @reel.clips.order('"order"')
+    @assets = @reel.assets.order('"order"')
     
     respond_to do |format|
       format.html { render layout: 'public_reel' }
@@ -28,9 +28,9 @@ class ReelsController < ApplicationController
   # POST /reels/1/sort.json
   def sort
     params[:order].each_with_index do |id, index|
-      @reel_clip = ReelClip.find_by_reel_id_and_clip_id(params[:id], id.to_i)
-      @reel_clip.order = index
-      @reel_clip.save
+      @reel_asset = ReelAsset.find_by_reel_id_and_asset_id(params[:id], id.to_i)
+      @reel_asset.order = index
+      @reel_asset.save
     end
 
     respond_to do |format|
@@ -43,10 +43,10 @@ class ReelsController < ApplicationController
     current_user.current_reel_slug = nil
     respond_to do |format|
       if current_user.save
-        format.html { redirect_to clips_url }
+        format.html { redirect_to assets_url }
         format.json { head :no_content }
       else
-        format.html { redirect_to clips_url, notice: 'For some reason the reel wouldn\'t close. <a href="/reels">Open a new one?</a>'.html_safe }
+        format.html { redirect_to assets_url, notice: 'For some reason the reel wouldn\'t close. <a href="/reels">Open a new one?</a>'.html_safe }
         format.json { render json: "Couldn't close reel.", status: :unprocessable_entity }
       end
     end
@@ -75,9 +75,9 @@ class ReelsController < ApplicationController
 
   # GET /reels/1/edit
   def edit
-    @search = Clip.search(params[:search])
+    @search = Asset.search(params[:search])
     @reel = Reel.find(params[:id])
-    @clips = @reel.clips.order('"order"')
+    @assets = @reel.assets.order('"order"')
     set_current_reel_slug @reel.id
   end
 

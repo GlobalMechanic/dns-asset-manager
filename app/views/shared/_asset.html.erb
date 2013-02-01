@@ -1,0 +1,16 @@
+<div class="asset" draggable="true">
+  <% if reel.assets.map {|asset| asset[:id] }.include?(asset.id) %>
+  <%= link_to 'Remove from Reel', reel_asset_path(reel, asset), method: :delete, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel remove' %>
+  <% else %>
+  <%= link_to 'Add to Reel', reel_asset_path(reel, asset), method: :post, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel add' %>
+  <% end %>
+  <div class="title"><%= asset.title %></div>
+  <%= image_tag asset.asset_url(:thumb).to_s, :class => 'default', :draggable => 'false' %>
+  <div class="extended">
+    <div class="title"><%= asset.title %></div>
+    <video src="http://globalmechanic.com/asset/movies/<%= asset.video %>" controls="controls" preload="none"></video>
+  </div>
+</div>
+
+<% # link_to asset, :draggable => false do %>
+<% # <img class="default" draggable="false" src="/assets/188x106.png" width="188" height="106"> %>

@@ -5,18 +5,18 @@
   </div>
 </div>
 
-<div class="clips clearfix">
-<%= content_tag(:p, 'No clips yet.') unless @clips.length > 0 %>
-<% @clips.each_with_index do |clip, index| %>
+<div class="assets clearfix">
+<%= content_tag(:p, 'No assets yet.') unless @assets.length > 0 %>
+<% @assets.each_with_index do |asset, index| %>
   <% if index % 4 === 0 && index != 0 %>
   </div>
-  <div class="clips clearfix">
+  <div class="assets clearfix">
   <% end %>
 
-  <div id="clip-<%= clip.id %>" class="clip">
+  <div id="asset-<%= asset.id %>" class="asset">
     <a href="#">
-      <img class="default" draggable="false" src="http://globalmechanic.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" width="188" height="106" >
-      <div class="text"><%= clip.title %></div>
+      <img class="default" draggable="false" src="http://globalmechanic.com/asset/thumbnails/<%= asset.image %>" alt="<%= asset.title %>" width="188" height="106" >
+      <div class="text"><%= asset.title %></div>
     </a>
   </div>
 

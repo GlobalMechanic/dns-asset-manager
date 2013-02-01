@@ -11,20 +11,20 @@ $(document).ready(function() {
 
   // Drag and drop for reels.
   if (gm.controller === 'reels' && gm.action === 'edit') {
-    // Clip drag events.
+    // Asset drag events.
     var $dragged = null;
-    $('.clip').bind('dragstart', function(e) {
+    $('.asset').bind('dragstart', function(e) {
       e.originalEvent.dataTransfer.effectAllowed = 'move';
-      e.originalEvent.dataTransfer.setData('text/clip', this);
+      e.originalEvent.dataTransfer.setData('text/asset', this);
       // Firefox needs this.
       if (typeof $.browser.mozilla !== 'undefined') {
         e.originalEvent.dataTransfer.setDragImage($(this).find('img').get(0), 80, 60);
       }
-      $('.clips').addClass('dragging');
+      $('.assets').addClass('dragging');
       $dragged = $(this).addClass('dragged');
       return true;
     }).bind('dragend', function(e) {
-      $('.clips').removeClass('dragging');
+      $('.assets').removeClass('dragging');
       $dragged.removeClass('dragged');
       return true;
     });
@@ -46,7 +46,7 @@ $(document).ready(function() {
       var $this = $(this);
       var $bringMeAlong = $dragged.prev();
 
-      // Move clip into new slot
+      // Move asset into new slot
       $dragged.insertAfter($this);
       $bringMeAlong.insertAfter($dragged);
 
@@ -54,11 +54,11 @@ $(document).ready(function() {
       $this.removeClass('active');
 
       // Save new order to server.
-      var clips = [];
-      $('.clip .reel').each(function(index, clip) {
-        clips.push($(clip).attr('id').replace(/clip-/, ''));
+      var assets = [];
+      $('.asset .reel').each(function(index, asset) {
+        assets.push($(asset).attr('id').replace(/asset-/, ''));
       });
-      $.post('/reels/' + gm.current_reel_slug + '/sort.json', { order: clips }, function(data) {
+      $.post('/reels/' + gm.current_reel_slug + '/sort.json', { order: assets }, function(data) {
         // We cool.
       });
     });

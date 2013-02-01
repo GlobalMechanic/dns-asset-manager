@@ -16,7 +16,7 @@
 //= require jquery-fileupload/vendor/tmpl
 //= require tabs
 //= require zero-clipboard
-//= require clips
+//= require assets
 //= require reel
 
 $(document).ready(function() {
@@ -38,18 +38,18 @@ $(document).ready(function() {
   }
 
   // Show and hide search facets.
-  $('#clip_search #where').change(function(e) {
-    $('#clip_search .facet').removeClass('show');
+  $('#asset_search #where').change(function(e) {
+    $('#asset_search .facet').removeClass('show');
     $(nameToId[$(this).val()]).addClass('show').focus();
   });
 
-  $('#clip_search select.facet').change(function(e) {
-    $('#clip_search').submit();
+  $('#asset_search select.facet').change(function(e) {
+    $('#asset_search').submit();
   });
 
   // Remove inactive search facets before submitting.
-  $('#clip_search').submit(function() {
-    $('#clip_search .facet').not(nameToId[$('#clip_search #where').val()]).remove();
+  $('#asset_search').submit(function() {
+    $('#asset_search .facet').not(nameToId[$('#asset_search #where').val()]).remove();
   });
 
 });

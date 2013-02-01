@@ -1,12 +1,12 @@
-class Clip < ActiveRecord::Base
+class Asset < ActiveRecord::Base
 	has_paper_trail
   mount_uploader :asset, AssetUploader
 
   acts_as_taggable_on :keywords, :techniques
 
-  # If we need to access reels through clips.
-  #has_many :reel_clips
-  #has_many :reels, :through => :reel_clips
+  # If we need to access reels through assets.
+  #has_many :reel_assets
+  #has_many :reels, :through => :reel_assets
 
   attr_accessible :description,
                   :title,

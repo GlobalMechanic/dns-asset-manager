@@ -1,10 +1,10 @@
-<%= form_for @clip, :html => { :multipart => true } do |f| %>
-  <% if @clip.errors.any? %>
+<%= form_for @asset, :html => { :multipart => true } do |f| %>
+  <% if @asset.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@clip.errors.count, "error") %> prohibited this clip from being saved:</h2>
+      <h2><%= pluralize(@asset.errors.count, "error") %> prohibited this asset from being saved:</h2>
 
       <ul>
-      <% @clip.errors.full_messages.each do |msg| %>
+      <% @asset.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -73,10 +73,10 @@
   </div>
   <div class="field">
     <%= f.label :asset %>
-    <%= f.file_field :asset, multiple: true, name: "clip[asset]" %>
+    <%= f.file_field :asset, multiple: true, name: "asset[asset]" %>
   </div>
   <div class="actions">
     <%= f.submit %>
-    <%= link_to 'Destroy', @clip, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Destroy', @asset, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
 <% end %>
