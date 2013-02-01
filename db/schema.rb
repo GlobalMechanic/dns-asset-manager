@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130201232459) do
+ActiveRecord::Schema.define(:version => 20130201233103) do
 
   create_table "assets", :force => true do |t|
     t.string   "director"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20130201232459) do
   end
 
   create_table "reel_assets", :force => true do |t|
-    t.string   "reel_id"
+    t.string   "asset_id"
     t.integer  "clip_id"
     t.integer  "order"
     t.datetime "created_at", :null => false
