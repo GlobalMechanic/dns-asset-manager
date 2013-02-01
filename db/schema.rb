@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(:version => 20130201233103) do
   end
 
   create_table "reel_assets", :force => true do |t|
-    t.string   "asset_id"
-    t.integer  "clip_id"
+    t.string   "reel_id"
+    t.integer  "asset_id"
     t.integer  "order"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
