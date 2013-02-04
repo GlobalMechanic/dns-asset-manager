@@ -4,7 +4,7 @@
   <% else %>
   <%= link_to 'Add to Reel', reel_asset_path(reel, asset), method: :post, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel add' %>
   <% end %>
-  <div class="title"><%= asset.title %></div>
+  <a href="<%= asset_path asset %>" class="title"><%= asset.title %></a>
   <%= image_tag asset.asset_url(:thumb).to_s, :class => 'default', :draggable => 'false' %>
   <div class="extended">
     <div class="title"><%= asset.title %></div>

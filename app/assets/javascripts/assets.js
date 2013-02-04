@@ -38,7 +38,7 @@ $(document).ready(function() {
   });
 
   // Handle video player.
-  $('.asset .default, .asset .title').click(function(e) {
+  $('.asset .default').click(function(e) {
     if ($(this).parents('.asset').hasClass('open')) {
       $(this).parents('.asset').removeClass('open');
       $(this).parent().find('video').each(function() {
@@ -95,7 +95,7 @@ $(document).ready(function() {
       $('#batch-form input, #batch-form textarea').each(function (j, input) {
         var attribute = upload.context.find('input[name=' + $(input).attr('name') + '], textarea[name=' + $(input).attr('name') + ']').val();
         if (attribute !== '' || $(input).val() !== '') {
-          asset[$(input).attr('name')] = attribute == '' ? $(input).val() : attribute;
+          asset[$(input).attr('name')] = attribute == '' || !upload.context.hasClass('show') ? $(input).val() : attribute;
         }
       });
       $.ajax('/assets/' + upload.result.id + '.json', {
@@ -114,11 +114,14 @@ $(document).ready(function() {
   $('#batch-form').submit(submitBatch);
   $('#update-uploads').click(submitBatch);
 
-  $('.row:not(.show)').live('click', function() {
-    $(this).find('input, textarea').each(function(i, input) {
-      $(input).val($('#batch-form').find('input[name=' + $(input).attr('name') + '], textarea[name=' + $(input).attr('name') + ']').val());
-    });
-    $(this).addClass('show');
+  $('.row header').live('click', function() {
+    var $row = $(this).parent();
+    if (!$row.hasClass('show')) {
+      $row.find('input, textarea').each(function(i, input) {
+        $(input).val($('#batch-form').find('input[name=' + $(input).attr('name') + '], textarea[name=' + $(input).attr('name') + ']').val());
+      });
+    }
+    $row.toggleClass('show');
   });
 
 });
