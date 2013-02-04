@@ -4,32 +4,15 @@ class Asset < ActiveRecord::Base
 
   acts_as_taggable_on :keywords, :techniques
 
-  # If we need to access reels through assets.
-  #has_many :reel_assets
-  #has_many :reels, :through => :reel_assets
-
   attr_accessible :description,
                   :title,
                   :season,
                   :episode,
                   :scene,
                   :shot,
-                  :video,
-                  :image,
-                  :director,
-                  :agency,
-                  :client,
-                  :year, 
-                  :month,
-                  :active,
                   :category,
-                  :legacy_id,
                   :keyword_list,
-                  :technique_list,
                   :asset
-
-  #validates :title, :presence => true,
-  #                  :length => { :minimum => 5 }
 
  before_create :default_name
   
