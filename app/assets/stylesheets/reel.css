@@ -16,6 +16,7 @@ body.reels.edit .meta {
   float: right;
 }
 
+.reel h2 { display: inline-block; }
 
 form.edit_reel input[type="text"],
 form.edit_reel input[type="password"],

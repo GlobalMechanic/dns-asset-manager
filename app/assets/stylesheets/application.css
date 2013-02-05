@@ -46,20 +46,27 @@ h1, h2, h3, h4, h5, h6 {
 
 time { border-bottom: 1px dotted #999; }
 
-.top-bar {
-  top: 0;
+header {
   position: fixed;
+  top: 0; left: 0;
   z-index: 2;
+  color: #fff;
   background: rgba(240, 240, 240, 0.95);
-  width: 940px;
+  background: url(public_reel/images/rust.jpg) top center repeat-x;
+  width: 100%;
   padding: 10px;
+}
+header .inner {
+  width: 940px;
+  margin: auto;
 }
 
 nav ul { margin-bottom: 0px; }
 nav li { display: inline-block; }
 nav .disc li { display: list-item; }
 
-#primary, #secondary, #open-reel { font-size: 23px; margin-top: 10px; }
+#primary, #secondary, #open-reel { font-size: 23px; /*margin-top: 10px;*/ }
+#primary { float: right; }
 #primary li { margin-right: 10px; }
 
 .notice {
@@ -77,9 +84,8 @@ nav .disc li { display: list-item; }
 
 #secondary {
   float: left;
-  padding: 5px 0px;
 }
-.drawer { float: right; position: relative; }
+.drawer { position: relative; }
 .drawer #open-reel {
   display: inline-block;
   padding: 5px 10px;
@@ -112,12 +118,14 @@ nav .disc li { display: list-item; }
 #secondary li.open {
   position: relative;
 }
+#empty-reel,
 #create-reel {
   display: none;
   padding: 5px 10px;
   position: relative;
   left: -10px;
 }
+#empty-reel.show,
 #create-reel.show {
   display: block;
 }
