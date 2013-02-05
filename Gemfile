@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 
 gem 'pg'
-gem 'mysql2'
+# gem 'mysql2'
 gem 'json'
 
 # Auth
