@@ -1,5 +1,6 @@
 # encoding: utf-8
 
+require 'carrierwave/processing/mini_magick'
 class AssetUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
@@ -10,6 +11,9 @@ class AssetUploader < CarrierWave::Uploader::Base
   # include Sprockets::Helpers::RailsHelper
   # include Sprockets::Helpers::IsolatedHelper
 
+  IMAGE_EXTENSIONS = %w(jpg jpeg gif png)
+  MOVIE_EXTENSIONS = %w(mov)
+  
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -27,29 +31,42 @@ class AssetUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
-
-  # Process files as they are uploaded:
-  # process :scale => [200, 300]
-  #
-  # def scale(width, height)
-  #   # do something
+ 
+  # def cache_dir
+  #   "#{::Rails.root.to_s}/tmp/uploads" 
   # end
-
-  # Create different versions of your uploaded files:
-  version :thumb do
-    process :resize_to_fill => [188, 106]
-  end
-
-  # Add a white list of extensions which are allowed to be uploaded.
-  # For images you might use something like this:
+ 
   def extension_white_list
-    %w(jpg jpeg gif png)
+    IMAGE_EXTENSIONS + MOVIE_EXTENSIONS
   end
-
-  # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
-
+ 
+  # Create a new "process_extensions" method. It is like "process", except
+  # it takes an array of extensions as the first parameter, and registers
+  # a trampoline method which checks the extension before invocation.
+  def self.process_extensions(*args)
+    extensions = args.shift
+    args.each do |arg|
+      if arg.is_a?(Hash)
+        arg.each do |method, args|
+          processors.push([:process_trampoline, [extensions, method, args]])
+        end
+      else
+        processors.push([:process_trampoline, [extensions, arg, []]])
+      end
+    end
+  end
+ 
+  # Our trampoline method which only performs processing if the extension matches.
+  def process_trampoline(extensions, method, args)
+    extension = File.extname(original_filename).downcase
+    extension = extension[1..-1] if extension[0,1] == '.'
+    self.send(method, *args) if extensions.include?(extension)
+  end
+  
+  # Version actually defines a class method with the given block
+  # therefore this code does not run in the context of an object instance  
+  # and we cannot access uploader instance fields from this block.
+  version :thumb do
+    process_extensions AssetUploader::IMAGE_EXTENSIONS, :resize_to_fill => [188, 106]
+  end
 end
