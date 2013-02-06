@@ -2,6 +2,8 @@ class Asset < ActiveRecord::Base
 	has_paper_trail
   mount_uploader :asset, AssetUploader
 
+  has_many :reel_assets, :dependent => :delete_all
+
   acts_as_taggable_on :keywords, :techniques
 
   attr_accessible :description,

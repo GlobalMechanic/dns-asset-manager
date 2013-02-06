@@ -3,7 +3,11 @@
 
 <h1><%= @asset.title %></h1>
 
+<% if is_image(@asset.asset) %>
 <div><%= image_tag @asset.asset_url(:thumb).to_s %></div>
+<% else %>
+<div><video src="<%= @asset.asset_url %>"></video></div>
+<% end %>
 
 <div class="asset-single">
   <div class="meta">
