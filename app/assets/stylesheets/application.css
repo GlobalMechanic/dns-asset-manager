@@ -32,11 +32,13 @@
   src: url("clarendon/c070004tWeb.eot?") format('eot'), url("clarendon/c070004tWeb.woff") format("woff");
 }
 
-body { margin-top: 150px; }
+body { margin-top: 160px; }
 
-body, p, ol, ul, td {
+body, p, ol, ul, td, input[type="text"], input[type="email"], 
+input[type="password"], textarea, select {
   font-family: Transit;
   font-size: 20px;
+  line-height: 30px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -46,87 +48,78 @@ h1, h2, h3, h4, h5, h6 {
 
 time { border-bottom: 1px dotted #999; }
 
-/* ---------------
-Global Header
---------------- */
-.top-bar a { font-family: Clarendon; }
-.top-bar a:hover { background: none; }
-
-.top-bar {
-  position: fixed;
-  top: 0; left: 0;
-  z-index: 2;
-  width: 100%;
-  padding: 10px 0;
-  color: #fff;
-  /*background: rgba(240, 240, 240, 0.95);*/
-  border-bottom:5px solid #000;
-  background: url(public_reel/images/rust.jpg) top center repeat-x;
-}
-.top-bar nav:first-child {
-  position: relative;
-  width: 950px;
-  margin: 0 auto 20px auto;
-}
+input[type="text"], 
+input[type="email"], 
+input[type="password"], 
+textarea, 
+select { padding: 5px 10px; } 
 
 nav ul { margin-bottom: 0px; }
 nav li { display: inline-block; }
 nav .disc li { display: list-item; }
 
-.notice {
-  margin-bottom: 12px;
-  padding: 5px;
-  border: 1px solid green;
-  background: rgba(0, 255, 0, 0.25);
-}
-.alert {
-  margin-bottom: 12px;
-  padding: 5px;
-  border: 1px solid red;
-  background: rgba(255, 0, 0, 0.25);
-}
+footer { clear: both; }
 
-#primary { font-size: 23px; }
-#primary { float: right; margin: 10px 146px 0 0; }
-#primary li { margin-right: 10px; }
-#primary li:last-child { margin-right: none; }
-
-#secondary { float:left; font-size:35px; font-weight:bold; }
-#secondary a { color:#f7f4d6; }
-
-#secondary li form {
+/* ---------------
+?????
+--------------- */
+#empty-reel,
+#create-reel {
   display: none;
+  padding: 10px 10px 15px 10px;
+  /*position: relative;
+  left: 0;*/
 }
-#secondary li form input[type="text"],
-#secondary li form input[type="submit"] {
-  margin-bottom: 0;
+#empty-reel.show,
+#create-reel.show {
+  display: block;
 }
-#secondary li.open {
-  position: relative;
+
+.top-bar {
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 100;
+  width: 100%;
+  padding: 10px 0;
+  color: #fff;
+  /*background: rgba(240, 240, 240, 0.95);*/
+  border-bottom: 5px solid #000;
+  background: url(public_reel/images/rust.jpg) top center repeat-x;
 }
+.top-bar nav:first-child { position: relative; width: 950px; margin: 0 auto 20px auto; }
+
+ul[id="primary"] { font-size: 23px; }
+ul[id="primary"] { float: right; margin: 12px 131px 0 0; }
+ul[id="primary"] li { margin-right: 10px; }
+
+ul[id="secondary"] { float: left; margin-left: -11px; font-size: 35px; font-weight: bold; }
+ul[id="secondary"] li form { display: none; }
+ul[id="secondary"] .open { position: relative; }
+ul[id="secondary"] .open form {
+  width: 264px;
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 40px;
+  z-index: 1;
+  margin: 0;
+  padding: 10px;
+  background: #fafafa;
+  box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
+}
+ul[id="secondary"] .open input[type="text"],
+ul[id="secondary"] .open input[type="submit"] { width: 266px; margin-bottom: 10px;  }
+ul[id="secondary"] .open input[type='text'] { display: inline-block; width: 244px; }
+ul[id="secondary"] .open input[type="submit"] { margin-bottom: 0; }
+ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
 
 .drawer { 
-  position:absolute; 
-  top:5px;
-  right:0;
-  border:1px solid #777; }
-
-a[id="open-reel"] {
-  display: inline-block;
-  padding: 5px 10px 7px 10px;
-  font-size: 19px;
-  text-decoration: none;
-  font-weight: bold;
-  background: #000;
+  position: absolute; 
+  top: 5px;
+  right: -16px;
+  border: 1px solid #777; 
 }
-a[id="open-reel"]:hover { background:#000; }
-
-.open a[id="open-reel"] { color:#333; }
-.open a[id="open-reel"]:hover { background:#fff !important; /* quickie hack */ }
-
-
 .drawer .title { margin-bottom: 12px; }
-
 .drawer .reels {
   display: none;
   position: absolute;
@@ -139,49 +132,77 @@ a[id="open-reel"]:hover { background:#000; }
   box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
 }
 .drawer.open .reels { display: block; }
-.drawer.open #open-reel {
-  background: #fafafa;
-  box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
-}
-.drawer.open #open-reel:hover, #secondary li.open #create-reel:hover { background: black; }
+.drawer.open #open-reel { background: #fafafa; box-shadow: 2px 2px 2px rgba(0,0,0, 0.35); }
 
 
 
-#empty-reel,
-#create-reel {
-  display: none;
-  padding: 5px 10px;
-  position: relative;
-  left: -10px;
+
+
+
+/* States */
+.notice {
+  margin-bottom: 12px;
+  padding: 5px;
+  border: 1px solid green;
+  background: rgba(0, 255, 0, 0.25);
 }
-#empty-reel.show,
-#create-reel.show {
-  display: block;
+
+.alert {
+  margin-bottom: 12px;
+  padding: 5px;
+  border: 1px solid red;
+  background: rgba(255, 0, 0, 0.25);
 }
-#secondary li.open #create-reel {
-  background: #fafafa;
-  box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
+
+.top-bar a { font-family: Clarendon; color: #fff; }
+.top-bar a:visited { color: #fff; }
+.top-bar a:hover { background: inherit; }
+
+.top-bar .button,
+.top-bar .button:visited { color: #f7f4d6; }
+
+ul[id="secondary"] a { color: #f7f4d6; }
+ul[id="secondary"] .open a[id="create-reel"] { 
+  background: #fafafa; 
+  color: #333; 
+  text-decoration: none; 
+  box-shadow: 2px 2px 2px rgba(0,0,0, 0.35); 
 }
-#secondary li.open form {
-  width: 300px;
-  display: block;
-  position: absolute;
-  z-index: 1;
-  top: 25px;
-  left: -10px;
-  z-index: 1;
-  margin: 0;
-  padding: 10px;
-  background: #fafafa;
-  box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
-}
-#secondary li.open input[type='text'] {
+
+a[id="open-reel"] {
   display: inline-block;
+  padding: 5px 10px 7px 10px;
+  font-size: 19px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #f7f4d6;
+  background: #000;
+}
+a[id="open-reel"]:hover { background: #000; }
+a[id="open-reel"]:visited { color: #f7f4d6; }
+.open a[id="open-reel"] { color: #333; }
+
+/* Skeleton button override */
+a.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  padding: 10px 10px 8px 10px;
+  color: #f7f4d6;
+  font-family: inherit;
+  font-size: 20px;
+  text-align: center;
+  text-shadow: 0 0 rgba(255, 255, 255, .75);
+  background: #000;
+  border: 1px solid #000;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
 }
 
-input[type="text"], input[type="password"], input[type="email"], textarea, select,
-a.button, button, input[type="submit"], input[type="reset"], input[type="button"] {
-  margin-bottom: 5px;
-}
-
-footer { clear: both; }
+a.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover { color: #f7f4d6; border:1px solid #000; background: #000; }

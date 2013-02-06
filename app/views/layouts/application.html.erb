@@ -37,8 +37,9 @@
         <% else %>
           <%= link_to 'Create my Reel', edit_reel_path(@current_reel), :id => 'create-reel', :class => (@current_reel.assets.length > 0 ? 'show' : '') %>
           <%= form_for @current_reel do |f| %>
+            <%= link_to 'tmp: Download', assets_path, :class => 'button' %>
             <%= f.text_field :title %>
-            <%= f.submit 'Create' %>
+            <%= f.submit 'Save Reel' %>
           <% end %>
         <% end %>
         </li>

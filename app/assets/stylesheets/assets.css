@@ -56,6 +56,7 @@ body.drop #upload-form {
 .assets h2 {
   clear: both;
   padding-top: 1em;
+  padding-left: 5px;
 }
 .asset  {
   color: #222;
@@ -66,6 +67,7 @@ body.drop #upload-form {
   display: block;
   float: left;
   margin: 0 2px 4px 2px;
+  line-height: 21px;
 }
 .slots .asset {
   margin: 10px 0 4px 0;
@@ -81,7 +83,7 @@ body.reels.edit .asset img {
 .asset.dragged { opacity: 0.4; }
 
 .asset a { text-decoration: none; }
-.asset a:hover { color: #666; }
+.asset a:hover { /*color: #666;*/ color: #fff; }
 
 .asset .title {
   display: block;
@@ -120,9 +122,10 @@ body.reels.edit .asset img {
 }
 .asset.open .extended {
   width: 380px;
-  height: 296px;
+  height: 306px;
   display: block;
-  background: white;
+  /*background: white;*/
+  background: #eee;
   position: absolute;
   top: 0;
   left: 0;
