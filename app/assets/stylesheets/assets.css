@@ -21,9 +21,17 @@ body.drop #upload-form {
   box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
+#upload-form input,
+#upload-form textarea { font-size:20px; margin-bottom:15px; }
+
+#upload-form textarea,
+#upload-form input[type='text'] { 
+  width:390px;
+}
 
 #upload-form input[type='text'].inline {
-  width: 187px;
+  /*width: 187px;*/
+  width:177px;
   display: inline-block;
 }
 
@@ -166,6 +174,15 @@ body.reels.edit .asset img {
 }
 .assets.dragging .slot .region {
   display: block;
+}
+
+/* ---------------
+Asset Form Upload 
+---------------- */
+.asset-uploads header { 
+  position:inherit;
+  padding:0 0 20px 0;
+  background:#fff; 
 }
 
 .asset-uploads .row {

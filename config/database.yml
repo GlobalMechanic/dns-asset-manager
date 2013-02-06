@@ -8,7 +8,7 @@ development:
   encoding: unicode
   database: asset-manager
   pool: 5
-  username: tylor
+  username: chetwoodside
   password:
   host: localhost
 
@@ -31,7 +31,7 @@ test: &test
   encoding: unicode
   database: asset-manager-test
   pool: 5
-  username: tylor
+  username: chetwoodside
   password:
   host: localhost
 

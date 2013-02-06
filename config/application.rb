@@ -61,5 +61,7 @@ module AssetManager
 
     # Make Heroku happy.
     config.assets.initialize_on_precompile = false
+
+    config.delete_tmp_file_after_storage = false
   end
 end
