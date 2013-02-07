@@ -72,8 +72,8 @@ body.drop #upload-form {
 .slots .asset {
   margin: 10px 0 4px 0;
 }
-body.reels.edit .asset,
-body.reels.edit .asset img {
+body.controller-reels.action-edit .asset,
+body.controller-reels.action-edit .asset img {
   cursor:hand;
   cursor:grab;
   cursor:-moz-grab;
