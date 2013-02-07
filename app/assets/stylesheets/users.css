@@ -1,0 +1,6 @@
+
+table.users { margin: 20px 0; }
+table.users th { padding-bottom: 10px; }
+table.users .name {
+  font-weight: bold;
+}
