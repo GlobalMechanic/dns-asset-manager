@@ -32,6 +32,10 @@
     <%= f.text_field :shot %>
   </div>
   <div class="field">
+    <%= f.label :type %>
+    <%= f.select :type, Asset::TYPES, { :include_blank => true } %>
+  </div>
+  <div class="field">
     <%= f.label :keyword_list %>
     <%= f.text_field :keyword_list %>
   </div>
