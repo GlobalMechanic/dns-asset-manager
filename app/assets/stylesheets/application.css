@@ -184,6 +184,7 @@ a[id="open-reel"]:visited { color: #f7f4d6; }
 
 /* Skeleton button override */
 a.button,
+.button,
 button,
 input[type="submit"],
 input[type="reset"],
@@ -202,6 +203,7 @@ input[type="button"] {
 }
 
 a.button:hover,
+.button:hover,
 button:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover,

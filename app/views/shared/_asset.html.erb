@@ -10,9 +10,34 @@
   <% else %>
   <%= image_tag '/assets/188x106.png', :class => 'default', :draggable => 'false' %>
   <% end %>
+  <div class="button">More Info</div>
   <div class="extended">
     <div class="title"><%= asset.title %></div>
     <video src="http://globalmechanic.com/asset/movies/<%# asset.video %>" controls="controls" preload="none"></video>
+    
+    <!-- Chet Scratch Pad Start -->
+    <nav class="row asset-utilities">
+      <ul>
+        <li><a href="">o</a></li>
+        <li><a href="">t</a></li>
+        <li><a href="">t</a></li>
+        <li><a href="">f</a></li>
+      </ul>
+    </nav>
+
+    <%= form_tag do %>
+      <%= text_field_tag :keyword_list, nil, :placeholder => 'Add keywords' %>
+    <% end %>
+    <style>
+    .asset-utilities { float:right; width:160px; margin-top:-10px; }
+    .asset-utilities ul { float:left; padding:0 !important; }
+    .asset-utilities li { float:left; margin:0 !important; padding:0 !important;}
+    .asset-utilities a { display:block; width:40px; height:50px; margin:0; padding:0; text-align:center; background:orange;}
+    .asset-utilities a:hover,
+    asset-utilities .active { background:#000;}
+    </style>
+    <!-- Chet Scratch Pad End -->
+
   </div>
 </div>
 

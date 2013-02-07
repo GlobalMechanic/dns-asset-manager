@@ -95,9 +95,31 @@ body.reels.edit .asset img {
   white-space: nowrap;
 }
 
+.asset .button { 
+  display:none;
+  position: absolute; 
+  top:50%; 
+  left:27%;
+  font-size: 16px;
+  border: 1px solid #777; 
+} 
+
+img[class="default"] { cursor: pointer; }
+img[class="default"]:hover+.button { display: block; } 
+
 .asset video {
-  margin: 10px 0;
-  width: 100%;
+  margin: 13px 0 5px 0;
+  width: 99%;
+  border: 2px solid #000;
+}
+
+.asset form { width:187px; }
+
+.asset input[type="text"] { 
+  width:187px;
+  margin: 0 10px; 
+  padding: 5px 5px 3px 5px; 
+  font-size: 16px; 
 }
 
 .asset .reel {
@@ -137,13 +159,14 @@ body.reels.edit .asset img {
 }
 
 .asset .extended .title {
-  background: #ffe;
   width: auto;
+  font-weight: bold;
 }
 .asset.open .reel {
   right: -192px;
   z-index: 2;
-  background-color: #ffe;
+  /*background-color: #999;*/
+  /*background-color: #ffe;*/
 }
 .assets .asset:nth-child(5n+5).open .reel {
   right: 0;
