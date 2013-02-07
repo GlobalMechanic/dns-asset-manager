@@ -17,7 +17,7 @@
 //= require tabs
 //= require zero-clipboard
 //= require assets
-//= require reel
+//= require reels
 
 $(document).ready(function() {
 
