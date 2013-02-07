@@ -50,16 +50,24 @@
           <div class="four columns alpha">
             <div class="title">Recently Created</div>
             <ul class="disc">
-              <% @reels_created.each do |reel| %>
-              <li><%= link_to reel.title, open_reel_path(reel) %> <%= time_ago_in_words(reel.created_at) %></li>
+              <% if @reels_created.count > 0 %>
+                <% @reels_created.each do |reel| %>
+                  <li><%= link_to reel.title, open_reel_path(reel) %> <%= time_ago_in_words(reel.created_at) %></li>
+                <% end %>
+              <% else %>
+                <li>No reels yet</li>
               <% end %>
             </ul>
           </div>
           <div class="four columns omega">
             <div class="title">Recently Updated</div>
             <ul class="disc">
-              <% @reels_updated.each do |reel| %>
-              <li><%= link_to reel.title, open_reel_path(reel) %> <%= time_ago_in_words(reel.updated_at) %></li>
+              <% if @reels_created.count > 0 %>
+                <% @reels_updated.each do |reel| %>
+                  <li><%= link_to reel.title, open_reel_path(reel) %> <%= time_ago_in_words(reel.updated_at) %></li>
+                <% end %>
+              <% else %>
+                <li>No reels yet</li>
               <% end %>
             </ul>
           </div>
