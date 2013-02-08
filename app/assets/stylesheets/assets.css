@@ -95,20 +95,10 @@ body.controller-reels.action-edit .asset img {
   white-space: nowrap;
 }
 
-.asset .button { 
-  display:none;
-  position: absolute; 
-  top:50%; 
-  left:27%;
-  font-size: 16px;
-  border: 1px solid #777; 
-} 
-
 img[class="default"] { cursor: pointer; }
-img[class="default"]:hover+.button { display: block; } 
 
 .asset video {
-  margin: 13px 0 5px 0;
+  margin: 0 0 0 0;
   width: 99%;
   border: 2px solid #000;
 }
@@ -117,7 +107,7 @@ img[class="default"]:hover+.button { display: block; }
 
 .asset input[type="text"] { 
   width:187px;
-  margin: 0 10px; 
+  margin: 10px; 
   padding: 5px 5px 3px 5px; 
   font-size: 16px; 
 }
@@ -160,7 +150,7 @@ img[class="default"]:hover+.button { display: block; }
 
 .asset .extended .title {
   width: auto;
-  font-weight: bold;
+  /*font-weight: bold;*/
 }
 .asset.open .reel {
   right: -192px;
@@ -235,6 +225,89 @@ Asset Form Upload
 .asset-uploads .title {
   margin-left: 90px;
 }
+
+/* ---------------
+Screen tabs
+--------------- */
+.tab-screen { padding: 10px; background: rgb(210,210,210); }
+
+.screen { 
+  display:none;
+  position: relative; 
+  width: 359px; 
+  height: 186px; 
+  padding: 0; 
+  overflow: auto; 
+}
+
+.screen.open { display: block; }
+
+.screen .button { 
+  position: absolute; 
+  top: 6px; 
+  right: 10px; 
+  padding: 4px 7px 1px 7px; 
+  font-size: 13px; 
+  color: #f7f4d6;
+}
+
+.asset-utilities { float: right; width: 160px; }
+.asset-utilities ul { float: left; padding: 0; }
+.asset-utilities li { 
+  float: left; 
+  margin: 0; 
+  padding: 0; 
+}
+.asset-utilities a { 
+  display: block; 
+  width: 40px; 
+  height: 50px; 
+  margin: 0; 
+  padding: 0; 
+  text-align: center; 
+}
+.asset-utilities a:hover,
+.asset-utilities .active { background: rgb(210,210,210); }
+
+.extended table { 
+  position: relative; 
+  width: 100%; 
+  border-left: 1px solid rgb(170,170,170);
+}
+
+.extended caption {  
+  padding:5px; 
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 1px solid rgb(170,170,170);
+}
+
+.extended table thead tr { background: rgb(190,190,190); }
+
+.extended table th,
+.extended table td { 
+  padding: 9px 5px 5px 5px;
+  text-align: left;
+  font-size: 16px; 
+  border-right: 1px solid rgb(170,170,170);
+  border-bottom: 1px solid rgb(170,170,170);
+}
+
+.extended .title { cursor: pointer; text-decoration: underline; }
+.extended dl { font-size: 16px; line-height: 24px; }
+.extended dl a { text-decoration: underline; color: #333; }
+.extended dl a:hover { background: inherit; }
+.extended dt { 
+  display: inline-block; 
+  float: left; 
+  margin-top: 8px; 
+  margin-right: 4px; 
+  text-transform: uppercase; 
+  font-weight: bold;
+  clear: both; }
+.extended dd { float: left; margin-top: 8px; }
+dd.row { margin-top: 0; margin-bottom: 0; }
 
 @-webkit-keyframes progress-bar-stripes {
   from {
