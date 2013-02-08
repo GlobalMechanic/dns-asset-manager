@@ -7,6 +7,9 @@ AssetManager::Application.routes.draw do
   end
 
   resources :assets
+  
+  match 'browse/:layout/:asset_type' => 'browse#type'
+
   # resources :assets do
   #   collection do
   #     post 'batch'
