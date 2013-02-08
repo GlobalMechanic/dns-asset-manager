@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130208002331) do
+ActiveRecord::Schema.define(:version => 20130208224742) do
 
   create_table "assets", :force => true do |t|
     t.string   "title"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(:version => 20130208002331) do
     t.integer  "scene"
     t.integer  "shot"
     t.string   "asset_type"
+    t.integer  "scene_id"
+  end
+
+  create_table "episodes", :force => true do |t|
+    t.string  "title"
+    t.integer "number"
+    t.integer "season"
   end
 
   create_table "reel_assets", :force => true do |t|
@@ -56,6 +63,11 @@ ActiveRecord::Schema.define(:version => 20130208002331) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "scenes", :force => true do |t|
+    t.integer "number"
+    t.integer "episode_id"
+  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
