@@ -13,7 +13,8 @@
  *= require skeleton
  *= require_self
  *= require assets
- *= require reel
+ *= require reels
+ *= require users
  *= require scaffolds
  */
 
@@ -47,6 +48,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 time { border-bottom: 1px dotted #999; }
+
+table th {
+  font-weight: bold;
+  text-align: left;
+}
+table th, table td {
+  padding-right: 10px;
+  min-width: 50px;
+}
 
 input[type="text"], 
 input[type="email"], 

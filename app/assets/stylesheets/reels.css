@@ -3,14 +3,14 @@ form.edit_reel input[type='submit'] {
   display: inline-block;
 }
 
-body.reels.edit .reel-presentation {
+body.controll-reels.action-edit .reel-presentation {
   width: 768px;
   float: left;
 }
-body.reels.edit .assets .asset:nth-child(4n+4).open .reel {
+body.controll-reels.action-edit .assets .asset:nth-child(4n+4).open .reel {
   right: 0;
 }
-body.reels.edit .meta {
+body.controll-reels.action-edit .meta {
   margin-top: 20px;
   width: 180px;
   float: right;

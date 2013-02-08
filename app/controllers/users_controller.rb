@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   # GET /admin/users.json
   def index
     @users = User.all
+    @title = 'All Users (' + @users.count.to_s + ')'
 
     respond_to do |format|
       format.html # index.html.erb
