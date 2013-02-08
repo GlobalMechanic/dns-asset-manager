@@ -10,34 +10,116 @@
   <% else %>
   <%= image_tag '/assets/188x106.png', :class => 'default', :draggable => 'false' %>
   <% end %>
-  <div class="button">More Info</div>
   <div class="extended">
     <div class="title"><%= asset.title %></div>
-    <video src="http://globalmechanic.com/asset/movies/<%# asset.video %>" controls="controls" preload="none"></video>
-    
     <!-- Chet Scratch Pad Start -->
+    <div class="tab-screen">          
+      <%# Versions section %>
+      <div class="screen open">
+        <table>
+          <caption>tmp:Versions</caption>
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Who Dunit</th>
+              <th>Time</th>
+              <th>ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>update</td>
+              <td>Joe Smith</td>
+              <td>2013-02-07 11:33pm</td>
+              <td>12</td>
+            </tr>
+
+            <tr>
+              <td>update</td>
+              <td>Joe Smith</td>
+              <td>2013-02-07 11:33pm</td>
+              <td>12</td>
+            </tr>
+
+            <tr>
+              <td>update</td>
+              <td>Joe Smith</td>
+              <td>2013-02-07 11:33pm</td>
+              <td>12</td>
+            </tr>
+
+            <tr>
+              <td>update</td>
+              <td>Joe Smith</td>
+              <td>2013-02-07 11:33pm</td>
+              <td>12</td>
+            </tr>
+
+            <tr>
+              <td>update</td>
+              <td>Joe Smith</td>
+              <td>2013-02-07 11:33pm</td>
+              <td>12</td>
+            </tr>
+
+            <tr>
+              <td>update</td>
+              <td>Joe Smith</td>
+              <td>2013-02-07 11:33pm</td>
+              <td>12</td>
+            </tr>
+
+            <tr>
+              <td>Joe Smith</td>
+              <td>update</td>
+              <td>2013-02-07 11:33pm</td>
+              <td>12</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <%# Asset details section %>
+      <div class="screen">
+        <a href="<%= asset_path asset %>/edit" class="button">Edit Asset</a>
+
+        <dl>
+          <dt>Season:</dt>
+          <dd><a href="">tmp: Season value</a></dd>
+          <dt>Episode:</dt>
+          <dd><a href="">tmp: Episode value</a></dd>
+          <dt>Scene:</dt>
+          <dd><a href="">tmp: Shot value</a></dd>
+          <dt>Keywords:</dt>
+          <dd class="row">
+            <a href="">tmp: Keyword 1 value</a>, 
+            <a href="">tmp: Keyword 2 value</a>, 
+            <a href="">tmp: Keyword 1 value</a>
+          </dd>
+          <dt>Description:</dt>
+          <dd class="row">tmp: Did you know that more frozen bananas are sold right here on this boardwalk than anywhere on the OC? If that man's straight, then I am sober. I need a fake passport, preferably to France…I like the way they think. You might wanna lean away from that fire since you're soaked in alcohol.</dd>
+        </dl> 
+      </div>
+
+      <%# Video section%>
+      <div class="screen">
+        <video src="http://globalmechanic.com/asset/movies/<%# asset.video %>" controls="controls" preload="none"></video>
+      </div>
+    </div>    
+
     <nav class="row asset-utilities">
       <ul>
         <li><a href="">o</a></li>
         <li><a href="">t</a></li>
         <li><a href="">t</a></li>
-        <li><a href="">f</a></li>
+        <li><a href="" class="active">f</a></li>
       </ul>
     </nav>
 
     <%= form_tag do %>
-      <%= text_field_tag :keyword_list, nil, :placeholder => 'Add keywords' %>
+      <%= text_field_tag :keyword_list, nil, :placeholder => 'tmp: Add keywords' %>
     <% end %>
-    <style>
-    .asset-utilities { float:right; width:160px; margin-top:-10px; }
-    .asset-utilities ul { float:left; padding:0 !important; }
-    .asset-utilities li { float:left; margin:0 !important; padding:0 !important;}
-    .asset-utilities a { display:block; width:40px; height:50px; margin:0; padding:0; text-align:center; background:orange;}
-    .asset-utilities a:hover,
-    asset-utilities .active { background:#000;}
-    </style>
     <!-- Chet Scratch Pad End -->
-
   </div>
 </div>
 

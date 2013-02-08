@@ -61,6 +61,12 @@ $(document).ready(function() {
     }
   });
 
+  $('.extended .title').click(function() {
+      $(this).closest('.asset').removeClass('open');
+  });
+
+
+
   gm.uploads = [];
   $('#new_asset').fileupload({
     dataType: 'json',
