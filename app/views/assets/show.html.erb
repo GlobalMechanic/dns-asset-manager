@@ -13,26 +13,25 @@
   <div class="meta">
     <div><strong>Title:</strong> <%= @asset.title %></div>
     <div><strong>Keywords:</strong> <%= @asset.keyword_list.join(', ') %></div>
-    <div><strong>Techniques:</strong> <%= @asset.technique_list.join(', ') %></div>
     <div><strong>Description:</strong></div>
     <div><%= @asset.description %></div>
   </div>
   <div>
-    <strong>Versions:</strong>
+    <h2>Versions</h2>
     <table>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Action</th>
-          <th>Time</th>
+          <th>Who</th>
+          <th>What</th>
+          <th>When</th>
         </tr>
       </thead>
       <tbody>
       <% @asset.versions.reverse.each do |version| %>
         <tr>
-          <td><%= version.id %></td>
-          <td><%= version.event %></td>
-          <td><%= version.created_at %></td>
+          <td><%= User.find(version.whodunnit).name %></td>
+          <td><%= version.event.titleize %></td>
+          <td><%= time_ago_in_words(version.created_at) %> ago</td>
         </tr>
       <% end %>
       </tbody>
