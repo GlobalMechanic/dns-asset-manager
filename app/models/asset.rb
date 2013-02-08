@@ -21,7 +21,7 @@ class Asset < ActiveRecord::Base
                   :scene,
                   :shot,
                   :category,
-                  :type,
+                  :asset_type,
                   :keyword_list,
                   :asset
 
