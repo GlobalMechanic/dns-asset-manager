@@ -11,7 +11,7 @@
   <div id="slot-<%= index %>" class="slot">
     <div class="region"></div>
   </div>
-  <%= render :partial => 'shared/asset', :locals => { :reel => @reel, :asset => asset } %>
+  <%= render :partial => 'shared/tile', :locals => { :reel => @reel, :asset => asset } %>
   <% end %>
   <div id="slot-<%= @assets.length  %>" class="slot">
     <div class="region"></div>

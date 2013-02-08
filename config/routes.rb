@@ -8,7 +8,7 @@ AssetManager::Application.routes.draw do
 
   resources :assets
   
-  match 'browse/:layout/:asset_type' => 'browse#type'
+  match 'browse/:layout/:asset_type' => 'browse#type', :constraints => { :layout => /(grid|list)/ }
 
   # resources :assets do
   #   collection do
