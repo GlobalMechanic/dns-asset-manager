@@ -1,0 +1,5 @@
+<h2><%= @episode.title %></h2>
+
+<% @episode.scenes.each_with_index do |scene, index| %>
+  <h3><%= link_to scene.number, episode_scene_path(scene) %></h3>
+<% end %>

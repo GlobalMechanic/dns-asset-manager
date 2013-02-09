@@ -15,6 +15,7 @@ gem "cancan"
 gem 'meta_search'
 
 # Models
+gem 'inherited_resources'
 gem 'paper_trail'
 gem 'acts-as-taggable-on', '~> 2.3.3'
 gem 'carrierwave'
