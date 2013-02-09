@@ -18,5 +18,6 @@ user.add_role :admin
 episode = Episode.create! :number => 1, :season => 1, :title => "Pilot"
 scene = episode.scenes.create! :number => 1
 
+PaperTrail.whodunnit = user.id
 scene.assets.create! :description => 'Runs and jumps', :asset_type => 'character', :asset => File.open('/Users/tylor/Pictures/20101123_BBA_Sig_Fresno_243.jpg')
 scene.assets.create! :description => 'Move things around', :asset_type => 'character', :asset => File.open('/Users/tylor/Pictures/20100818_Scout_Schiphol_stills-081.jpg')

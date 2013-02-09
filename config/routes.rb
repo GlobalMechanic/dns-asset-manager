@@ -7,6 +7,11 @@ AssetManager::Application.routes.draw do
   end
 
   resources :assets
+  resources :episodes do 
+    resources :scenes do 
+      resources :assets
+    end
+  end
   
   match 'browse/:layout/:asset_type' => 'browse#type', :constraints => { :layout => /(grid|list)/ }
 
