@@ -1,0 +1,4 @@
+<h2>Assets for <%= @episode.title %> Scene <%= @scene.number %></h2>
+
+<% @assets = @scene.assets %>
+<%= render 'shared/assets-grid' %>

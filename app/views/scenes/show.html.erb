@@ -1,10 +1,9 @@
-<% @episode = Episode.find(params[:episode_id]) %>
+<%
+@episode = Episode.find(params[:episode_id])
+@assets = @scene.assets
+@reel = @current_reel
+%>
 
 <%= link_to '&larr; All scenes'.html_safe, episode_path(@episode) %>
 
-<h2>Assets for <%= @episode.title %> Scene <%= @scene.number %></h2>
-
-<% @scene.assets.each_with_index do |asset, index| %>
-  <h3><%= link_to asset.title, episode_scene_asset_path(params[:episode_id], @scene, asset) %> - <%= asset.asset_type %></h3>
-  <%= image_tag asset.asset_url(:thumb).to_s, :class => 'default', :draggable => 'false' %>
-<% end %>
+<%= render 'scene' %>

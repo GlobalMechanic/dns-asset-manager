@@ -4,4 +4,6 @@
 
 <% @episode.scenes.each_with_index do |scene, index| %>
   <h3><%= link_to scene.number, episode_scene_path(@episode, scene) %></h3>
+  <% @scene = scene %>
+  <%= render 'scenes/scene' %>
 <% end %>
