@@ -10,7 +10,7 @@ class Asset < ActiveRecord::Base
 	has_paper_trail
   mount_uploader :asset, AssetUploader
 
-  belongs_to :scene
+  has_and_belongs_to_many :scene
   has_many :reel_assets, :dependent => :delete_all
 
   acts_as_taggable_on :keywords

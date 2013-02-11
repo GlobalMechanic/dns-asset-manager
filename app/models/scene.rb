@@ -1,6 +1,6 @@
 class Scene < ActiveRecord::Base
   belongs_to :episode
-  has_many :assets
+  has_and_belongs_to_many :assets
   
   attr_accessible :number
 end

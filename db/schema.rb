@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130208224742) do
+ActiveRecord::Schema.define(:version => 20130211192232) do
 
   create_table "assets", :force => true do |t|
     t.string   "title"
@@ -25,7 +25,11 @@ ActiveRecord::Schema.define(:version => 20130208224742) do
     t.integer  "scene"
     t.integer  "shot"
     t.string   "asset_type"
-    t.integer  "scene_id"
+  end
+
+  create_table "assets_scenes", :id => false, :force => true do |t|
+    t.integer "asset_id"
+    t.integer "scene_id"
   end
 
   create_table "episodes", :force => true do |t|
