@@ -33,7 +33,7 @@
   <% unless @reel.assets.length > 0 %>
   <%= content_tag(:p, 'No assets yet.') %>
   <% else %>
-  <%= render 'shared/assets' %>
+  <%= render :partial => 'shared/assets', :locals => { :assets => @reel.assets } %>
   <% end %>
 </div>
 
