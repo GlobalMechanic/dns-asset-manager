@@ -120,13 +120,13 @@ class AssetsController < ApplicationController
 
   def type
     @assets = Asset.find_all_by_asset_type(params[:asset_type])
-    @title = params[:asset_type].titleize.pluralize
+    @title = params[:asset_type].titleize.pluralize + ' (' + @assets.count.to_s + ')'
     render 'index'
   end
 
   def keyword
     @assets = Asset.tagged_with(params[:keyword])
-    @title = 'Tag: "' + params[:keyword] + '"'
+    @title = 'Tag: "' + params[:keyword] + '" (' + @assets.count.to_s + ')'
     render 'index'
   end
 end
