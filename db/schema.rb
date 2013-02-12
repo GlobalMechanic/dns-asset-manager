@@ -11,19 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130211192232) do
+ActiveRecord::Schema.define(:version => 20130212182914) do
 
   create_table "assets", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "category"
     t.string   "asset"
-    t.integer  "season"
-    t.integer  "episode"
-    t.integer  "scene"
-    t.integer  "shot"
     t.string   "asset_type"
   end
 
