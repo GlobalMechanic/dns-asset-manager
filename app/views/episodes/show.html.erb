@@ -1,9 +1,10 @@
 <%= link_to '&larr; All episodes'.html_safe, episodes_path %>
 
-<h2><%= @episode.title %>'s Scenes</h2>
-
-<% @episode.scenes.each_with_index do |scene, index| %>
-  <h3><%= link_to scene.number, episode_scene_path(@episode, scene) %></h3>
-  <% @scene = scene %>
-  <%= render 'scenes/scene' %>
-<% end %>
+  <h2><%= @episode.number.pad %> - <%= @episode.title %>'s Scenes</h2>
+  <% @episode.scenes.each_with_index do |scene, index| %>
+    <div class="clearfix">
+      <h3><%= link_to 'Scene ' + scene.number.pad, episode_scene_path(@episode, scene) %></h3>
+      <% @scene = scene %>
+      <%= render 'scenes/scene' %>
+    </div>
+  <% end %>

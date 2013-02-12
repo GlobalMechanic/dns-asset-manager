@@ -10,7 +10,7 @@
   <% if is_image asset.asset %>
   <%= image_tag asset.asset_url(:thumb).to_s, :class => 'default', :draggable => 'false' %>
   <% else %>
-  <%= image_tag '/assets/188x106.png', :class => 'default', :draggable => 'false' %>
+  
   <% end %>
   <div class="extended">
     <div class="title"><%= asset.title %></div>
