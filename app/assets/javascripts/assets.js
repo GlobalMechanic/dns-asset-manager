@@ -40,7 +40,7 @@ $(document).ready(function() {
   // Handle video player.
   $('.asset .default').click(function(e) {
     if ($(this).parents('.asset').hasClass('open')) {
-      $(this).parents('.asset').removeClass('open');
+      $(this).parents('.asset').removeClass('open')
       $(this).parent().find('video').each(function() {
         this.pause();
         if (this.currentTime > 0) {
@@ -56,16 +56,28 @@ $(document).ready(function() {
           }
       });
       $('.asset.open').removeClass('open');
+      $('.tile.open').removeClass('open');
+      $('.tab-tile .tile:last-child').addClass('open');
+      $('.asset-utilities li:last-child a').addClass('active');
       $(this).parents('.asset').addClass('open');
       $(this).parent().find('video').get(0).play();
     }
   });
 
   $('.extended .title').click(function() {
-      $(this).closest('.asset').removeClass('open');
+      $(this).parents('.asset').removeClass('open');
   });
 
+  // Reveal relevant tile
+  $('.asset-utilities a').click(function (event) {
+    event.preventDefault();
+    var currentTile = $(this).parent('li').index() + 1;
 
+    $(this).parents('.asset-utilities').find('.active').removeClass('active');
+    $('.tab-tile .tile').removeClass('open');
+    $(this).addClass('active');
+    $(".tab-tile .tile:nth-child("+ currentTile +")").addClass('open');
+  });
 
   gm.uploads = [];
   $('#new_asset').fileupload({
@@ -120,14 +132,14 @@ $(document).ready(function() {
   $('#batch-form').submit(submitBatch);
   $('#update-uploads').click(submitBatch);
 
-  $('.row header').live('click', function() {
-    var $row = $(this).parent();
-    if (!$row.hasClass('show')) {
-      $row.find('input, textarea').each(function(i, input) {
-        $(input).val($('#batch-form').find('input[name=' + $(input).attr('name') + '], textarea[name=' + $(input).attr('name') + ']').val());
-      });
-    }
-    $row.toggleClass('show');
-  });
+  //$('.row header').live('click', function() {
+  //  var $row = $(this).parent();
+  //  if (!$row.hasClass('show')) {
+  //    $row.find('input, textarea').each(function(i, input) {
+  //      $(input).val($('#batch-form').find('input[name=' + $(input).attr('name') + '], textarea[name=' + $(input).attr('name') + ']').val());
+  //    });
+  //  }
+  //  $row.toggleClass('show');
+  //});
 
 });
