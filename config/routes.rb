@@ -6,13 +6,17 @@ AssetManager::Application.routes.draw do
     resources :users #, :only => [:index, :edit]
   end
 
-  resources :assets
+  resources :assets do
+    collection do
+      match 'type/:asset_type(/:layout)' => 'assets#type'
+      match 'keyword/:keyword(/:layout)' => 'assets#keyword'
+    end
+  end
 
   resources :episodes do 
     resources :scenes
   end
-  
-  match 'browse/:asset_type(/:layout)' => 'browse#type', :constraints => { :layout => /(grid|list)/ }
+
 
   # resources :assets do
   #   collection do

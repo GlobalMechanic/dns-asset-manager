@@ -1,2 +1,5 @@
-<% @layout = 'grid' if @layout == nil %>
-<%= render 'shared/assets-' + @layout %>
+<% if params[:layout] == 'list' %>
+  <%= render 'shared/assets-list' %>
+<% else %>
+  <%= render 'shared/assets-grid' %>
+<% end %>
