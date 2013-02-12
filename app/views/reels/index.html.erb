@@ -5,20 +5,8 @@
   <%= link_to 'Destroy', reel, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
   <%= content_tag(:p, 'No assets yet.') unless reel.assets.length > 0 %>
-  <% reel.assets.each_with_index do |asset, index| %>
-  <div class="asset" draggable="true">
-    <% if @current_reel.assets.exists?(asset) %>
-    <%= link_to 'Remove from Reel', reel_asset_path(@current_reel, asset), method: :delete, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel remove' %>
-    <% else %>
-    <%= link_to 'Add to Reel', reel_asset_path(@current_reel, asset), method: :post, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel add' %>
-    <% end %>
-
-    <%= link_to asset, :draggable => false do %>
-      <div class="title"><%= asset.title %></div>
-      <img draggable="false" src="http://globalmechanic.com/asset/thumbnails/<%= asset.image %>" alt="<%= asset.title %>" width="188" height="106" />
-      <!-- <img draggable="false" src="/assets/188x106.png" alt="Placeholder"> -->
-    <% end %>
-  </div>
+  <% reel.assets.each do |asset| %>
+    <%= render :partial => 'shared/tile', :locals => { :reel => reel, :asset => asset } %>  
   <% end %>
 </div>
 <% end %>
