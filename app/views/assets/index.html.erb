@@ -1,5 +1,1 @@
-<% if params[:layout] == 'list' %>
-  <%= render 'shared/assets-list' %>
-<% else %>
-  <%= render 'shared/assets-grid' %>
-<% end %>
+<%= render :partial => 'shared/assets', :locals => { :assets => @assets }%>
