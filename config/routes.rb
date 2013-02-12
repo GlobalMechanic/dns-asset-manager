@@ -8,8 +8,8 @@ AssetManager::Application.routes.draw do
 
   resources :assets do
     collection do
-      match 'type/:asset_type(/:layout)' => 'assets#type'
-      match 'keyword/:keyword(/:layout)' => 'assets#keyword'
+      match 'type/:asset_type(/:layout)' => 'assets#type', :as => :type
+      match 'keyword/:keyword(/:layout)' => 'assets#keyword', :as => :keyword
     end
   end
 

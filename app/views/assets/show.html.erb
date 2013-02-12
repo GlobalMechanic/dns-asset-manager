@@ -13,11 +13,11 @@
     <div><strong>Title:</strong> <%= @asset.title %></div>
     <div><strong>Keywords:</strong>
       <% @asset.keyword_list.each do |keyword| %>
-        <%= link_to(keyword, '/assets/keyword/' + keyword) %>
+        <%= link_to keyword, keyword_assets_path(keyword) %>
       <% end %>
     </div>
 
-    <div><strong>Type:</strong> <%= link_to @asset.asset_type, '/assets/type/' + @asset.asset_type %></div>
+    <div><strong>Type:</strong> <%= link_to @asset.asset_type, type_assets_path(@asset.asset_type) %></div>
     <div><strong>Description:</strong></div>
     <div><%= @asset.description %></div>
   </div>
