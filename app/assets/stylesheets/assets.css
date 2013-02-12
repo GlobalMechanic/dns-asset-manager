@@ -229,9 +229,9 @@ Asset Form Upload
 /* ---------------
 Screen tabs
 --------------- */
-.tab-screen { padding: 10px; background: rgb(210,210,210); }
+.tab-tile { padding: 10px; background: rgb(210,210,210); }
 
-.screen { 
+.tile { 
   display:none;
   position: relative; 
   width: 359px; 
@@ -240,9 +240,9 @@ Screen tabs
   overflow: auto; 
 }
 
-.screen.open { display: block; }
+.tile.open { display: block; }
 
-.screen .button { 
+.tile .button { 
   position: absolute; 
   top: 6px; 
   right: 10px; 
@@ -293,6 +293,7 @@ Screen tabs
   border-right: 1px solid rgb(170,170,170);
   border-bottom: 1px solid rgb(170,170,170);
 }
+.extended tr:nth-of-type(2n+2) td { background:rgb(230,230,230) }
 
 .extended .title { cursor: pointer; text-decoration: underline; }
 .extended dl { font-size: 16px; line-height: 24px; }

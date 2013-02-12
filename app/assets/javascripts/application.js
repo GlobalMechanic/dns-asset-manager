@@ -52,4 +52,21 @@ $(document).ready(function() {
     $('#asset_search .facet').not(nameToId[$('#asset_search #where').val()]).remove();
   });
 
+  // Asset tiles
+  // Video tile open by default
+  $('.asset-utilities li:nth-child(4) a').addClass('active');
+  $('.tab-tile .tile:nth-child(4)').addClass('open');
+
+  // Reveal relevant tile
+  $('.asset-utilities a').click(function (event) {
+    event.preventDefault();
+    var currentTile = $(this).parent('li').index() + 1;
+    window.tylor = $(this);
+
+    $('.asset-utilities a').removeClass('active');
+    $('.tab-tile .tile').removeClass('open');
+    $(this).addClass('active');
+    $(".tab-tile .tile:nth-child("+ currentTile +")").addClass('open');
+  });
+
 });

@@ -15,74 +15,71 @@
   <div class="extended">
     <div class="title"><%= asset.title %></div>
     <!-- Chet Scratch Pad Start -->
-    <div class="tab-screen">          
+    <div class="tab-tile">
+
+      <div class="tile">
+        <p>download link here</p>
+      </div> 
+
       <%# Versions section %>
-      <div class="screen open">
+      <div class="tile">
         <table>
           <caption>tmp:Versions</caption>
           <thead>
             <tr>
-              <th>Action</th>
-              <th>Who Dunit</th>
-              <th>Time</th>
-              <th>ID</th>
+              <th>Who</th>
+              <th>What</th>
+              <th>When</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>update</td>
               <td>Joe Smith</td>
+              <td>update</td>
               <td>2013-02-07 11:33pm</td>
-              <td>12</td>
             </tr>
 
             <tr>
+              <td>Joe SmithSmith</td>
               <td>update</td>
-              <td>Joe Smith</td>
               <td>2013-02-07 11:33pm</td>
-              <td>12</td>
             </tr>
 
             <tr>
+              <td>Joe SmithSmithSmith</td>
               <td>update</td>
-              <td>Joe Smith</td>
               <td>2013-02-07 11:33pm</td>
-              <td>12</td>
             </tr>
 
             <tr>
+              <td>Joe S</td>
               <td>update</td>
-              <td>Joe Smith</td>
               <td>2013-02-07 11:33pm</td>
-              <td>12</td>
-            </tr>
-
-            <tr>
-              <td>update</td>
-              <td>Joe Smith</td>
-              <td>2013-02-07 11:33pm</td>
-              <td>12</td>
-            </tr>
-
-            <tr>
-              <td>update</td>
-              <td>Joe Smith</td>
-              <td>2013-02-07 11:33pm</td>
-              <td>12</td>
             </tr>
 
             <tr>
               <td>Joe Smith</td>
               <td>update</td>
               <td>2013-02-07 11:33pm</td>
-              <td>12</td>
+            </tr>
+
+            <tr>
+              <td>Joe SmithSmith Smith</td>
+              <td>update</td>
+              <td>2013-02-07 11:33pm</td>
+            </tr>
+
+            <tr>
+              <td>Joe Smith</td>
+              <td>update</td>
+              <td>2013-02-07 11:33pm</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <%# Asset details section %>
-      <div class="screen">
+      <div class="tile">
         <a href="<%= asset_path asset %>/edit" class="button">Edit Asset</a>
 
         <dl>
@@ -104,17 +101,19 @@
       </div>
 
       <%# Video section%>
-      <div class="screen">
+      <div class="tile">
         <video src="http://globalmechanic.com/asset/movies/<%# asset.video %>" controls="controls" preload="none"></video>
       </div>
+
+      <%# Download section %>
     </div>    
 
     <nav class="row asset-utilities">
       <ul>
-        <li><a href="">o</a></li>
-        <li><a href="">t</a></li>
-        <li><a href="">t</a></li>
-        <li><a href="" class="active">f</a></li>
+        <li><a href="#download" id="download">o</a></li>
+        <li><a href="#versions" id="versions">t</a></li>
+        <li><a href="#details" id="details">t</a></li>
+        <li><a href="#video" id="video">f</a></li>
       </ul>
     </nav>
 
