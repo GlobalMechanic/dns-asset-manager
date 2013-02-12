@@ -1,4 +1,3 @@
-<%= link_to 'Back to Assets', assets_path %>
 <%= link_to 'Edit Asset', edit_asset_path(@asset) %>
 
 <h1><%= @asset.title %></h1>
@@ -12,12 +11,13 @@
 <div class="asset-single">
   <div class="meta">
     <div><strong>Title:</strong> <%= @asset.title %></div>
-    <div><strong>Keywords:</strong> <%= @asset.keyword_list.join(', ') %></div>
-    <div><strong>Type:</strong> <%= @asset.asset_type %></div>
-    <div><strong>Season:</strong> <%= @asset.season %></div>
-    <div><strong>Episode:</strong> <%= @asset.episode %></div>
-    <div><strong>Scene:</strong> <%= @asset.scene %></div>
-    <div><strong>Shot:</strong> <%= @asset.shot %></div>
+    <div><strong>Keywords:</strong>
+      <% @asset.keyword_list.each do |keyword| %>
+        <%= link_to keyword, keyword_assets_path(keyword) %>
+      <% end %>
+    </div>
+
+    <div><strong>Type:</strong> <%= link_to @asset.asset_type, type_assets_path(@asset.asset_type) %></div>
     <div><strong>Description:</strong></div>
     <div><%= @asset.description %></div>
   </div>

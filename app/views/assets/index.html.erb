@@ -1,2 +1,1 @@
-<% @layout = 'grid' if @layout == nil %>
-<%= render 'shared/assets-' + @layout %>
+<%= render :partial => 'shared/assets', :locals => { :assets => @assets }%>

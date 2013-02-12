@@ -17,11 +17,6 @@ class Asset < ActiveRecord::Base
 
   attr_accessible :description,
                   :title,
-                  :season,
-                  :episode,
-                  :scene,
-                  :shot,
-                  :category,
                   :asset_type,
                   :keyword_list,
                   :asset

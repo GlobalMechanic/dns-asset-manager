@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Asset Manager</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <script type="text/javascript">
     var gm = gm || {
       controller: '<%= params[:controller] %>',
@@ -22,8 +22,8 @@
     <nav class="row">
       <ul id="primary">
         <li><%= link_to 'Episodes', episodes_path %></li>
-        <li><%= link_to 'Characters', '/browse/list/character' %></li>
-        <li><%= link_to 'Backgrounds', '/browse/list/background' %></li>
+        <li><%= link_to 'Characters', '/assets/type/character' %></li>
+        <li><%= link_to 'Backgrounds', '/assets/type/background' %></li>
         <li><%= link_to 'Assets', assets_path %></li>
         <li><%= link_to 'Reels', reels_path %></li>
         <% if can? :manage, User %>

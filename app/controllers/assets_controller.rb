@@ -117,4 +117,14 @@ class AssetsController < ApplicationController
       format.json { render json: params }
     end
   end
+
+  def type
+    @assets = Asset.find_all_by_asset_type(params[:asset_type])
+    render 'index'
+  end
+
+  def keyword
+    @assets = Asset.tagged_with(params[:keyword])
+    render 'index'
+  end
 end

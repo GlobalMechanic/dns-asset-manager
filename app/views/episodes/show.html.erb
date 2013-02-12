@@ -4,7 +4,6 @@
   <% @episode.scenes.each_with_index do |scene, index| %>
     <div class="clearfix">
       <h3><%= link_to 'Scene ' + scene.number.pad, episode_scene_path(@episode, scene) %></h3>
-      <% @scene = scene %>
-      <%= render 'scenes/scene' %>
+      <%= render :partial => 'shared/assets', :locals => { :assets => scene.assets } %>
     </div>
   <% end %>

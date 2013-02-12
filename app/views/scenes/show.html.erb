@@ -1,10 +1,9 @@
 <%
 @episode = Episode.find(params[:episode_id])
-@assets = @scene.assets
 @reel = @current_reel
 %>
 
 <%= link_to '&larr; All scenes'.html_safe, episode_path(@episode) %>
 
 <h2>Assets for <%= @episode.title %> Scene <%= @scene.number %></h2>
-<%= render 'scene' %>
+<%= render :partial => 'shared/assets', :locals => { :assets => @scene.assets } %>
