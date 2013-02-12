@@ -132,14 +132,14 @@ $(document).ready(function() {
   $('#batch-form').submit(submitBatch);
   $('#update-uploads').click(submitBatch);
 
-  //$('.row header').live('click', function() {
-  //  var $row = $(this).parent();
-  //  if (!$row.hasClass('show')) {
-  //    $row.find('input, textarea').each(function(i, input) {
-  //      $(input).val($('#batch-form').find('input[name=' + $(input).attr('name') + '], textarea[name=' + $(input).attr('name') + ']').val());
-  //    });
-  //  }
-  //  $row.toggleClass('show');
-  //});
+  $('.row header').on('click', function() {
+    var $row = $(this).parent();
+    if (!$row.hasClass('show')) {
+      $row.find('input, textarea').each(function(i, input) {
+        $(input).val($('#batch-form').find('input[name=' + $(input).attr('name') + '], textarea[name=' + $(input).attr('name') + ']').val());
+      });
+    }
+    $row.toggleClass('show');
+  });
 
 });
