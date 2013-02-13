@@ -9,6 +9,11 @@ $(document).ready(function() {
     $('#reel_title').focus();
   });
 
+  $('#asset-filters li:first-child a').on("click", function() {
+    $('#asset-filters').toggleClass('open');
+    return false;
+  });
+
   // Drag and drop for reels.
   if (gm.controller === 'reels' && gm.action === 'edit') {
     // Asset drag events.
