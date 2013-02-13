@@ -14,7 +14,6 @@
   <% end %>
   <div class="extended">
     <div class="title"><%= asset.title %></div>
-    <!-- Chet Scratch Pad Start -->
     <div class="tab-tile">
 
       <div class="tile">
@@ -24,7 +23,7 @@
       <%# Versions section %>
       <div class="tile">
         <table>
-          <caption>tmp:Versions</caption>
+          <caption>Versions</caption>
           <thead>
             <tr>
               <th>Who</th>
@@ -33,20 +32,13 @@
             </tr>
           </thead>
           <tbody>
-          <%# @asset.versions.reverse.each do |version| %>
-            <!-- <tr>
-              <td><%# User.find(version.whodunnit).name %></td>
-              <td><%# version.event.titleize %></td>
-              <td><%# time_ago_in_words(version.created_at) %> ago</td>
-            </tr> -->
-          <%# end %>
-            
+          <% asset.versions.reverse.each do |version| %>
             <tr>
-              <td>Joe Smith</td>
-              <td>update</td>
-              <td>2013-02-07 11:33pm</td>
+              <td><%= User.find(version.whodunnit).name %></td>
+              <td><%= version.event.titleize %></td>
+              <td><%= time_ago_in_words(version.created_at) %> ago</td>
             </tr>
-
+          <% end %>
           </tbody>
         </table>
       </div>
@@ -54,22 +46,21 @@
       <%# Asset details section %>
       <div class="tile">
         <a href="<%= asset_path asset %>/edit" class="button">Edit Asset</a>
-
         <dl>
           <dt>Season:</dt>
           <dd><a href="">tmp: Season value</a></dd>
           <dt>Episode:</dt>
-          <dd><a href="">tmp: Episode value</a></dd>
+          <dd><a href=""><%= Episode.joins(:scenes => :assets).where('assets.id = ' + asset.id.to_s).inspect %></a></dd>
           <dt>Scene:</dt>
-          <dd><a href="">tmp: Shot value</a></dd>
+          <dd><a href=""><%= asset.scene %></a></dd>
           <dt>Keywords:</dt>
           <dd class="row">
-            <a href="">tmp: Keyword 1 value</a>, 
-            <a href="">tmp: Keyword 2 value</a>, 
-            <a href="">tmp: Keyword 1 value</a>
+            <% asset.keyword_list.each do |keyword| %>
+              <%= link_to keyword, keyword_assets_path(keyword) %>
+            <% end %>
           </dd>
           <dt>Description:</dt>
-          <dd class="row">tmp: Did you know that more frozen bananas are sold right here on this boardwalk than anywhere on the OC? If that man's straight, then I am sober. I need a fake passport, preferably to France…I like the way they think. You might wanna lean away from that fire since you're soaked in alcohol.</dd>
+          <dd class="row"><%= asset.description %></dd>
         </dl> 
       </div>
 
@@ -93,9 +84,5 @@
     <%= form_tag do %>
       <%= text_field_tag :keyword_list, nil, :placeholder => 'tmp: Add keywords' %>
     <% end %>
-    <!-- Chet Scratch Pad End -->
   </div>
 </div>
-
-<% # link_to asset, :draggable => false do %>
-<% # <img class="default" draggable="false" src="/assets/188x106.png" width="188" height="106"> %>
