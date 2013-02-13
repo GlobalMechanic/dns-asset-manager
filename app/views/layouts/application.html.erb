@@ -44,6 +44,7 @@
         <% end %>
         </li>
       </ul>
+
       <div class="drawer">
         <%= link_to 'Recent Reels', reels_path, :id => 'open-reel' %>
         <div class="reels eight columns">
@@ -74,27 +75,18 @@
         </div>
       </div>
 
-      <!-- Chet scratch pad [START] -->
       <%# Faux select %>
-      <nav class="row" id="asset-filters">
+      <div class="row" id="asset-filters">
         <ul>
           <li><a href="#sort-by">Sort Assets By</a></li>
-          <li><%= link_to 'All assets', assets_path %></li>
+          <li><%= link_to 'All assets', assets_path, :class => (params[:controller] == 'assets' && params[:action] == 'index' ? 'active' : '') %></li>
           <li><%= link_to 'Characters', '/assets/type/character' %></li>
           <li><%= link_to 'Props', '/assets/type/prop' %></li>
-          <li><%= link_to 'Backgrounds', '/assets/type/background', :class => 'active' %></li>
+          <li><%= link_to 'Backgrounds', '/assets/type/background' %></li>
           <li><%= link_to 'Effects', '/assets/type/effect' %></li>
           <li><%= link_to 'Audio', '/assets/type/audio' %></li>
         </ul>
-      </nav>
-
-      <style>
-
-      </style>
-      <!-- Chet scratch pad [END] -->
-
-
-
+      </div>
     </nav>
 
     <% if false && @search && Asset.count > 0 %>

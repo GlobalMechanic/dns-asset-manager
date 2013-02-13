@@ -129,7 +129,7 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
   right: -16px;
   border: 1px solid #777; 
 }
-.drawer .title { margin-bottom: 12px; }
+.drawer .title { margin-bottom: 12px; font-weight: bold; }
 .drawer .reels {
   display: none;
   position: absolute;
@@ -143,6 +143,9 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
 }
 .drawer.open .reels { display: block; }
 .drawer.open #open-reel { background: #fafafa; box-shadow: 2px 2px 2px rgba(0,0,0, 0.35); }
+
+.drawer .disc { margin:0 0 0 15px; padding:0; }
+.drawer .disc li { font-size: 14px; }
 
 #asset-filters {
   float: left;
@@ -209,13 +212,21 @@ a[id="open-reel"]:hover { background: #000; }
 a[id="open-reel"]:visited { color: #f7f4d6; }
 .open a[id="open-reel"] { color: #333; }
 
+.drawer .disc a { 
+  display: block; 
+  font-family: Transit;
+  font-size: 20px; 
+  color: #333; 
+}
+
 #asset-filters li a { display: block; padding: 4px 5px 6px; text-decoration: none; }
 #asset-filters li:first-child a { text-align: center; font-weight: bold; color: #f7f4d6; }
+#asset-filters li:nth-child(1n+2) a { font-family: Transit; }
 
 .open#asset-filters li a { padding: 8px 5px 12px; color: #333; }
 .open#asset-filters li:first-child a:hover { background: #fafafa; color: #333; }
 .open#asset-filters li a:hover,
-.open#asset-filters li a.active { background: #333; color: #f7f4d6; font-weight: bold; }
+.open#asset-filters li a.active { background: #000; color: #f7f4d6; font-weight: bold; }
 
 /* Skeleton button override */
 a.button,
