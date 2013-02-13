@@ -103,6 +103,7 @@ ul[id="primary"] { float: right; margin: 12px 131px 0 0; }
 ul[id="primary"] li { margin-right: 10px; }
 
 ul[id="secondary"] { float: left; margin-left: -11px; font-size: 35px; font-weight: bold; }
+ul[id="secondary"] li { margin: 0; }
 ul[id="secondary"] li form { display: none; }
 ul[id="secondary"] .open { position: relative; }
 ul[id="secondary"] .open form {

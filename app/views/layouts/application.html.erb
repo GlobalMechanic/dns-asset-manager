@@ -22,16 +22,13 @@
     <nav class="row">
       <ul id="primary">
         <li><%= link_to 'Episodes', episodes_path %></li>
-        <li><%= link_to 'Characters', '/assets/type/character' %></li>
-        <li><%= link_to 'Backgrounds', '/assets/type/background' %></li>
-        <li><%= link_to 'Assets', assets_path %></li>
         <li><%= link_to 'Reels', reels_path %></li>
         <% if can? :manage, User %>
         <li><%= link_to 'Users', users_path %></li>
         <% end %>
         <!-- <li><%= link_to "Edit #{current_user.name}", edit_user_registration_path %></li> -->
         <!-- <li><%= link_to 'Edit User', edit_user_path(current_user) %></li> -->
-        <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %></li>
+        <li><%= link_to 'Sign out', destroy_user_session_path, :method => 'delete' %></li>
       </ul>
       <ul id="secondary">
         <li>
@@ -76,7 +73,39 @@
           </div>
         </div>
       </div>
+
+      <!-- Chet scratch pad [START] -->
+      <%# Faux select %>
+      <nav class="row" id="asset-filters">
+        <ul>
+          <li><%= link_to 'Assets', assets_path %></li>
+          <li><%= link_to 'Characters', '/assets/type/character' %></li>
+          <li><%= link_to 'Props', '/assets/type/prop' %></li>
+          <li><%= link_to 'Backgrounds', '/assets/type/background' %></li>
+          <li><%= link_to 'Effects', '/assets/type/effect' %></li>
+          <li><%= link_to 'Audio', '/assets/type/audio' %></li>
+        </ul>
+      </nav>
+
+      <style>
+      #asset-filters { 
+        float:left;
+        width: 185px; 
+        margin: 11px 0 0;  
+        border: 1px solid red;
+        background:rgb(30,30,30); }
+      #asset-filters li { 
+        display: block; 
+        border-bottom: 1px solid green; 
+        margin: 0; }
+      #asset-filters li a { display:block; text-decoration: none; padding: 5px 5px 9px; }
+      </style>
+      <!-- Chet scratch pad [END] -->
+
+
+
     </nav>
+
     <% if false && @search && Asset.count > 0 %>
       <%= form_for @search do |f| %>
         <%= select_tag(:where, options_for_select([['All', 'all'], ['Title', 'title'], ['Director', 'director'], ['Client', 'client'], ['Technique', 'technique'], ['Tag', 'keyword'], ['Category', 'category']], params[:where])) %>
