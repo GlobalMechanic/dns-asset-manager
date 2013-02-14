@@ -20,7 +20,8 @@
   </div>
   <div class="field">
     <%= f.label :keyword_list %>
-    <%= f.text_field :keyword_list %>
+    <% # f.text_field :keyword_list %>
+    <%= f.autocomplete_field :keyword_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true %>
   </div>
   <div class="field">
     <%= f.label :description %>

@@ -16,6 +16,7 @@
  *= require reels
  *= require users
  *= require scaffolds
+ *= require jquery-ui-autocomplete
  */
 
 @font-face {

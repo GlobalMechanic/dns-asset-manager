@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/edsimpson/rails3-jquery-autocomplete.git
+  revision: 0ab1ad332c8c6eb5f4955d31744046ce90a81d7a
+  branch: jquery-1-9-compat
+  specs:
+    rails3-jquery-autocomplete (1.0.10)
+      rails (~> 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -218,6 +226,7 @@ DEPENDENCIES
   paperclip
   pg
   rails (= 3.2.11)
+  rails3-jquery-autocomplete!
   rolify
   rspec-rails
   sass-rails (~> 3.2.3)

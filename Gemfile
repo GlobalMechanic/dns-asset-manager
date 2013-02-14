@@ -26,6 +26,10 @@ gem 'mini_magick'
 gem 'zeroclipboard-rails'
 gem 'underscore-rails'
 gem 'simple_form'
+#gem 'rails3-jquery-autocomplete'
+git "git://github.com/edsimpson/rails3-jquery-autocomplete.git", :branch => "jquery-1-9-compat" do
+  gem 'rails3-jquery-autocomplete'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
