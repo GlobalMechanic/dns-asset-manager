@@ -20,9 +20,9 @@
     <% if user_signed_in? %>
     <header class="top-bar">
     <nav class="row">
+      <div class="row" style="height: 50px; margin:0;">
       <ul id="primary">
-        <li><%= link_to 'Episodes', episodes_path %></li>
-        <li><%= link_to 'Reels', reels_path %></li>
+        <!-- <li><%# link_to 'Episodes', episodes_path %></li> -->
         <% if can? :manage, User %>
         <li><%= link_to 'Users', users_path %></li>
         <% end %>
@@ -44,7 +44,6 @@
         <% end %>
         </li>
       </ul>
-
       <div class="drawer">
         <%= link_to 'Recent Reels', reels_path, :id => 'open-reel' %>
         <div class="reels eight columns">
@@ -59,6 +58,7 @@
                 <li>No reels yet</li>
               <% end %>
             </ul>
+            <p><%= link_to 'Reels', reels_path %></p>
           </div>
           <div class="four columns omega">
             <div class="title">Recently Updated</div>
@@ -74,11 +74,12 @@
           </div>
         </div>
       </div>
+      </div>
 
-      <%# Faux select %>
-      <div class="row" id="asset-filters">
+      <div class="row utilities"> 
+        <div id="asset-filters">
         <ul>
-          <li><a href="#sort-by">Sort Assets By</a></li>
+          <li><a href="#filter-by">Assets</a></li>
           <li><%= link_to 'All assets', assets_path, :class => (params[:controller] == 'assets' && params[:action] == 'index' ? 'active' : '') %></li>
           <li><%= link_to 'Characters', '/assets/type/character' %></li>
           <li><%= link_to 'Props', '/assets/type/prop' %></li>
@@ -86,6 +87,13 @@
           <li><%= link_to 'Effects', '/assets/type/effect' %></li>
           <li><%= link_to 'Audio', '/assets/type/audio' %></li>
         </ul>
+        </div>
+
+        <div id="asset-filters">
+        <ul>
+          <li><%= link_to 'Episodes', episodes_path %></li>
+        </ul>
+        </div>
       </div>
     </nav>
 
