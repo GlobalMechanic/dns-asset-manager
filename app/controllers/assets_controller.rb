@@ -119,7 +119,8 @@ class AssetsController < ApplicationController
   end
 
   def type
-    @assets = Asset.find_all_by_asset_type(params[:asset_type])
+    @search = Asset.where(:asset_type => params[:asset_type]).search(params[:search])
+    @assets = @search.all
     @title = params[:asset_type].titleize.pluralize + ' (' + @assets.count.to_s + ')'
     render 'index'
   end
