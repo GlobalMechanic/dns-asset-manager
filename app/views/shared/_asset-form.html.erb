@@ -1,7 +1,5 @@
 <% # text_field_tag :title, nil, :placeholder => 'Title' %>
 <%= text_area_tag :description, nil, :placeholder => 'Description' %>
-<%= text_field_tag :season, nil, :placeholder => 'Season', :class => 'inline' %>
-<%= text_field_tag :episode, nil, :placeholder => 'Episode', :class => 'inline' %>
-<%= text_field_tag :scene, nil, :placeholder => 'Scene', :class => 'inline' %>
-<%= text_field_tag :shot, nil, :placeholder => 'Shot', :class => 'inline' %>
-<%= text_field_tag :keyword_list, nil, :placeholder => 'Keyword List' %>
+<%= select :asset_type, {}, Asset::TYPES %>
+<%= select :scene_ids, {}, Scene.all.map {|x| [x.episode.number.pad + ' - ' + x.episode.title + ' - Scene ' + x.number.pad, x.id]}, {}, :multiple => true, :class => 'inline' %>
+<%= autocomplete_field_tag :keyword_list, '', autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>

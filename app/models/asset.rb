@@ -19,7 +19,8 @@ class Asset < ActiveRecord::Base
                   :title,
                   :asset_type,
                   :keyword_list,
-                  :asset
+                  :asset,
+                  :scene_ids
 
   #validates_inclusion_of :type, :in => TYPES
 

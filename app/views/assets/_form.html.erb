@@ -10,23 +10,13 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :asset_type, 'Type' %>
-    <%= f.select :asset_type, Asset::TYPES %>
-  </div>
-  <div class="field">
-    <%= f.label :keyword_list %>
-    <% # f.text_field :keyword_list %>
-    <%= f.autocomplete_field :keyword_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true %>
-  </div>
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description, :rows => 5 %>
-  </div>
+
+  <%= f.text_field :title, :placeholder => 'Title' %>
+  <%= f.text_area :description, :placeholder => 'Description', :rows => 4 %>
+  <%= f.select :asset_type, Asset::TYPES %>
+  <%= f.select :scene_ids, Scene.all.map {|x| [x.episode.number.pad + ' - ' + x.episode.title + ' - Scene ' + x.number.pad, x.id]}, {}, :multiple => true %>
+  <%= f.autocomplete_field :keyword_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
+  
   <div class="field">
     <%= f.label :asset %>
     <%= f.file_field :asset, multiple: true, name: "asset[asset]" %>
