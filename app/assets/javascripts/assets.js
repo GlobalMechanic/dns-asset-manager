@@ -84,7 +84,9 @@ $(document).ready(function() {
     dataType: 'json',
     add: function(e, data) {
       $('body').addClass('drop');
-      data.context = $(tmpl("template-upload", data.files[0]));
+
+      data.context = $($($.parseHTML(tmpl("template-upload", data.files[0]))));
+      console.log('two');
       $('#upload-form .asset-uploads').append(data.context);
       var reader = new FileReader();
       reader.onload = function (event) {
