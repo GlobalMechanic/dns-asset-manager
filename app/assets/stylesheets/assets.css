@@ -22,17 +22,20 @@ body.drop #upload-form {
 }
 
 #upload-form input,
-#upload-form textarea { font-size:20px; margin-bottom:15px; }
+#upload-form textarea { font-size:20px; margin-bottom:22px; }
 
 #upload-form textarea,
 #upload-form input[type='text'] { 
-  width:390px;
+  width:380px;
 }
 
 #upload-form input[type='text'].inline {
-  /*width: 187px;*/
-  width:177px;
+  width:168px;
   display: inline-block;
+}
+
+#upload-form input[type='text'].inline:nth-of-type(2n+2) {
+  margin-left: 15px;
 }
 
 #asset_search {
