@@ -90,6 +90,10 @@
         <div id="asset-filters">
         <ul>
           <li><%= link_to 'Episodes', episodes_path %></li>
+          <% Episode.all.each do |episode| %>
+          <li><%= link_to episode.number.pad + ' - ' + episode.title, episode %></li>
+          <% end %>
+          <li></li>
         </ul>
         </div>
       </div>
