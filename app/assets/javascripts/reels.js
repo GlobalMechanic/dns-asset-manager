@@ -9,8 +9,8 @@ $(document).ready(function() {
     $('#reel_title').focus();
   });
 
-  $('#asset-filters li:first-child a').on("click", function() {
-    $('#asset-filters').toggleClass('open');
+  $('.asset-filters li:first-child a').on("click", function() {
+    $(this).parents('.asset-filters').toggleClass('open');
     return false;
   });
 

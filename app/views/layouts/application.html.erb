@@ -77,7 +77,7 @@
       </div>
 
       <div class="row utilities"> 
-        <div id="asset-filters">
+        <div class="asset-filters">
         <ul>
           <li><a href="#filter-by">Assets</a></li>
           <li><%= link_to 'All assets', assets_path, :class => (params[:controller] == 'assets' && params[:action] == 'index' ? 'active' : '') %></li>
@@ -87,7 +87,7 @@
         </ul>
         </div>
 
-        <div id="asset-filters">
+        <div class="asset-filters">
         <ul>
           <li><%= link_to 'Episodes', episodes_path %></li>
           <% Episode.all.each do |episode| %>
