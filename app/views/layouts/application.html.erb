@@ -81,11 +81,9 @@
         <ul>
           <li><a href="#filter-by">Assets</a></li>
           <li><%= link_to 'All assets', assets_path, :class => (params[:controller] == 'assets' && params[:action] == 'index' ? 'active' : '') %></li>
-          <li><%= link_to 'Characters', '/assets/type/character' %></li>
-          <li><%= link_to 'Props', '/assets/type/prop' %></li>
-          <li><%= link_to 'Backgrounds', '/assets/type/background' %></li>
-          <li><%= link_to 'Effects', '/assets/type/effect' %></li>
-          <li><%= link_to 'Audio', '/assets/type/audio' %></li>
+          <% Asset::TYPES.each do |type| %>
+          <li><%= link_to type[0],  type_assets_path(type[1]), :class => (params[:controller] == 'assets' && params[:action] == 'type' && params[:asset_type] == type[1] ? 'active' : '') %></li>
+          <% end %>
         </ul>
         </div>
 
