@@ -2,7 +2,7 @@
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * Any CSS and SCSS file within this diatory, lib/assets/stylesheets, vendor/assets/stylesheets,
  * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the top of the
@@ -158,7 +158,7 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
   padding: 5px; 
   background: #000;
   border: 1px solid #777;
-  box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);  
+  box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
 }
 
 #asset-filters ul { float:left; width:165px; }
@@ -217,6 +217,7 @@ a[id="open-reel"] {
   font-weight: bold;
   color: #f7f4d6;
   background: #000;
+  box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
 }
 a[id="open-reel"]:hover { background: #000; }
 a[id="open-reel"]:visited { color: #f7f4d6; }
