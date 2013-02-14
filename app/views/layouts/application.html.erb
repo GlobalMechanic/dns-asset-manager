@@ -98,7 +98,7 @@
         </div>
 
         <% if @search %>
-        <div>
+        <div id="asset-search">
           <%= form_for @search, :url => url_for(:only_path => false) do |f| %>
             <%= f.text_field :title_or_description_or_keywords_taggings_tag_name_contains %>
           <% end %>

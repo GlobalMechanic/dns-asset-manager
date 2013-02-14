@@ -19,7 +19,7 @@ class AssetsController < ApplicationController
     if ['director', 'client', 'category'].include? params[:where]
       @assets = @search.order('LOWER(' + params[:where] + ') ASC, title ASC')
     elsif ['technique', 'keyword'].include? params[:where]
-      @assets = @search.order('title').uniq  
+      @assets = @search.order('title').uniq
     else
       @assets = @search.order('created_at DESC')
     end
@@ -121,7 +121,7 @@ class AssetsController < ApplicationController
 
   def type
     @search = Asset.where(:asset_type => params[:asset_type]).search(params[:search])
-    @assets = @search.all
+    @assets = @search.all.uniq
     @title = params[:asset_type].titleize.pluralize + ' (' + @assets.count.to_s + ')'
     render 'index'
   end

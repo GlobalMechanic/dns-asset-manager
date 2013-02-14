@@ -172,6 +172,12 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
 .open#asset-filters li:nth-child(1n+2) { display:block; }
 .open#asset-filters li:last-child { border-bottom: none; }
 
+#asset-search {
+  float: left;
+  width: 165px;
+  margin: 14px 20px 0 0;
+}
+
 /* States */
 .notice {
   margin-bottom: 12px;
