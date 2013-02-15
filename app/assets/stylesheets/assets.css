@@ -310,10 +310,26 @@ Screen tabs
   height: 50px; 
   margin: 0; 
   padding: 0; 
-  text-align: center; 
+  text-indent:-9999em;
+  text-align: center;
 }
-.asset-utilities a:hover,
-.asset-utilities .active { background: rgb(210,210,210); }
+
+.asset-utilities a[href="#download"] { background: url('download.png') center 13px no-repeat; background-size: 27px 27px; }
+.asset-utilities a[href="#versions"] { background: url('screens.png') center 13px no-repeat; background-size: 27px 27px; }
+.asset-utilities a[href="#details"] { background: url('settings.png') center 13px no-repeat; background-size: 27px 27px; }
+.asset-utilities a[href="#video"] { background: url('television.png') center 10px no-repeat; background-size: 27px 27px; }
+
+.asset-utilities a[href="#download"]:hover, 
+.asset-utilities a[href="#download"].active { background: rgb(210,210,210) url('download.png') center 13px no-repeat; background-size: 27px 27px; }
+
+.asset-utilities a[href="#versions"]:hover,
+.asset-utilities a[href="#versions"].active { background: rgb(210,210,210) url('screens.png') center 13px no-repeat; background-size: 27px 27px; }
+
+.asset-utilities a[href="#details"]:hover,
+.asset-utilities a[href="#details"].active { background: rgb(210,210,210) url('settings.png') center 13px no-repeat; background-size: 27px 27px; }
+
+.asset-utilities a[href="#video"]:hover,
+.asset-utilities a[href="#video"].active { background: rgb(210,210,210) url('television.png') center 10px no-repeat; background-size: 27px 27px; }
 
 .extended table { 
   position: relative; 
