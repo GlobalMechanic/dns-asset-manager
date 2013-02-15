@@ -98,6 +98,7 @@ footer { clear: both; }
   background:rgb(90,90,90) url(public_reel/images/rust.jpg) bottom center repeat-x;
 }
 .top-bar nav:first-child { position: relative; width: 950px; margin: 0 auto 20px auto; }
+.top-bar nav .row:first-child { height: 50px; margin: 0; }
 
 ul[id="primary"] { font-size: 23px; }
 ul[id="primary"] { float: right; margin: 13px 131px 0 0; }
@@ -131,6 +132,9 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
   right: -16px;
   border: 1px solid #777; 
 }
+
+.drawer .beta { text-align: center; }
+
 .drawer .title { margin-bottom: 12px; font-weight: bold; }
 .drawer .reels {
   display: none;
@@ -148,6 +152,8 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
 
 .drawer .disc { margin:0 0 0 15px; padding:0; }
 .drawer .disc li { font-size: 14px; }
+
+.drawer .button { margin-bottom: 0; }
 
 .utilities { position: absolute; width:100%; margin-left:-10px; }
 
