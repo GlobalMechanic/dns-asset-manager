@@ -86,7 +86,6 @@ $(document).ready(function() {
       $('body').addClass('drop');
 
       data.context = $($($.parseHTML(tmpl("template-upload", data.files[0]))));
-      console.log('two');
       $('#upload-form .asset-uploads').append(data.context);
       var reader = new FileReader();
       reader.onload = function (event) {
@@ -111,16 +110,26 @@ $(document).ready(function() {
 
   var submitBatch = function() {
     $.each(gm.uploads, function(i, upload) {
-      var asset = {};
-      $('#batch-form input, #batch-form textarea').each(function (j, input) {
-        var attribute = upload.context.find('input[name=' + $(input).attr('name') + '], textarea[name=' + $(input).attr('name') + ']').val();
-        if (attribute !== '' || $(input).val() !== '') {
-          asset[$(input).attr('name')] = attribute == '' || !upload.context.hasClass('show') ? $(input).val() : attribute;
+      // $('#batch-form input, #batch-form select, #batch-form textarea').each(function (j, input) {
+      //   var attribute = upload.context.find('input[name="' + $(input).attr('name') + '"], select[name="' + $(input).attr('name') + '"], textarea[name="' + $(input).attr('name') + '"]').val();
+      //   if (attribute !== '' || $(input).val() !== '') {
+      //     asset[$(input).attr('name')] = attribute == '' || !upload.context.hasClass('show') ? $(input).val() : attribute;
+      //   }
+      // });
+
+      // Closer, saving character and keywords, not others:
+      // description:asdf
+      // asset[asset_type]:character
+      // asset[scene_ids][]:
+      // keyword_list:asdf
+      upload.context.find('input, select, textarea').each(function(i, input) {
+        if ($(input).val() == '') {
+          $(input).val($('#batch-form').find('input[name="' + $(input).attr('name') + '"], select[name="' + $(input).attr('name') + '"], textarea[name="' + $(input).attr('name') + '"]').val());
         }
       });
       $.ajax('/assets/' + upload.result.id + '.json', {
         type: 'PUT',
-        data: { asset: asset },
+        data: upload.context.find('form.override').serialize(),
         success: function() {
           upload.context.addClass('success');
           if ($('.asset-uploads .row:not(.success)').length === 0) {
@@ -137,8 +146,8 @@ $(document).ready(function() {
   $('.row header').on('click', function() {
     var $row = $(this).parent();
     if (!$row.hasClass('show')) {
-      $row.find('input, textarea').each(function(i, input) {
-        $(input).val($('#batch-form').find('input[name=' + $(input).attr('name') + '], textarea[name=' + $(input).attr('name') + ']').val());
+      $row.find('input, select, textarea').each(function(i, input) {
+        $(input).val($('#batch-form').find('input[name="' + $(input).attr('name') + '"], select[name="' + $(input).attr('name') + '"], textarea[name="' + $(input).attr('name') + '"]').val());
       });
     }
     $row.toggleClass('show');
