@@ -20,8 +20,8 @@
     <% if user_signed_in? %>
     <header class="top-bar">
     <nav class="row">
-      <div class="row" style="height: 50px; margin:0;">
-      <ul id="primary">
+      <div class="row">
+        <ul id="primary">
         <!-- <li><%# link_to 'Episodes', episodes_path %></li> -->
         <% if can? :manage, User %>
         <li><%= link_to 'Users', users_path %></li>
@@ -29,8 +29,8 @@
         <!-- <li><%= link_to "Edit #{current_user.name}", edit_user_registration_path %></li> -->
         <!-- <li><%= link_to 'Edit User', edit_user_path(current_user) %></li> -->
         <li><%= link_to 'Sign out', destroy_user_session_path, :method => 'delete' %></li>
-      </ul>
-      <ul id="secondary">
+        </ul>
+        <ul id="secondary">
         <li>
         <% if @current_reel && @current_reel.title? %>
           Now viewing: <%= link_to @current_reel.title, edit_reel_path(@current_reel) %> <%= link_to '×', close_reel_path(@current_reel) %>
@@ -43,8 +43,8 @@
           <% end %>
         <% end %>
         </li>
-      </ul>
-      <div class="drawer">
+        </ul>
+        <div class="drawer">
         <%= link_to 'Recent Reels', reels_path, :id => 'open-reel' %>
         <div class="reels eight columns">
           <div class="four columns alpha">
@@ -58,7 +58,6 @@
                 <li>No reels yet</li>
               <% end %>
             </ul>
-            <p><%= link_to 'Reels', reels_path %></p>
           </div>
           <div class="four columns omega">
             <div class="title">Recently Updated</div>
@@ -72,8 +71,9 @@
               <% end %>
             </ul>
           </div>
+          <div class="eight columns beta"><%= link_to 'All Reels', reels_path, :class => 'button' %></div>
         </div>
-      </div>
+        </div>
       </div>
 
       <div class="row utilities"> 
