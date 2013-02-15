@@ -76,7 +76,10 @@
         <% elsif is_movie(asset.asset) %>
         <video src="<%= asset.asset_url %>" controls="controls" preload="none"></video>
         <% else %>
-        <p><%= link_to 'Download Asset', asset.asset_url %></p>
+        <% extension = File.extname(asset.asset.to_s).downcase
+          extension = extension[1..-1] if extension[0,1] == '.'
+        %>
+        <%= image_tag '/assets/' + extension + '.png', :class => 'default', :draggable => 'false' %>
         <% end %>
       </div>
 
