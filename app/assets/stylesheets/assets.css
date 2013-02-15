@@ -140,6 +140,7 @@ img[class="default"] { cursor: pointer; }
   width: 99%;
   border: 2px solid #000;
 }
+.asset video.default { border: 0; }
 
 .asset form { width:187px; }
 
@@ -260,7 +261,7 @@ Multiple asset upload
   display: block;
 }
 
-.asset-uploads .row.success {
+.asset-uploads .row.success header {
   background: green;
 }
 

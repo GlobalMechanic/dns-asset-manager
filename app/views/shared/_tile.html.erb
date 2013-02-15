@@ -9,15 +9,20 @@
   <a href="<%= asset_path asset %>" class="title"><%= asset.title %></a>
   <% if is_image asset.asset %>
   <%= image_tag asset.asset_url(:thumb).to_s, :class => 'default', :draggable => 'false' %>
+  <% elsif is_movie asset.asset %>
+  <video class="default" src="<%= asset.asset_url %>"></video>
   <% else %>
-  
+  <% extension = File.extname(asset.asset.to_s).downcase
+    extension = extension[1..-1] if extension[0,1] == '.'
+  %>
+  <%= image_tag '/assets/' + extension + '.png', :class => 'default', :draggable => 'false' %>
   <% end %>
   <div class="extended">
     <div class="title"><%= asset.title %></div>
     <div class="tab-tile">
 
       <div class="tile">
-        <p>download link here</p>
+        <p><%= link_to 'Download Asset', asset.asset_url %></p>
       </div> 
 
       <%# Versions section %>
@@ -66,7 +71,16 @@
 
       <%# Video section%>
       <div class="tile">
-        <video src="http://globalmechanic.com/asset/movies/<%# asset.video %>" controls="controls" preload="none"></video>
+        <% if is_image(asset.asset) %>
+        <div><%= image_tag asset.asset_url %></div>
+        <% elsif is_movie(asset.asset) %>
+        <video src="<%= asset.asset_url %>" controls="controls" preload="none"></video>
+        <% else %>
+        <% extension = File.extname(asset.asset.to_s).downcase
+          extension = extension[1..-1] if extension[0,1] == '.'
+        %>
+        <%= image_tag '/assets/' + extension + '.png', :class => 'default', :draggable => 'false' %>
+        <% end %>
       </div>
 
       <%# Download section %>
@@ -81,8 +95,8 @@
       </ul>
     </nav>
 
-    <%= form_tag do %>
-      <%= text_field_tag :keyword_list, nil, :placeholder => 'tmp: Add keywords' %>
+    <%= form_for asset do |f| %>
+      <%= f.autocomplete_field :keyword_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
     <% end %>
   </div>
 </div>
