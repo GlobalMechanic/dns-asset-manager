@@ -92,8 +92,8 @@
       </ul>
     </nav>
 
-    <%= form_tag do %>
-      <%= text_field_tag :keyword_list, nil, :placeholder => 'tmp: Add keywords' %>
+    <%= form_for asset do |f| %>
+      <%= f.autocomplete_field :keyword_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
     <% end %>
   </div>
 </div>
