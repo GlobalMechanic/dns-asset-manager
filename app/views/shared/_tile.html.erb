@@ -6,7 +6,8 @@
     <%= link_to 'Add to Reel', reel_asset_path(reel, asset), method: :post, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel add' %>
     <% end %>
   <% end %>
-  <a href="<%= asset_path asset %>" class="title"><%= asset.title %></a>
+  <!-- <a href="<%= asset_path asset %>" class="title"><%= asset.title %></a> -->
+  <div class="title"><%= asset.title %></div>
   <% if is_image asset.asset %>
   <%= image_tag asset.asset_url(:thumb).to_s, :class => 'default', :draggable => 'false' %>
   <% elsif is_movie asset.asset %>
@@ -59,13 +60,13 @@
             <% end %>
           </dd>
           <dt>Keywords:</dt>
-          <dd class="row">
+          <dd>
             <% asset.keyword_list.each do |keyword| %>
               <%= link_to keyword, keyword_assets_path(keyword) %>
             <% end %>
           </dd>
           <dt>Description:</dt>
-          <dd class="row"><%= asset.description %></dd>
+          <dd><%= asset.description %></dd>
         </dl> 
       </div>
 

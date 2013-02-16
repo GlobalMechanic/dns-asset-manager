@@ -38,7 +38,7 @@ $(document).ready(function() {
   });
 
   // Handle video player.
-  $('.asset .default').click(function(e) {
+  $('.asset .default, .asset .title').click(function(e) {
     if ($(this).parents('.asset').hasClass('open')) {
       $(this).parents('.asset').removeClass('open')
       $(this).parent().find('video').each(function() {

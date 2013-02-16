@@ -121,7 +121,7 @@ body.controller-reels.action-edit .asset img {
 .asset.dragged { opacity: 0.4; }
 
 .asset a { text-decoration: none; }
-.asset a:hover { /*color: #666;*/ color: #fff; }
+.asset a:hover { /*color: #666;*/ /*color: #fff;*/ }
 
 .asset .title {
   display: block;
@@ -131,6 +131,7 @@ body.controller-reels.action-edit .asset img {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 img[class="default"] { cursor: pointer; }
@@ -357,20 +358,13 @@ Screen tabs
 }
 .extended tr:nth-of-type(2n+2) td { background:rgb(230,230,230) }
 
-.extended .title { cursor: pointer; text-decoration: underline; }
+.extended .title { }
 .extended dl { font-size: 16px; line-height: 24px; }
 .extended dl a { text-decoration: underline; color: #333; }
 .extended dl a:hover { background: inherit; }
-.extended dt { 
-  display: inline-block; 
-  float: left; 
-  margin-top: 8px; 
-  margin-right: 4px; 
-  text-transform: uppercase; 
-  font-weight: bold;
-  clear: both; }
-.extended dd { float: left; margin-top: 8px; }
-dd.row { margin-top: 0; margin-bottom: 0; }
+.extended dt { margin-top: 8px; text-transform: uppercase; font-weight: bold; }
+.extended dd { }
+dd.row { }
 
 @-webkit-keyframes progress-bar-stripes {
   from {
