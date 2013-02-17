@@ -276,7 +276,7 @@ Multiple asset upload
 /* ---------------
 Screen tabs
 --------------- */
-.tab-tile { padding: 10px; background: rgb(210,210,210); }
+.tab-tile { height: 186px; padding: 10px; background: rgb(210,210,210); }
 
 .tile { 
   display:none;
@@ -284,7 +284,7 @@ Screen tabs
   width: 359px; 
   height: 186px; 
   padding: 0; 
-  overflow: auto; 
+  overflow: auto;
 }
 
 .tile.open { display: block; }
