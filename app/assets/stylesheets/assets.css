@@ -278,7 +278,7 @@ body.drop div[id="upload-form"] {
   display: block;
 }
 
-div [id="upload-form"] .inner {
+div[id="upload-form"] .inner {
   width: 400px;
   background: white;
   margin: 80px auto;
@@ -311,25 +311,13 @@ Asset multiple upload
 .asset-uploads > div:nth-child(1n+2) header { background: #eee !important; }
 .asset-uploads > div:last-child { margin-bottom: 20px; }
 
-.asset-uploads .row .override {
-  display: none;
-  clear: both;
-}
+.asset-uploads .row .override { display: none; clear: both; }
+.asset-uploads .row.show .override { display: block; }
+.asset-uploads .row.success header { background: green; }
 
-.asset-uploads .row.show .override {
-  display: block;
-}
+.asset-uploads .image { float: left; }
 
-.asset-uploads .row.success header {
-  background: green;
-}
-
-.asset-uploads .image {
-  float: left;
-}
-.asset-uploads .title {
-  margin-left: 90px;
-}
+.asset-uploads .title { margin-left: 90px; }
 
 @-webkit-keyframes progress-bar-stripes {
   from {
