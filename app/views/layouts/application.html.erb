@@ -118,7 +118,7 @@
     <div class="inner">
       <h3>New Asset</h3>
       <%= form_for Asset.new, :html => { :multipart => true } do |f| %>
-        <div class="field row">
+        <div class="row">
           <%# f.label :asset, 'Choose a file or drag and drop' %>
           <label for="asset_asset">
           <span class="button">Choose a file</span> or drag and drop
@@ -131,7 +131,7 @@
             <%= render :partial => 'shared/asset-form' %>
         </form>
         <div class="asset-uploads"></div>
-        <div class="field row">
+        <div class="row">
           <%= submit_tag 'Save and Close', :id => 'update-uploads' %>
         </div>
       </div>

@@ -1,7 +1,5 @@
 <% # text_field_tag :title, nil, :placeholder => 'Title' %>
-<%= text_area_tag :description, '', :placeholder => 'Description' %>
-<div class="row">
-<%= select :asset, :asset_type, Asset::TYPES, {}, :class => 'inline' %>
-<%= select :asset, :scene_ids, Scene.all.map {|x| [x.episode.number.pad + ' - ' + x.episode.title + ' - Scene ' + x.number.pad, x.id]}, {}, :multiple => true, :class => 'inline' %>
-</div>
+<%= select :asset, :asset_type, Asset::TYPES, {} %>
+<%= select :asset, :scene_ids, Scene.all.map {|x| [x.episode.number.pad + ' - ' + x.episode.title + ' - Scene ' + x.number.pad, x.id]}, {}, :multiple => true %>
 <%= autocomplete_field_tag :keyword_list, '', autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
+<%= text_area_tag :description, '', :placeholder => 'Description' %>
