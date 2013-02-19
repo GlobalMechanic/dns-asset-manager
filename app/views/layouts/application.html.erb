@@ -117,7 +117,7 @@
   <div id="upload-form">
     <div class="inner">
       <h3>New Asset</h3>
-      <%= form_for Asset.new, :html => { :multipart => true } do |f| %>
+      <%= form_for Asset.new, :html => { :multipart => true, :class => 'asset-form' } do |f| %>
         <div class="row">
           <%# f.label :asset, 'Choose a file or drag and drop' %>
           <label for="asset_asset">
@@ -127,7 +127,7 @@
         </div>
       <% end %>
       <div class="batch">
-        <form id="batch-form">
+        <form class="asset-form" id="batch-form">
             <%= render :partial => 'shared/asset-form' %>
         </form>
         <div class="asset-uploads"></div>
@@ -146,7 +146,7 @@
         <div class="progress progress-striped active"><div class="bar" style="width: 0%;"></div></div>
       </div>
     </header>
-    <form class="override">
+    <form class="override asset-form">
       <%= render :partial => 'shared/asset-form' %>
     </form>
   </div>

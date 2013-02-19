@@ -227,12 +227,40 @@ Asset search & filters
 #asset_search .facet { display: none; }
 #asset_search .facet.show { display: inline-block; }
 
+/* -------
+Asset add, edit, delete forms
+------- */
+.asset-form input,
+.asset-form textarea,
+.asset-form select { font-size: 20px; margin-bottom: 22px; }
 
+.asset-form textarea,
+.asset-form input[type="text"],
+.asset-form input[type="file"] { min-width: 380px; }
 
+.asset-form .inline,
+.asset-form input[type="text"].inline { display: inline-block; width: 168px; margin: 0; }
 
-/* ---------------
-Global upload modal 
----------------- */
+.asset-form label[for="asset_asset"] { 
+  height: 35px;
+  margin:20px 0 0;
+  padding: 0;
+  font-size: 20px;
+}
+.asset-form label[for="asset_asset"] .button { color:#333; border: rgb(230,230,230); background: rgb(230,230,230); }
+.asset-form label[for="asset_asset"] .button:hover { cursor: pointer; }
+
+.asset-form input[id="asset_asset"] { 
+  width: 126px;
+  margin-bottom: 0;
+  opacity: 0;
+}
+
+.asset-form select[multiple=multiple] { width: 400px; }
+
+/* -------
+Asset upload modal 
+------- */
 #upload-form {
   display: none;
   position: fixed;
@@ -256,56 +284,9 @@ body.drop #upload-form {
   box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
-#upload-form input,
-#upload-form textarea,
-#upload-form select { font-size: 20px; margin-bottom: 22px; }
-
-#upload-form textarea,
-#upload-form input[type='text'],
-#upload-form input[type="file"] { 
-  width: 380px;
-}
-
-#upload-form .inline,
-#upload-form input[type='text'].inline {
-  display: inline-block;
-  width: 168px;
-  margin: 0;
-}
-
-#upload-form label[for="asset_asset"] { 
-  height: 35px;
-  margin:20px 0 0;
-  padding: 0;
-  font-size: 20px;
-}
-
-#upload-form label[for="asset_asset"] .button { color:#333; border: rgb(230,230,230); background: rgb(230,230,230); }
-#upload-form label[for="asset_asset"] .button:hover { cursor: pointer; }
-
-#upload-form input[id="asset_asset"] { 
-  width: 126px;
-  margin-bottom: 0;
-  opacity: 0;
-}
-
-#upload-form select[multiple=multiple] { width: 400px; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ---------------
-Multiple asset upload 
----------------- */
+/* -------
+Asset multiple upload 
+------- */
 .meta img {
   float: left;
   margin-right: 10px;
