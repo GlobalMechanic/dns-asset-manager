@@ -32,7 +32,7 @@ pilotSceneTwo.assets.create! :description => 'Cloud background', :asset_type => 
 finaleSceneOne.assets.create! :description => 'Clementine skip and kicks', :asset_type => 'character', :keyword_list => 'clementine', :asset => File.open(File.join(Rails.root, 'db', '20111201-BBA-Boca-15127-04b.jpg'))
 finaleSceneTwo.assets.create! :description => 'Bob gets booted', :asset_type => 'character', :keyword_list => 'bob, jump', :asset => File.open(File.join(Rails.root, 'db', '20111202-BBA-Boca-15155-04a.jpg'))
 
-background = Asset.create! :description => 'Desert background', :asset_type => 'background', :asset => File.open(File.join(Rails.root, 'db', 'tumblr_ll7wqijG8F1qz4m1bo1_1280.jpg'))
+background = Asset.create! :description => 'Desert background', :asset_type => 'background', :keyword_list => 'australia, dessert', :asset => File.open(File.join(Rails.root, 'db', 'STK_BG_Australia_Dessert.fla'))
 
 pilotSceneOne.assets << background
 finaleSceneTwo.assets << background
