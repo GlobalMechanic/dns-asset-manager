@@ -337,7 +337,6 @@ Asset multiple upload
 .asset-uploads .asset-form textarea { min-width: 360px; }
 .asset-uploads .asset-form select:first-child { margin-top: 30px !important; /*temp hack*/ }
 
-
 /* -------
 Media queries
 ------- */
@@ -348,7 +347,6 @@ Media queries
   .assets .asset:nth-child(7n+7).open .reel { right: 0; }
 
   .result-headers { width: 1347px; }
-
 }
 
 /* -------
