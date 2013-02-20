@@ -133,10 +133,11 @@ class AssetsController < ApplicationController
   end
 
   def download
-      puts params.inspect
-      @asset = Asset.find(params[:id])
-      path = @asset.asset_url
-      headers['Content-Disposition'] = "attachment; filename=test.jpg"
-      render :text => File.binread(path), :content_type => 'iamge/jpg'
+      @asset = Asset.find(params[:asset_id])
+      path = File.join(Rails.root, 'public', @asset.asset_url)
+      extension = File.extname(path).downcase
+      extension = extension[1..-1] if extension[0,1] == '.'
+      filename = [@asset.asset_type, @asset.id].join('_').downcase + ".#{extension}"
+      send_file path, :disposition => "attachment; filename=#{filename}"
   end
 end
