@@ -271,10 +271,10 @@ Asset add, edit, delete forms
 
 .asset-form textarea,
 .asset-form input[type="text"],
-.asset-form input[type="file"] { min-width: 380px; }
+.asset-form input[type="file"] { min-width: 500px; }
 
 .asset-form .inline,
-.asset-form input[type="text"].inline { display: inline-block; width: 168px; margin: 0; }
+.asset-form input[type="text"].inline { display: inline-block; width: 228px; margin: 0; }
 
 .asset-form label[for="asset_asset"] { 
   height: 35px;
@@ -291,7 +291,7 @@ Asset add, edit, delete forms
   opacity: 0;
 }
 
-.asset-form select[multiple=multiple] { width: 400px; }
+.asset-form select[multiple=multiple] { width: 520px; }
 
 /* -------
 Asset upload modal 
@@ -312,7 +312,7 @@ body.drop div[id="upload-form"] {
 }
 
 div[id="upload-form"] .inner {
-  width: 400px;
+  width: 520px;
   background: white;
   margin: 80px auto;
   padding: 20px;
@@ -327,6 +327,11 @@ Asset multiple upload
 .meta img { float: left; margin-right: 10px; }
 
 .asset-uploads header { position:inherit; padding:0; background:#fff; }
+.asset-uploads header .title div { 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+}
 
 .asset-uploads > div { clear: both; margin: 0; padding: 10px 10px 1px; }
 .asset-uploads > div:nth-child(2n+1),
@@ -341,7 +346,7 @@ Asset multiple upload
 .asset-uploads .title { margin-left: 90px; }
 
 .asset-uploads .asset-form input[type="text"],
-.asset-uploads .asset-form textarea { min-width: 360px; }
+.asset-uploads .asset-form textarea { min-width: 480px; }
 .asset-uploads .asset-form select:first-child { margin-top: 30px !important; /*temp hack*/ }
 
 /* -------
