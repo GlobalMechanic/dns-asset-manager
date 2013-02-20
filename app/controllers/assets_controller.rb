@@ -131,4 +131,12 @@ class AssetsController < ApplicationController
     @title = 'Tag: "' + params[:keyword] + '" (' + @assets.count.to_s + ')'
     render 'index'
   end
+
+  def download
+      puts params.inspect
+      @asset = Asset.find(params[:id])
+      path = @asset.asset_url
+      headers['Content-Disposition'] = "attachment; filename=test.jpg"
+      render :text => File.binread(path), :content_type => 'iamge/jpg'
+  end
 end

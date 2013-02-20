@@ -63,7 +63,7 @@ $(document).ready(function() {
       $('.tab-tile .tile:last-child').addClass('open');
       $('.asset-utilities li:last-child a').addClass('active');
       $(this).parents('.asset').addClass('open');
-      $(this).parent().find('video').each(function() {
+      $(this).parent().find('video:not(.default)').each(function() {
         this.play();
       });
     }

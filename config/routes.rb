@@ -12,6 +12,7 @@ AssetManager::Application.routes.draw do
       match 'keyword/:keyword(/:layout)' => 'assets#keyword', :as => :keyword
     end
     get :autocomplete_tag_name, :on => :collection
+    get 'download'
   end
 
   resources :episodes do 
