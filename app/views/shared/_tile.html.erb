@@ -1,4 +1,4 @@
-<div class="asset" draggable="true">
+<div id="asset-<%= asset.id %>" class="asset" draggable="true">
   <% if reel %>
     <% if reel.assets.map {|asset| asset[:id] }.include?(asset.id) %>
     <%= link_to 'Remove from Reel', reel_asset_path(reel, asset), method: :delete, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel remove' %>
@@ -75,7 +75,7 @@
       <%# Video section%>
       <div class="tile">
         <% if is_image(asset.asset) %>
-        <div><%= image_tag asset.asset_url %></div>
+        <div data-image-url="<%= asset.asset_url %>"></div>
         <% elsif is_movie(asset.asset) %>
         <video src="<%= asset.asset_url %>" controls="controls" preload="metadata"></video>
         <% else %>
