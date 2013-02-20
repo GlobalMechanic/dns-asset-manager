@@ -6,7 +6,6 @@
     <%= link_to 'Add to Reel', reel_asset_path(reel, asset), method: :post, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel add' %>
     <% end %>
   <% end %>
-  <!-- <a href="<%= asset_path asset %>" class="title"><%= asset.title %></a> -->
   <div class="title"><%= asset.title %></div>
   <% if is_image asset.asset %>
   <%= image_tag asset.asset_url(:thumb).to_s, :class => 'default', :draggable => 'false' %>
@@ -97,6 +96,7 @@
       </ul>
     </nav>
 
+    <%# not working %>
     <%= form_for asset do |f| %>
       <%= f.autocomplete_field :keyword_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
     <% end %>

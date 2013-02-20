@@ -14,6 +14,11 @@ $(document).ready(function() {
     return false;
   });
 
+  $('#episode-filters li:first-child a').on("click", function() {
+    $(this).parents('#episode-filters').toggleClass('open');
+    return false;
+  });
+
   // Drag and drop for reels.
   if (gm.controller === 'reels' && gm.action === 'edit') {
     // Asset drag events.

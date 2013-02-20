@@ -22,12 +22,9 @@
     <nav class="row">
       <div class="row">
         <ul id="primary">
-        <!-- <li><%# link_to 'Episodes', episodes_path %></li> -->
         <% if can? :manage, User %>
         <li><%= link_to 'Users', users_path %></li>
         <% end %>
-        <!-- <li><%= link_to "Edit #{current_user.name}", edit_user_registration_path %></li> -->
-        <!-- <li><%= link_to 'Edit User', edit_user_path(current_user) %></li> -->
         <li><%= link_to 'Sign out', destroy_user_session_path, :method => 'delete' %></li>
         </ul>
         <ul id="secondary">
@@ -79,7 +76,7 @@
       <div class="row utilities"> 
         <div class="filters" id="asset-filters">
         <ul>
-          <li><a href="#filter-by">Assets</a></li>
+          <li><a href="#filter-by-asset">Assets</a></li>
           <li><%= link_to 'All assets', assets_path, :class => (params[:controller] == 'assets' && params[:action] == 'index' ? 'active' : '') %></li>
           <% Asset::TYPES.each do |type| %>
           <li><%= link_to type[0],  type_assets_path(type[1]), :class => (params[:controller] == 'assets' && params[:action] == 'type' && params[:asset_type] == type[1] ? 'active' : '') %></li>
@@ -89,11 +86,11 @@
 
         <div class="filters" id="episode-filters">
         <ul>
-          <li><%= link_to 'Episodes', episodes_path %></li>
+          <li><a href="#filter-by-episode">Episodes</a></li>
+          <li><%= link_to 'All Episodes', episodes_path %></li>
           <% Episode.all.each do |episode| %>
           <li><%= link_to episode.number.pad + ' - ' + episode.title, episode %></li>
           <% end %>
-          <li></li>
         </ul>
         </div>
 

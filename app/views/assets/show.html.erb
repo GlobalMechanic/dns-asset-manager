@@ -1,21 +1,22 @@
-<%= link_to '&larr; All Assets', assets_path %>
+<%= link_to '&larr; All Assets'.html_safe, assets_path %>
 <h1><%= @asset.title %></h1>
 <div class="row single-asset">
   <div class="asset open" draggable="true">
-    <!-- <div class="title"><%= @asset.title %></div> -->
+    <div class="title"><%= @asset.title %></div>
     
-    <!-- <% if is_image (@asset.asset) %>
+    <% if is_image (@asset.asset) %>
       <%= image_tag @asset.asset_url(:thumb).to_s, :class => 'default', :draggable => 'false' %>
     <% elsif is_movie @asset.asset %>
       <video class="default" src="<%= asset.asset_url %>"></video>
     <% else %>
       <% extension = File.extname(@asset.asset.to_s).downcase extension = extension[1..-1] if extension[0,1] == '.' %>
       <%= image_tag '/assets/' + extension + '.png', :class => 'default', :draggable => 'false' %>
-    <% end %> -->
+    <% end %>
 
     <div class="extended">
       <div class="title"><%= @asset.title %></div>
       <div class="tab-tile">
+
         <%# Download section %>
         <div class="tile">
          <p class="downloads">
@@ -48,7 +49,6 @@
 
         <%# Asset details section %>
         <div class="tile">
-          <!-- <a href="<%# @asset_path asset %>/edit" class="button">Edit Asset</a> -->
           <%= link_to 'Edit Asset', edit_asset_path(@asset), :class => 'button' %>
           <dl>
             <dt>Episodes:</dt>
@@ -99,52 +99,3 @@
 
   </div>
 </div> 
-
-
-
-
-<!-- <%= link_to 'Edit Asset', edit_asset_path(@asset) %>
-
-<h1><%= @asset.title %></h1> 
-
-<% if is_image(@asset.asset) %>
-<div><%= image_tag @asset.asset_url(:thumb).to_s %></div>
-<% else %>
-<div><video src="<%= @asset.asset_url %>"></video></div>
-<% end %>
-
-<div class="asset-single">
-  <div class="meta">
-    <div><strong>Title:</strong> <%= @asset.title %></div>
-    <div><strong>Keywords:</strong>
-      <% @asset.keyword_list.each do |keyword| %>
-        <%= link_to keyword, keyword_assets_path(keyword) %>
-      <% end %>
-    </div>
-
-    <div><strong>Type:</strong> <%= link_to @asset.asset_type, type_assets_path(@asset.asset_type) %></div>
-    <div><strong>Description:</strong></div>
-    <div><%= @asset.description %></div>
-  </div>
-  <div>
-    <h2>Versions</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Who</th>
-          <th>What</th>
-          <th>When</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @asset.versions.reverse.each do |version| %>
-        <tr>
-          <td><%= User.find(version.whodunnit).name %></td>
-          <td><%= version.event.titleize %></td>
-          <td><%= time_ago_in_words(version.created_at) %> ago</td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
-</div> -->
