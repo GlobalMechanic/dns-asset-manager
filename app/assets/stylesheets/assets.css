@@ -1,11 +1,27 @@
+/* 
+Asset default
+Asset extended
+  Asset tile nav
+  Media tile
+  Details tile
+  Versions tile
+  Downloads tile
+Asset dragged
+Asset search, filters & results
+Asset add, edit, delete forms
+Asset upload modal 
+Asset multiple upload 
+Progress bar
+*/
+
 /* -------
 Asset default 
 ------- */
-.assets { clear: both; }
+.assets { }
 .assets h2 {
-  clear: both;
+  /*clear: both;
   padding-top: 1em;
-  padding-left: 5px;
+  padding-left: 5px;*/
 }
 .asset  {
   color: #222;
@@ -20,7 +36,7 @@ Asset default
 }
 .slots .asset { margin: 10px 0 4px 0; }
 
-.asset a { /*text-decoration: none;*/ }
+.asset a { }
 
 .asset .title {
   display: block;
@@ -219,7 +235,7 @@ body.controller-reels.action-edit .asset img {
 .asset.dragged { opacity: 0.4; }
 
 /* ------ 
-Asset search & filters 
+Asset search, filters & results
 ------- */
 #asset_search { margin-bottom: 0; }
 
@@ -228,6 +244,16 @@ Asset search & filters
 #asset_search input[type='submit'] { display: inline-block; }
 #asset_search .facet { display: none; }
 #asset_search .facet.show { display: inline-block; }
+
+.result-headers { 
+  width: 960px; 
+  margin: 0 0 20px -5px; 
+  padding: 2px 9px 7px; 
+  color: #333;
+  background: #eee; 
+}
+.result-headers a:hover,
+.result-headers a:visited { color: #333; background: #eee; }
 
 /* -------
 Asset add, edit, delete forms
@@ -310,6 +336,20 @@ Asset multiple upload
 .asset-uploads .asset-form input[type="text"],
 .asset-uploads .asset-form textarea { min-width: 360px; }
 .asset-uploads .asset-form select:first-child { margin-top: 30px !important; /*temp hack*/ }
+
+
+/* -------
+Media queries
+------- */
+@media all and (min-width:1440px) {
+  .assets .asset:nth-child(5n+5) .extended { left: auto; right: right: 0; }
+  .assets .asset:nth-child(7n+7) .extended { left: auto; right: 0; }
+
+  .assets .asset:nth-child(7n+7).open .reel { right: 0; }
+
+  .result-headers { width: 1347px; }
+
+}
 
 /* -------
 Progress bar

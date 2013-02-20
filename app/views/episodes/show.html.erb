@@ -3,7 +3,7 @@
   <h2><%= @episode.number.pad %> - <%= @episode.title %>'s Scenes</h2>
   <% @episode.scenes.each_with_index do |scene, index| %>
     <div class="clearfix">
-      <h3><%= link_to 'Scene ' + scene.number.pad, episode_scene_path(@episode, scene) %></h3>
+      <h3 class="result-headers"><%= link_to 'Scene ' + scene.number.pad, episode_scene_path(@episode, scene) %></h3>
       <%= render :partial => 'shared/assets', :locals => { :assets => scene.assets } %>
     </div>
   <% end %>

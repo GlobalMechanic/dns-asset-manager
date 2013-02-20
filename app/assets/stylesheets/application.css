@@ -100,6 +100,8 @@ footer { clear: both; }
 .top-bar nav:first-child { position: relative; width: 950px; margin: 0 auto 20px auto; }
 .top-bar nav .row:first-child { height: 50px; margin: 0; }
 
+.container > h2 { margin: 0 0 40px 5px; }
+
 ul[id="primary"] { font-size: 23px; }
 ul[id="primary"] { float: right; margin: 13px 131px 0 0; }
 ul[id="primary"] li { margin-right: 10px; }
@@ -126,12 +128,7 @@ ul[id="secondary"] .open input[type='text'] { display: inline-block; width: 244p
 ul[id="secondary"] .open input[type="submit"] { margin-bottom: 0; }
 ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
 
-.drawer { 
-  position: absolute; 
-  top: 7px;
-  right: -16px;
-  border: 1px solid #777; 
-}
+.drawer { position: absolute; top: 7px; right: -16px; border: 1px solid #777; }
 
 .drawer .beta { text-align: center; }
 
@@ -278,3 +275,12 @@ button:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover,
 input[type="button"]:hover { color: #f7f4d6; border:1px solid #000; background: #000; }
+
+/* -------
+Media queries 
+------- */
+@media all and (min-width:1440px) {
+  .container,
+  .top-bar nav:first-child { width: 1347px; }
+  form[id="asset_search"] input[type="text"] { min-width: 608px; }
+}

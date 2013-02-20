@@ -1,5 +1,5 @@
 <h2>All episodes</h2>
 
 <% @episodes.each_with_index do |episode, index| %>
-  <h3><%= episode.number.pad %> - <%= link_to episode.title, episode %></h3>
+  <h3 class="result-headers"><%= episode.number.pad %> - <%= link_to episode.title, episode %></h3>
 <% end %>
