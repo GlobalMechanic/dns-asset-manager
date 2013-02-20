@@ -66,7 +66,8 @@ Asset default
 .asset .reel.remove { background-position: bottom left; background-color: #999; }
 .asset .reel.remove:hover { background-position: bottom right; }
 
-img[class="default"] { cursor: pointer; }
+.asset .default { cursor: pointer; }
+.asset video.default { width: 100%; }
 
 /* -------  
 Asset extended 
