@@ -75,7 +75,7 @@
       <%# Video section%>
       <div class="tile">
         <% if is_image(asset.asset) %>
-        <div><%= image_tag asset.asset_url %></div>
+        <div data-image-url="<%= asset.asset_url %>"></div>
         <% elsif is_movie(asset.asset) %>
         <video src="<%= asset.asset_url %>" controls="controls" preload="none"></video>
         <% else %>

@@ -40,7 +40,7 @@ $(document).ready(function() {
   // Handle video player.
   $('.asset .default, .asset .title').click(function(e) {
     if ($(this).parents('.asset').hasClass('open')) {
-      $(this).parents('.asset').removeClass('open')
+      $(this).parents('.asset').removeClass('open');
       $(this).parent().find('video').each(function() {
         this.pause();
         if (this.currentTime > 0) {
@@ -50,17 +50,22 @@ $(document).ready(function() {
     }
     else {
       $('.asset.open video').each(function () {
-          this.pause();
-          if (this.currentTime > 0) {
-            this.currentTime = 0;
-          }
+        this.pause();
+        if (this.currentTime > 0) {
+          this.currentTime = 0;
+        }
+      });
+      $(this).parent().find('[data-image-url]').each(function() {
+        $(this).append($('<img>', { 'src': $(this).data('image-url') }));
       });
       $('.asset.open').removeClass('open');
       $('.tile.open').removeClass('open');
       $('.tab-tile .tile:last-child').addClass('open');
       $('.asset-utilities li:last-child a').addClass('active');
       $(this).parents('.asset').addClass('open');
-      $(this).parent().find('video').get(0).play();
+      $(this).parent().find('video').each(function() {
+        this.play();
+      });
     }
   });
 
