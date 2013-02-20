@@ -27,6 +27,7 @@ finaleSceneTwo = finale.scenes.create! :number => 2
 
 pilotSceneOne.assets.create! :description => 'Clementine runs and jumps', :asset_type => 'character', :keyword_list => 'clementine, jump', :asset => File.open(File.join(Rails.root, 'db', '20101123_BBA_Sig_Fresno_243.jpg'))
 pilotSceneTwo.assets.create! :description => 'Bob move things around', :asset_type => 'character', :keyword_list => 'bob', :asset => File.open(File.join(Rails.root, 'db', '20100818_Scout_Schiphol_stills-081.jpg'))
+pilotSceneTwo.assets.create! :description => 'Cloud background', :asset_type => 'background', :keyword_list => 'cloud', :asset => File.open(File.join(Rails.root, 'db', 'clouds.mov'))
 
 finaleSceneOne.assets.create! :description => 'Clementine skip and kicks', :asset_type => 'character', :keyword_list => 'clementine', :asset => File.open(File.join(Rails.root, 'db', '20111201-BBA-Boca-15127-04b.jpg'))
 finaleSceneTwo.assets.create! :description => 'Bob gets booted', :asset_type => 'character', :keyword_list => 'bob, jump', :asset => File.open(File.join(Rails.root, 'db', '20111202-BBA-Boca-15155-04a.jpg'))
