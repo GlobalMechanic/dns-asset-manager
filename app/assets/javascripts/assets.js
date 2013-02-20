@@ -55,12 +55,17 @@ $(document).ready(function() {
             this.currentTime = 0;
           }
       });
+      $(this).parent().find('[data-image-url]:empty').each(function() {
+        $(this).append($('<img>', { 'src': $(this).data('image-url') }));
+      });
       $('.asset.open').removeClass('open');
       $('.tile.open').removeClass('open');
       $('.tab-tile .tile:last-child').addClass('open');
       $('.asset-utilities li:last-child a').addClass('active');
       $(this).parents('.asset').addClass('open');
-      $(this).parent().find('video').get(0).play();
+      $(this).parent().find('video').each(function() {
+        this.play();
+      });
     }
   });
 

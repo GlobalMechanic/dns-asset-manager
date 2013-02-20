@@ -10,7 +10,7 @@
   <% if is_image asset.asset %>
   <%= image_tag asset.asset_url(:thumb).to_s, :class => 'default', :draggable => 'false' %>
   <% elsif is_movie asset.asset %>
-  <video class="default" src="<%= asset.asset_url %>"></video>
+  <video class="default" preload="metadata" src="<%= asset.asset_url %>"></video>
   <% else %>
   <% extension = File.extname(asset.asset.to_s).downcase
     extension = extension[1..-1] if extension[0,1] == '.'
@@ -77,7 +77,7 @@
         <% if is_image(asset.asset) %>
         <div><%= image_tag asset.asset_url %></div>
         <% elsif is_movie(asset.asset) %>
-        <video src="<%= asset.asset_url %>" controls="controls" preload="none"></video>
+        <video src="<%= asset.asset_url %>" controls="controls" preload="metadata"></video>
         <% else %>
         <% extension = File.extname(asset.asset.to_s).downcase
           extension = extension[1..-1] if extension[0,1] == '.'

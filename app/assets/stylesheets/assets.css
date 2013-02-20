@@ -66,7 +66,8 @@ Asset default
 .asset .reel.remove { background-position: bottom left; background-color: #999; }
 .asset .reel.remove:hover { background-position: bottom right; }
 
-img[class="default"] { cursor: pointer; }
+img.default { cursor: pointer; }
+video.default { width: 188px; height: 106px; }
 
 /* -------  
 Asset extended 
@@ -130,7 +131,13 @@ Asset extended
 .asset-utilities a.active { background-color: rgb(210,210,210); }
 
 /* Media tile */
-.extended video { margin: 0; width: 99%; border: 2px solid #000; }
+.extended video { 
+  width: 360px; 
+  height: 176px;
+  margin: 0; 
+  background: #000;
+  /*border: 2px solid #000;*/
+}
 .extended video.default { border: 0; }
 
 /* Details tile */
