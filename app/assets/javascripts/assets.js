@@ -66,11 +66,8 @@ $(document).ready(function() {
       $('.tab-tile .tile:last-child').addClass('open');
       $('.asset-utilities li:last-child a').addClass('active');
       $(this).parents('.asset').addClass('open');
-<<<<<<< HEAD
       $(this).parent().find('video').each(function() {
-=======
       $(this).parent().find('video:not(.default)').each(function() {
->>>>>>> 6169af0340fc7125efdad6d38d07973226bd3364
         this.play();
       });
     }
