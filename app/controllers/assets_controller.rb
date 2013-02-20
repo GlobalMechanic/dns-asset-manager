@@ -135,9 +135,8 @@ class AssetsController < ApplicationController
   def download
       @asset = Asset.find(params[:asset_id])
       path = File.join(Rails.root, 'public', @asset.asset_url)
-      extension = File.extname(path).downcase
-      extension = extension[1..-1] if extension[0,1] == '.'
-      filename = ([@asset.asset_type] + @asset.keyword_list.to_a + [@asset.id]).join('_') + ".#{extension}"
+      extension = File.extname(path)
+      filename = ([@asset.asset_type] + @asset.keyword_list.to_a + [@asset.id]).join('_') + extension
       send_file path, :disposition => "attachment; filename=#{filename.downcase}"
   end
 end
