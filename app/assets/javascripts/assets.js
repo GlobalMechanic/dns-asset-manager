@@ -55,7 +55,7 @@ $(document).ready(function() {
           this.currentTime = 0;
         }
       });
-      $(this).parent().find('[data-image-url]').each(function() {
+      $(this).parent().find('[data-image-url]:empty').each(function() {
         $(this).append($('<img>', { 'src': $(this).data('image-url') }));
       });
       $('.asset.open').removeClass('open');
