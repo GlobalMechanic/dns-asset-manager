@@ -13,11 +13,12 @@ class Asset < ActiveRecord::Base
   has_and_belongs_to_many :scene
   has_many :reel_assets, :dependent => :delete_all
 
-  acts_as_taggable_on :keywords
+  acts_as_taggable_on :keywords, :characters
 
   attr_accessible :description,
                   :title,
                   :asset_type,
+                  :character_list,
                   :keyword_list,
                   :asset,
                   :scene_ids,
