@@ -64,6 +64,7 @@ $(document).ready(function() {
       $('.asset.open').removeClass('open');
       $('.tile.open').removeClass('open');
       $('.tab-tile .tile:last-child').addClass('open');
+      $('.asset-utilities a').removeClass('active');
       $('.asset-utilities li:last-child a').addClass('active');
       $(this).parents('.asset').addClass('open');
       $(this).parent().find('video:not(.default)').each(function() {
