@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212182914) do
+ActiveRecord::Schema.define(:version => 20130221192140) do
 
   create_table "assets", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20130212182914) do
     t.datetime "updated_at",  :null => false
     t.string   "asset"
     t.string   "asset_type"
+    t.boolean  "stock"
   end
 
   create_table "assets_scenes", :id => false, :force => true do |t|
