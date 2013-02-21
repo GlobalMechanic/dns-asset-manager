@@ -20,7 +20,8 @@ class Asset < ActiveRecord::Base
                   :asset_type,
                   :keyword_list,
                   :asset,
-                  :scene_ids
+                  :scene_ids,
+                  :stock
 
   #validates_inclusion_of :type, :in => TYPES
 
