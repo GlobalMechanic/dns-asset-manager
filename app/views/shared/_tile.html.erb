@@ -14,6 +14,12 @@
   <% else %>
   <%= image_tag '/assets/' + clean_extension(asset.asset) + '.png', :class => 'default', :draggable => 'false' %>
   <% end %>
+
+  <div class="asset-workflow row">
+    <div class="checkin checkout asset-state">out</div>
+    <p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p>
+  </div>
+
   <div class="extended">
     <div class="title"><%= asset.title %></div>
     <div class="tab-tile">

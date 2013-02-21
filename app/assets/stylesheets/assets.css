@@ -1,5 +1,6 @@
 /* 
 Asset default
+  Asset workflow
 Asset extended
   Asset tile nav
   Media tile
@@ -68,6 +69,33 @@ Asset default
 
 .asset .default { cursor: pointer; }
 .asset video.default { width: 100%; }
+
+/* Asset workflow */
+.asset-workflow { position: relative; top: -34px; }
+.asset-workflow > div,
+.asset-workflow > p { 
+  display: inline-block;
+  float: left;
+  padding: 5px 5px 3px; 
+  font-size: 14px; 
+  font-weight: bold; 
+}
+
+.asset-state { color: rgb(230,230,230); background: rgba(33,33,33, .5); }
+.checkin { }
+.checkout { text-transform: uppercase; }
+
+.assigned-to { 
+  width: 140px; 
+  margin-bottom: 0; 
+  line-height: 21px; 
+  overflow: hidden;
+  font-weight: normal;
+  text-overflow: ellipsis;
+  color: #555;
+  white-space: nowrap; 
+  background: rgba(255,255,255, 0.7); 
+}
 
 /* -------  
 Asset extended 
