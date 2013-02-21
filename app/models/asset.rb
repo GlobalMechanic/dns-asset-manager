@@ -31,4 +31,14 @@ class Asset < ActiveRecord::Base
   def default_name
     self.title ||= File.basename(asset.filename, '.*') if asset
   end
+
+  # def title
+  #   self.filename
+  # end
+
+  def filename
+    filename = ([self.asset_type] + self.character_list.to_a + self.keyword_list.to_a + [self.id]).join('_')
+    filename += File.extname self.asset_url
+    filename.downcase
+  end
 end
