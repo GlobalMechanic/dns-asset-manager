@@ -76,18 +76,30 @@ Asset default
 .asset-workflow > p { 
   display: inline-block;
   float: left;
-  padding: 5px 5px 3px; 
+  /*padding: 5px 5px 3px;*/ 
   font-size: 14px; 
   font-weight: bold; 
 }
 
-.asset-state { color: rgb(230,230,230); background: rgba(33,33,33, .5); }
-.checkin { }
-.checkout { text-transform: uppercase; }
+.asset-state { color: #fff; background-color: rgba(33,33,33, .5); }
+.checkin a { 
+  display: inline-block; 
+  width:28px; 
+  padding: 5px 5px 3px;
+  text-indent: -9999em;
+  background: rgba(33,33,33, .5) url('arrow-down.png') 0 0 no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+}
+.checkin a:hover { background-color: rgba(0,0,0,1); }
+
+.checkout { padding: 5px 5px 3px; text-transform: uppercase; }
+.checkout a { display: none; }
 
 .assigned-to { 
   width: 140px; 
   margin-bottom: 0; 
+  padding: 5px 5px 3px;
   line-height: 21px; 
   overflow: hidden;
   font-weight: normal;
