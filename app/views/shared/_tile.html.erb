@@ -95,7 +95,7 @@
         <% elsif is_audio(asset.asset) %>
         <audio src="<%= asset.asset_url %>" controls="controls" preload="metadata"></audio>
         <% else %>
-        <%= image_tag '/assets/' + clean_extension(asset.asset) + '.png', :class => 'default', :draggable => 'false' %>
+        <%= image_tag '/assets/placeholders/' + clean_extension(asset.asset) + '.png', :class => 'default', :draggable => 'false' %>
         <% end %>
       </div>
     </div>    
