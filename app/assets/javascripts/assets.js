@@ -41,7 +41,7 @@ $(document).ready(function() {
   $('.asset .default, .asset .title').click(function(e) {
     if ($(this).parents('.asset').hasClass('open')) {
       $(this).parents('.asset').removeClass('open');
-      $(this).parent().find('video').each(function() {
+      $(this).parent().find('video, audio').each(function() {
         this.pause();
         if (this.currentTime > 0) {
           this.currentTime = 0;
@@ -67,7 +67,7 @@ $(document).ready(function() {
       $('.asset-utilities a').removeClass('active');
       $('.asset-utilities li:last-child a').addClass('active');
       $(this).parents('.asset').addClass('open');
-      $(this).parent().find('video:not(.default)').each(function() {
+      $(this).parent().find('video:not(.default), audio').each(function() {
         this.play();
       });
     }
