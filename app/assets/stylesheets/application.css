@@ -106,8 +106,20 @@ ul[id="primary"] { font-size: 23px; }
 ul[id="primary"] { float: right; margin: 13px 131px 0 0; }
 ul[id="primary"] li { margin-right: 10px; }
 
-ul[id="secondary"] { float: left; width: 430px; margin-left: -21px; font-weight: bold; }
+ul[id="secondary"] { float: left; /*width: 430px;*/ width: 635px; margin-left: -21px; font-weight: bold; }
 ul[id="secondary"] li { margin: 0; padding: 10px 10px 15px 10px; }
+
+ul[id="secondary"] .reel-name { 
+  display: inline-block;
+  max-width: 550px;
+  height: 36px;
+  padding: 10px 10px 15px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
 ul[id="secondary"] li form { display: none; }
 ul[id="secondary"] .open { position: relative; }
 ul[id="secondary"] .open form {

@@ -64,7 +64,7 @@ Asset default
 .asset .reel.loading { background-color: #ddd; }
 .asset .reel.add { background-position: top left; }
 .asset .reel.add:hover { background-position: top right; }
-.asset .reel.remove { background-position: bottom left; background-color: #999; }
+.asset .reel.remove { background-position: bottom left; background-color: rgba(33,33,33, .7); }
 .asset .reel.remove:hover { background-position: bottom right; }
 
 .asset .default { cursor: pointer; }
