@@ -12,7 +12,7 @@
   <% elsif is_movie asset.asset %>
   <video class="default" preload="metadata" src="<%= asset.asset_url %>"></video>
   <% else %>
-  <%= image_tag '/assets/' + clean_extension(asset.asset) + '.png', :class => 'default', :draggable => 'false' %>
+  <%= image_tag '/assets/placeholders/' + clean_extension(asset.asset) + '.png', :class => 'default', :draggable => 'false' %>
   <% end %>
 
   <div class="asset-workflow row">
