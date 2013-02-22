@@ -7,6 +7,10 @@ module AssetsHelper
     AssetUploader::MOVIE_EXTENSIONS.include?(clean_extension(asset))
   end
 
+  def is_flash(asset)
+    AssetUploader::FLASH_EXTENSIONS.include?(clean_extension(asset))
+  end
+
   def is_audio(asset)
     AssetUploader::AUDIO_EXTENSIONS.include?(clean_extension(asset))
   end
