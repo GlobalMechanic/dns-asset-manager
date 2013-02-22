@@ -14,6 +14,7 @@ class AssetUploader < CarrierWave::Uploader::Base
   IMAGE_EXTENSIONS = %w(jpg jpeg gif png)
   MOVIE_EXTENSIONS = %w(mov)
   FLASH_EXTENSIONS = %w(fla flv)
+  AUDIO_EXTENSIONS = %w(mp3 wav)
   
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -42,7 +43,7 @@ class AssetUploader < CarrierWave::Uploader::Base
   # end
  
   def extension_white_list
-    IMAGE_EXTENSIONS + MOVIE_EXTENSIONS + FLASH_EXTENSIONS
+    IMAGE_EXTENSIONS + MOVIE_EXTENSIONS + FLASH_EXTENSIONS + AUDIO_EXTENSIONS
   end
  
   # Create a new "process_extensions" method. It is like "process", except
