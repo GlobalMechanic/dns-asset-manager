@@ -32,9 +32,9 @@ class Asset < ActiveRecord::Base
     self.title ||= File.basename(asset.filename, '.*') if asset
   end
 
-  # def title
-  #   self.filename
-  # end
+  def title
+    self.filename
+  end
 
   def filename
     filename = ([self.asset_type] + self.character_list.to_a + self.keyword_list.to_a + [self.id]).join('_')

@@ -134,6 +134,6 @@ class AssetsController < ApplicationController
 
   def download
       @asset = Asset.find(params[:asset_id])
-      send_file path, :disposition => "attachment; filename=#{@asset.filename}"
+      send_file File.join(Rails.root, 'public', @asset.asset_url), :disposition => "attachment; filename=#{@asset.filename}"
   end
 end
