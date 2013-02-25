@@ -135,13 +135,17 @@ class AssetsController < ApplicationController
 
   def download
     @asset = Asset.find(params[:asset_id])
-    open(@asset.asset_url) {|img|
-      tmpfile = Tempfile.new(@asset.filename)
-      File.open(tmpfile.path, 'wb') do |f| 
-        f.write img.read
-      end 
-      send_file tmpfile.path, :filename => @asset.filename
-    }   
+    if Rails.env.development?
+      send_file File.join(Rails.root, 'public', @asset.asset_url), :filename => @asset.filename
+    else
+      open(@asset.asset_url) {|img|
+        tmpfile = Tempfile.new(@asset.filename)
+        File.open(tmpfile.path, 'wb') do |f|
+          f.write img.read
+        end
+        send_file tmpfile.path, :filename => @asset.filename
+      }
+    end
   end
 
 end
