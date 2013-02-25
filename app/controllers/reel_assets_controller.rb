@@ -1,5 +1,6 @@
 class ReelAssetsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   
   # GET /reels/1/2
   # GET /reels/1/2.json

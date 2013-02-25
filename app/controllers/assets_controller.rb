@@ -1,5 +1,6 @@
 class AssetsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag', :full => true
 
   # GET /assets

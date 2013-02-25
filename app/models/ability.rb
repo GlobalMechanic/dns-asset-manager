@@ -8,8 +8,15 @@ class Ability
 
     if user.has_role? :admin
       can :manage, :all
+    elsif user.has_role? :animator
+      can :manage, :all
+      cannot :manage, User
     else
       #can(:manage, Reel) { |reel| user.reels.include?(reel)  }
+      can :read, :all
+      can :type, Asset # asset browsing by type
+      cannot :manage, User
+      #cannot [:create, :update, :destroy], Asset
       can :manage, Reel, :user_id => user.id
     end
 
