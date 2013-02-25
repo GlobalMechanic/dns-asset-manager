@@ -126,7 +126,7 @@ $(document).ready(function() {
         'asset_type': $('#asset_asset_type', formContext).val(),
         'scene_ids': $('#asset_scene_ids', formContext).val(),
       };
-      $.ajax('/assets/' + upload.result.id + '.json', {
+      $.ajax('/plum-landing/assets/' + upload.result.id + '.json', {
         type: 'PUT',
         data: { asset: asset },
         success: function() {
