@@ -4,3 +4,17 @@ table.users th { padding-bottom: 10px; }
 table.users .name {
   font-weight: bold;
 }
+
+body.controller-devise-sessions.action-new {
+  margin-top: 50px;
+}
+
+.new_user .checkbox.inline,
+.edit_user .checkbox.inline {
+  display: block;
+}
+
+.new_user .inline label,
+.new_user .inline input,
+.edit_user .inline label,
+.edit_user .inline input { display: inline-block; }

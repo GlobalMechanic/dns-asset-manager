@@ -46,9 +46,10 @@
 
 <% if @user.persisted? %>
   <%= simple_form_for @user, :url => user_path(@user), :html => {:method => :put } do |f| %>
+  <h2>User roles</h2>
   <div class="field">
     <%= f.input :role_ids, :collection => Role.all, :as => :check_boxes, :label_method => lambda {|t| t.name.titleize}, :label => false, :item_wrapper_class => 'inline' %>
   </div>
-  <%= f.submit "Change Role" %>
+  <%= f.submit "Change Roles" %>
   <% end %>
 <% end %>
