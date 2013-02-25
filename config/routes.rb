@@ -6,17 +6,19 @@ AssetManager::Application.routes.draw do
     resources :users #, :only => [:index, :edit]
   end
 
-  resources :assets do
-    collection do
-      match 'type/:asset_type(/:layout)' => 'assets#type', :as => :type
-      match 'keyword/:keyword(/:layout)' => 'assets#keyword', :as => :keyword
+  scope "/plum-landing" do
+    resources :assets do
+      collection do
+        match 'type/:asset_type(/:layout)' => 'assets#type', :as => :type
+        match 'keyword/:keyword(/:layout)' => 'assets#keyword', :as => :keyword
+      end
+      get :autocomplete_tag_name, :on => :collection
+      get 'download'
     end
-    get :autocomplete_tag_name, :on => :collection
-    get 'download'
-  end
 
-  resources :episodes do 
-    resources :scenes
+    resources :episodes do 
+      resources :scenes
+    end
   end
 
 
@@ -88,7 +90,7 @@ AssetManager::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "assets#index"
+  root :to => redirect("/plum-landing/assets")
 
   # See how all your routes lay out with "rake routes"
 
