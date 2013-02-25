@@ -19,7 +19,6 @@
   </div>
 
   <%= f.select :asset_type, Asset::TYPES %>
-  <%= f.text_field :title, :placeholder => 'Title' %>
   <%= f.select :scene_ids, Scene.all.map {|x| [x.episode.number.pad + ' - ' + x.episode.title + ' - Scene ' + x.number.pad, x.id]}, {}, :multiple => true %>
   <%= f.autocomplete_field :character_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Characters' %>
   <%= f.autocomplete_field :keyword_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>

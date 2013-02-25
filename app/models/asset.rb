@@ -16,21 +16,12 @@ class Asset < ActiveRecord::Base
   acts_as_taggable_on :keywords, :characters
 
   attr_accessible :description,
-                  :title,
                   :asset_type,
                   :character_list,
                   :keyword_list,
                   :asset,
                   :scene_ids,
                   :stock
-
-  #validates_inclusion_of :type, :in => TYPES
-
- before_create :default_name
-  
-  def default_name
-    self.title ||= File.basename(asset.filename, '.*') if asset
-  end
 
   def title
     self.filename

@@ -1,4 +1,3 @@
-<% # text_field_tag :title, nil, :placeholder => 'Title' %>
 <%= select :asset, :asset_type, Asset::TYPES, {} %>
 <%= select :asset, :scene_ids, Scene.all.map {|x| [x.episode.number.pad + ' - ' + x.episode.title + ' - Scene ' + x.number.pad, x.id]}, {}, :multiple => true %>
 <%= autocomplete_field_tag :keyword_list, '', autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
