@@ -7,6 +7,7 @@ AssetManager::Application.routes.draw do
   end
 
   scope "/plum-landing" do
+    root :to => redirect("/plum-landing/assets");
     resources :assets do
       collection do
         match 'type/:asset_type(/:layout)' => 'assets#type', :as => :type
