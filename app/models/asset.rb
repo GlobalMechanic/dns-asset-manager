@@ -9,6 +9,7 @@ class Asset < ActiveRecord::Base
 
 	has_paper_trail
   mount_uploader :asset, AssetUploader
+  mount_uploader :preview, AssetUploader
 
   has_and_belongs_to_many :scene
   has_many :reel_assets, :dependent => :delete_all
