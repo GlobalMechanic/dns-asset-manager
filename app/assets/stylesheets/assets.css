@@ -393,7 +393,7 @@ Asset multiple upload
 Media queries
 ------- */
 @media all and (min-width:1440px) {
-  .assets .asset:nth-child(5n+5) .extended { left: auto; right: right: 0; }
+  .assets .asset:nth-child(5n+5) .extended { left: auto; right: 0; }
   .assets .asset:nth-child(7n+7) .extended { left: auto; right: 0; }
 
   .assets .asset:nth-child(7n+7).open .reel { right: 0; }
