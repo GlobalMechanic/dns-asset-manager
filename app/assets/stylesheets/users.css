@@ -5,7 +5,7 @@ table.users .name {
   font-weight: bold;
 }
 
-body.controller-devise-sessions header h1 {
+header .logged-out h1 {
   margin-top: 30px;
   color: white;
 }
