@@ -12,14 +12,30 @@ Asset.delete_all
 Version.delete_all
 Reel.delete_all
 
-user = User.create!(
+admin = User.create!(
   :name => 'Admin',
   :email => 'tylor@denimandsteel.com',
   :password => 'password',
   :password_confirmation => 'password'
 )
-user.add_role :admin
-PaperTrail.whodunnit = user.id
+admin.add_role :admin
+PaperTrail.whodunnit = admin.id
+
+regular = User.create!(
+  :name => 'Regular',
+  :email => 'tylor+regular@denimandsteel.com',
+  :password => 'password',
+  :password_confirmation => 'password'
+)
+
+animator = User.create!(
+  :name => 'Animator',
+  :email => 'tylor+animator@denimandsteel.com',
+  :password => 'password',
+  :password_confirmation => 'password'
+)
+animator.add_role :animator
+PaperTrail.whodunnit = animator.id
 
 pilot = Episode.create! :number => 1, :season => 1, :title => "Pilot"
 
