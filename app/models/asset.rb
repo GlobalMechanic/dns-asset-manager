@@ -23,6 +23,12 @@ class Asset < ActiveRecord::Base
                   :scene_ids,
                   :stock
 
+ # before_create :default_name
+  
+ #  def default_name
+ #    self.title ||= File.basename(asset.filename, '.*') if asset
+ #  end
+
   def title
     self.filename
   end
