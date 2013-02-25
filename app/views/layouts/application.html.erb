@@ -17,8 +17,8 @@
 </head>
 <body class="controller-<%= params[:controller].parameterize %> action-<%= params[:action].parameterize %>">
   <div class="container">
-    <% if user_signed_in? %>
     <header class="top-bar">
+    <% if user_signed_in? %>
     <nav class="row">
       <div class="row">
         <ul id="primary">
@@ -104,12 +104,16 @@
 
       </div>
     </nav>
+  <% else %>
+    <nav class="row">
+      <h1>Asset Manager</h1>
+    </nav>
+  <% end %>
   </header>
-    <% end %>
-    <%= content_tag :p, notice, :class => 'notice' if notice %>
-    <%= content_tag :p, alert, :class => 'alert' if alert %>
-    <%= content_tag :h2, @title if @title %>
-    <%= yield %>
+  <%= content_tag :p, notice, :class => 'notice' if notice %>
+  <%= content_tag :p, alert, :class => 'alert' if alert %>
+  <%= content_tag :h2, @title if @title %>
+  <%= yield %>
   </div>
   <div id="upload-form">
     <div class="inner">
