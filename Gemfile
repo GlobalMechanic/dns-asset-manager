@@ -19,6 +19,7 @@ gem 'inherited_resources'
 gem 'paper_trail'
 gem 'acts-as-taggable-on', '~> 2.3.3'
 gem 'carrierwave'
+gem "fog", "~> 1.3.1"
 gem 'paperclip'
 gem 'mini_magick'
 
