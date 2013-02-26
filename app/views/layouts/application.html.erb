@@ -115,6 +115,7 @@
   <%= content_tag :h2, @title if @title %>
   <%= yield %>
   </div>
+  <% if can? :create, Asset %>
   <div id="upload-form">
     <div class="inner">
       <h3>New Asset</h3>
@@ -154,5 +155,6 @@
     </form>
   </div>
   </script>
+  <% end %>
 </body>
 </html>
