@@ -13,7 +13,7 @@ class AssetUploader < CarrierWave::Uploader::Base
 
   IMAGE_EXTENSIONS = %w(jpg jpeg gif png)
   MOVIE_EXTENSIONS = %w(mov)
-  FLASH_EXTENSIONS = %w(fla flv)
+  FLASH_EXTENSIONS = %w(fla flv swf)
   AUDIO_EXTENSIONS = %w(mp3 wav)
   
   # Choose what kind of storage to use for this uploader:

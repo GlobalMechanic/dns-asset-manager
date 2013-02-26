@@ -106,6 +106,8 @@
         <video src="<%= asset.send(preview + '_url') %>" controls="controls" preload="metadata"></video>
         <% elsif is_audio(asset.send(preview)) %>
         <audio src="<%= asset.send(preview + '_url') %>" controls="controls" preload="metadata"></audio>
+        <% elsif is_flash(asset.send(preview)) %>
+        <div data-flash-url="<%= asset.send(preview + '_url') %>"></div>
         <% else %>
         <%= image_tag '/assets/placeholders/' + clean_extension(asset.send(preview)) + '.png', :class => 'default', :draggable => 'false' %>
         <% end %>

@@ -58,8 +58,29 @@ $(document).ready(function() {
       $(this).parent().find('[data-image-url]:empty').each(function() {
         $(this).append($('<img>', { 'src': $(this).data('image-url') }));
       });
-      $(this).parent().find('[data-image-url]:empty').each(function() {
-        $(this).append($('<img>', { 'src': $(this).data('image-url') }));
+      $(this).parent().find('[data-flash-url]:empty').each(function() {
+        var entityMap = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': '&quot;',
+          "'": '&#39;',
+          "/": '&#x2F;'
+        };
+        function escapeHtml(string) {
+          return String(string).replace(/[&<>"'\/]/g, function (s) {
+            return entityMap[s];
+          });
+        }
+        var video = ['<object width="360" height="186">',
+          '<param name="movie" value="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf"></param>',
+          '<param name="flashvars" value="src=' + escapeHtml($(this).data('flash-url')) + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true"></param>',
+          '<param name="allowFullScreen" value="true"></param>',
+          '<param name="allowscriptaccess" value="always"></param>',
+          '<embed src="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="360" height="186" flashvars="src=' + escapeHtml($(this).data('flash-url')) + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true"></embed>',
+          '</object>'];
+
+        $(this).append(video.join("\n"));
       });
       $('.asset.open').removeClass('open');
       $('.tile.open').removeClass('open');
