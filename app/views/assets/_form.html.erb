@@ -18,6 +18,13 @@
     </label>
   </div>
 
+  <div class="row">
+    <label for="asset_preview">
+      <span class="button">Add a preview</span>
+      <%= f.file_field :preview, multiple: true, name: "asset[preview]" %>
+    </label>
+  </div>
+
   <%= f.select :asset_type, Asset::TYPES %>
   <%= f.select :scene_ids, Scene.all.map {|x| [x.episode.number.pad + ' - ' + x.episode.title + ' - Scene ' + x.number.pad, x.id]}, {}, :multiple => true %>
   <%= f.autocomplete_field :character_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Characters' %>

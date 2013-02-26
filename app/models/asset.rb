@@ -21,6 +21,7 @@ class Asset < ActiveRecord::Base
                   :character_list,
                   :keyword_list,
                   :asset,
+                  :preview,
                   :scene_ids,
                   :stock
 
