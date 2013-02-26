@@ -7,7 +7,7 @@
     <% if is_image (@asset.asset) %>
       <%= image_tag @asset.asset_url(:thumb).to_s, :class => 'default', :draggable => 'false' %>
     <% elsif is_movie @asset.asset %>
-      <video class="default" src="<%= asset.asset_url %>"></video>
+      <video class="default" src="<%= @asset.asset_url %>"></video>
     <% else %>
       <%= image_tag '/assets/' + clean_extension(@asset.asset) + '.png', :class => 'default', :draggable => 'false' %>
     <% end %>
