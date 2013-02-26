@@ -25,7 +25,7 @@ class Asset < ActiveRecord::Base
                   :scene_ids,
                   :stock
 
-  before_create :parse_meta
+  #before_create :parse_meta
 
   def parse_meta
     newAsset = File.basename(self.asset.to_s)
@@ -33,7 +33,7 @@ class Asset < ActiveRecord::Base
     elements = filename.split('_')
 
     if elements[-1].match(/[0-9]/)
-      # id = elements[-1]
+      self.id = elements[-1]
       elements.pop
     end
 

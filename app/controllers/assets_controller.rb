@@ -73,9 +73,16 @@ class AssetsController < ApplicationController
   # POST /assets.json
   def create
     @asset = Asset.new(params[:asset])
+    @asset.parse_meta
+    if @asset.id? && Asset.exists?(@asset.id)
+      @asset = Asset.find(@asset.id)
+      success = @asset.update_attributes(params[:asset])
+    else
+      success = @asset.save
+    end
 
     respond_to do |format|
-      if @asset.save
+      if success
         format.html { redirect_to @asset, notice: 'Asset was successfully created.' }
         format.json { render json: @asset, status: :created, location: @asset }
       else
