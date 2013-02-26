@@ -32,10 +32,10 @@ class Asset < ActiveRecord::Base
     leftover, filename, extension = newAsset.split(/^(.*)\.(.*)$/)
     elements = filename.split('_')
 
-    # if elements[-1].match(/[0-9]/)
-    #   id = elements[-1]
-    #   elements.pop
-    # end
+    if elements[-1].match(/[0-9]/)
+      # id = elements[-1]
+      elements.pop
+    end
 
 
     self.stock = elements[0].downcase == 'stk' ? true : false
