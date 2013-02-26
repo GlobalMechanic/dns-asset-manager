@@ -67,7 +67,9 @@
 
       <%# Asset details section %>
       <div class="tile">
+        <% if can? :update, Asset %>
         <a href="<%= asset_path asset %>/edit" class="button">Edit Asset</a>
+        <% end %>
         <dl>
           <% if asset.scene.length > 0 %>
           <dt>Episodes:</dt>
@@ -119,8 +121,10 @@
     </nav>
 
     <%# not working %>
-    <%= form_for asset do |f| %>
-      <%= f.autocomplete_field :keyword_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
+    <% if can? :update, Asset %>
+      <%= form_for asset do |f| %>
+        <%= f.autocomplete_field :keyword_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
+      <% end %>
     <% end %>
   </div>
 </div>
