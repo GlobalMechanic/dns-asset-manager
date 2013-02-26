@@ -74,7 +74,7 @@ $(document).ready(function() {
         }
         var video = ['<object width="360" height="186">',
           '<param name="movie" value="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf"></param>',
-          '<param name="flashvars" value="src=' + escapeHtml($(this).data('flash-url')) + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true"></param>',
+          '<param name="flashvars" value="src=' + escapeHtml($(this).data('flash-url')) + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true&backgroundColor=#ffffff"></param>',
           '<param name="allowFullScreen" value="true"></param>',
           '<param name="allowscriptaccess" value="always"></param>',
           '<embed src="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="360" height="186" flashvars="src=' + escapeHtml($(this).data('flash-url')) + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true"></embed>',
