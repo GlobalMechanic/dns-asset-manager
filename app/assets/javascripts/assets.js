@@ -72,12 +72,14 @@ $(document).ready(function() {
             return entityMap[s];
           });
         }
-        var video = ['<object width="360" height="186">',
+        // var flashURL = 'http://osmf.org/videos/cathy2.flv';
+        var flashURL = escapeHtml($(this).data('flash-url'));
+        var video = ['<object width="359" height="181">',
           '<param name="movie" value="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf"></param>',
-          '<param name="flashvars" value="src=' + escapeHtml($(this).data('flash-url')) + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true&backgroundColor=#ffffff"></param>',
+          '<param name="flashvars" value="src=' + flashURL + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true&backgroundColor=#ffffff"></param>',
           '<param name="allowFullScreen" value="true"></param>',
           '<param name="allowscriptaccess" value="always"></param>',
-          '<embed src="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="360" height="186" flashvars="src=' + escapeHtml($(this).data('flash-url')) + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true&backgroundColor=#ffffff"></embed>',
+          '<embed src="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="359" height="181" flashvars="src=' + flashURL + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true&backgroundColor=#ffffff"></embed>',
           '</object>'];
 
         $(this).append(video.join("\n"));
