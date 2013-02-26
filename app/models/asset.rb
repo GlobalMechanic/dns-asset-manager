@@ -14,22 +14,39 @@ class Asset < ActiveRecord::Base
   has_and_belongs_to_many :scene
   has_many :reel_assets, :dependent => :delete_all
 
-  acts_as_taggable_on :keywords, :characters
+  acts_as_taggable_on :keywords, :name
 
   attr_accessible :description,
                   :asset_type,
-                  :character_list,
+                  :name_list,
                   :keyword_list,
                   :asset,
                   :preview,
                   :scene_ids,
                   :stock
 
- # before_create :default_name
-  
- #  def default_name
- #    self.title ||= File.basename(asset.filename, '.*') if asset
- #  end
+  before_create :parse_meta
+
+  def parse_meta
+    newAsset = File.basename(self.asset.to_s)
+    leftover, filename, extension = newAsset.split(/^(.*)\.(.*)$/)
+    elements = filename.split('_')
+
+    # if elements[-1].match(/[0-9]/)
+    #   id = elements[-1]
+    #   elements.pop
+    # end
+
+
+    self.stock = elements[0].downcase == 'stk' ? true : false
+    if Asset::TYPES.map {|type| type[1] }.include?(elements[1])
+      self.asset_type = elements[1]
+      elements.shift
+    end
+    self.name_list = elements[1]
+    self.keyword_list = elements[2..-1].join(', ')
+    #newAsset['id'] = id if id
+  end
 
   def title
     self.filename
@@ -44,7 +61,9 @@ class Asset < ActiveRecord::Base
         filename << 'EP' + episode.number.pad
       end
     end
-    filename += [self.asset_type] + self.character_list.to_a + self.keyword_list.to_a + [self.id]
+    filename += [self.asset_type] if self.asset_type
+    filename += self.name_list.to_a + self.keyword_list.to_a + [self.id]
+    puts filename.inspect
     filename = filename.join('_')
     filename += File.extname self.asset_url
     #filename.downcase

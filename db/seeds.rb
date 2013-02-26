@@ -45,7 +45,7 @@ pilot = Episode.create! :number => 1, :season => 1, :title => "Pilot"
       :description => 'Clementine runs and jumps',
       :asset_type => 'character',
       :stock => true,
-      :character_list => 'clementine',
+      :name_list => 'clementine',
       :keyword_list => 'jump',
       :asset => File.open(File.join(Rails.root, 'db', '20101123_BBA_Sig_Fresno_243.jpg'))
     )
@@ -56,7 +56,7 @@ pilot = Episode.create! :number => 1, :season => 1, :title => "Pilot"
       :description => 'Bob moves around',
       :asset_type => 'character',
       :stock => true,
-      :character_list => 'oliver',
+      :name_list => 'oliver',
       :keyword_list => '3/4 walk',
       :asset => File.open(File.join(Rails.root, 'db', '20100818_Scout_Schiphol_stills-081.jpg'))
     )
@@ -77,7 +77,7 @@ finale = Episode.create! :number => 2, :season => 1, :title => "Finale"
       :description => 'Clementine skip and kicks', 
       :asset_type => 'character', 
       :stock => false,
-      :character_list => 'clementine',
+      :name_list => 'clementine',
       :keyword_list => 'skip, kick', 
       :asset => File.open(File.join(Rails.root, 'db', '20111201-BBA-Boca-15127-04b.jpg'))
     )
@@ -87,7 +87,7 @@ finale = Episode.create! :number => 2, :season => 1, :title => "Finale"
     finaleSceneTwo.assets.create!(
       :description => 'Oliver gets booted', 
       :asset_type => 'character', 
-      :character_list => 'oliver',
+      :name_list => 'oliver',
       :keyword_list => 'jump', 
       :asset => File.open(File.join(Rails.root, 'db', '20111202-BBA-Boca-15155-04a.jpg'))
     )
