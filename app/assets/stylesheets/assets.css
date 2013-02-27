@@ -234,8 +234,16 @@ Asset extended
 
 .tile.open { display: block; }
 
-
-
+.extended .edit_asset input {
+  -webkit-transition: background 0.2s ease-out;
+}
+.extended .edit_asset.active input {
+  background: rgba(0, 255, 0, 0.25);
+  -webkit-transition: none;
+}
+.extended .edit_asset.error input {
+  background: rgba(255, 0, 0, 0.25);
+}
 
 /* ???? [START] */
 

@@ -131,7 +131,6 @@
       </ul>
     </nav>
 
-    <%# not working %>
     <% if can? :update, Asset %>
       <%= form_for asset do |f| %>
         <%= f.autocomplete_field :keyword_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>

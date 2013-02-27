@@ -100,6 +100,23 @@ $(document).ready(function() {
       $(this).parents('.asset').removeClass('open');
   });
 
+  $('.extended .edit_asset').submit(function() {
+    var $this = $(this);
+    $this.addClass('active');
+    window.tylor = $this;
+    $.ajax(gm.root_url + 'assets/' + $this.attr('id').replace('edit_asset_', '') + '.json', {
+      type: 'PUT',
+      data: $this.serialize(),
+      success: function() {
+        $this.removeClass('active');
+      },
+      error: function() {
+        $this.addClass('error');
+      }
+    });
+    return false;
+  });
+
   // Reveal relevant tile
   $('.asset-utilities a').click(function (event) {
     event.preventDefault();
@@ -149,7 +166,7 @@ $(document).ready(function() {
         'asset_type': $('#asset_asset_type', formContext).val(),
         'scene_ids': $('#asset_scene_ids', formContext).val(),
       };
-      $.ajax('/plum-landing/assets/' + upload.result.id + '.json', {
+      $.ajax(gm.root_url + 'assets/' + upload.result.id + '.json', {
         type: 'PUT',
         data: { asset: asset },
         success: function() {
