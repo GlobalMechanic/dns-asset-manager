@@ -5,6 +5,7 @@ gem 'rails', '3.2.11'
 gem 'pg'
 # gem 'mysql2'
 gem 'json'
+gem 'airbrake'
 
 # Auth
 gem 'devise'
