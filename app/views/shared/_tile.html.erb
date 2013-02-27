@@ -108,16 +108,20 @@
       <%# Video section%>
       <div class="tile">
         <% preview = asset.preview? ? 'preview' : 'asset' %>
-        <% if is_image(asset.send(preview)) %>
-        <div data-image-url="<%= asset.send(preview + '_url') %>"></div>
-        <% elsif is_movie(asset.send(preview)) %>
-        <video src="<%= asset.send(preview + '_url') %>" controls="controls" preload="metadata"></video>
-        <% elsif is_audio(asset.send(preview)) %>
-        <audio src="<%= asset.send(preview + '_url') %>" controls="controls" preload="metadata"></audio>
-        <% elsif is_flash(asset.send(preview)) %>
-        <div data-flash-url="<%= asset.send(preview + '_url') %>"></div>
+        <% if previewable(asset.send(preview)) %>
+          <% if is_image(asset.send(preview)) %>
+          <div data-image-url="<%= asset.send(preview + '_url') %>"></div>
+          <% elsif is_movie(asset.send(preview)) %>
+          <video src="<%= asset.send(preview + '_url') %>" controls="controls" preload="metadata"></video>
+          <% elsif is_audio(asset.send(preview)) %>
+          <audio src="<%= asset.send(preview + '_url') %>" controls="controls" preload="metadata"></audio>
+          <% elsif is_flash(asset.send(preview)) %>
+          <div data-flash-url="<%= asset.send(preview + '_url') %>"></div>
+          <% else %>
+          <%= image_tag '/assets/placeholders/' + clean_extension(asset.send(preview)) + '.png', :class => 'default', :draggable => 'false' %>
+          <% end %>
         <% else %>
-        <%= image_tag '/assets/placeholders/' + clean_extension(asset.send(preview)) + '.png', :class => 'default', :draggable => 'false' %>
+          <p>No preview available</p>
         <% end %>
       </div>
     </div>    
