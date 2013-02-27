@@ -24,15 +24,6 @@ class AssetsController < ApplicationController
     else
       @assets = @search.order('created_at DESC')
     end
-
-    if @current_reel
-      @reel = @current_reel
-    else
-      @reel = current_user.reels.create
-      current_user.current_reel_slug = @reel.id
-      current_user.save
-      @current_reel = @reel
-    end
     
     # per_page = 20
     # @assets = Asset.limit(per_page).offset(params[:page] ? params[:page].to_i * per_page : 0)
