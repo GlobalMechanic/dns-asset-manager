@@ -406,8 +406,8 @@ Asset multiple upload
 .asset-uploads > div.show .override { display: block; }
 .asset-uploads > div.success header { background: green; }
 
-.asset-uploads .image { float: left; }
-.asset-uploads .title { margin-left: 90px; }
+/*.asset-uploads .image { float: left; }
+.asset-uploads .title { margin-left: 90px; }*/
 
 .asset-uploads .asset-form input[type="text"],
 .asset-uploads .asset-form textarea { min-width: 480px; }

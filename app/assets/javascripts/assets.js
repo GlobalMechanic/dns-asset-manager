@@ -181,6 +181,10 @@ $(document).ready(function() {
   };
   $('#batch-form').submit(submitBatch);
   $('#update-uploads').click(submitBatch);
+  $('#close-uploads').click(function() {
+    $('body').removeClass('drop');
+    window.location.reload();
+  });
 
   $(document).on('click', '.row header', function() {
     var $row = $(this).parent();
