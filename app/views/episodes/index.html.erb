@@ -1,5 +1,9 @@
 <h2>All episodes</h2>
 
 <% @episodes.each_with_index do |episode, index| %>
-  <h3 class="result-headers"><%= episode.number.pad %> - <%= link_to episode.title, episode %></h3>
+  <h3 class="result-headers"><%= episode.number.pad %> - <%= link_to episode.title, episode %><% if can? :update, Episode %><span class="actions"><%= link_to 'Edit', edit_episode_path(episode) %></span><% end %></h3>
+<% end %>
+
+<% if can? :create, Episode %>
+<h3 class="result-headers result-new clearfix"><span class="actions"><%= link_to 'New episode', new_episode_path %></span></h3>
 <% end %>

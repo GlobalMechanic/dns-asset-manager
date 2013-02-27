@@ -1,0 +1,35 @@
+<%= form_for @episode do |f| %>
+  <% if @episode.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@episode.errors.count, "error") %> prohibited this episode from being saved:</h2>
+
+      <ul>
+      <% @episode.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :number %>
+    <%= f.text_field :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :season %>
+    <%= f.text_field :season %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+    <% if @episode.persisted? %>
+    <%= link_to 'Destroy', @episode, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+<% end %>

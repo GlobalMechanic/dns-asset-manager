@@ -309,8 +309,14 @@ Asset search, filters & results
   color: #333;
   background: #eee; 
 }
+.result-headers.result-new { background: transparent; }
 .result-headers a:hover,
 .result-headers a:visited { color: #333; background: #eee; }
+
+.result-headers .actions {
+  font-size: 18px;
+  float: right;
+}
 
 /* -------
 Asset add, edit, delete forms
