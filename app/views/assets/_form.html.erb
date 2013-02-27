@@ -12,17 +12,13 @@
   <% end %>
 
   <div class="row">
-    <label for="asset_asset">
-      <span class="button">Add a new version</span>
-      <%= f.file_field :asset, multiple: true, name: "asset[asset]" %>
-    </label>
+    <label for="asset_asset">Add a new version</label>
+    <%= f.file_field :asset, multiple: true, name: "asset[asset]" %>
   </div>
 
   <div class="row">
-    <label for="asset_preview">
-      <span class="button">Add a preview</span>
-      <%= f.file_field :preview, multiple: true, name: "asset[preview]" %>
-    </label>
+    <label for="asset_preview">Add a preview</label>
+    <%= f.file_field :preview, multiple: true, name: "asset[preview]" %>
   </div>
 
   <%= f.select :asset_type, Asset::TYPES %>

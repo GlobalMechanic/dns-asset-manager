@@ -334,15 +334,19 @@ Asset add, edit, delete forms
   font-size: 20px;
 }
 .asset-form label[for="asset_asset"] .button,
-.asset-form label[for="asset_preview"] .button { color:#333; border: rgb(230,230,230); background: rgb(230,230,230); }
+.asset-form label[for="asset_preview"] .button {
+  display: block;
+  color:#333;
+  border: rgb(230,230,230);
+  background: rgb(230,230,230);
+}
 .asset-form label[for="asset_asset"] .button:hover,
 .asset-form label[for="asset_preview"] .button:hover { cursor: pointer; }
 
 .asset-form input[id="asset_asset"],
 .asset-form input[id="asset_preview"] { 
   width: 126px;
-  margin-bottom: 0;
-  opacity: 0;
+  margin-bottom: 20px;
 }
 
 .asset-form select[multiple=multiple] { width: 520px; }
