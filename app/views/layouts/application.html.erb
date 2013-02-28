@@ -120,7 +120,7 @@
   <% if can? :create, Asset %>
   <div id="upload-form">
     <div class="inner">
-      <h3>New Asset</h3>
+      <h3>New Assets</h3>
       <%= form_for Asset.new, :html => { :multipart => true, :class => 'asset-form' } do |f| %>
       <div class="row">
         <label for="asset_asset">Drag and drop or choose a new file</label>
@@ -128,15 +128,11 @@
       </div>
       <% end %>
       <div class="batch">
-        <form class="asset-form" id="batch-form">
-            <%= render :partial => 'shared/asset-form' %>
-        </form>
         <div class="asset-uploads">
-          <h3>Asset List</h3>
+          <h3>Assets</h3>
         </div>
         <div class="row">
-          <%= submit_tag 'Close', :id => 'close-uploads' %>
-          <%= submit_tag 'Update and Close', :id => 'update-uploads' %>
+          <%= submit_tag 'Done', :id => 'close-uploads' %>
         </div>
       </div>
     </div>
@@ -149,9 +145,6 @@
         <div class="progress progress-striped active"><div class="bar" style="width: 0%;"></div></div>
       </div>
     </header>
-    <form class="override asset-form">
-      <%= render :partial => 'shared/asset-form' %>
-    </form>
   </div>
   </script>
   <% end %>
