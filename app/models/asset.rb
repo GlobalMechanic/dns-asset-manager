@@ -12,6 +12,7 @@ class Asset < ActiveRecord::Base
   mount_uploader :preview, AssetUploader
 
   has_and_belongs_to_many :scene
+  belongs_to :episode
   has_many :reel_assets, :dependent => :delete_all
 
   acts_as_taggable_on :keywords, :name
