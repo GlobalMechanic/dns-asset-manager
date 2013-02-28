@@ -30,24 +30,29 @@ class Asset < ActiveRecord::Base
   #before_create :parse_meta
 
   def parse_meta
-    newAsset = File.basename(self.asset.to_s)
-    leftover, filename, extension = newAsset.split(/^(.*)\.(.*)$/)
-    elements = filename.split('_')
+    if self.asset?
+      newAsset = File.basename(self.asset.to_s)
+      leftover, filename, extension = newAsset.split(/^(.*)\.(.*)$/)
+      elements = filename.split('_')
 
-    if elements[-1].match(/[0-9]/)
-      self.id = elements[-1]
-      elements.pop
+      if elements.length > 0 && animation = elements[0].downcase.match(/(stk|ep)([0-9]+)?/)
+        case animation[1]
+        when 'stk'
+          self.stock = true            
+        when 'ep'
+          self.stock = false
+          if episode = Episode.find_by_number(animation[2])
+            self.episode_id = episode.id
+          end
+        end
+        elements.shift # Strip off stock or episode
+
+        self.id = elements.pop if elements[-1].match(/[0-9]/)
+        self.asset_type = elements.shift if Asset::TYPES.map {|type| type[1] }.include?(elements[0])
+        self.name_list = elements.shift
+        self.keyword_list = elements.join(', ') if elements.length > 0
+      end
     end
-
-
-    self.stock = elements[0].downcase == 'stk' ? true : false
-    if Asset::TYPES.map {|type| type[1] }.include?(elements[1])
-      self.asset_type = elements[1]
-      elements.shift
-    end
-    self.name_list = elements[1]
-    self.keyword_list = elements[2..-1].join(', ')
-    #newAsset['id'] = id if id
   end
 
   def title
