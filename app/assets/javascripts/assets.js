@@ -154,6 +154,10 @@ $(document).ready(function() {
     done: function (e, data) {
       data.context.find('.progress').removeClass('active').addClass('progress-success');
       gm.uploads.push(data);
+    },
+    fail: function(e, data, three) {
+      data.context.find('.progress').remove()
+      data.context.append('<div class="alert">' + JSON.parse(data.jqXHR.responseText).asset[0] + '</div>');
     }
   });
 
