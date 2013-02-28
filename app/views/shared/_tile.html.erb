@@ -56,7 +56,7 @@
           <tbody>
           <% asset.versions.reverse.each do |version| %>
             <tr>
-              <td><%= version.whodunnit ? User.find(version.whodunnit).name : '-' %></td>
+              <td><%= version.whodunnit? ? User.find(version.whodunnit).name : '-' %></td>
               <td><%= version.event.titleize %></td>
               <td><%= time_ago_in_words(version.created_at) %> ago</td>
             </tr>

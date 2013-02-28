@@ -23,6 +23,7 @@ class Asset < ActiveRecord::Base
                   :keyword_list,
                   :asset,
                   :preview,
+                  :episode_id,
                   :scene_ids,
                   :stock
 
