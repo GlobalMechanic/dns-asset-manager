@@ -11,7 +11,9 @@ class ApplicationController < ActionController::Base
     @current_reel = current_user && current_user.current_reel_slug? && Reel.exists?(current_user.current_reel_slug) ? Reel.find(current_user.current_reel_slug) : nil
     @reels_created = Reel.where("title <> ''").order('created_at DESC').limit(5)
     @reels_updated = Reel.where("title <> ''").order('updated_at DESC').limit(5)
+  end
 
+  def add_reels
     if @current_reel
       @reel = @current_reel
     else
@@ -21,4 +23,5 @@ class ApplicationController < ActionController::Base
       @current_reel = @reel
     end
   end
+
 end
