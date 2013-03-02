@@ -15,6 +15,8 @@ class Ability
       #can(:manage, Reel) { |reel| user.reels.include?(reel)  }
       can :read, :all
       can :type, Asset # asset browsing by type
+      can :download, Asset # asset browsing by type
+      can :keyword, Asset # asset browsing by type
       cannot :manage, User
       #cannot [:create, :update, :destroy], Asset
       can :manage, Reel, :user_id => user.id
