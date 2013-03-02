@@ -7,7 +7,11 @@
     <% end %>
   <% end %>
   <div class="title"><%= asset.title %></div>
-  <% if is_image asset.asset %>
+
+  <% preview = asset.preview? ? 'preview' : 'asset' %>
+  <% if previewable(asset.send(preview)) && is_image(asset.send(preview)) %>
+  <%= image_tag asset.preview_url(:thumb).to_s, :class => 'default', :draggable => 'false' %>
+  <% elsif is_image asset.asset %>
   <%= image_tag asset.asset_url(:thumb).to_s, :class => 'default', :draggable => 'false' %>
   <% elsif is_movie asset.asset %>
   <video class="default" preload="metadata" src="<%= asset.asset_url %>"></video>
