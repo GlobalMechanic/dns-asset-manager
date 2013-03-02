@@ -1,6 +1,8 @@
 class Asset < ActiveRecord::Base
   TYPES = [
     ['Character', 'character'],
+    ['Flora', 'flora'],
+    ['Fauna', 'fauna'],
     ['Prop', 'prop'],
     ['Background', 'background'],
     ['Effect', 'effect'],
