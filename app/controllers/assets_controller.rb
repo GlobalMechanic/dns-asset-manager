@@ -137,9 +137,8 @@ class AssetsController < ApplicationController
     if Rails.env.development?
       send_file File.join(Rails.root, 'public', @asset.asset_url), :filename => @asset.filename
     else
-      open(@asset.asset_url) {|img|
+      open('https://asset-manager.s3.amazonaws.com/uploads/asset/asset/' + @asset.id.to_s + '/' + (@asset.versions.length - 1).to_s + '/' + File.basename(@asset.asset_url).to_s) {|img|
         tmpfile = Tempfile.new(@asset.filename)
-        tmpfile = Tempfile.new('https://asset-manager.s3.amazonaws.com/uploads/asset/asset/' + @asset.id.to_s + '/' + (@asset.versions.length - 1).to_s + '/' + File.basename(@asset.asset_url).to_s)
         File.open(tmpfile.path, 'wb') do |f|
           f.write img.read
         end
