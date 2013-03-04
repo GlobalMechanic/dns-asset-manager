@@ -1,9 +1,12 @@
 <%= link_to '&larr; All episodes'.html_safe, episodes_path %>
-
-  <h2><%= @episode.number.pad %> - <%= @episode.title %>'s Scenes</h2>
-  <% @episode.scenes.each_with_index do |scene, index| %>
+  
+  <h2><%= @episode.number.pad %> - <%= @episode.title %></h2>
+  <%= render :partial => 'shared/assets', :locals => { :assets => @episode.assets } %>
+  <% if @episode.scenes.length > 0 %>
+  <h2>Scenes:</h2>
+  <% @episode.scenes.each do |scene| %>
     <div class="clearfix">
       <h3 class="result-headers"><%= link_to 'Scene ' + scene.number.pad, episode_scene_path(@episode, scene) %></h3>
-      <%= render :partial => 'shared/assets', :locals => { :assets => scene.assets } %>
     </div>
   <% end %>
+<% end %>
