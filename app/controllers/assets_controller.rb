@@ -2,7 +2,8 @@ class AssetsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :add_reels
   load_and_authorize_resource
-  autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag', :full => true
+  autocomplete :tag, :keywords, { :column_name => 'name', :class_name => 'ActsAsTaggableOn::Tag', :full => true, :where => "(select context from taggings where tag_id = tags.id and context = 'keywords' group by context) = 'keywords'" }
+  autocomplete :tag, :name, { :column_name => 'name', :class_name => 'ActsAsTaggableOn::Tag', :full => true, :where => "(select context from taggings where tag_id = tags.id and context = 'name' group by context) = 'name'" }
 
   # GET /assets
   # GET /assets.json
