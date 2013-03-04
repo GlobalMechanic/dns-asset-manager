@@ -72,7 +72,7 @@ class Asset < ActiveRecord::Base
     end
     filename += [self.asset_type] if self.asset_type
     filename += self.name_list.to_a + self.keyword_list.to_a + [self.id]
-    puts filename.inspect
+    #puts filename.inspect
     filename = filename.join('_')
     filename += File.extname self.asset_url
     #filename.downcase

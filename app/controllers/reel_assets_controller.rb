@@ -13,7 +13,7 @@ class ReelAssetsController < ApplicationController
     @reel_asset.asset_id = @asset.id
     @reel_asset.order = next_order
 
-    puts @reel_asset.inspect
+    # puts @reel_asset.inspect
 
     respond_to do |format|
       if @reel_asset.save
