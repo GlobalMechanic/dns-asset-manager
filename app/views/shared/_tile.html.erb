@@ -48,7 +48,7 @@
 
       <%# Versions section %>
       <div class="tile">
-        <table>
+        <table class="detail">
           <caption>Versions</caption>
           <thead>
             <tr>
@@ -114,7 +114,7 @@
       <% if previewable(asset.send(preview)) %>
       <div class="tile">
         <% if is_image(asset.send(preview)) %>
-        <div data-image-url="<%= asset.send(preview + '_url') %>"></div>
+        <div class="detail" data-image-url="<%= asset.send(preview + '_url') %>"></div>
         <% elsif is_movie(asset.send(preview)) %>
         <video src="<%= asset.send(preview + '_url') %>" controls="controls" preload="metadata"></video>
         <% elsif is_audio(asset.send(preview)) %>

@@ -199,7 +199,6 @@ Asset extended
   position: relative; 
   width: 100%; 
   border-left: 1px solid rgb(170,170,170);
-  margin-bottom: 100px;
 }
 
 .extended caption {  
@@ -231,6 +230,7 @@ Asset extended
   float: none;          
   font-size: 24px; 
 }
+.extended .detail { margin-bottom: 100px; }
 
 .tile.open { display: block; }
 
