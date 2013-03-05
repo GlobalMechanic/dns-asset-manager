@@ -28,4 +28,5 @@ CarrierWave.configure do |config|
   end
  
   config.cache_dir = "#{Rails.root}/tmp/uploads"                  # To let CarrierWave work on heroku
+  config.remove_previously_stored_files_after_update = false
 end
