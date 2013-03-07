@@ -27,7 +27,7 @@ class AssetUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    @name ||= "#{model.versions.length}_#{super}" if original_filename.present? and super.present?
+    "#{version}_#{super}" if original_filename.present?
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -74,5 +74,11 @@ class AssetUploader < CarrierWave::Uploader::Base
   # and we cannot access uploader instance fields from this block.
   version :thumb do
     process_extensions AssetUploader::IMAGE_EXTENSIONS, :resize_to_fill => [188, 106]
+  end
+
+  protected
+  def version
+    var = :"@#{mounted_as}_version"
+    model.instance_variable_get(var) or model.instance_variable_set(var, model.versions.length)
   end
 end
