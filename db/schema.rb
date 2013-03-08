@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130228190503) do
+ActiveRecord::Schema.define(:version => 20130307222349) do
 
   create_table "assets", :force => true do |t|
     t.text     "description"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20130228190503) do
     t.boolean  "stock"
     t.string   "preview"
     t.integer  "episode_id"
+    t.string   "preview_swf"
   end
 
   create_table "assets_scenes", :id => false, :force => true do |t|

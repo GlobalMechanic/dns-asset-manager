@@ -12,6 +12,7 @@ class Asset < ActiveRecord::Base
 	has_paper_trail
   mount_uploader :asset, AssetUploader
   mount_uploader :preview, AssetUploader
+  mount_uploader :preview_swf, AssetUploader
 
   has_and_belongs_to_many :scene
   belongs_to :episode
@@ -25,6 +26,7 @@ class Asset < ActiveRecord::Base
                   :keyword_list,
                   :asset,
                   :preview,
+                  :preview_swf,
                   :episode_id,
                   :scene_ids,
                   :stock

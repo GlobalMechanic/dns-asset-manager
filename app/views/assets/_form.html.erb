@@ -17,8 +17,15 @@
   </div>
 
   <div class="row">
-    <label for="asset_preview">Add a preview</label>
+    <label for="asset_preview">Image preview</label>
+    <%= image_tag @asset.preview_url(:thumb).to_s, :class => 'preview' if @asset.preview? %>
     <%= f.file_field :preview, multiple: true, name: "asset[preview]" %>
+  </div>
+
+  <div class="row">
+    <label for="asset_preview_swf">SWF preview</label>
+    <%= image_tag @asset.preview_swf_url.to_s, :class => 'preview' if @asset.preview_swf? %>
+    <%= f.file_field :preview_swf, multiple: true, name: "asset[preview_swf]" %>
   </div>
 
   <%= f.select :asset_type, Asset::TYPES %>

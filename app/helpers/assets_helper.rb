@@ -16,7 +16,7 @@ module AssetsHelper
   end
 
   def previewable(asset)
-    %w[jpg jpeg gif png mov flv swf mp3 wav].include?(clean_extension(asset))
+    %w[jpg jpeg gif png swf].include?(clean_extension(asset))
   end
 
   def clean_extension(filename)
