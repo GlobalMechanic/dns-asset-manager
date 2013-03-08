@@ -6,7 +6,7 @@
     <%= link_to 'Add to Reel', reel_asset_path(reel, asset), method: :post, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel add' %>
     <% end %>
   <% end %>
-  <div class="title"><%= asset.title %></div>
+  <div title="<%= asset.title %>" class="title"><%= asset.title %></div>
 
   <% if asset.preview? %>
   <%= image_tag asset.preview_url(:thumb).to_s, :class => 'default preview', :draggable => 'false' %>
@@ -33,7 +33,7 @@
   </div>
 
   <div class="extended">
-    <div class="title"><%= asset.title %></div>
+    <div title="<%= asset.title %>" class="title"><%= asset.title %></div>
     <div class="tab-tile">
 
       <%# Download section %>
