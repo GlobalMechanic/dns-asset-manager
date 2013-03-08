@@ -24,7 +24,7 @@ class AssetsController < ApplicationController
     elsif ['technique', 'keyword'].include? params[:where]
       @assets = @search.order('title').uniq
     else
-      @assets = @search.order('created_at DESC')
+      @assets = @search.order('created_at DESC').uniq
     end
     
     # per_page = 20
