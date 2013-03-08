@@ -179,6 +179,8 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
 .filters ul { float:left; width:165px; }
 .filters li { display: block; margin: 0; }
 .filters li:nth-child(1n+2) { display:none; }
+
+#episode-filters, #episode-filters ul { width: 185px; }
  
 .open.filters { background: #fafafa; border:none; border:1px solid rgb(240,240,240);}
 .open.filters ul { background: #fafafa; }
