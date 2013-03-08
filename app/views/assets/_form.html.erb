@@ -24,7 +24,9 @@
 
   <div class="row">
     <label for="asset_preview_swf">SWF preview</label>
-    <%= image_tag @asset.preview_swf_url.to_s, :class => 'preview' if @asset.preview_swf? %>
+    <% if @asset.preview_swf? %>
+    <div data-flash-url="<%= @asset.preview_swf %>"></div>
+    <% end %>
     <%= f.file_field :preview_swf, multiple: true, name: "asset[preview_swf]" %>
   </div>
 

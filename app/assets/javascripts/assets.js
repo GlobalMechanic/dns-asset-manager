@@ -1,5 +1,45 @@
 $(document).ready(function() {
 
+  var setupFlash = function(i, element) {
+    var entityMap = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': '&quot;',
+      "'": '&#39;',
+      "/": '&#x2F;'
+    };
+    function escapeHtml(string) {
+      return String(string).replace(/[&<>"'\/]/g, function (s) {
+        return entityMap[s];
+      });
+    }
+    // var flashURL = 'http://osmf.org/videos/cathy2.flv';
+    var flashURL = escapeHtml($(element).data('flash-url'));
+    var video = ['<object id="object-player" width="359" height="181">',
+      '<param name="movie" value="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf"></param>',
+      '<param name="flashvars" value="src=' + flashURL + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true&backgroundColor=#ffffff&javascriptCallbackFunction=gm.playerReady"></param>',
+      '<param name="allowFullScreen" value="true"></param>',
+      '<param name="allowscriptaccess" value="always"></param>',
+      '<param name="javascriptCallbackFunction" value="gm.playerReady"></param>',
+      '<embed src="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="359" height="181" flashvars="src=' + flashURL + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true&backgroundColor=#ffffff&javascriptCallbackFunction=gm.playerReady"></embed>',
+      '</object>'];
+
+    $(element).append(video.join("\n"));
+    gm.playerReady = function(playerId) {
+      $player = $('#object-player');
+      window.setTimeout(function() {
+        if ($player.attr('width') == 359) {
+          $player.attr('width', 358);  
+        }
+        else {
+          $player.attr('width', 359);
+        }
+      }, 200);
+    }
+  }
+  $('[data-flash-url]:empty').each(setupFlash);
+
   // Asset add/remove click events.
   $('.asset .reel').click(function(e) {
     var $asset = $(this);
@@ -58,45 +98,7 @@ $(document).ready(function() {
       $(this).parent().find('[data-image-url]:empty').each(function() {
         $(this).append($('<img>', { 'src': $(this).data('image-url') }));
       });
-      $(this).parent().find('[data-flash-url]:empty').each(function() {
-        var entityMap = {
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': '&quot;',
-          "'": '&#39;',
-          "/": '&#x2F;'
-        };
-        function escapeHtml(string) {
-          return String(string).replace(/[&<>"'\/]/g, function (s) {
-            return entityMap[s];
-          });
-        }
-        // var flashURL = 'http://osmf.org/videos/cathy2.flv';
-        var flashURL = escapeHtml($(this).data('flash-url'));
-        var video = ['<object id="object-player" width="359" height="181">',
-          '<param name="movie" value="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf"></param>',
-          '<param name="flashvars" value="src=' + flashURL + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true&backgroundColor=#ffffff&javascriptCallbackFunction=gm.playerReady"></param>',
-          '<param name="allowFullScreen" value="true"></param>',
-          '<param name="allowscriptaccess" value="always"></param>',
-          '<param name="javascriptCallbackFunction" value="gm.playerReady"></param>',
-          '<embed src="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="359" height="181" flashvars="src=' + flashURL + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true&backgroundColor=#ffffff&javascriptCallbackFunction=gm.playerReady"></embed>',
-          '</object>'];
-
-        $(this).append(video.join("\n"));
-        gm.playerReady = function(playerId) {
-          $player = $('#object-player');
-          window.setTimeout(function() {
-            if ($player.attr('width') == 359) {
-              $player.attr('width', 358);  
-            }
-            else {
-              $player.attr('width', 359);
-            }
-          }, 200);
-        }
-      
-      });
+      $(this).parent().find('[data-flash-url]:empty').each(setupFlash);
       $('.asset.open').removeClass('open');
       $('.tile.open').removeClass('open');
       $('.tab-tile .tile:last-child').addClass('open');
