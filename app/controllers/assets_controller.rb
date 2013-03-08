@@ -92,7 +92,7 @@ class AssetsController < ApplicationController
 
     respond_to do |format|
       if @asset.update_attributes(params[:asset])
-        format.html { redirect_to asset_edit_path(@asset), notice: 'Asset was successfully updated.' }
+        format.html { redirect_to @asset, notice: 'Asset was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
