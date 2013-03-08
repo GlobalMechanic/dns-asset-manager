@@ -38,6 +38,7 @@ AssetManager::Application.routes.draw do
       post 'sort'
       get 'close'
       get 'open'
+      get 'download'
     end
   end
 

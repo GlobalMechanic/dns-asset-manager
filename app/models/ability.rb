@@ -19,6 +19,7 @@ class Ability
       can :keyword, Asset # asset browsing by type
       cannot :manage, User
       #cannot [:create, :update, :destroy], Asset
+      can :manage, ReelAsset
       can :manage, Reel, :user_id => user.id
     end
 

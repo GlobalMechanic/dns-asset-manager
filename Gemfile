@@ -14,6 +14,7 @@ gem "cancan"
 
 # Controllers
 gem 'meta_search'
+gem 'rubyzip', :require => 'zip/zip'
 
 # Models
 gem 'inherited_resources'

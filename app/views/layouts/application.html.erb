@@ -36,7 +36,7 @@
         <% else %>
           <%= link_to 'Create my Reel', edit_reel_path(@current_reel), :id => 'create-reel', :class => (@current_reel.assets.length > 0 ? 'show' : '') %>
           <%= form_for @current_reel do |f| %>
-            <%= link_to 'tmp: Download', assets_path, :class => 'button' %>
+            <%= link_to 'Download', download_reel_path(@current_reel), :class => 'button' %>
             <%= f.text_field :title, :placeholder => 'Reel name' %>
             <%= f.submit 'Save Reel' %>
           <% end %>
@@ -61,7 +61,7 @@
           <div class="four columns omega">
             <div class="title">Recently Updated</div>
             <ul class="disc">
-              <% if @reels_created.count > 0 %>
+              <% if @reels_updated.count > 0 %>
                 <% @reels_updated.each do |reel| %>
                   <li><%= link_to reel.title, open_reel_path(reel) %> <%= time_ago_in_words(reel.updated_at) %></li>
                 <% end %>

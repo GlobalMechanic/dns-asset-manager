@@ -4,12 +4,13 @@
     <%= f.text_area :description, :rows => 4, :placeholder => 'Description' %>
 
     <%= f.submit 'Update' %>
+    <%= link_to 'Destroy', @reel, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
-  <ul>
-    <li><%= link_to 'View', reel_path %></li>
-    <li><%= link_to 'Copy Link', '#', :id => 'copy-link' %></li>
-    <li><%= link_to 'Destroy', @reel, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-  </ul>
+  <!-- <ul> -->
+    <!-- <li><%= link_to 'View', reel_path %></li> -->
+    <!-- <li><%= link_to 'Copy Link', '#', :id => 'copy-link' %></li> -->
+    <!-- <li></li> -->
+  <!-- </ul> -->
 </div>
 
 <div class="reel-presentation">

@@ -253,6 +253,7 @@ DEPENDENCIES
   rails3-jquery-autocomplete!
   rolify
   rspec-rails
+  rubyzip
   sass-rails (~> 3.2.3)
   simple_form
   skeleton-rails
