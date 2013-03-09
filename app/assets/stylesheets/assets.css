@@ -115,8 +115,8 @@ Asset extended
 ------- */
 .asset .extended { display: none; }
 .asset.open .extended {
-  width: 380px;
-  height: 306px;
+  width: 764px; /* (188px * 4) tiles + (4px * 3) slots */
+  height: 466px; /* 146px *  3) tiles + (14px * 2) margins */
   display: block;
   background: #eee;
   position: absolute;
@@ -124,26 +124,28 @@ Asset extended
   left: 0;
   z-index: 1;
 }
-.assets .asset:nth-child(5n+5) .extended { left: auto; right: 0; }
+.assets .asset:nth-child(10n+6) .extended { left: -192px; /* -188px - 4px */ }
+.assets .asset:nth-child(10n+8) .extended { left: auto; right: 0; }
+.assets .asset:nth-child(10n+10) .extended { left: auto; right: 0; }
 
-.asset .extended .title { width: auto; }
+.asset .extended .title { width: 719px; }
 
-.extended form { width:187px; }
+.extended form { width:400px; }
 
 .extended input[type="text"] { 
-  width:187px;
+  width:100%;
   margin: 10px; 
   padding: 5px 5px 3px 5px; 
   font-size: 16px; 
 }
 
-.tab-tile { height: 186px; padding: 10px; background: rgb(210,210,210); }
+.tab-tile { height: 346px; /* Bottom margin of 10px */ padding: 10px; background: rgb(210,210,210); }
 
 .tile { 
   display:none;
   position: relative; 
-  width: 359px; 
-  height: 186px; 
+  width: 744px; 
+  height: 346px; 
   padding: 0; 
   overflow: auto;
 }
@@ -248,8 +250,10 @@ Asset extended
 
 /* ???? [START] */
 
-.asset.open .reel { right: -192px; z-index: 2; }
-.assets .asset:nth-child(5n+5).open .reel { right: 0; }
+.asset.open .reel { right: -576px; z-index: 2; }
+.assets .asset:nth-child(10n+6).open .reel { right: -384px; }
+.assets .asset:nth-child(10n+8).open .reel { right: 0; }
+.assets .asset:nth-child(10n+10).open .reel { right: 0; }
 
 .slot {
   display: block;
@@ -424,10 +428,23 @@ Asset multiple upload
 Media queries
 ------- */
 @media all and (min-width:1440px) {
-  .assets .asset:nth-child(5n+5) .extended { left: auto; right: 0; }
-  .assets .asset:nth-child(7n+7) .extended { left: auto; right: 0; }
+  .assets .asset:nth-child(10n+6) .extended { left: 0; }
+  .assets .asset:nth-child(10n+8) .extended { left: 0; }
+  .assets .asset:nth-child(10n+10) .extended { left: 0; }
+  .assets .asset:nth-child(10n+6).open .reel { right: -576px; }
+  .assets .asset:nth-child(10n+8).open .reel { right: -576px; }
+  .assets .asset:nth-child(10n+10).open .reel { right: -576px; }
 
-  .assets .asset:nth-child(7n+7).open .reel { right: 0; }
+  .assets .asset:nth-child(14n+10) .extended,
+  .assets .asset:nth-child(14n+12) .extended,
+  .assets .asset:nth-child(14n+14) .extended { left: auto; right: 0; }
+
+  .assets .asset:nth-child(14n+6).open .reel,
+  .assets .asset:nth-child(14n+8).open .reel { right: -576px; }
+  
+  .assets .asset:nth-child(14n+10).open .reel,
+  .assets .asset:nth-child(14n+12).open .reel,
+  .assets .asset:nth-child(14n+14).open .reel { right: 0; }
 
   .result-headers { width: 1347px; }
 }
