@@ -38,7 +38,7 @@ $(document).ready(function() {
       }, 2000);
     }
   }
-  $('[data-flash-url]:empty').each(setupFlash);
+  //$('[data-flash-url]:empty').each(setupFlash);
 
   // Asset add/remove click events.
   $('.asset .reel').click(function(e) {
@@ -87,6 +87,7 @@ $(document).ready(function() {
           this.currentTime = 0;
         }
       });
+      $(this).parent().find('[data-flash-url]').empty();
     }
     else {
       $('.asset.open video').each(function () {
