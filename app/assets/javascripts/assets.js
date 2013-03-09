@@ -38,7 +38,7 @@ $(document).ready(function() {
       }, 200);
     }
   }
-  //$('[data-flash-url]:empty').each(setupFlash);
+  $('body.controller-assets.action-edit [data-flash-url]:empty').each(setupFlash);
 
   // Asset add/remove click events.
   $('.asset .reel').click(function(e) {
