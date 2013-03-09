@@ -35,7 +35,7 @@ $(document).ready(function() {
         else {
           $player.attr('width', 744);
         }
-      }, 200);
+      }, 500);
     }
   }
   $('[data-flash-url]:empty').each(setupFlash);
