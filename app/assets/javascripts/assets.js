@@ -35,7 +35,7 @@ $(document).ready(function() {
         else {
           $player.attr('width', 744);
         }
-      }, 200);
+      }, 500);
     }
   }
   $('body.controller-assets.action-edit [data-flash-url]:empty').each(setupFlash);
@@ -79,6 +79,7 @@ $(document).ready(function() {
 
   // Handle video player.
   $('.asset .default, .asset .title').click(function(e) {
+    $('[data-flash-url]').empty();
     if ($(this).parents('.asset').hasClass('open')) {
       $(this).parents('.asset').removeClass('open');
       $(this).parent().find('video, audio').each(function() {
@@ -87,7 +88,6 @@ $(document).ready(function() {
           this.currentTime = 0;
         }
       });
-      $(this).parent().find('[data-flash-url]').empty();
     }
     else {
       $('.asset.open video').each(function () {
