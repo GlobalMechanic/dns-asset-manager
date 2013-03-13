@@ -133,6 +133,17 @@ $(document).ready(function() {
     return false;
   });
 
+  // Asset download
+  $('.asset-state').on('click', 'a[href*="#download-asset"]', function(event) {
+    event.preventDefault();
+    
+    $('.asset-utilities').find('.active').removeClass('active');
+    $('.tab-tile .tile').removeClass('open');
+    $(this).parents('.asset').addClass('open');
+    $(this).parents('.asset').find('.asset-utilities li:first-child a').addClass('active');
+    $(this).parents('.asset').find('.tile:first-child').addClass('open');
+  });  
+
   // Reveal relevant tile
   $('.asset-utilities a').click(function (event) {
     event.preventDefault();

@@ -16,7 +16,7 @@ CarrierWave.configure do |config|
   }
  
   # For testing, upload files to local `tmp` folder.
-  if false && (Rails.env.test? || Rails.env.development? || Rails.env.cucumber?)
+  if !ENV['S3_KEY'] || !ENV['S3_SECRET']
     config.storage = :file
     #config.enable_processing = false
     #config.root = "#{Rails.root}/tmp"

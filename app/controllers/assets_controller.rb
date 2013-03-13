@@ -36,6 +36,10 @@ class AssetsController < ApplicationController
     end
   end
 
+  def queue
+    @assets = Asset.all
+  end
+
   # GET /assets/1
   # GET /assets/1.json
   def show
@@ -135,7 +139,7 @@ class AssetsController < ApplicationController
 
   def download
     @asset = Asset.find(params[:asset_id])
-    if Rails.env.development?
+    if !ENV['S3_KEY'] || !ENV['S3_SECRET']
       send_file File.join(Rails.root, 'public', @asset.asset_url), :filename => @asset.filename
     else
       open('https://asset-manager.s3.amazonaws.com/uploads/asset/asset/' + @asset.id.to_s + '/' + File.basename(@asset.asset_url).to_s) {|img|

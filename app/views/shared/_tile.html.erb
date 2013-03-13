@@ -23,7 +23,8 @@
       <p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->
     <%# else %>
       <div class="checkin asset-state">
-      <%= link_to 'Download Asset', asset_download_path(asset) %>
+      <%# link_to 'Download Asset', asset_download_path(asset) %>
+      <a href="#download-asset">Download Asset</a>
       </div>
       <%# if assigned %>
       <!-- <p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->
@@ -38,9 +39,11 @@
 
       <%# Download section %>
       <div class="tile">
-       <p class="downloads">
+        <nav class="downloads">
           <%= link_to 'Download Asset', asset_download_path(asset), :class => 'button' %>
-        </p>
+          <a href="" class="button" id="checkout-asset">Checkout</a>
+          <a href="" class="button" id="download-n-checkout-asset">Download &amp; Checkout</a> 
+        </nav>
       </div> 
 
       <%# Versions section %>

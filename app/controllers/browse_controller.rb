@@ -8,4 +8,8 @@ class BrowseController < ApplicationController
     render 'assets/index'
    end
 
+   def index
+     render :text => "Hello world"
+ end
+
 end

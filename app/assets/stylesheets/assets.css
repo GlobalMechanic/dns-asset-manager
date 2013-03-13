@@ -1,5 +1,6 @@
 /* 
 Asset default
+  Asset list view
   Asset workflow
 Asset extended
   Asset tile nav
@@ -71,7 +72,23 @@ Asset default
 .asset .default.preview { width: 188px; height: 106px; }
 .asset video.default { width: 100%; }
 
+/* Asset list view */
+.list-view { border-top:1px solid red; }
+
+.list-view .asset { 
+  width: 455px; 
+  height: 70px;
+  margin: 10px 0 0 46px;
+}
+.list-view .asset:nth-child(odd) { margin-left: 0 }
+
+.list-view .title { width: 410px; } 
+
 /* Asset workflow */
+.asset.setup .title { background: #f39bbb; }
+.asset.layout .title { background: #f1e662; }
+.asset.animation .title { background: #3ed9d0; }
+
 .asset-workflow { position: relative; top: -34px; }
 .asset-workflow > div,
 .asset-workflow > p { 
@@ -107,8 +124,12 @@ Asset default
   text-overflow: ellipsis;
   color: #555;
   white-space: nowrap; 
-  background: rgba(255,255,255, 0.7); 
+  background-color: rgba(255,255,255, 0.7); 
 }
+
+.list-view .asset-workflow { top: 0; }
+.list-view .checkin { background-color: rgba(33,33,33,.1); }
+.list-view .assigned-to { width: 407px; padding-bottom: 4px; }
 
 /* -------  
 Asset extended 
@@ -225,13 +246,19 @@ Asset extended
 .extended tr:nth-of-type(2n+2) td { background:rgb(230,230,230) }
 
 /* Downloads tile */
-.extended .downloads { margin-top: 72px; text-align: center; }
+.extended .downloads { 
+  margin: 100px auto 0; 
+  width: 250px;
+  text-align: center; }
 .downloads .button { 
+  display: block;
   position: inherit;
-  margin-bottom: 0;
+  width: 250px;
+  margin-bottom: 10px;
   padding:10px;
   float: none;          
-  font-size: 24px; 
+  font-size: 24px;
+  border: 1px solid rgb(120,120,120); 
 }
 .extended .detail { margin-bottom: 100px; }
 
@@ -427,6 +454,10 @@ Asset multiple upload
 /* -------
 Media queries
 ------- */
+@media all and (min-width:320px) and (max-width:959px) {
+  .list-view .asset { margin-left: 0; }
+}
+
 @media all and (min-width:1440px) {
   .assets .asset:nth-child(10n+6) .extended { left: 0; }
   .assets .asset:nth-child(10n+8) .extended { left: 0; }

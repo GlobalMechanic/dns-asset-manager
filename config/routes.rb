@@ -13,6 +13,7 @@ AssetManager::Application.routes.draw do
         match 'type/:asset_type(/:layout)' => 'assets#type', :as => :type
         match 'keyword/:keyword(/:layout)' => 'assets#keyword', :as => :keyword
       end
+      get 'queue', :on => :collection
       get :autocomplete_tag_keywords, :on => :collection
       get :autocomplete_tag_name, :on => :collection
       get 'download'
@@ -20,9 +21,8 @@ AssetManager::Application.routes.draw do
 
     resources :episodes do 
       resources :scenes
-    end
+    end 
   end
-
 
   # resources :assets do
   #   collection do
