@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true
 
   has_many :reels
+  has_many :assets
 
   #:before_logout delete_temp_reel
 

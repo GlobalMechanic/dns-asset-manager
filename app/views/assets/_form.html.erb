@@ -37,6 +37,12 @@
   <%= f.autocomplete_field :keyword_list, autocomplete_tag_keywords_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
   <%= f.check_box :stock %><%= f.label :stock, 'Stock animation', :class => 'inline' %>
   <%= f.text_area :description, :placeholder => 'Description', :rows => 4 %>
+
+  <h2>Workflow</h2>
+  <%= f.select :status, Asset::STATUS %>
+  <%= f.check_box :submitted %><%= f.label :submitted, 'Submitted for approval', :class => 'inline' %>
+  <%= f.check_box :checked_out %><%= f.label :checked_out, 'Checked out', :class => 'inline' %>
+  <%= f.select :user_id, User.order('name').with_role(:animator).map {|x| [x.name, x.id]}, { :include_blank => true } %>
   
   <%# f.label :asset %>
   <%# f.file_field :asset, multiple: true, name: "asset[asset]" %>
