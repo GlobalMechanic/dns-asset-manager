@@ -12,10 +12,10 @@ AssetManager::Application.routes.draw do
       collection do
         match 'type/:asset_type(/:layout)' => 'assets#type', :as => :type
         match 'keyword/:keyword(/:layout)' => 'assets#keyword', :as => :keyword
+        get 'queue'
+        get :autocomplete_tag_keywords
+        get :autocomplete_tag_name
       end
-      get 'queue', :on => :collection
-      get :autocomplete_tag_keywords, :on => :collection
-      get :autocomplete_tag_name, :on => :collection
       get 'download'
     end
 

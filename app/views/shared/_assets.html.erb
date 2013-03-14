@@ -1,5 +1,15 @@
-<% if params[:layout] == 'list' %>
-  <%= render :partial => 'shared/assets-list', :locals => { :assets => assets } %>
-<% else %>
-  <%= render :partial => 'shared/assets-grid', :locals => { :assets => assets } %>
+<div class="reel-id assets slots row<%= ' list-view' if params[:layout] == 'list' %>">
+<% assets.each_with_index do |asset, index| %>
+  <% unless params[:layout] == 'list' %>
+  <div id="slot-<%= index %>" class="slot">
+    <div class="region"></div>
+  </div>
+  <% end %>
+  <%= render :partial => (params[:layout] == 'list' ? 'shared/list' : 'shared/tile'), :locals => { :reel => @reel, :asset => asset } %>
 <% end %>
+  <% unless params[:layout] == 'list' %>
+  <div id="slot-<%= assets.length  %>" class="slot">
+    <div class="region"></div>
+  </div>
+  <% end %>
+</div>

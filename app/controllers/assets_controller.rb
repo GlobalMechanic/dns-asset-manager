@@ -36,10 +36,6 @@ class AssetsController < ApplicationController
     end
   end
 
-  def queue
-    @assets = Asset.all
-  end
-
   # GET /assets/1
   # GET /assets/1.json
   def show
@@ -122,6 +118,11 @@ class AssetsController < ApplicationController
       format.html { render json: params }
       format.json { render json: params }
     end
+  end
+
+  def queue
+    @assets = current_user.assets
+    render 'index'
   end
 
   def type
