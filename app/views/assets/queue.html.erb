@@ -8,30 +8,7 @@
 
 	<div id="asset-" class="asset animation" draggable="true">
 		<a href="#" id="asset-" class="reel add">Add to Reel</a>
-		<div title="" class="title">1 My asset title</div>
-
-		<div class="asset-workflow row">
-		<%# if %>
-		    <%# if checked out %> 
-		      	<div class="checkout asset-state">out</div>
-		      	<p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p>
-		    <%# else %>
-		      	<!-- <div class="checkin asset-state">
-		      	<a href="">Download Asset</a>
-		      	<%# link_to 'Download Asset', asset_download_path(asset) %>
-		      	</div> -->
-		      	<%# if assigned %>
-		      	<!-- <p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->
-		      	<%# end %>
-		   	<%# end %>
-		  <%# end %>
-		</div>
-	</div>
-
-	<!-- 2 -->	
-	<div id="asset-" class="asset animation" draggable="true">
-		<a href="#" id="asset-" class="reel add">Add to Reel</a>
-		<div title="" class="title">2. My asset title</div>
+		<div title="" class="title">My asset title</div>
 
 		<div class="asset-workflow row">
 		<%# if %>
@@ -49,35 +26,25 @@
 		   	<%# end %>
 		  <%# end %>
 		</div>
-	</div>
 
-	<!-- 3 -->	
-	<div id="asset-" class="asset setup" draggable="true">
-		<a href="#" id="asset-" class="reel add">Add to Reel</a>
-		<div title="" class="title">3. My asset title</div>
-
-		<div class="asset-workflow row">
-		<%# if %>
-		    <%# if checked out %> 
-		      	<!-- <div class="checkout asset-state">out</div>
-		      	<p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->
-		    <%# else %>
-		      	<div class="checkin asset-state">
-		      	<a href="">Download Asset</a>
-		      	<%# link_to 'Download Asset', asset_download_path(asset) %>
-		      	</div>
-		      	<%# if assigned %>
-		      	<p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p>
-		      	<%# end %>
-		   	<%# end %>
-		  <%# end %>
+		<div class="extended">
+			<div title="" class="title">My asset title, expanded</div>
+			<div class="tab-tile">
+		    	<div class="tile">
+		    		<nav class="downloads">
+		        		<%# link_to 'Download Asset', asset_download_path(asset), :class => 'button' %>
+		        		<a href="" class="button" id="checkout-asset">Download</a>
+		        		<a href="" class="button" id="checkout-asset">Checkout</a>
+		        		<a href="" class="button" id="download-n-checkout-asset">Download &amp; Checkout</a> 
+		        	</nav>
+		        </div> 
+			</div>
 		</div>
 	</div>
 
-	<!-- 4 -->	
 	<div id="asset-" class="asset layout" draggable="true">
 		<a href="#" id="asset-" class="reel add">Add to Reel</a>
-		<div title="" class="title">4. My asset title</div>
+		<div title="" class="title">My asset title</div>
 
 		<div class="asset-workflow row">
 		<%# if %>
@@ -95,12 +62,97 @@
 		   	<%# end %>
 		  <%# end %>
 		</div>
+
+		<div class="extended">
+			<div title="" class="title">My asset title, expanded</div>
+			<div class="tab-tile">
+		    	<div class="tile">
+		    		<nav class="downloads">
+		        		<%# link_to 'Download Asset', asset_download_path(asset), :class => 'button' %>
+		        		<a href="" class="button" id="checkout-asset">Download</a>
+		        		<a href="" class="button" id="checkout-asset">Checkout</a>
+		        		<a href="" class="button" id="download-n-checkout-asset">Download &amp; Checkout</a> 
+		        	</nav>
+		        </div> 
+			</div>
+		</div>
 	</div>
 
-	<!-- 5 -->	
 	<div id="asset-" class="asset animation" draggable="true">
 		<a href="#" id="asset-" class="reel add">Add to Reel</a>
-		<div title="" class="title">5. My asset title</div>
+		<div title="" class="title">My asset title</div>
+
+		<div class="asset-workflow row">
+		<%# if %>
+		    <%# if checked out %> 
+		      	<!-- <div class="checkout asset-state">out</div>
+		      	<p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->
+		    <%# else %>
+		      	<div class="checkin asset-state">
+		      	<a href="">Download Asset</a>
+		      	<%# link_to 'Download Asset', asset_download_path(asset) %>
+		      	</div>
+		      	<%# if assigned %>
+		      	<!-- <p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->
+		      	<%# end %>
+		   	<%# end %>
+		  <%# end %>
+		</div>
+
+		<div class="extended">
+			<div title="" class="title">My asset title, expanded</div>
+			<div class="tab-tile">
+		    	<div class="tile">
+		    		<nav class="downloads">
+		        		<%# link_to 'Download Asset', asset_download_path(asset), :class => 'button' %>
+		        		<a href="" class="button" id="checkout-asset">Download</a>
+		        		<a href="" class="button" id="checkout-asset">Checkout</a>
+		        		<a href="" class="button" id="download-n-checkout-asset">Download &amp; Checkout</a> 
+		        	</nav>
+		        </div> 
+			</div>
+		</div>
+	</div>
+
+	<div id="asset-" class="asset animation" draggable="true">
+		<a href="#" id="asset-" class="reel add">Add to Reel</a>
+		<div title="" class="title">My asset title</div>
+
+		<div class="asset-workflow row">
+		<%# if %>
+		    <%# if checked out %> 
+		      	<!-- <div class="checkout asset-state">out</div>
+		      	<p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->
+		    <%# else %>
+		      	<div class="checkin asset-state">
+		      	<a href="">Download Asset</a>
+		      	<%# link_to 'Download Asset', asset_download_path(asset) %>
+		      	</div>
+		      	<%# if assigned %>
+		      	<!-- <p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->
+		      	<%# end %>
+		   	<%# end %>
+		  <%# end %>
+		</div>
+
+		<div class="extended">
+			<div title="" class="title">My asset title, expanded</div>
+			<div class="tab-tile">
+		    	<div class="tile">
+		    		<nav class="downloads">
+		        		<%# link_to 'Download Asset', asset_download_path(asset), :class => 'button' %>
+		        		<a href="" class="button" id="checkout-asset">Download</a>
+		        		<a href="" class="button" id="checkout-asset">Checkout</a>
+		        		<a href="" class="button" id="download-n-checkout-asset">Download &amp; Checkout</a> 
+		        	</nav>
+		        </div> 
+			</div>
+		</div>
+	</div>
+
+	<div id="asset-" class="asset setup" draggable="true">
+		<a href="#" id="asset-" class="reel add">Add to Reel</a>
+		<div title="" class="title">My asset title</div>
 
 		<div class="asset-workflow row">
 		<%# if %>
@@ -117,6 +169,128 @@
 		      	<%# end %>
 		   	<%# end %>
 		  <%# end %>
+		</div>
+
+		<div class="extended">
+			<div title="" class="title">My asset title, expanded</div>
+			<div class="tab-tile">
+		    	<div class="tile">
+		    		<nav class="downloads">
+		        		<%# link_to 'Download Asset', asset_download_path(asset), :class => 'button' %>
+		        		<a href="" class="button" id="checkout-asset">Download</a>
+		        		<a href="" class="button" id="checkout-asset">Checkout</a>
+		        		<a href="" class="button" id="download-n-checkout-asset">Download &amp; Checkout</a> 
+		        	</nav>
+		        </div> 
+			</div>
+		</div>
+	</div>
+
+	<div id="asset-" class="asset setup" draggable="true">
+		<a href="#" id="asset-" class="reel add">Add to Reel</a>
+		<div title="" class="title">My asset title</div>
+
+		<div class="asset-workflow row">
+		<%# if %>
+		    <%# if checked out %> 
+		      	<!-- <div class="checkout asset-state">out</div>
+		      	<p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->
+		    <%# else %>
+		      	<div class="checkin asset-state">
+		      	<a href="">Download Asset</a>
+		      	<%# link_to 'Download Asset', asset_download_path(asset) %>
+		      	</div>
+		      	<%# if assigned %>
+		      	<p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p>
+		      	<%# end %>
+		   	<%# end %>
+		  <%# end %>
+		</div>
+
+		<div class="extended">
+			<div title="" class="title">My asset title, expanded</div>
+			<div class="tab-tile">
+		    	<div class="tile">
+		    		<nav class="downloads">
+		        		<%# link_to 'Download Asset', asset_download_path(asset), :class => 'button' %>
+		        		<a href="" class="button" id="checkout-asset">Download</a>
+		        		<a href="" class="button" id="checkout-asset">Checkout</a>
+		        		<a href="" class="button" id="download-n-checkout-asset">Download &amp; Checkout</a> 
+		        	</nav>
+		        </div> 
+			</div>
+		</div>
+	</div>
+
+	<div id="asset-" class="asset layout" draggable="true">
+		<a href="#" id="asset-" class="reel add">Add to Reel</a>
+		<div title="" class="title">My asset title</div>
+
+		<div class="asset-workflow row">
+		<%# if %>
+		    <%# if checked out %> 
+		      	<!-- <div class="checkout asset-state">out</div>
+		      	<p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->
+		    <%# else %>
+		      	<div class="checkin asset-state">
+		      	<a href="">Download Asset</a>
+		      	<%# link_to 'Download Asset', asset_download_path(asset) %>
+		      	</div>
+		      	<%# if assigned %>
+		      	<!-- <p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->
+		      	<%# end %>
+		   	<%# end %>
+		  <%# end %>
+		</div>
+
+		<div class="extended">
+			<div title="" class="title">My asset title, expanded</div>
+			<div class="tab-tile">
+		    	<div class="tile">
+		    		<nav class="downloads">
+		        		<%# link_to 'Download Asset', asset_download_path(asset), :class => 'button' %>
+		        		<a href="" class="button" id="checkout-asset">Download</a>
+		        		<a href="" class="button" id="checkout-asset">Checkout</a>
+		        		<a href="" class="button" id="download-n-checkout-asset">Download &amp; Checkout</a> 
+		        	</nav>
+		        </div> 
+			</div>
+		</div>
+	</div>
+
+	<div id="asset-" class="asset animation" draggable="true">
+		<a href="#" id="asset-" class="reel add">Add to Reel</a>
+		<div title="" class="title">My asset title</div>
+
+		<div class="asset-workflow row">
+		<%# if %>
+		    <%# if checked out %> 
+		      	<div class="checkout asset-state">out</div>
+		      	<p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p>
+		    <%# else %>
+		      	<!-- <div class="checkin asset-state">
+		      	<a href="">Download Asset</a>
+		      	<%# link_to 'Download Asset', asset_download_path(asset) %>
+		      	</div> -->
+		      	<%# if assigned %>
+		      	<!-- <p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->
+		      	<%# end %>
+		   	<%# end %>
+		  <%# end %>
+		</div>
+
+		<div class="extended">
+			<div title="" class="title">My asset title, expanded</div>
+			<div class="tab-tile">
+		    	<div class="tile">
+		    		<nav class="downloads">
+		        		<%# link_to 'Download Asset', asset_download_path(asset), :class => 'button' %>
+		        		<a href="" class="button" id="checkout-asset">Download</a>
+		        		<a href="" class="button" id="checkout-asset">Checkout</a>
+		        		<a href="" class="button" id="download-n-checkout-asset">Download &amp; Checkout</a> 
+		        	</nav>
+		        </div> 
+			</div>
 		</div>
 	</div>
 
@@ -126,5 +300,38 @@
 </div>
 
 <style>
-.slot { border: 1px solid blue;}
+.list-view .asset { }
+.list-view .asset.open .extended { 
+	width: 455px; 
+	height: 230px;
+}
+
+.list-view .extended .title { width: 410px }
+
+.list-view .tab-tile { height: 170px }
+.list-view .downloads { }
+
+.list-view .tile { 
+  width: 455px; 
+  height: 230px; 
+}
+
+.list-view .extended .downloads { 
+  margin: 10px auto 0; 
+  width: 200px;
+  text-align: center; 
+}
+.list-view .downloads .button { 
+  /*display: block;*/
+  position: inherit;
+  width: 175px;
+  margin-bottom: 10px;
+  padding:10px;
+  float: none;          
+  font-size: 16px;
+  border: 1px solid rgb(120,120,120); 
+}
+
+.list-view .asset.open .reel { right: 0px; z-index: 2; }
+
 </style>
