@@ -51,7 +51,7 @@ Asset default
 
 .asset .reel {
   -webkit-transition: background-position-y, background-color 0.1s linear;
-  background: #eee url('add-remove.png') no-repeat;
+  background: #eee url('ui/add-remove.png') no-repeat;
   position: absolute;
   top: 0;
   right: 0;
@@ -115,10 +115,6 @@ border: 1px solid rgb(120,120,120);
 
 .list-view .asset.open .reel { right: 0px; z-index: 2; }
 
-.list-view .tab-tile { height: 170px; }
-
-.list-view .tile { width: 455px; height: 230px; }
-
 /* Asset workflow */
 .asset.setup .title { background: #f39bbb; }
 .asset.layout .title { background: #f1e662; }
@@ -140,7 +136,7 @@ border: 1px solid rgb(120,120,120);
   width:28px; 
   padding: 5px 5px 3px;
   text-indent: -9999em;
-  background: rgba(33,33,33, .5) url('arrow-down.png') 0 0 no-repeat;
+  background: rgba(33,33,33, .5) url('ui/arrow-down.png') 0 0 no-repeat;
   background-position: center;
   background-size: 20px 20px;
 }
@@ -220,7 +216,7 @@ Asset extended
   text-indent:-9999em;
   text-align: center;
 }
-.asset-utilities a { background: url('utility-tabs.png'); }
+.asset-utilities a { background: url('ui/utility-tabs.png'); }
 .asset-utilities a[href="#download"] { background-position: 0 0; }
 .asset-utilities a[href="#versions"] { background-position: 0 -50px; }
 .asset-utilities a[href="#details"] { background-position: 0 -100px; }
@@ -311,9 +307,13 @@ Asset extended
 }
 
 /* Asset extended: list view */
-.list-view .asset.open .extended { width: 455px; height: 230px; }
+.list-view .asset.open .extended { width: 455px; height: 310px; }
 .list-view .asset.open .reel { right: 0px; z-index: 2; }
 .list-view .extended .title { width: 410px; }
+
+.list-view .tab-tile { height: 200px; }
+
+.list-view .tile { width: 455px; height: 230px; }
 
 .list-view .extended .downloads { margin: 10px auto 0; width: 200px; text-align: center; }
 .list-view .downloads .button { 
