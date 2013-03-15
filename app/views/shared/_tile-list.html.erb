@@ -8,14 +8,6 @@
 	    <% end %>
   	<% end %>
 
-  <% if asset.preview? %>
-  <%= image_tag asset.preview_url(:thumb).to_s, :class => 'default preview', :draggable => 'false' %>
-  <% elsif is_image asset.asset %>
-  <%= image_tag asset.asset_url(:thumb).to_s, :class => 'default preview', :draggable => 'false' %>
-  <% else %>
-  <%= image_tag '/assets/placeholders/' + clean_extension(asset.asset) + '.png', :class => 'default preview', :draggable => 'false' %>
-  <% end %>
-
 	<div class="asset-workflow row">
 	<%# if %>
 	<%# if checked out %>
@@ -110,17 +102,28 @@
 		    <%# Video section%>
 		    <% if previewable(asset.preview) || previewable(asset.preview_swf) %>
 		    <div class="tile">
-		    <% if asset.preview_swf? %>
-		    <div data-flash-url="<%= asset.preview_swf %>"></div>
-		    <% elsif is_image(asset.preview) %>
-		    <div class="detail" data-image-url="<%= asset.preview_url %>"></div>
-		    <% else %>
-		    <%= image_tag '/assets/placeholders/' + clean_extension(asset.send(preview)) + '.png', :class => 'default', :draggable => 'false' %>
+		   		<% if asset.preview_swf? %>
+		    	<div data-flash-url="<%= asset.preview_swf %>"></div>
+		    	<% elsif is_image(asset.preview) %>
+		    	<div class="detail" data-image-url="<%= asset.preview_url %>"></div>
+		    	<% else %>
+		    	<%= image_tag '/assets/placeholders/' + clean_extension(asset.send(preview)) + '.png', :class => 'default', :draggable => 'false' %>
 		        <% end %>
 		    </div>
 		    <% end %>
-
 		</div>
+
+	    <nav class="row asset-utilities">
+	      <ul>
+	        <li><a href="#download">Download</a></li>
+	        <li><a href="#versions">Versions</a></li>
+	        <li><a href="#details">Details</a></li>
+	        <% if previewable(asset.preview) || previewable(asset.preview_swf) %>
+	        <li><a href="#video">Video</a></li>
+	        <% end %>
+	      </ul>
+	    </nav>
+
 	</div>
 
 </div>
