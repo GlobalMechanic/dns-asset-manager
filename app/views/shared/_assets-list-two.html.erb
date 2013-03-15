@@ -1,0 +1,6 @@
+<div class="reel-id assets slots row list-view">
+	<h2>queue temp</h2>
+	<% assets.each_with_index do |asset, index| %>
+	<%= render :partial => 'shared/tile-list', :locals => { :reel => @reel, :asset => asset } %>
+	<% end %>
+</div>
