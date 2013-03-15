@@ -5,7 +5,7 @@ class ReelsController < ApplicationController
   # GET /reels
   # GET /reels.json
   def index
-    @reels = Reel.where("title <> ''").where("user_id = ?", current_user.id).order('created_at DESC')
+    @reels = Reel.accessible_by(current_ability, :edit).where("title <> ''").order('created_at DESC')
     @title = 'All Reels (' + @reels.count.to_s + ')'
 
     respond_to do |format|

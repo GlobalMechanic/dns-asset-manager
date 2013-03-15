@@ -1,5 +1,5 @@
 <% @reels.each do |reel| %>
-<div id="reel-<%= reel.slug %>" class="reel-id assets">
+<div id="reel-<%= reel.slug %>" class="reel-id assets clearfix">
   <h2><%= link_to reel.title, open_reel_path(reel) %></h2>
   <% if can? :destroy, reel %>
   <%= link_to 'Destroy', reel, method: :delete, data: { confirm: 'Are you sure?' } %>

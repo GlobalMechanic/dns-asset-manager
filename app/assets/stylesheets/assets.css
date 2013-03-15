@@ -71,14 +71,49 @@ Asset default
 .asset video.default { width: 100%; }
 
 /* Asset list view */
+.list-view { }
+
 .list-view .asset { 
   width: 455px; 
   height: 70px;
   margin: 10px 46px 0 0;
 }
-.list-view .asset:nth-child(2n+1) { margin-right: 0; }
+.list-view .asset:nth-child(2n) { margin-right: 0; }
 
-.list-view .title { width: 410px; } 
+.list-view .title { width: 410px; }
+
+.list-view .asset.open .extended { 
+width: 455px; 
+height: 230px;
+}
+
+.list-view .extended .title { width: 410px }
+
+.list-view .tab-tile { height: 170px }
+.list-view .downloads { }
+
+.list-view .tile { 
+width: 455px; 
+height: 230px; 
+}
+
+.list-view .extended .downloads { 
+margin: 10px auto 0; 
+width: 200px;
+text-align: center; 
+}
+.list-view .downloads .button { 
+/*display: block;*/
+position: inherit;
+width: 175px;
+margin-bottom: 10px;
+padding:10px;
+float: none;          
+font-size: 16px;
+border: 1px solid rgb(120,120,120); 
+}
+
+.list-view .asset.open .reel { right: 0px; z-index: 2; }
 
 /* Asset workflow */
 .asset.setup .title { background: #f39bbb; }
@@ -499,8 +534,8 @@ Media queries
   .result-headers { width: 1347px; }
 
   .list-view .asset { width: 420px; height: 70px; margin: 10px 40px 0 0; }
-  .list-view .asset:nth-child(2n+1) { margin-right: 40px; }
-  .list-view .asset:nth-child(3n+1) { margin-right: 0; }
+  .list-view .asset:nth-child(2n) { margin-right: 40px; }
+  .list-view .asset:nth-child(3n) { margin-right: 0; }
 
   .list-view .title { width: 375px; } 
 

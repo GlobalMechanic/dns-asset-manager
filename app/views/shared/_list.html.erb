@@ -1,0 +1,36 @@
+<div id="asset-<%= asset.id %>" class="asset <%= asset.status %>" draggable="true">
+  <% if reel %>
+    <% if reel.assets.map {|asset| asset[:id] }.include?(asset.id) %>
+    <%= link_to 'Remove from Reel', reel_asset_path(reel, asset), method: :delete, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel remove' %>
+    <% else %>
+    <%= link_to 'Add to Reel', reel_asset_path(reel, asset), method: :post, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel add' %>
+    <% end %>
+  <% end %>
+  <div title="<%= asset.title %>" class="title"><%= asset.title %></div>
+
+  <div class="asset-workflow row">
+    <% if asset.checked_out? %>
+    <div class="checkout asset-state">out</div>
+    <% else %>
+    <div class="checkin asset-state">
+      <a href="">Download Asset</a>
+    </div>
+    <% end %>
+    <% if asset.user %>
+    <p class="assigned-to"><%= asset.user.name %></p>
+    <% end %>
+  </div>
+
+  <div class="extended">
+    <div title="<%= asset.title %>" class="title"><%= asset.title %></div>
+    <div class="tab-tile">
+        <div class="tile">
+          <nav class="downloads">
+              <%= link_to 'Download', asset_download_path(asset), :class => 'button' %>
+              <%= link_to 'Checkout', asset_download_path(asset), :class => 'button' %>
+              <%= link_to 'Download & Checkout', asset_download_path(asset), :class => 'button' %>
+            </nav>
+          </div> 
+    </div>
+  </div>
+</div>

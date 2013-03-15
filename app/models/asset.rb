@@ -9,6 +9,13 @@ class Asset < ActiveRecord::Base
     ['Audio', 'audio'],
   ]
 
+  STATUS = [
+    ['Setup', 'setup'],
+    ['Layout', 'layout'],
+    ['Animation', 'animation'],
+    ['Approved', 'approved'],
+  ]
+
 	has_paper_trail
   mount_uploader :asset, AssetUploader
   mount_uploader :preview, AssetUploader
@@ -16,6 +23,7 @@ class Asset < ActiveRecord::Base
 
   has_and_belongs_to_many :scene
   belongs_to :episode
+  belongs_to :user
   has_many :reel_assets, :dependent => :delete_all
 
   acts_as_taggable_on :keywords, :name
@@ -29,7 +37,11 @@ class Asset < ActiveRecord::Base
                   :preview_swf,
                   :episode_id,
                   :scene_ids,
-                  :stock
+                  :stock,
+                  :status,
+                  :submitted,
+                  :checked_out,
+                  :user_id
 
   #before_create :parse_meta
 

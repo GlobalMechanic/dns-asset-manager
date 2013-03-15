@@ -1,4 +1,5 @@
 <div id="asset-<%= asset.id %>" class="asset" draggable="true">
+  <div title="<%= asset.title %>" class="title"><%= asset.title %></div>
   <% if reel %>
     <% if reel.assets.map {|asset| asset[:id] }.include?(asset.id) %>
     <%= link_to 'Remove from Reel', reel_asset_path(reel, asset), method: :delete, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel remove' %>
@@ -6,7 +7,6 @@
     <%= link_to 'Add to Reel', reel_asset_path(reel, asset), method: :post, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel add' %>
     <% end %>
   <% end %>
-  <div title="<%= asset.title %>" class="title"><%= asset.title %></div>
 
   <% if asset.preview? %>
   <%= image_tag asset.preview_url(:thumb).to_s, :class => 'default preview', :draggable => 'false' %>
@@ -23,8 +23,8 @@
       <p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->
     <%# else %>
       <div class="checkin asset-state">
+        <a href="">Download Asset</a>
       <%# link_to 'Download Asset', asset_download_path(asset) %>
-      <a href="#download-asset">Download Asset</a>
       </div>
       <%# if assigned %>
       <!-- <p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->

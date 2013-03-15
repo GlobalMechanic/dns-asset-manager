@@ -10,13 +10,10 @@ class AssetsController < ApplicationController
   def index
     @search = Asset.search(params[:search])
 
-    if !params[:search]
-      @title = 'All Assets (' + Asset.count.to_s + ')'
-    elsif params[:where]
-      search_terms = params[:search].values.reject(&:blank?)
-      if !search_terms.empty?
-        @title = params[:where].titleize + ': "' + search_terms.join(', ') + '"'
-      end
+    if params[:search]
+      @title = "Search: #{params[:search].values.join(', ')} (#{@search.count})"
+    else
+      @title = "All Assets (#{Asset.count})"
     end
 
     if ['director', 'client', 'category'].include? params[:where]
@@ -34,10 +31,6 @@ class AssetsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @assets }
     end
-  end
-
-  def queue
-    @assets = Asset.all
   end
 
   # GET /assets/1
@@ -124,16 +117,22 @@ class AssetsController < ApplicationController
     end
   end
 
+  def queue
+    @assets = current_user.assets
+    @title = "My Qeueue (#{@assets.length})"
+    render 'index'
+  end
+
   def type
     @search = Asset.where(:asset_type => params[:asset_type]).search(params[:search])
     @assets = @search.all.uniq
-    @title = params[:asset_type].titleize.pluralize + ' (' + @assets.count.to_s + ')'
+    @title = "#{params[:asset_type].titleize.pluralize} (#{@assets.count})"
     render 'index'
   end
 
   def keyword
     @assets = Asset.tagged_with(params[:keyword])
-    @title = 'Tag: "' + params[:keyword] + '" (' + @assets.count.to_s + ')'
+    @title = "Tag: #{params[:keyword]} (#{@assets.count})"
     render 'index'
   end
 
