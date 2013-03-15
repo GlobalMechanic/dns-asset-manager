@@ -225,14 +225,8 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
   margin-left: 5px;
   padding: 0px 5px;
 }
-
-#layout .grid {
-  background-image: url('ui/layout-grid.png');
-}
-
-#layout .active {
-  background-color: #eee;
-}
+#layout .grid { background-image: url('ui/layout-grid.png'); }
+#layout .active { background-color: #ddd; }
 
 .top-bar a { font-family: Clarendon; color: #fff; }
 .top-bar a:visited { color: #fff; }
