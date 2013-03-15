@@ -1,9 +1,8 @@
-<%= link_to '&larr; All episodes'.html_safe, episodes_path %>
-  
-<h2><%= @episode.number.pad %> - <%= @episode.title %></h2>
+<h2><%= @episode.number.pad %> - <%= @episode.title %> (<%= @episode.assets.length %>)</h2>
+<%= render :partial => 'shared/layout', :locals => { :layout => params['layout'] } %>
 <%= render :partial => 'shared/assets', :locals => { :assets => @episode.assets } %>
 <% if @episode.scenes.length > 0 %>
-  <h2>Scenes:</h2>
+  <h2>Scenes (<%= @episode.scenes.length %>)</h2>
   <% @episode.scenes.each do |scene| %>
     <div class="clearfix">
       <h3 class="result-headers"><%= link_to 'Scene ' + scene.number.pad, episode_scene_path(@episode, scene) %><% if can? :update, Scene %><span class="actions"><%= link_to 'Edit', edit_episode_scene_path(@episode, scene) %></span><% end %></h3>

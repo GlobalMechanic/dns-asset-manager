@@ -1,5 +1,2 @@
-<div id="layout">
-  <a class="list<%= ' active' if params['layout'] == 'list' %>" href="?layout=list">List</a>
-  <a class="grid<%= ' active' unless params['layout'] == 'list' %>" href="?layout=grid">Grid</a>
-</div>
+<%= render :partial => 'shared/layout', :locals => { :layout => params['layout'] } %>
 <%= render :partial => 'shared/assets', :locals => { :assets => @assets }%>

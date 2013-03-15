@@ -1,4 +1,4 @@
-<h2>All episodes</h2>
+<h2>All episodes (<%= @episodes.length %>)</h2>
 
 <% @episodes.each_with_index do |episode, index| %>
   <h3 class="result-headers"><%= episode.number.pad %> - <%= link_to episode.title, episode %><% if can? :update, Episode %><span class="actions"><%= link_to 'Edit', edit_episode_path(episode) %></span><% end %></h3>
