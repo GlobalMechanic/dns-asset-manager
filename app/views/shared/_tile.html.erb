@@ -17,20 +17,16 @@
   <% end %>
 
   <div class="asset-workflow row">
-  <%# if %>
-    <%# if checked out %> 
-      <!-- <div class="checkout asset-state">out</div>
-      <p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->
-    <%# else %>
-      <div class="checkin asset-state">
-        <a href="">Download Asset</a>
-      <%# link_to 'Download Asset', asset_download_path(asset) %>
-      </div>
-      <%# if assigned %>
-      <!-- <p class="assigned-to">Chet Earl Woodside Chet Earl Woodside</p> -->
-      <%# end %>
-    <%# end %>
-  <%# end %>
+    <% if asset.checked_out? %>
+    <div class="checkout asset-state">out</div>
+    <% else %>
+    <div class="checkin asset-state">
+      <a href="">Download Asset</a>
+    </div>
+    <% end %>
+    <% if asset.user %>
+    <p class="assigned-to"><%= asset.user.name %></p>
+    <% end %>
   </div>
 
   <div class="extended">
