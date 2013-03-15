@@ -329,11 +329,11 @@ Asset extended
 
 .list-view .extended table { /*width: 96%;*/ }
 
-
-
-/*.asset-utilities { float: right; width: 160px; }
-.asset-utilities ul { float: left; padding: 0; }
-.asset-utilities li { float: left; margin: 0; padding: 0; }*/
+.list-view .extended input[type="text"] { 
+  width: 67%;
+  padding: 0 5px;
+  margin-bottom: 0;
+}
 
 /* ???? [START] */
 
