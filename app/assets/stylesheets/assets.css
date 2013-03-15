@@ -116,7 +116,7 @@ border: 1px solid rgb(120,120,120);
 .list-view .asset.open .reel { right: 0px; z-index: 2; }
 
 /* Asset workflow */
-.look-at-me { display: none; }
+.look-at-me { display: none }
 .asset.submitted .look-at-me { 
   z-index: 10;
   display: block;
@@ -127,6 +127,14 @@ border: 1px solid rgb(120,120,120);
   background: url('ui/all-seeing-eye-big.gif') center center no-repeat;
   background-size: 144px 113px;
 }
+.list-view .asset.submitted .look-at-me { 
+  top: 0;
+  left: 160px;
+  width: 130px;
+  height: 70px;
+  background-size: 116px 91px;
+}
+
 .asset.setup .title { background: #f39bbb; }
 .asset.layout .title { background: #f1e662; }
 .asset.animation .title { background: #3ed9d0; }
@@ -185,7 +193,7 @@ Asset extended
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 20;
 }
 .assets .asset:nth-child(10n+6) .extended { left: -192px; /* -188px - 4px */ }
 .assets .asset:nth-child(10n+8) .extended { left: auto; right: 0; }
@@ -319,7 +327,7 @@ Asset extended
 
 /* Asset extended: list view */
 .list-view .asset.open .extended { width: 455px; height: 310px; }
-.list-view .asset.open .reel { right: 0px; z-index: 2; }
+.list-view .asset.open .reel { right: 0px; z-index: 30; }
 .list-view .extended .title { width: 410px; }
 
 .list-view .tab-tile { height: 200px; }
@@ -348,7 +356,7 @@ Asset extended
 
 /* ???? [START] */
 
-.asset.open .reel { right: -576px; z-index: 2; }
+.asset.open .reel { right: -576px; z-index: 30; }
 .assets .asset:nth-child(10n+6).open .reel { right: -384px; }
 .assets .asset:nth-child(10n+8).open .reel { right: 0; }
 .assets .asset:nth-child(10n+10).open .reel { right: 0; }
