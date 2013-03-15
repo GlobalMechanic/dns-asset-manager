@@ -139,6 +139,7 @@ $(document).ready(function() {
     
     $('.asset-utilities').find('.active').removeClass('active');
     $('.tab-tile .tile').removeClass('open');
+    $('.asset').removeClass('open');
     $(this).parents('.asset').addClass('open');
     $(this).parents('.asset').find('.asset-utilities li:first-child a').addClass('active');
     $(this).parents('.asset').find('.tile:first-child').addClass('open');
