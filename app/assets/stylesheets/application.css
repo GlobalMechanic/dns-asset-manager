@@ -211,6 +211,29 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
   background: rgba(255, 0, 0, 0.25);
 }
 
+#layout {
+  position: absolute;
+  top: 7px;
+  right: 0;
+}
+#layout .list, #layout .grid {
+  text-indent: -9999px;
+  background: url('ui/layout-list.png') no-repeat center center;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  margin-left: 5px;
+  padding: 0px 5px;
+}
+
+#layout .grid {
+  background-image: url('ui/layout-grid.png');
+}
+
+#layout .active {
+  background-color: #eee;
+}
+
 .top-bar a { font-family: Clarendon; color: #fff; }
 .top-bar a:visited { color: #fff; }
 .top-bar a:hover { background: inherit; }
