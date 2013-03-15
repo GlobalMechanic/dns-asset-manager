@@ -26,11 +26,102 @@
     <div class="tab-tile">
         <div class="tile">
           <nav class="downloads">
-              <%= link_to 'Download', asset_download_path(asset), :class => 'button' %>
-              <%= link_to 'Checkout', asset_download_path(asset), :class => 'button' %>
-              <%= link_to 'Download & Checkout', asset_download_path(asset), :class => 'button' %>
-            </nav>
-          </div> 
+            <%= link_to 'Download', asset_download_path(asset), :class => 'button' %>
+            <%= link_to 'Checkout', asset_download_path(asset), :class => 'button' %>
+            <%= link_to 'Download & Checkout', asset_download_path(asset), :class => 'button' %>
+          </nav>
+        </div> 
+
+        <div class="tile">
+          <table class="detail">
+            <caption>Versions</caption>
+            <thead>
+              <tr>
+                <th>Who</th>
+                <th>What</th>
+                <th>When</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% asset.versions.reverse.each do |version| %>
+            <tr>
+              <td><%= version.whodunnit? ? User.find(version.whodunnit).name : '-' %></td>
+              <td><%= version.event.titleize %></td>
+              <td><%= time_ago_in_words(version.created_at) %> ago</td>
+            </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tile">
+          <% if can? :update, Asset %>
+          <a href="<%= asset_path asset %>/edit" class="button">Edit Asset</a>
+          <% end %>
+          <dl>
+            <% if asset.scene.length > 0 %>
+            <dt>Episodes:</dt>
+            <dd>
+              <% Episode.joins(:scenes).where(:scenes => { :id => asset.scene.map {|item| item.id} }).uniq.order("episodes.number ASC").each do |episode| %>
+                <%= link_to episode.title, episode %>
+              <% end %>
+            </dd>
+            <% end %>
+            <% if asset.name_list.length > 0 %>
+            <dt>Name:</dt>
+            <dd>
+              <% asset.name_list.each do |keyword| %>
+                <%= link_to keyword, keyword_assets_path(keyword) %>
+              <% end %>
+            </dd>
+            <% end %>
+            <% if asset.keyword_list.length > 0 %>
+            <dt>Keywords:</dt>
+            <dd>
+              <% asset.keyword_list.each do |keyword| %>
+                <%= link_to keyword, keyword_assets_path(keyword) %>
+              <% end %>
+            </dd>
+            <% end %>
+            <% if asset.description? %>
+            <dt>Description:</dt>
+            <dd><%= asset.description %></dd>
+            <% end %>
+            <% if asset.scene.length <= 0 && asset.name_list.length <= 0 && asset.keyword_list.length <= 0 && !asset.description? %>
+               <p>No extra information.</p>
+            <% end %>
+          </dl>
+        </div>
+
+        <% if previewable(asset.preview) || previewable(asset.preview_swf) %>
+        <div class="tile">
+          <% if asset.preview_swf? %>
+          <div data-flash-url="<%= asset.preview_swf %>"></div>
+          <% elsif is_image(asset.preview) %>
+          <div class="detail" data-image-url="<%= asset.preview_url %>"></div>
+          <% else %>
+          <%= image_tag '/assets/placeholders/' + clean_extension(asset.send(preview)) + '.png', :class => 'default', :draggable => 'false' %>
+          <% end %>
+        </div>
+        <% end %>
+
+        <nav class="row asset-utilities">
+          <ul>
+            <li><a href="#download">Download</a></li>
+            <li><a href="#versions">Versions</a></li>
+            <li><a href="#details">Details</a></li>
+            <% if previewable(asset.preview) || previewable(asset.preview_swf) %>
+            <li><a href="#video">Video</a></li>
+            <% end %>
+          </ul>
+        </nav>
+
+        <% if can? :update, Asset %>
+          <%= form_for asset do |f| %>
+            <%= f.autocomplete_field :keyword_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
+          <% end %>
+        <% end %>
     </div>
   </div>
+
 </div>
