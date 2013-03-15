@@ -78,7 +78,7 @@ Asset default
   height: 70px;
   margin: 10px 46px 0 0;
 }
-.list-view .asset:nth-child(2n+1) { margin-right: 0; }
+.list-view .asset:nth-child(2n) { margin-right: 0; }
 
 .list-view .title { width: 410px; }
 
@@ -534,8 +534,8 @@ Media queries
   .result-headers { width: 1347px; }
 
   .list-view .asset { width: 420px; height: 70px; margin: 10px 40px 0 0; }
-  .list-view .asset:nth-child(2n+1) { margin-right: 40px; }
-  .list-view .asset:nth-child(3n+1) { margin-right: 0; }
+  .list-view .asset:nth-child(2n) { margin-right: 40px; }
+  .list-view .asset:nth-child(3n) { margin-right: 0; }
 
   .list-view .title { width: 375px; } 
 
