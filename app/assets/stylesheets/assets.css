@@ -569,11 +569,13 @@ Media queries
 
   .list-view .extended .title { width: 375px }
 
-  .list-view .tile { width: 420px; }
+  .list-view .tile { width: 400px; }
 
-  .list-view .extended input[type="text"] { width: 60%; }
+  .list-view .extended input[type="text"] { width: 57%; }
 
   .list-view .asset.submitted .look-at-me { left: 154px; }
+
+  .list-view .extended .downloads { margin: 20px auto 0; }
 }
 
 /* -------
