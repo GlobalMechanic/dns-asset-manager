@@ -166,7 +166,14 @@ Asset extended
   overflow: auto;
 }
 
-.tile.media { background: url('ui/loading.gif') center center no-repeat; }
+.tile.media { 
+  background: url('ui/loading.gif') center center no-repeat; 
+}
+
+.tile.media .detail { margin-bottom: 0; text-align: center; }
+
+.tile.media img { height: 346px; cursor: url(ui/zoom-in.png),auto; }
+.tile.media .fullsize { width: inherit; height: inherit; cursor: url(ui/zoom-out.png),auto; }
 
 /* Asset tile nav */
 .asset-utilities { float: right; width: 160px; }
@@ -349,6 +356,8 @@ Asset list view
 .list-view .tab-tile { height: 200px; }
 
 .list-view .tile { width: 432px; height: 205px; }
+.list-view .tile.media img { height: 205px; }
+.list-view .tile.media .fullsize { width: inherit; height: inherit; }
 
 .list-view .extended .downloads { margin: 10px auto 0; width: 200px; text-align: center; }
 .list-view .downloads .button { 
