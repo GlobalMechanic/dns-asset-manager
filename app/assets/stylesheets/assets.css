@@ -1,6 +1,5 @@
 /* 
 Asset default
-  Asset list view
   Asset workflow
 Asset extended
   Asset tile nav
@@ -8,6 +7,7 @@ Asset extended
   Details tile
   Versions tile
   Downloads tile
+Asset list views
 Asset dragged
 Asset search, filters & results
 Asset add, edit, delete forms
@@ -19,7 +19,6 @@ Progress bar
 /* -------
 Asset default 
 ------- */
-.assets { }
 .assets h2 {
   /*clear: both;
   padding-top: 1em;
@@ -36,6 +35,7 @@ Asset default
   margin: 0 2px 4px 2px;
   line-height: 21px;
 }
+
 .slots .asset { margin: 10px 0 4px 0; }
 
 .asset .title {
@@ -70,51 +70,6 @@ Asset default
 .asset .default.preview { width: 188px; height: 106px; }
 .asset video.default { width: 100%; }
 
-/* Asset list view */
-.list-view { }
-
-.list-view .asset { 
-  width: 455px; 
-  height: 70px;
-  margin: 10px 46px 0 0;
-}
-.list-view .asset:nth-child(2n) { margin-right: 0; }
-
-.list-view .title { width: 410px; }
-
-.list-view .asset.open .extended { 
-width: 455px; 
-height: 230px;
-}
-
-.list-view .extended .title { width: 410px }
-
-.list-view .tab-tile { height: 170px }
-.list-view .downloads { }
-
-.list-view .tile { 
-width: 455px; 
-height: 230px; 
-}
-
-.list-view .extended .downloads { 
-margin: 10px auto 0; 
-width: 200px;
-text-align: center; 
-}
-.list-view .downloads .button { 
-/*display: block;*/
-position: inherit;
-width: 175px;
-margin-bottom: 10px;
-padding:10px;
-float: none;          
-font-size: 16px;
-border: 1px solid rgb(120,120,120); 
-}
-
-.list-view .asset.open .reel { right: 0px; z-index: 2; }
-
 /* Asset workflow */
 .look-at-me { display: none }
 .asset.submitted .look-at-me { 
@@ -127,15 +82,7 @@ border: 1px solid rgb(120,120,120);
   background: url('ui/all-seeing-eye-big.gif') center center no-repeat;
   background-size: 144px 113px; 
 }
-.list-view .asset.submitted .look-at-me { 
-  top: 0;
-  left: 160px;
-  width: 130px;
-  height: 70px;
-  background-size: 116px 91px;
-}
-.submitted.open .look-at-me,
-.list-view .submitted.open .look-at-me { display: none; }
+.submitted.open .look-at-me { display: none; }
 
 .asset.setup .title { background: #f39bbb; }
 .asset.layout .title { background: #f1e662; }
@@ -179,10 +126,6 @@ border: 1px solid rgb(120,120,120);
   background-color: rgba(255,255,255, 0.7); 
 }
 
-.list-view .asset-workflow { top: 0; }
-.list-view .checkin { background-color: rgba(33,33,33,.1); }
-.list-view .assigned-to { width: 407px; padding-bottom: 4px; }
-
 /* -------  
 Asset extended 
 ------- */
@@ -222,6 +165,8 @@ Asset extended
   padding: 0; 
   overflow: auto;
 }
+
+.tile.media { background: url('ui/loading.gif') center center no-repeat; }
 
 /* Asset tile nav */
 .asset-utilities { float: right; width: 160px; }
@@ -327,38 +272,6 @@ Asset extended
   background: rgba(255, 0, 0, 0.25);
 }
 
-/* Asset extended: list view */
-.list-view  .asset:nth-child(10n+6) .extended { left: 0; }
-.list-view  .asset:nth-child(10n+6).open .reel { right: 0px; }
-
-.list-view .asset.open .extended { width: 455px; height: 310px; }
-.list-view .asset.open .reel { right: 0px; z-index: 30; }
-.list-view .extended .title { width: 410px; }
-
-.list-view .tab-tile { height: 200px; }
-
-.list-view .tile { width: 432px; height: 205px; }
-
-.list-view .extended .downloads { margin: 10px auto 0; width: 200px; text-align: center; }
-.list-view .downloads .button { 
-  /*display: block;*/
-  position: inherit;
-  width: 175px;
-  margin-bottom: 10px;
-  padding:10px;
-  float: none;          
-  font-size: 16px;
-  border: 1px solid rgb(120,120,120); 
-}
-
-.list-view .extended table { /*width: 96%;*/ }
-
-.list-view .extended input[type="text"] { 
-  width: 67%;
-  padding: 0 5px;
-  margin-bottom: 0;
-}
-
 /* ???? [START] */
 
 .asset.open .reel { right: -576px; z-index: 30; }
@@ -393,6 +306,83 @@ Asset extended
 .assets.dragging .slot .region { display: block; }
 
 /* ???? [END] */
+
+
+/* -------
+Asset list view
+------- */
+.list-view .asset { width: 455px; height: 70px; margin: 10px 46px 0 0; }
+.list-view .asset:nth-child(2n) { margin-right: 0; }
+
+.list-view .title { width: 410px; }
+
+.list-view .asset.open .extended { width: 455px; height: 230px; }
+
+.list-view .extended .title { width: 410px; }
+
+.list-view .tab-tile { height: 170px; }
+
+.list-view .tile { width: 455px; height: 230px; }
+
+.list-view .extended .downloads { margin: 10px auto 0; width: 200px; text-align: center; }
+.list-view .downloads .button { 
+  /*display: block;*/
+  position: inherit;
+  width: 175px;
+  margin-bottom: 10px;
+  padding:10px;
+  float: none;          
+  font-size: 16px;
+  border: 1px solid rgb(120,120,120); 
+}
+
+.list-view .asset.open .reel { right: 0px; z-index: 2; }
+
+/* Asset list view extended */
+.list-view  .asset:nth-child(10n+6) .extended { left: 0; }
+.list-view  .asset:nth-child(10n+6).open .reel { right: 0px; }
+
+.list-view .asset.open .extended { width: 455px; height: 310px; }
+.list-view .asset.open .reel { right: 0px; z-index: 30; }
+.list-view .extended .title { width: 410px; }
+
+.list-view .tab-tile { height: 200px; }
+
+.list-view .tile { width: 432px; height: 205px; }
+
+.list-view .extended .downloads { margin: 10px auto 0; width: 200px; text-align: center; }
+.list-view .downloads .button { 
+  /*display: block;*/
+  position: inherit;
+  width: 175px;
+  margin-bottom: 10px;
+  padding:10px;
+  float: none;          
+  font-size: 16px;
+  border: 1px solid rgb(120,120,120); 
+}
+
+.list-view .extended table { /*width: 96%;*/ }
+
+.list-view .extended input[type="text"] { 
+  width: 67%;
+  padding: 0 5px;
+  margin-bottom: 0;
+}
+
+/* Asset list view workflow */
+.list-view .asset.submitted .look-at-me { 
+  top: 0;
+  left: 160px;
+  width: 130px;
+  height: 70px;
+  background-size: 116px 91px;
+}
+.list-view .submitted.open .look-at-me { display: none; }
+
+.list-view .asset-workflow { top: 0; }
+.list-view .checkin { background-color: rgba(33,33,33,.1); }
+.list-view .assigned-to { width: 407px; padding-bottom: 4px; }
 
 /* -------
 Asset dragged 
