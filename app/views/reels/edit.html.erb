@@ -34,15 +34,16 @@
   <% unless @reel.assets.length > 0 %>
   <%= content_tag(:p, 'No assets yet.') %>
   <% else %>
+  <% @layout = 'grid' %>P
   <%= render :partial => 'shared/assets', :locals => { :assets => @reel.assets } %>
   <% end %>
 </div>
 
 <script type="text/javascript">
-var asset = new ZeroClipboard.Client();
-asset.setText('<%= reel_url %>');
-asset.glue('copy-link');
-asset.addEventListener('complete', function(client, text) {
+var clip = new ZeroClipboard.Client();
+clip.setText('<%= root_url %><%= @reel.id %>');
+clip.glue('copy-link');
+clip.addEventListener('complete', function(client, text) {
   $('#copy-link').text('Copied Link').css({ color: 'green' })
 });
 </script>

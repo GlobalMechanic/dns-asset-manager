@@ -6,7 +6,7 @@
   <% end %>
   <%= content_tag(:p, 'No assets yet.') unless reel.assets.length > 0 %>
   <% reel.assets.each do |asset| %>
-    <%= render :partial => 'shared/tile', :locals => { :reel => reel, :asset => asset } %>  
+    <%= render :partial => 'shared/tile', :locals => { :reel => reel, :asset => asset } %> 
   <% end %>
 </div>
 <% end %>

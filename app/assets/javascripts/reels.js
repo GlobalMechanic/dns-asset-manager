@@ -27,9 +27,10 @@ $(document).ready(function() {
       e.originalEvent.dataTransfer.effectAllowed = 'move';
       e.originalEvent.dataTransfer.setData('text/asset', this);
       // Firefox needs this.
-      if (typeof $.browser.mozilla !== 'undefined') {
+      var userAgentTest = navigator.userAgent.toLowerCase();
+      if (userAgentTest !== 'undefined') {
         e.originalEvent.dataTransfer.setDragImage($(this).find('img').get(0), 80, 60);
-      }
+      } 
       $('.assets').addClass('dragging');
       $dragged = $(this).addClass('dragged');
       return true;
