@@ -77,6 +77,11 @@ $(document).ready(function() {
     return false;
   });
 
+  // Handle image preview
+  $('.media .detail').on('click', 'img', function() {
+    $(this).toggleClass('fullsize');
+  });
+
   // Handle video player.
   $('.asset .default, .asset .title').click(function(e) {
     $('[data-flash-url]').empty();
@@ -102,6 +107,7 @@ $(document).ready(function() {
       $(this).parent().find('[data-flash-url]:empty').each(setupFlash);
       $('.asset.open').removeClass('open');
       $('.tile.open').removeClass('open');
+      $('.fullsize').removeClass('fullsize');
       $('.tab-tile .tile:last-child').addClass('open');
       $('.asset-utilities a').removeClass('active');
       $('.asset-utilities li:last-child a').addClass('active');
