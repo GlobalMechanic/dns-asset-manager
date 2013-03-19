@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
     @current_reel = current_user && current_user.current_reel_slug? && Reel.exists?(current_user.current_reel_slug) ? Reel.find(current_user.current_reel_slug) : nil
     @reels_created = Reel.accessible_by(current_ability, :edit).where("title <> ''").order('created_at DESC').limit(5)
     @reels_updated = Reel.accessible_by(current_ability, :edit).where("title <> ''").order('updated_at DESC').limit(5)
+    if params[:layout] == 'grid' || params[:layout] == 'list'
+      session[:layout] = params[:layout]
+    end
+    @layout = session[:layout] ? session[:layout] : 'grid'
+    puts session.inspect
   end
 
   def add_reels
