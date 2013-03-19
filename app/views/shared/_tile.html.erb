@@ -107,7 +107,7 @@
 
       <%# Video section%>
       <% if previewable(asset.preview) || previewable(asset.preview_swf) %>
-      <div class="tile">
+      <div class="tile media">
         <% if asset.preview_swf? %>
         <div data-flash-url="<%= asset.preview_swf %>"></div>
         <% elsif is_image(asset.preview) %>
