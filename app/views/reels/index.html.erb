@@ -1,12 +1,26 @@
 <% @reels.each do |reel| %>
-<div id="reel-<%= reel.slug %>" class="reel-id assets clearfix">
-  <h2><%= link_to reel.title, open_reel_path(reel) %></h2>
-  <% if can? :destroy, reel %>
-  <%= link_to 'Destroy', reel, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
-  <%= content_tag(:p, 'No assets yet.') unless reel.assets.length > 0 %>
+<h3 class="result-headers"><%= link_to reel.title, open_reel_path(reel) %><% if can? :destroy, reel %>
+<span class="actions"><%= link_to 'Destroy', reel, method: :delete, data: { confirm: 'Are you sure?' } %></span><% end %></h3>
+
+<div id="reel-id" class="reel-id assets slots row<%= ' list-view' if @layout == 'list' %>">
+  <%= content_tag(:p, 'No assets yet.') unless reel.assets.length > 0 %> 
+  
   <% reel.assets.each do |asset| %>
-    <%= render :partial => 'shared/tile', :locals => { :reel => reel, :asset => asset } %> 
+
+  <% unless @layout == 'list' %>
+  <div class="slot">
+    <div class="region"></div>
+  </div>
   <% end %>
+
+  <%= render :partial => 'shared/tile', :locals => { :reel => reel, :asset => asset } %> 
+  <% end %>
+
+   <% unless @layout == 'list' %>
+  <div class="slot">
+    <div class="region"></div>
+  </div>
+  <% end %>
+
 </div>
 <% end %>

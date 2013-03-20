@@ -3,17 +3,17 @@ form.edit_reel input[type='submit'] {
   display: inline-block;
 }
 
-body.controll-reels.action-edit .reel-presentation {
-  width: 768px;
-  float: left;
+body.controller-reels.action-edit .reel-presentation {
+  /*width: 768px;
+  float: left;*/
 }
-body.controll-reels.action-edit .assets .asset:nth-child(4n+4).open .reel {
-  right: 0;
+body.controller-reels.action-edit .assets .asset:nth-child(4n+4).open .reel {
+ /*right: 0;*/
 }
-body.controll-reels.action-edit .meta {
-  margin-top: 20px;
+body.controller-reels.action-edit .meta {
+  /*margin-top: 20px;
   width: 180px;
-  float: right;
+  float: right;*/
 }
 
 .reel h2 { display: inline-block; }

@@ -42,6 +42,7 @@ $(document).ready(function() {
 
     // Slot dragover events.
     $('.slot').bind('dragover', function(e) {
+      e.originalEvent.dataTransfer.dropEffect = 'move';
       $(this).addClass('active');
       // Drag into a neighbouring slot (no change).
       if ($dragged.next().get(0) === this || $dragged.prev().get(0) === this) {

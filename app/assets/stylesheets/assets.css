@@ -420,11 +420,13 @@ Asset search, filters & results
 
 .result-headers { 
   width: 960px; 
-  margin: 0 0 20px -5px; 
+  margin: 40px 0 20px -5px; 
   padding: 2px 9px 7px; 
   color: #333;
   background: #eee; 
 }
+.result-headers:first-child { /*margin: 0 0 20px -5px;*/ }
+
 .result-headers.result-new { background: transparent; }
 .result-headers a:hover,
 .result-headers a:visited { color: #333; background: #eee; }
