@@ -106,19 +106,10 @@ ul[id="primary"] { font-size: 23px; }
 ul[id="primary"] { float: right; margin: 13px 131px 0 0; }
 ul[id="primary"] li { margin-right: 10px; }
 
-ul[id="secondary"] { float: left; /*width: 430px;*/ width: 635px; margin-left: -21px; font-weight: bold; }
+ul[id="secondary"] { float: left; width: 635px; margin-left: -21px; font-weight: bold; }
 ul[id="secondary"] li { margin: 0; padding: 10px 10px 15px 10px; }
 
-ul[id="secondary"] .reel-name { 
-  display: inline-block;
-  max-width: 550px;
-  height: 36px;
-  padding: 10px 10px 15px 10px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
+ul[id="secondary"] .reel-name { max-width: 550px; }
 
 ul[id="secondary"] li form { display: none; }
 ul[id="secondary"] .open { position: relative; }
@@ -235,10 +226,20 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
 .top-bar .button,
 .top-bar .button:visited { color: #f7f4d6; }
 
-ul[id="secondary"] a:first-child { font-size: 35px; color: #f7f4d6; }
+ul[id="secondary"] a { display:inline-block; height: 36px; }
+
+ul[id="secondary"] a:first-child { 
+  overflow:hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 35px; 
+  color: #f7f4d6; 
+}
 ul[id="secondary"] a:last-child { 
-  display:inline-block;
-  padding: 3px;
+  position: relative;
+  top: 5px;
+  overflow: hidden;
+  text-decoration: none;
   font-size: 45px;
   text-decoration: none;
   color: #f7f4d6;
@@ -260,6 +261,7 @@ a[id="open-reel"] {
   background: #000;
   box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
 }
+
 a[id="open-reel"]:hover { background: #000; }
 a[id="open-reel"]:visited { color: #f7f4d6; }
 .open a[id="open-reel"] { color: #333; }
