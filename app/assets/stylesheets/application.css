@@ -266,6 +266,8 @@ a[id="open-reel"]:hover { background: #000; }
 a[id="open-reel"]:visited { color: #f7f4d6; }
 .open a[id="open-reel"] { color: #333; }
 
+ul[id="secondary"] a.button { height: 30px; padding-bottom: 0; } /* download button */
+
 .drawer .disc a { 
   display: block; 
   font-family: Transit;
