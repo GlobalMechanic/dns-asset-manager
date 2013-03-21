@@ -1,70 +1,20 @@
-<!-- <h2><%= @reel.title %></h2> -->
-<!-- <p>Created <%= time_tag @reel.created_at, time_ago_in_words(@reel.created_at) + ' ago', :title => @reel.created_at %> by <%= @reel.user.name %></p>
-<p><%= @reel.description %></p> -->
-
 <div class="meta row">
   <%= form_for @reel, :html => { :class => 'asset-form' } do |f| %>
     <%= f.text_field :title, :placeholder => 'Title' %>
     <%= f.text_area :description, :rows => 4, :placeholder => 'Description' %>
-
-    <%# f.submit 'Update' %>
-  <%# end %>
-  <ul>
-    <li><%= f.submit 'Update' %></li>
-    <li><%= link_to 'View', reel_path %></li>
-    <li><%= link_to 'Copy Link', '#', :id => 'copy-link' %></li>
-    <li><%= link_to 'Destroy', @reel, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-  </ul>
+    <ul>
+      <li><%= f.submit 'Update' %></li>
+      <li><%= link_to 'View', reel_path %></li>
+      <li><%= link_to 'Copy Link', '#', :id => 'copy-link' %></li>
+      <li><%= link_to 'Destroy', @reel, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    </ul>
   <% end %>
 </div>
 
-<style>
-.meta { position: relative; margin: 0 0 40px 5px; }
-
-.meta form input,
-.meta form textarea { width: 73.5%; }
-
-.meta form input[type="text"],
-.meta form input[type="submit"] { 
-  font-family: Clarendon;
-  font-weight: bold;
-}
-
-.meta form input[type="text"] { 
-  
-  font-size: 35px;
-  line-height: 40px;
-  font-family: Clarendon;
-  font-weight: bold;
-  color: #181818;
-
-}
-
-.meta form input[type="submit"] { width: 100%; padding: 18px 0;}
-
-.meta ul { 
-  position: absolute;
-  top: -3px;
-  right: 0;
-  width: 188px;
-}
-
-.meta ul li { display: block; margin: 0; }
-
-.meta ul li a { 
-  display: block; 
-  padding: 12px 5px; 
-  text-decoration: none;
-  color: #333; 
-  border-bottom: 1px solid rgb(210,210,210);}
-</style>
-
 <div class="reel-presentation">
-
   <% if @reel.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@reel.errors.count, "error") %> prohibited this reel from being saved:</h2>
-
       <ul>
       <% @reel.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -76,7 +26,7 @@
   <% unless @reel.assets.length > 0 %>
   <%= content_tag(:p, 'No assets yet.') %>
   <% else %>
-  <% @layout = 'grid' %>P
+  <% @layout = 'grid' %>
   <%= render :partial => 'shared/assets', :locals => { :assets => @reel.assets } %>
   <% end %>
 </div>

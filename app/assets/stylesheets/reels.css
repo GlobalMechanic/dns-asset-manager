@@ -1,20 +1,5 @@
 form.edit_reel input[type='text'],
-form.edit_reel input[type='submit'] {
-  display: inline-block;
-}
-
-body.controller-reels.action-edit .reel-presentation {
-  /*width: 768px;
-  float: left;*/
-}
-body.controller-reels.action-edit .assets .asset:nth-child(4n+4).open .reel {
- /*right: 0;*/
-}
-body.controller-reels.action-edit .meta {
-  /*margin-top: 20px;
-  width: 180px;
-  float: right;*/
-}
+form.edit_reel input[type='submit'] { display: inline-block; }
 
 .reel h2 { display: inline-block; }
 
@@ -22,6 +7,34 @@ form.edit_reel input[type="text"],
 form.edit_reel input[type="password"],
 form.edit_reel input[type="email"],
 form.edit_reel textarea,
-form.edit_reel select {
-  width: 170px;
+form.edit_reel select { width: 170px; }
+
+.meta { position: relative; margin: 0 0 0 5px; }
+
+.meta input,
+.meta textarea { width: 73.5%; }
+
+.meta input[type="text"],
+.meta input[type="submit"] { font-family: Clarendon; font-weight: bold; }
+.meta input[type="submit"] { width: 100%; padding: 18px 0; }
+.meta input[type="text"] {   
+  font-size: 35px;
+  line-height: 40px;
+  font-family: Clarendon;
+  font-weight: bold;
+  color: #181818;
+}
+
+.meta ul { position: absolute; top: -3px; right: 0; width: 188px; }
+.meta ul li { display: block; margin: 0; }
+
+.meta a,
+.meta a:hover,
+#copy-link { 
+  display: block; 
+  padding: 12px 5px; 
+  text-decoration: none;
+  color: #666;
+  background: rgb(255,255,255); 
+  border-bottom: 1px solid rgb(210,210,210); 
 }
