@@ -87,18 +87,20 @@ $(document).ready(function() {
     $('[data-flash-url]').empty();
     if ($(this).parents('.asset').hasClass('open')) {
       $(this).parents('.asset').removeClass('open');
-      $(this).parent().find('video, audio').each(function() {
-        this.pause();
-        if (this.currentTime > 0) {
-          this.currentTime = 0;
+      $(this).parent().find('.video-js').each(function(i, item) {
+        var video = _V_($(item).attr('id'));
+        video.pause();
+        if (video.currentTime() > 0) {
+          video.currentTime(0);
         }
       });
     }
     else {
-      $('.asset.open video').each(function () {
-        this.pause();
-        if (this.currentTime > 0) {
-          this.currentTime = 0;
+      $('.asset.open .video-js').each(function (i, item) {
+        var video = _V_($(item).attr('id'));
+        video.pause();
+        if (video.currentTime() > 0) {
+          video.currentTime(0);
         }
       });
       $(this).parent().find('[data-image-url]:empty').each(function() {
@@ -112,10 +114,11 @@ $(document).ready(function() {
       $('.asset-utilities a').removeClass('active');
       $('.asset-utilities li:last-child a').addClass('active');
       $(this).parents('.asset').addClass('open');
-      $(this).parent().find('video:not(.default), audio').each(function() {
-        this.play();
-      });
-    }
+      _V_($(this).parent().find('.video-js').attr('id')).play();
+      //$(this).parent().find('video:not(.default), audio').each(function() {
+      //  this.play();
+      //});
+    }    
   });
 
   $('.extended .title').click(function() {
@@ -160,6 +163,13 @@ $(document).ready(function() {
     $('.tab-tile .tile').removeClass('open');
     $(this).addClass('active');
     $(".tab-tile .tile:nth-child("+ currentTile +")").addClass('open');
+    $(this).parents('.asset').find('.video-js').each(function (i, item) {
+      var video = _V_($(item).attr('id'));
+      video.pause();
+      if (video.currentTime() > 0) {
+        video.currentTime(0);
+      }
+    });
   });
 
   gm.uploads = [];
