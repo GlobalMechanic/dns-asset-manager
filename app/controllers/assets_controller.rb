@@ -66,6 +66,9 @@ class AssetsController < ApplicationController
     @asset.parse_meta
     if @asset.id? && Asset.exists?(@asset.id)
       @asset = Asset.find(@asset.id)
+      @asset.user_id = nil
+      @asset.submitted = true
+      @asset.checked_out = false
       success = @asset.update_attributes(params[:asset])
     else
       success = @asset.save
