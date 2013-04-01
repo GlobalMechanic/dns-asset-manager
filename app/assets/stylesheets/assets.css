@@ -173,7 +173,7 @@ Asset extended
 
 .tile.media .detail { margin-bottom: 0; text-align: center; }
 
-.tile.media img { height: 346px; cursor: url(ui/zoom-in.png),auto; }
+.tile.media img { height: 346px; cursor: url(ui/zoom-in.png),auto; background: #d2d2d2; }
 .tile.media .fullsize { width: inherit; height: inherit; cursor: url(ui/zoom-out.png),auto; }
 
 /* Asset tile nav */
