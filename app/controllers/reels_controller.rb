@@ -92,7 +92,7 @@ class ReelsController < ApplicationController
 
   # GET /reels/1/edit
   def edit
-    @search = Asset.search(params[:search])
+    # @search = Asset.search(params[:search])
     @reel = Reel.find(params[:id])
     @assets = @reel.assets.order('"order"')
     set_current_reel_slug @reel.id
