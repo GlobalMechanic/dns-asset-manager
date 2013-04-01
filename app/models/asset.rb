@@ -65,8 +65,7 @@ class Asset < ActiveRecord::Base
 
         self.id = elements.pop if elements[-1].match(/[0-9]/)
         self.asset_type = elements.shift if Asset::TYPES.map {|type| type[1] }.include?(elements[0])
-        self.name_list = elements.shift
-        self.keyword_list = elements.join(', ') if elements.length > 0
+        self.name_list = elements.join(', ') if elements.length > 0
       end
     end
   end

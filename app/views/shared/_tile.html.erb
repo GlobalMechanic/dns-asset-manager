@@ -80,7 +80,7 @@
           </dd>
           <% end %>
           <% if asset.name_list.length > 0 %>
-          <dt>Name:</dt>
+          <dt>Object Name:</dt>
           <dd>
             <% asset.name_list.each do |keyword| %>
               <%= link_to keyword, keyword_assets_path(keyword) %>
