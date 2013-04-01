@@ -151,4 +151,23 @@ class AssetsController < ApplicationController
     end
   end
 
+  def checkout
+    puts params.inspect
+    @asset = Asset.find(params[:asset_id])
+    if params[:download] == "true"
+      redirect = asset_download_path(@asset)
+    else
+      redirect = request.referer
+    end
+    respond_to do |format|
+      if @asset.update_attributes({ :user_id => current_user.id, :checked_out => true })
+        format.html { redirect_to redirect, notice: 'Asset was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @asset.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 end

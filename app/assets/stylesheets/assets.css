@@ -267,6 +267,9 @@ Asset extended
 }
 .extended .detail { margin-bottom: 100px; }
 
+.extended .edit_asset { margin-bottom: 0; }
+.extended .edit_asset input { width: 272px; }
+
 .tile.open { display: block; }
 
 .extended .edit_asset input {

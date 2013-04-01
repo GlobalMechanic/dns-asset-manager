@@ -17,6 +17,7 @@ AssetManager::Application.routes.draw do
         get :autocomplete_tag_name
       end
       get 'download'
+      get 'checkout'
     end
 
     resources :episodes do 

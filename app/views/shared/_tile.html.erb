@@ -2,9 +2,9 @@
   <div title="<%= asset.title %>" class="title"><%= asset.title %></div>
   <% if reel %>
     <% if reel.assets.map {|asset| asset[:id] }.include?(asset.id) %>
-    <%= link_to 'Remove from Reel', reel_asset_path(reel, asset), method: :delete, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel remove' %>
+    <%= link_to 'Remove from Reel', reel_asset_path(reel, asset), method: :delete, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel remove', :title => "Remove from Reel" %>
     <% else %>
-    <%= link_to 'Add to Reel', reel_asset_path(reel, asset), method: :post, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel add' %>
+    <%= link_to 'Add to Reel', reel_asset_path(reel, asset), method: :post, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel add', :title => "Add to Reel" %>
     <% end %>
   <% end %>
 
@@ -37,8 +37,8 @@
       <div class="tile">
         <nav class="downloads">
           <%= link_to 'Download', asset_download_path(asset), :class => 'button' %>
-          <a href="" class="button" id="checkout-asset">Checkout</a>
-          <a href="" class="button" id="download-n-checkout-asset">Download &amp; Checkout</a> 
+          <%= link_to 'Checkout', asset_checkout_path(asset), :class => 'button' %>
+          <%= link_to 'Download & Checkout', asset_checkout_path(asset, :download => true), :class => 'button' %>
         </nav>
       </div> 
 
@@ -136,9 +136,11 @@
     </nav>
 
     <% if can? :update, Asset %>
-      <%= form_for asset do |f| %>
-        <%= f.autocomplete_field :keyword_list, autocomplete_tag_keywords_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
-      <% end %>
+      <div class="inline-autocomplete">
+        <%= form_for asset do |f| %>
+          <%= f.autocomplete_field :keyword_list, autocomplete_tag_keywords_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 

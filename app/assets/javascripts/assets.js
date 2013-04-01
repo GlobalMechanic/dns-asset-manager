@@ -125,10 +125,9 @@ $(document).ready(function() {
       $(this).parents('.asset').removeClass('open');
   });
 
-  $('.extended .edit_asset').submit(function() {
+  $('.extended .inline-autocomplete .edit_asset').submit(function() {
     var $this = $(this);
     $this.addClass('active');
-    window.tylor = $this;
     $.ajax(gm.root_url + 'assets/' + $this.attr('id').replace('edit_asset_', '') + '.json', {
       type: 'PUT',
       data: $this.serialize(),
