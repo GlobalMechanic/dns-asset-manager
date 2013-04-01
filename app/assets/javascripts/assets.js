@@ -114,10 +114,9 @@ $(document).ready(function() {
       $('.asset-utilities a').removeClass('active');
       $('.asset-utilities li:last-child a').addClass('active');
       $(this).parents('.asset').addClass('open');
-      _V_($(this).parent().find('.video-js').attr('id')).play();
-      //$(this).parent().find('video:not(.default), audio').each(function() {
-      //  this.play();
-      //});
+      $(this).parent().find('.video-js').each(function(i, item) {
+        _V_($(item).attr('id')).play();
+      });
     }    
   });
 
