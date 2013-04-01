@@ -33,7 +33,7 @@
 
 <script type="text/javascript">
 var clip = new ZeroClipboard.Client();
-clip.setText('<%= root_url %><%= @reel.id %>');
+clip.setText('<%= root_url %>reels/<%= @reel.id %>');
 clip.glue('copy-link');
 clip.addEventListener('complete', function(client, text) {
   $('#copy-link').text('Copied Link').css({ color: 'green' })

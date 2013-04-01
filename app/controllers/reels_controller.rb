@@ -19,9 +19,10 @@ class ReelsController < ApplicationController
   def show
     @reel = Reel.find(params[:id])
     @assets = @reel.assets.order('"order"')
+    @title = @reel.title
     
     respond_to do |format|
-      format.html { render layout: 'public_reel' }
+      format.html # show.html
       format.json { render json: @reel }
     end
   end

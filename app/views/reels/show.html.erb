@@ -1,24 +1,30 @@
-<div class="tray reel">
-  <div class="inside">
-    <h3><%= @reel.title %></h3>
-    <%= content_tag(:p, @reel.description) if @reel.description? %>
-  </div>
-</div>
-
-<div class="assets clearfix">
-<%= content_tag(:p, 'No assets yet.') unless @assets.length > 0 %>
-<% @assets.each_with_index do |asset, index| %>
-  <% if index % 4 === 0 && index != 0 %>
-  </div>
-  <div class="assets clearfix">
+<div class="reel-presentation">
+  <% if @reel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reel.errors.count, "error") %> prohibited this reel from being saved:</h2>
+      <ul>
+      <% @reel.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
 
-  <div id="asset-<%= asset.id %>" class="asset">
-    <a href="#">
-      <img class="default" draggable="false" src="http://globalmechanic.com/asset/thumbnails/<%= asset.image %>" alt="<%= asset.title %>" width="188" height="106" >
-      <div class="text"><%= asset.title %></div>
-    </a>
-  </div>
+  <%= content_tag(:p, @reel.description) unless @reel.description.to_s == '' %>
 
-<% end %>
+  <% unless @reel.assets.length > 0 %>
+  <%= content_tag(:p, 'No assets yet.') %>
+  <% else %>
+  <% @layout = 'grid' %>
+  <%= render :partial => 'shared/assets', :locals => { :assets => @reel.assets } %>
+  <% end %>
 </div>
+
+<script type="text/javascript">
+var clip = new ZeroClipboard.Client();
+clip.setText('<%= root_url %><%= @reel.id %>');
+clip.glue('copy-link');
+clip.addEventListener('complete', function(client, text) {
+  $('#copy-link').text('Copied Link').css({ color: 'green' })
+});
+</script>
