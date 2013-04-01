@@ -16,24 +16,24 @@ $(document).ready(function() {
     }
     // var flashURL = 'http://osmf.org/videos/cathy2.flv';
     var flashURL = escapeHtml($(element).data('flash-url'));
-    var video = ['<object id="object-player" width="744" height="340">',
+    var video = ['<object id="object-player" width="734" height="330">',
       '<param name="movie" value="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf"></param>',
       '<param name="flashvars" value="src=' + flashURL + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true&backgroundColor=#ffffff&javascriptCallbackFunction=gm.playerReady"></param>',
       '<param name="allowFullScreen" value="true"></param>',
       '<param name="allowscriptaccess" value="always"></param>',
       '<param name="javascriptCallbackFunction" value="gm.playerReady"></param>',
-      '<embed src="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="744" height="346" flashvars="src=' + flashURL + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true&backgroundColor=#ffffff&javascriptCallbackFunction=gm.playerReady"></embed>',
+      '<embed src="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="734" height="330" flashvars="src=' + flashURL + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true&backgroundColor=#ffffff&javascriptCallbackFunction=gm.playerReady"></embed>',
       '</object>'];
 
     $(element).append(video.join("\n"));
     gm.playerReady = function(playerId) {
       $player = $('#object-player');
       window.setTimeout(function() {
-        if ($player.attr('width') == 744) {
-          $player.attr('width', 743);  
+        if ($player.attr('width') == 734) {
+          $player.attr('width', 733);  
         }
         else {
-          $player.attr('width', 744);
+          $player.attr('width', 734);
         }
       }, 500);
     }
