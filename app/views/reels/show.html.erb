@@ -19,12 +19,3 @@
   <%= render :partial => 'shared/assets', :locals => { :assets => @reel.assets } %>
   <% end %>
 </div>
-
-<script type="text/javascript">
-var clip = new ZeroClipboard.Client();
-clip.setText('<%= root_url %><%= @reel.id %>');
-clip.glue('copy-link');
-clip.addEventListener('complete', function(client, text) {
-  $('#copy-link').text('Copied Link').css({ color: 'green' })
-});
-</script>
