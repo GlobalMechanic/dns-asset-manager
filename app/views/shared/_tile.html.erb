@@ -129,14 +129,17 @@
               <th>Who</th>
               <th>What</th>
               <th>When</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
           <% asset.versions.reverse.each do |version| %>
+          <% old_asset = version.reify rescue nil %>
             <tr>
               <td><%= version.whodunnit? ? User.find(version.whodunnit).name : '-' %></td>
               <td><%= version.event.titleize %></td>
               <td><%= time_ago_in_words(version.created_at) %> ago</td>
+              <td><%= old_asset == nil ? '' : old_asset.status %></td>
             </tr>
           <% end %>
           </tbody>
