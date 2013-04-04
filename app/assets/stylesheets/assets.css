@@ -228,7 +228,7 @@ Asset extended
 
 /* Versions tile */
 
-/* List */
+/* Listing */
 .detail-list > .row { margin-bottom: 10px; }
 
 .detail-list .asset-workflow { 
@@ -405,6 +405,10 @@ Asset list view
   font-size: 16px;
   border: 1px solid rgb(120,120,120); 
 }
+
+.list-view .detail-list .asset-workflow { width: 146px; padding-bottom: 4px;}
+.list-view .detail-list .assigned-to { width: 60px; }
+.list-view .detail-list .summary { width: 265px; font-size: 14px; }
 
 .list-view .extended table { /*width: 96%;*/ }
 
