@@ -44,7 +44,85 @@
 
       <%# Versions section %>
       <div class="tile">
-        <table class="detail">
+        <ul class="detail-list">
+          <%# asset.versions.reverse.each do |version| %>
+          <li class="row">
+            <div class="asset-workflow row">
+              <div class="checkout asset-state">out</div>
+              <p class="assigned-to">Joe smith joeson micheal smith<%# asset.user.name %></p>
+              <div class="checkin asset-state">
+                <a href="#download-asset">Download Asset</a>
+              </div>
+            </div>
+            <p class="summary animation">Update by Joe on date</p>
+          </li>
+
+          <li class="row">
+            <div class="asset-workflow row">
+              <div class="checkout asset-state">out</div>
+              <p class="assigned-to">Joe smith joeson micheal smith<%# asset.user.name %></p>
+              <div class="checkin asset-state">
+                <a href="#download-asset">Download Asset</a>
+              </div>
+            </div>
+            <p class="summary look-at-mess setup">Update by Joe on <span class="time-placement">4/3/2013 3:00 PM</span></p>
+          </li>
+          <%# end %>
+        </ul>
+
+  <!-- <div class="asset-workflow row">
+    <% if asset.checked_out? %>
+    <div class="checkout asset-state">out</div>
+    <% else %>
+    <div class="checkin asset-state">
+      <a href="#download-asset">Download Asset</a>
+    </div>
+    <% end %>
+    <% if asset.user %>
+    <p class="assigned-to"><%= asset.user.name %></p>
+    <% end %>
+  </div> -->
+
+        <style>
+        .detail-list > .row { margin-bottom: 10px; }
+
+        .detail-list .asset-workflow { 
+          top: 0;
+          float: left; 
+          width: 226px; 
+          margin: 0;
+          padding: 5px; 
+          background: rgb(255,255,255); 
+        }
+        .detail-list .checkout,
+        .detail-list .checking { background: rgb(99,99,99) }
+        .detail-list .assigned-to { height: 18px;}
+
+
+        .detail-list .summary { 
+          float: left; 
+          margin: 0; 
+          width: 497px; 
+          padding: 10px 5px 5px 5px; }
+
+        .detail-list .time-placement { float: right; }
+
+
+/*.asset.submitted .look-at-me { 
+  z-index: 10;
+  display: block;
+  position: absolute;
+  top: 40px;
+  width: 188px;
+  height: 75px;
+  background: url('ui/all-seeing-eye-big.gif') center center no-repeat;
+  background-size: 144px 113px; 
+}*/
+
+
+        </style>
+
+        <!-- <table class="detail">
           <caption>Versions</caption>
           <thead>
             <tr>
@@ -62,7 +140,7 @@
             </tr>
           <% end %>
           </tbody>
-        </table>
+        </table> -->
       </div>
 
       <%# Asset details section %>

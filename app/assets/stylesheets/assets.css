@@ -84,9 +84,12 @@ Asset default
 }
 .submitted.open .look-at-me { display: none; }
 
-.asset.setup .title { background: #f39bbb; }
-.asset.layout .title { background: #f1e662; }
-.asset.animation .title { background: #3ed9d0; }
+.asset.setup .title,
+p.setup { background: #f39bbb; }
+.asset.layout .title,
+p.layout { background: #f1e662; }
+.asset.animation .title,
+p.animation { background: #3ed9d0; }
 
 .asset-workflow { position: relative; top: -34px; }
 .asset-workflow > div,
@@ -788,3 +791,10 @@ Progress bar
   background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
+
+
+/* Scratch */
+        .asset.submitted .detail-list .look-at-mess {
+          width: 462px;
+          padding: 10px 5px 5px 40px;
+          background: url('ui/all-seeing-eye-big.gif') 0 0 no-repeat;        }
