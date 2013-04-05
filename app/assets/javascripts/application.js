@@ -21,6 +21,10 @@
 //= require assets
 //= require reels
 
+if (navigator.userAgent.match(/msie/i)) {
+  _V_.options.techOrder = ["flash","html5"];
+}
+
 $(document).ready(function() {
 
 });
