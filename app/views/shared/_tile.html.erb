@@ -56,28 +56,28 @@
 
       <%# Versions section %>
       <div class="tile">
-        <table class="detail">
-          <caption>Versions</caption>
-          <thead>
-            <tr>
-              <th>Who</th>
-              <th>What</th>
-              <th>When</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
+        <ul class="detail-list">
           <% asset.versions.reverse.each do |version| %>
           <% old_asset = version.reify rescue nil %>
-            <tr>
-              <td><%= version.whodunnit? ? User.find(version.whodunnit).name : '-' %></td>
-              <td><%= version.event.titleize %></td>
-              <td><%= time_ago_in_words(version.created_at) %> ago</td>
-              <td><%= old_asset == nil ? '' : old_asset.status %></td>
-            </tr>
+          <li class="row">
+            <div class="asset-workflow row">
+              <div class="checkout asset-state">out</div>
+              <!-- <p class="assigned-to"><%# asset.user.name %></p> -->
+              <p class="assigned-to">Joe</p>
+              <div class="checkin asset-state">
+                <a href="#download-asset">Download Asset</a>
+              </div>
+            </div>
+            <p class="summary <%= old_asset == nil ? '' : old_asset.status %>">
+              <%= version.event.titleize %> 
+              by 
+              <%= version.whodunnit? ? User.find(version.whodunnit).name : '-' %> 
+              on 
+              <span class="time-placement"><%= time_ago_in_words(version.created_at) %> ago</span>
+            </p>
+          </li>
           <% end %>
-          </tbody>
-        </table>
+        </ul>
       </div>
 
       <%# Asset details section %>
