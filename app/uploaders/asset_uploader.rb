@@ -12,7 +12,7 @@ class AssetUploader < CarrierWave::Uploader::Base
   # include Sprockets::Helpers::IsolatedHelper
 
   IMAGE_EXTENSIONS = %w(jpg jpeg gif png)
-  MOVIE_EXTENSIONS = %w(mov mp3)
+  MOVIE_EXTENSIONS = %w(mov mp4)
   FLASH_EXTENSIONS = %w(fla flv swf)
   AUDIO_EXTENSIONS = %w(mp3 wav)
   
