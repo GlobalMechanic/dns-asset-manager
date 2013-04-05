@@ -87,7 +87,7 @@ $(document).ready(function() {
     $('[data-flash-url]').empty();
     if ($(this).parents('.asset').hasClass('open')) {
       $(this).parents('.asset').removeClass('open');
-      $(this).parent().find('.video-js').each(function(i, item) {
+      $(this).parent().find('.video-js.full-size').each(function(i, item) {
         var video = _V_($(item).attr('id'));
         video.pause();
         if (video.currentTime() > 0) {
@@ -96,7 +96,7 @@ $(document).ready(function() {
       });
     }
     else {
-      $('.asset.open .video-js').each(function (i, item) {
+      $('.asset.open .video-js.full-size').each(function (i, item) {
         var video = _V_($(item).attr('id'));
         video.pause();
         if (video.currentTime() > 0) {
@@ -114,7 +114,7 @@ $(document).ready(function() {
       $('.asset-utilities a').removeClass('active');
       $('.asset-utilities li:last-child a').addClass('active');
       $(this).parents('.asset').addClass('open');
-      $(this).parent().find('.video-js').each(function(i, item) {
+      $(this).parent().find('.video-js.full-size').each(function(i, item) {
         _V_($(item).attr('id')).play();
       });
     }    
@@ -161,7 +161,7 @@ $(document).ready(function() {
     $('.tab-tile .tile').removeClass('open');
     $(this).addClass('active');
     $(".tab-tile .tile:nth-child("+ currentTile +")").addClass('open');
-    $(this).parents('.asset').find('.video-js').each(function (i, item) {
+    $(this).parents('.asset').find('.video-js.full-size').each(function (i, item) {
       var video = _V_($(item).attr('id'));
       video.pause();
       if (video.currentTime() > 0) {
