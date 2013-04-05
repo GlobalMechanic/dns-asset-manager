@@ -1,6 +1,6 @@
 <div id="asset-<%= asset.id %>" class="asset <%= asset.status %> <% if asset.submitted %>submitted<% end %>" draggable="true">
   <div title="<%= asset.title %>" class="title"><%= asset.title %></div>
-  <% if reel %>
+  <% if reel && can?(:update, Reel) %>
     <% if reel.assets.map {|asset| asset[:id] }.include?(asset.id) %>
     <%= link_to 'Remove from Reel', reel_asset_path(reel, asset), method: :delete, :draggable => false, :id => 'asset-' + asset.id.to_s, :class => 'reel remove', :title => "Remove from Reel" %>
     <% else %>
@@ -17,6 +17,7 @@
   <% end %>
 
   <div class="asset-workflow row">
+  <% if can? :update, Asset %>
     <% if asset.checked_out? %>
     <div class="checkout asset-state">out</div>
     <% else %>
@@ -27,6 +28,11 @@
     <% if asset.user %>
     <p class="assigned-to"><%= asset.user.name %></p>
     <% end %>
+  <% elsif %>
+    <div class="checkin asset-state">
+      <%= link_to 'Download Asset', asset_download_path(asset) %>
+    </div>
+  <% end %>
   </div>
 
   <div class="extended">
@@ -37,8 +43,10 @@
       <div class="tile">
         <nav class="downloads">
           <%= link_to 'Download', asset_download_path(asset), :class => 'button' %>
+          <% if can? :update, Asset %>
           <%= link_to 'Checkout', asset_checkout_path(asset), :class => 'button' %>
           <%= link_to 'Download & Checkout', asset_checkout_path(asset, :download => true), :class => 'button' %>
+          <% end %>
         </nav>
       </div> 
 
