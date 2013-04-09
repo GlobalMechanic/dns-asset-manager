@@ -69,6 +69,7 @@ Asset default
 .asset .default { cursor: pointer; }
 .asset .default.preview { width: 188px; height: 106px; }
 .asset video.default { width: 100%; }
+.asset .video-js.preview { width: 188px; height: 106px; vertical-align: baseline; }
 
 /* Asset workflow */
 .look-at-me { display: none }
@@ -91,7 +92,10 @@ p.layout { background: #f1e662; }
 .asset.animation .title,
 p.animation { background: #3ed9d0; }
 
-.asset-workflow { position: relative; top: -34px; }
+.asset-workflow {
+  position: absolute;
+  top: 117px;
+}
 .asset-workflow > div,
 .asset-workflow > p { 
   display: inline-block;

@@ -11,7 +11,7 @@ class Ability
     elsif user.has_role? :animator
       can :manage, :all
       cannot :manage, User
-    else
+    elsif user.id?
       #can(:manage, Reel) { |reel| user.reels.include?(reel)  }
       can :read, :all
       can :type, Asset # asset browsing by type
@@ -21,6 +21,8 @@ class Ability
       #cannot [:create, :update, :destroy], Asset
       can :manage, ReelAsset
       can :manage, Reel, :user_id => user.id
+    else
+      can :download, Asset
     end
 
     #puts 'WHEN DOES THIS GET CALLED? ' + user.id.to_s

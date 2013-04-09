@@ -19,13 +19,15 @@ class ApplicationController < ActionController::Base
   end
 
   def add_reels
-    if @current_reel
-      @reel = @current_reel
-    else
-      @reel = current_user.reels.create
-      current_user.current_reel_slug = @reel.id
-      current_user.save
-      @current_reel = @reel
+    if current_user != nil
+      if @current_reel
+        @reel = @current_reel
+      else
+        @reel = current_user.reels.create
+        current_user.current_reel_slug = @reel.id
+        current_user.save
+        @current_reel = @reel
+      end
     end
   end
 
