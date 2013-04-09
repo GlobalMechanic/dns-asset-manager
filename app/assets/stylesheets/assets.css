@@ -251,7 +251,7 @@ Asset extended
 .detail-list .summary { 
   float: left; 
   margin: 0; 
-  width: 497px; 
+  width: 477px; 
   padding: 10px 5px 5px 5px; 
 }
 
@@ -413,7 +413,7 @@ Asset list view
 
 .list-view .detail-list .asset-workflow { width: 146px; padding-bottom: 4px;}
 .list-view .detail-list .assigned-to { width: 60px; }
-.list-view .detail-list .summary { width: 265px; font-size: 14px; }
+.list-view .detail-list .summary { width: 245px; font-size: 14px; }
 
 .list-view .extended table { /*width: 96%;*/ }
 
@@ -631,6 +631,11 @@ Media queries
   .list-view .asset.submitted .look-at-me { left: 154px; }
 
   .list-view .extended .downloads { margin: 20px auto 0; }
+
+  .list-view .detail-list .asset-workflow { width: 146px; padding-bottom: 4px;}
+  .list-view .detail-list .assigned-to { width: 60px; }
+  .list-view .detail-list .summary { width: 214px; font-size: 14px; }
+
 }
 
 /* -------
