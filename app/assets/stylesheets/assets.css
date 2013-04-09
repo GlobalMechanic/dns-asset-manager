@@ -250,7 +250,7 @@ Asset extended
   padding: 10px 5px 5px 5px; 
 }
 
-.detail-list .time-placement { float: right; }
+.detail-list .time-placement { /*float: right;*/ }
 
 /* Tables */
 .extended table { 
