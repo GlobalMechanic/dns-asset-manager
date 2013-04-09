@@ -156,7 +156,7 @@ Asset extended
 .extended form { width:400px; }
 
 .extended input[type="text"] { 
-  width:100%;
+  width: 100%;
   height: 30px; /* Firefox fun */
   margin: 10px; 
   padding: 5px 5px 3px 5px; 
@@ -238,7 +238,7 @@ Asset extended
 .detail-list .asset-workflow { 
   position: relative;
   top: 0;
-  float: right;
+  float: left;
   width: 226px; 
   margin: 0;
   padding: 5px; 
@@ -251,7 +251,7 @@ Asset extended
 .detail-list .summary { 
   float: left; 
   margin: 0; 
-  width: 477px; 
+  width: 497px; 
   padding: 10px 5px 5px 5px; 
 }
 
@@ -302,7 +302,7 @@ Asset extended
 .extended .detail { margin-bottom: 100px; }
 
 .extended .edit_asset { margin-bottom: 0; }
-.extended .edit_asset input { width: 272px; }
+.extended .edit_asset input { /*width: 272px;*/ }
 
 .tile.open { display: block; }
 
@@ -413,7 +413,7 @@ Asset list view
 
 .list-view .detail-list .asset-workflow { width: 146px; padding-bottom: 4px;}
 .list-view .detail-list .assigned-to { width: 60px; }
-.list-view .detail-list .summary { width: 245px; font-size: 14px; }
+.list-view .detail-list .summary { width: 250px; font-size: 14px; }
 
 .list-view .extended table { /*width: 96%;*/ }
 
@@ -634,7 +634,7 @@ Media queries
 
   .list-view .detail-list .asset-workflow { width: 146px; padding-bottom: 4px;}
   .list-view .detail-list .assigned-to { width: 60px; }
-  .list-view .detail-list .summary { width: 214px; font-size: 14px; }
+  .list-view .detail-list .summary { width: 219px; font-size: 14px; }
 
 }
 
