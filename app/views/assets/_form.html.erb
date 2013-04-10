@@ -14,6 +14,9 @@
   <div class="row">
     <label for="asset_asset">Add a new version</label>
     <%= f.file_field :asset, multiple: true, name: "asset[asset]" %>
+    <div>
+      <%= link_to 'Download current', asset_download_path(@asset) %> - Original filename: <%= File.basename(@asset.asset_url) %>
+    </div>
   </div>
 
   <div class="row">
