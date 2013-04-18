@@ -58,9 +58,13 @@
       <div class="tile">
         <ul class="detail-list">
           <% asset.versions.reverse.each do |version| %>
+          <% 
+             # Carrierwave instantiates Uploader with a timestamp as part of the class name.
+             # Papertrail can't deal with that, so manually remove the timestamp before reify.
+             version.object = version.object.to_s.gsub(/AssetUploader::Uploader([0-9]+)/, '') 
+          %>
           <% old_asset = version.reify rescue nil %>
           <li class="row">
-
             <p class="summary <%= old_asset == nil ? '' : old_asset.status %>">
               <%= version.event.titleize %> 
               by 
@@ -70,17 +74,23 @@
             </p>
 
             <div class="asset-workflow row">
+            <% if old_asset %>
+              <% if old_asset.asset != nil %>
               <div class="checkin asset-state">
-                <a href="#download-asset">Download Asset</a>
-              </div>              
-              <% if old_asset == nil ? '' : old_asset.checked_out %>
+                <% # Sometimes assets are loaded with the path twice, clean it up %>
+                <a href="<%= old_asset.asset_url.gsub(/http(.*)http/, 'http') %>">Download Asset</a>
+              </div>
+              <% end %>
+              <% if old_asset.checked_out == true %>
               <div class="checkout asset-state">out</div>
               <% end %>              
-              <% if old_asset == nil ? '' : old_asset.user %>
-              <p class="assigned-to"><%= old_asset == nil ? '' : old_asset.user.name %></p>
+              <% if old_asset.user %>
+              <p class="assigned-to"><%= old_asset.user.name %></p>
               <% end %>
+            <% else %>
+              <div>-</div>
+            <% end %>
             </div>
-
           </li>
           <% end %>
         </ul>
