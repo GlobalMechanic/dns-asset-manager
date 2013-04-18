@@ -56,6 +56,7 @@
 
       <%# Versions section %>
       <div class="tile">
+        <h3>Updates</h3>
         <ul class="detail-list">
           <% asset.versions.reverse.each do |version| %>
           <% 
@@ -66,8 +67,7 @@
           <% old_asset = version.reify rescue nil %>
           <li class="row">
             <p class="summary <%= old_asset == nil ? '' : old_asset.status %>">
-              <%= version.event.titleize %> 
-              by 
+              By
               <%= version.whodunnit? ? User.find(version.whodunnit).name : '-' %> 
               on 
               <span class="time-placement"><%= time_ago_in_words(version.created_at) %> ago</span>

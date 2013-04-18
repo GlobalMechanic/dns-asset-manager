@@ -146,6 +146,7 @@ Asset extended
   top: 0;
   left: 0;
   z-index: 20;
+  box-shadow: 0px 0px 30px #000;
 }
 .assets .asset:nth-child(10n+6) .extended { left: -192px; /* -188px - 4px */ }
 .assets .asset:nth-child(10n+8) .extended { left: auto; right: 0; }
