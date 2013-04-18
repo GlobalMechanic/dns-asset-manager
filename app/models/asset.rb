@@ -44,8 +44,11 @@ class Asset < ActiveRecord::Base
                   :checked_out,
                   :user_id
 
-  #before_create :parse_meta
-
+  # Parses filenames, like:
+  # - stk_character_oliver_123.fla
+  # - ep01_background_gabi_456.fla
+  # - background_gabi_34run.fla
+  # - (stk_|epN_)assetType_characterName_Keyword_Keyword.fla
   def parse_meta
     if self.asset?
       newAsset = File.basename(self.asset.to_s)
@@ -63,11 +66,12 @@ class Asset < ActiveRecord::Base
           end
         end
         elements.shift # Strip off stock or episode
-
-        self.id = elements.pop if elements[-1].match(/[0-9]/)
-        self.asset_type = elements.shift if Asset::TYPES.map {|type| type[1] }.include?(elements[0])
-        self.name_list = elements.join(', ') if elements.length > 0
       end
+
+      self.id = elements.pop if elements[-1].match(/^[0-9]+$/)
+      self.asset_type = elements.shift.downcase if Asset::TYPES.map {|type| type[1] }.include?(elements[0].downcase)
+      self.name_list.add(elements.shift) if elements.length > 0
+      self.keyword_list.add(elements) if elements.length > 0
     end
   end
 
