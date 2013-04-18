@@ -156,7 +156,7 @@ Asset extended
 .extended form { width:400px; }
 
 .extended input[type="text"] { 
-  width:100%;
+  width: 100%;
   height: 30px; /* Firefox fun */
   margin: 10px; 
   padding: 5px 5px 3px 5px; 
@@ -236,8 +236,9 @@ Asset extended
 .detail-list > .row { margin-bottom: 10px; }
 
 .detail-list .asset-workflow { 
+  position: relative;
   top: 0;
-  float: left; 
+  float: left;
   width: 226px; 
   margin: 0;
   padding: 5px; 
@@ -245,7 +246,7 @@ Asset extended
 }
 .detail-list .checkout,
 .detail-list .checking { background: rgb(99,99,99) }
-.detail-list .assigned-to { height: 18px;}
+.detail-list .assigned-to { height: 18px; } 
 
 .detail-list .summary { 
   float: left; 
@@ -254,7 +255,7 @@ Asset extended
   padding: 10px 5px 5px 5px; 
 }
 
-.detail-list .time-placement { float: right; }
+.detail-list .time-placement { /*float: right*/ }
 
 /* Tables */
 .extended table { 
@@ -301,7 +302,7 @@ Asset extended
 .extended .detail { margin-bottom: 100px; }
 
 .extended .edit_asset { margin-bottom: 0; }
-.extended .edit_asset input { width: 272px; }
+.extended .edit_asset input { /*width: 272px;*/ }
 
 .tile.open { display: block; }
 
@@ -412,7 +413,7 @@ Asset list view
 
 .list-view .detail-list .asset-workflow { width: 146px; padding-bottom: 4px;}
 .list-view .detail-list .assigned-to { width: 60px; }
-.list-view .detail-list .summary { width: 265px; font-size: 14px; }
+.list-view .detail-list .summary { width: 250px; font-size: 14px; }
 
 .list-view .extended table { /*width: 96%;*/ }
 
@@ -422,7 +423,7 @@ Asset list view
   margin-bottom: 0;
 }
 
-/* Asset list view workflow */
+/* Asset list view workflow ggg*/
 .list-view .asset.submitted .look-at-me { 
   top: 0;
   left: 160px;
@@ -432,7 +433,7 @@ Asset list view
 }
 .list-view .submitted.open .look-at-me { display: none; }
 
-.list-view .asset-workflow { top: 0; }
+.list-view .asset > .asset-workflow { top: 40px; }
 .list-view .checkin { background-color: rgba(33,33,33,.1); }
 .list-view .assigned-to { width: 407px; padding-bottom: 4px; }
 
@@ -630,6 +631,11 @@ Media queries
   .list-view .asset.submitted .look-at-me { left: 154px; }
 
   .list-view .extended .downloads { margin: 20px auto 0; }
+
+  .list-view .detail-list .asset-workflow { width: 146px; padding-bottom: 4px;}
+  .list-view .detail-list .assigned-to { width: 60px; }
+  .list-view .detail-list .summary { width: 219px; font-size: 14px; }
+
 }
 
 /* -------
