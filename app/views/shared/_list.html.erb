@@ -36,7 +36,6 @@
 
       <%# Versions section %>
       <div class="tile">
-
         <ul class="detail-list">
           <% asset.versions.reverse.each do |version| %>
           <% old_asset = version.reify rescue nil %>
@@ -59,26 +58,6 @@
           </li>
           <% end %>
         </ul>
-       
-        <!-- <table class="detail">
-          <caption>Versions</caption>
-          <thead>
-            <tr>
-              <th>Who</th>
-              <th>What</th>
-              <th>When</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% asset.versions.reverse.each do |version| %>
-            <tr>
-              <td><%= version.whodunnit? ? User.find(version.whodunnit).name : '-' %></td>
-              <td><%= version.event.titleize %></td>
-              <td><%= time_ago_in_words(version.created_at) %> ago</td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table> -->
       </div>
 
       <%# Asset details section %>
