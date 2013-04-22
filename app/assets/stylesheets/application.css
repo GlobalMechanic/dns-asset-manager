@@ -209,14 +209,14 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
 }
 #layout .list, #layout .grid {
   text-indent: -9999px;
-  background: url('ui/layout-list.png') no-repeat center center;
+  background: url('/assets/ui/layout-list.png') no-repeat center center;
   width: 32px;
   height: 32px;
   display: inline-block;
   margin-left: 5px;
   padding: 0px 5px;
 }
-#layout .grid { background-image: url('ui/layout-grid.png'); }
+#layout .grid { background-image: url('/assets/ui/layout-grid.png'); }
 #layout .active { background-color: #ddd; }
 
 .top-bar a { font-family: Clarendon; color: #fff; }

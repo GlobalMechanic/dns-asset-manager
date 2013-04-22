@@ -51,7 +51,7 @@ Asset default
 
 .asset .reel {
   -webkit-transition: background-position-y, background-color 0.1s linear;
-  background: #eee url('ui/add-remove.png') no-repeat;
+  background: #eee url('/assets/ui/add-remove.png') no-repeat;
   position: absolute;
   top: 0;
   right: 0;
@@ -80,7 +80,7 @@ Asset default
   top: 40px;
   width: 188px;
   height: 75px;
-  background: url('ui/all-seeing-eye-big.gif') center center no-repeat;
+  background: url('/assets/ui/all-seeing-eye-big.gif') center center no-repeat;
   background-size: 144px 113px; 
 }
 .submitted.open .look-at-me { display: none; }
@@ -111,7 +111,7 @@ p.animation { background: #3ed9d0; }
   width:28px; 
   padding: 5px 5px 3px;
   text-indent: -9999em;
-  background: rgba(33,33,33, .5) url('ui/arrow-down.png') 0 0 no-repeat;
+  background: rgba(33,33,33, .5) url('/assets/ui/arrow-down.png') 0 0 no-repeat;
   background-position: center;
   background-size: 20px 20px;
 }
@@ -176,13 +176,13 @@ Asset extended
 }
 
 .tile.media { 
-  background: url('ui/loading.gif') center center no-repeat; 
+  background: url('/assets/ui/loading.gif') center center no-repeat; 
 }
 
 .tile.media .detail { margin-bottom: 0; text-align: center; }
 
-.tile.media img { height: 346px; cursor: url(ui/zoom-in.png),auto; background: #d2d2d2; }
-.tile.media .fullsize { width: inherit; height: inherit; cursor: url(ui/zoom-out.png),auto; }
+.tile.media img { height: 346px; cursor: url(/assets/ui/zoom-in.png),auto; background: #d2d2d2; }
+.tile.media .fullsize { width: inherit; height: inherit; cursor: url(/assets/ui/zoom-out.png),auto; }
 
 /* Asset tile nav */
 .asset-utilities { float: right; width: 160px; }
@@ -198,7 +198,7 @@ Asset extended
   text-indent:-9999em;
   text-align: center;
 }
-.asset-utilities a { background: url('ui/utility-tabs.png'); }
+.asset-utilities a { background: url('/assets/ui/utility-tabs.png'); }
 .asset-utilities a[href="#download"] { background-position: 0 0; }
 .asset-utilities a[href="#versions"] { background-position: 0 -50px; }
 .asset-utilities a[href="#details"] { background-position: 0 -100px; }
@@ -838,4 +838,4 @@ Progress bar
         .asset.submitted .detail-list .look-at-mess {
           width: 462px;
           padding: 10px 5px 5px 40px;
-          background: url('ui/all-seeing-eye-big.gif') 0 0 no-repeat;        }
+          background: url('/assets/ui/all-seeing-eye-big.gif') 0 0 no-repeat;        }
