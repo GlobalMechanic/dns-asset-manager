@@ -7,7 +7,7 @@ class Asset < ActiveRecord::Base
     ['Background', 'background'],
     ['Effect', 'effect'],
     ['Audio', 'audio'],
-    ['Animatic', 'clips'],
+    ['Animatic', 'animatic'],
     ['Design', 'design'],
   ]
 
