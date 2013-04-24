@@ -6,11 +6,9 @@
 </div>
 
 <% @scenes.each_with_index do |scene, index| %>
-  <h3 class="result-headers"><%= link_to scene.number, episode_scene_path(@episode, scene) %></h3>
   <% if scene.assets.length > 0 %>
+  <h3 class="result-headers">Scene <%= scene.number.pad %><% if can? :update, Episode %><span class="actions"><%= link_to 'Edit', edit_episode_scene_path(@episode, scene) %></span><% end %></h3>
   <%= render :partial => 'shared/assets', :locals => { :assets => scene.assets } %>
-  <% else %>
-  <p>No assets yet.</p>
   <% end %>
 <% end %>
 

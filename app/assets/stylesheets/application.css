@@ -228,9 +228,7 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
   color: black;
   text-decoration: none;
 }
-#tabs .item:hover {
-  background-color: #dfdfdf;
-}
+#tabs .item:hover { background-color: #dfdfdf; }
 #tabs .active { background-color: #ddd; }
 
 .top-bar a { font-family: Clarendon; color: #fff; }
