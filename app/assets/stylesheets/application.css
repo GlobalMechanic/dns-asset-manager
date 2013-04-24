@@ -219,6 +219,20 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
 #layout .grid { background-image: url('/assets/ui/layout-grid.png'); }
 #layout .active { background-color: #ddd; }
 
+#tabs { border-bottom: 3px #ddd solid; }
+#tabs .item {
+  background: #efefef;
+  display: inline-block;
+  margin-right: 10px;
+  padding: 5px 100px;
+  color: black;
+  text-decoration: none;
+}
+#tabs .item:hover {
+  background-color: #dfdfdf;
+}
+#tabs .active { background-color: #ddd; }
+
 .top-bar a { font-family: Clarendon; color: #fff; }
 .top-bar a:visited { color: #fff; }
 .top-bar a:hover { background: inherit; }

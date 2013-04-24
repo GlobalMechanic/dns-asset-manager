@@ -1,5 +1,20 @@
-<h2>All episodes</h2>
+<h2>Scenes - <%= @episode.number.pad %> - <%= @episode.title %></h2>
 
-<% @episodes.each_with_index do |episode, index| %>
-  <h3 class="result-headers"><%= link_to episode.title, episode %></h3>
+<div id="tabs">
+  <%= link_to 'Designs', @episode, :class => 'item' %>
+  <%= link_to 'Scenes', episode_scenes_path(@episode), :class => 'item active' %>
+</div>
+
+<% @scenes.each_with_index do |scene, index| %>
+  <h3 class="result-headers"><%= link_to scene.number, episode_scene_path(@episode, scene) %></h3>
+  <% if scene.assets.length > 0 %>
+  <%= render :partial => 'shared/assets', :locals => { :assets => scene.assets } %>
+  <% else %>
+  <p>No assets yet.</p>
+  <% end %>
+<% end %>
+
+
+<% if can? :create, Scene %>
+<h3 class="result-headers result-new clearfix"><span class="actions"><%= link_to 'New scene', new_episode_scene_path(@episode) %></span></h3>
 <% end %>

@@ -1,14 +1,9 @@
-<h2><%= @episode.number.pad %> - <%= @episode.title %> (<%= @episode.assets.length %>)</h2>
+<h2>Designs - <%= @episode.number.pad %> - <%= @episode.title %> (<%= @episode.assets.length %>)</h2>
+
+<div id="tabs">
+  <%= link_to 'Designs', @episode, :class => 'item active' %>
+  <%= link_to 'Scenes', episode_scenes_path(@episode), :class => 'item' %>
+</div>
+
 <%= render :partial => 'shared/layout', :locals => { :layout => params['layout'] } %>
-<%= render :partial => 'shared/assets', :locals => { :assets => @episode.assets } %>
-<% if @episode.scenes.length > 0 %>
-  <h2>Scenes (<%= @episode.scenes.length %>)</h2>
-  <% @episode.scenes.each do |scene| %>
-    <div class="clearfix">
-      <h3 class="result-headers"><%= link_to 'Scene ' + scene.number.pad, episode_scene_path(@episode, scene) %><% if can? :update, Scene %><span class="actions"><%= link_to 'Edit', edit_episode_scene_path(@episode, scene) %></span><% end %></h3>
-    </div>
-  <% end %>
-<% end %>
-<% if can? :create, Scene %>
-<h3 class="result-headers result-new clearfix"><span class="actions"><%= link_to 'New scene', new_episode_scene_path(@episode) %></span></h3>
-<% end %>
+<%= render :partial => 'shared/assets', :locals => { :assets => @episode.assets.reverse } %>
