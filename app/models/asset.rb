@@ -56,23 +56,31 @@ class Asset < ActiveRecord::Base
       leftover, filename, extension = newAsset.split(/^(.*)\.(.*)$/)
       elements = filename.split('_')
 
-      if elements.length > 0 && animation = elements[0].downcase.match(/(stk|ep)([0-9]+)?/)
-        case animation[1]
-        when 'stk'
-          self.stock = true            
-        when 'ep'
-          self.stock = false
-          if episode = Episode.find_by_number(animation[2])
-            self.episode_id = episode.id
+      if filename.match(/[0-9]{3}_[0-9]{3}/)
+        leftover, season, episode, scene = filename.split(/([0-9]{1})([0-9]{2})_([0-9]{3})/)
+        episode = Episode.find_by_season_and_number(season, episode)
+        scene = Scene.find_or_create_by_number_and_episode_id(scene, episode.id)
+        self.episode_id = episode.id
+        self.scene << scene
+      else
+        if elements.length > 0 && animation = elements[0].downcase.match(/(stk|ep)([0-9]+)?/)
+          case animation[1]
+          when 'stk'
+            self.stock = true            
+          when 'ep'
+            self.stock = false
+            if episode = Episode.find_by_number(animation[2])
+              self.episode_id = episode.id
+            end
           end
+          elements.shift # Strip off stock or episode
         end
-        elements.shift # Strip off stock or episode
-      end
 
-      self.id = elements.pop if elements[-1].match(/^[0-9]+$/)
-      self.asset_type = elements.shift.downcase if Asset::TYPES.map {|type| type[1] }.include?(elements[0].downcase)
-      self.name_list.add(elements.shift) if elements.length > 0
-      self.keyword_list.add(elements) if elements.length > 0
+        self.id = elements.pop if elements[-1].match(/^[0-9]+$/)
+        self.asset_type = elements.shift.downcase if Asset::TYPES.map {|type| type[1] }.include?(elements[0].downcase)
+        self.name_list.add(elements.shift) if elements.length > 0
+        self.keyword_list.add(elements) if elements.length > 0
+      end
     end
   end
 

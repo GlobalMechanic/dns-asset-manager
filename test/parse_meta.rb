@@ -1,6 +1,6 @@
 require "~/Sites/asset-manager/config/environment"
 asset = Asset.new(
-  :asset => File.open('/Users/tylor/Desktop/Background_Oliver_34FrontRun_Ant.png'),
+  :asset => File.open('/Users/tylor/Desktop/102_003.jpg'),
   :stock => true,
 )
 puts asset.inspect
