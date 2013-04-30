@@ -5,14 +5,17 @@
   <%= link_to 'Scenes', episode_scenes_path(@episode), :class => 'item active' %>
 </div>
 
+<% assets = [] %>
 <% @scenes.each_with_index do |scene, index| %>
   <% if scene.assets.length > 0 %>
-  <h3 class="result-headers">Scene <%= scene.number.pad %><% if can? :update, Episode %><span class="actions"><%= link_to 'Edit', edit_episode_scene_path(@episode, scene) %></span><% end %></h3>
-  <%= render :partial => 'shared/assets', :locals => { :assets => scene.assets } %>
+    <% scene.assets.each do |asset| %>
+      <% assets << asset %>
+    <% end %>
   <% end %>
 <% end %>
+<%= render :partial => 'shared/assets', :locals => { :assets => assets } %>
 
 
-<% if can? :create, Scene %>
+<% if false and can? :create, Scene %>
 <h3 class="result-headers result-new clearfix"><span class="actions"><%= link_to 'New scene', new_episode_scene_path(@episode) %></span></h3>
 <% end %>
