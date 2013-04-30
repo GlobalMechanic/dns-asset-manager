@@ -90,15 +90,22 @@ class Asset < ActiveRecord::Base
 
   def filename
     filename = []
-    if self.stock?
-      filename << 'STK'
-    elsif self.scene_ids.length > 0
-      Episode.joins(:scenes).where(:scenes => { :id => self.scene.map {|item| item.id} }).uniq.order("episodes.number ASC").each do |episode|
-        filename << 'EP' + episode.number.pad
+    if self.scene_ids.length > 0
+      filename << '1' + self.episode.number.pad
+      self.scene.each do |scene|
+          filename << scene.number.pad(3)
+        end
+    else
+      if self.stock?
+        filename << 'STK'
+      elsif self.scene_ids.length > 0
+        Episode.joins(:scenes).where(:scenes => { :id => self.scene.map {|item| item.id} }).uniq.order("episodes.number ASC").each do |episode|
+          filename << 'EP' + episode.number.pad
+        end
       end
+      filename += [self.asset_type] if self.asset_type
+      filename += self.name_list.to_a + [self.id]
     end
-    filename += [self.asset_type] if self.asset_type
-    filename += self.name_list.to_a + [self.id]
     #puts filename.inspect
     filename = filename.join('_')
     filename += File.extname self.asset_url

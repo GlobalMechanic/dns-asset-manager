@@ -1,5 +1,5 @@
 class Integer
-  def pad
-    self.to_s.rjust(2, '0')
+  def pad(length = 2)
+    self.to_s.rjust(length, '0')
   end
 end
