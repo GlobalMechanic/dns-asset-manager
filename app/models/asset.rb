@@ -14,6 +14,7 @@ class Asset < ActiveRecord::Base
   STATUS = [
     ['Setup', 'setup'],
     ['Layout', 'layout'],
+    ['Posing', 'posing'],
     ['Animation', 'animation'],
     ['Approved', 'approved'],
   ]

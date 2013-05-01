@@ -89,6 +89,8 @@ Asset default
 p.setup { background: #f39bbb; }
 .asset.layout .title,
 p.layout { background: #f1e662; }
+.asset.posing .title,
+p.posing { background: #aa99f0; }
 .asset.animation .title,
 p.animation { background: #3ed9d0; }
 
