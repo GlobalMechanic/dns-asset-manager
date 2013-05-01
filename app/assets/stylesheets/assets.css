@@ -73,7 +73,9 @@ Asset default
 
 /* Asset workflow */
 .look-at-me { display: none }
-.asset.submitted .look-at-me { 
+.asset.submitted .look-at-me,
+.asset.approved-denny .look-at-me,
+.asset.revision .look-at-me { 
   z-index: 10;
   display: block;
   position: absolute;
@@ -83,7 +85,12 @@ Asset default
   background: url('/assets/ui/all-seeing-eye-big.gif') center center no-repeat;
   background-size: 144px 113px; 
 }
-.submitted.open .look-at-me { display: none; }
+.asset.approved-denny .look-at-me { background-image: url('/assets/ui/approved-big.gif'); }
+.asset.revision .look-at-me { background-image: url('/assets/ui/revision-big.gif'); }
+
+.submitted.open .look-at-me,
+.approved-denny.open .look-at-me,
+.revision.open .look-at-me { display: none; }
 
 .asset.setup .title,
 p.setup { background: #f39bbb; }
@@ -427,14 +434,18 @@ Asset list view
 }
 
 /* Asset list view workflow ggg*/
-.list-view .asset.submitted .look-at-me { 
+.list-view .asset.submitted .look-at-me,
+.list-view .asset.approved-denny .look-at-me,
+.list-view .asset.revision .look-at-me { 
   top: 0;
   left: 160px;
   width: 130px;
   height: 70px;
   background-size: 116px 91px;
 }
-.list-view .submitted.open .look-at-me { display: none; }
+.list-view .submitted.open .look-at-me,
+.list-view .approved-denny.open .look-at-me,
+.list-view .revision.open .look-at-me { display: none; }
 
 .list-view .asset > .asset-workflow { top: 40px; }
 .list-view .checkin { background-color: rgba(33,33,33,.1); }
@@ -631,7 +642,9 @@ Media queries
 
   .list-view .extended input[type="text"] { width: 57%; }
 
-  .list-view .asset.submitted .look-at-me { left: 154px; }
+  .list-view .asset.submitted .look-at-me,
+  .list-view .asset.approved-denny .look-at-me,
+  .list-view .asset.revision .look-at-me { left: 154px; }
 
   .list-view .extended .downloads { margin: 20px auto 0; }
 

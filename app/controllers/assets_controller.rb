@@ -70,6 +70,8 @@ class AssetsController < ApplicationController
       @asset = Asset.find(@asset.id)
       @asset.user_id = nil
       @asset.submitted = true
+      @asset.revision = false
+      @asset.approved = false
       @asset.checked_out = false
       success = @asset.update_attributes(params[:asset])
     else

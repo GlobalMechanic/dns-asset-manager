@@ -43,6 +43,8 @@ class Asset < ActiveRecord::Base
                   :stock,
                   :status,
                   :submitted,
+                  :approved,
+                  :revision,
                   :checked_out,
                   :user_id
 

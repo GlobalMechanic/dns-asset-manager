@@ -17,5 +17,6 @@ pickle-email-*.html
 
 .DS_Store
 push_*
+pull_*
 public/uploads
 config/database.yml

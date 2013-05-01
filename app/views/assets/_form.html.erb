@@ -44,6 +44,8 @@
   <h2>Workflow</h2>
   <%= f.select :status, Asset::STATUS %>
   <%= f.check_box :submitted %><%= f.label :submitted, 'Submitted for approval', :class => 'inline' %>
+  <%= f.check_box :approved %><%= f.label :approved, 'Denny Checked', :class => 'inline' %>
+  <%= f.check_box :revision %><%= f.label :revision, 'Needs Revision', :class => 'inline' %>
   <%= f.check_box :checked_out %><%= f.label :checked_out, 'Checked out', :class => 'inline' %>
   <%= f.select :user_id, User.order('name').with_role(:animator).map {|x| [x.name, x.id]}, { :include_blank => true } %>
   

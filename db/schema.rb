@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314182010) do
+ActiveRecord::Schema.define(:version => 20130501225257) do
 
   create_table "assets", :force => true do |t|
     t.text     "description"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(:version => 20130314182010) do
     t.boolean  "submitted"
     t.boolean  "checked_out"
     t.integer  "user_id"
+    t.boolean  "approved"
+    t.boolean  "revision"
   end
 
   create_table "assets_scenes", :id => false, :force => true do |t|
