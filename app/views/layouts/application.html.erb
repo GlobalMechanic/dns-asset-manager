@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Asset Manager</title>
+  <title><%= @title ? @title + ' - Asset Manager' : 'Asset Manager' %></title>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
   <script src="http://vjs.zencdn.net/c/video.js"></script>

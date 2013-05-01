@@ -1,5 +1,3 @@
-<h2>Designs - <%= @episode.number.pad %> - <%= @episode.title %> (<%= @episode.assets.length %>)</h2>
-
 <div id="tabs">
   <%= link_to 'Designs', @episode, :class => 'item active' %>
   <%= link_to 'Scenes', episode_scenes_path(@episode), :class => 'item' %>

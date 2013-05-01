@@ -48,6 +48,7 @@ class AssetsController < ApplicationController
   # GET /assets/new.json
   def new
     @asset = Asset.new
+    @title = 'New Asset'
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @asset }
@@ -57,6 +58,7 @@ class AssetsController < ApplicationController
   # GET /assets/1/edit
   def edit
     @asset = Asset.find(params[:id])
+    @title = @asset.title
   end
 
   # POST /assets

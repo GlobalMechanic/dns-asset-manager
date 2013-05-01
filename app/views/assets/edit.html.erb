@@ -1,4 +1,8 @@
+<% if @asset.scene_ids.length > 0 %>
+<%= link_to '&larr; Back to Episode'.html_safe, episode_scenes_path(@asset.episode) %>
+<% else %>
 <%= link_to '&larr; All Assets'.html_safe, assets_path %>
+<% end %>
 
 <h1>Editing asset</h1>
 
