@@ -23,18 +23,18 @@
   <div class="asset-workflow row">
   <% if can? :update, Asset %>
     <% if asset.checked_out? %>
-    <div class="checkout asset-state">out</div>
+    <div class="checkout asset-state" title="Checked Out">out</div>
     <% else %>
     <div class="checkin asset-state">
-      <a href="#download-asset">Download Asset</a>
+      <a href="#download-asset" title="Download Asset">Download Asset</a>
     </div>
     <% end %>
     <% if asset.user %>
-    <p class="assigned-to"><%= asset.user.name %></p>
+    <p class="assigned-to" title="Assigned To"><%= asset.user.name %></p>
     <% end %>
   <% elsif %>
     <div class="checkin asset-state">
-      <%= link_to 'Download Asset', asset_download_path(asset) %>
+      <%= link_to 'Download Asset', asset_download_path(asset), :title => 'Download Asset' %>
     </div>
   <% end %>
   </div>
@@ -156,11 +156,11 @@
 
     <nav class="row asset-utilities">
       <ul>
-        <li><a href="#download">Download</a></li>
-        <li><a href="#versions">Versions</a></li>
-        <li><a href="#details">Details</a></li>
+        <li><a href="#download" title="Download or Checkout">Download</a></li>
+        <li><a href="#versions" title="Versions">Versions</a></li>
+        <li><a href="#details" title="Details">Details</a></li>
         <% if previewable(asset.preview) || previewable(asset.preview_swf) || is_movie(asset.asset) %>
-        <li><a href="#video">Video</a></li>
+        <li><a href="#video" title="Preview">Preview</a></li>
         <% end %>
       </ul>
     </nav>
@@ -168,7 +168,7 @@
     <% if can? :update, Asset %>
       <div class="inline-autocomplete">
         <%= form_for asset do |f| %>
-          <%= f.autocomplete_field :keyword_list, autocomplete_tag_keywords_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
+          <%= f.autocomplete_field :keyword_list, autocomplete_tag_keywords_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List', :title => 'Add Keywords' %>
         <% end %>
       </div>
     <% end %>
