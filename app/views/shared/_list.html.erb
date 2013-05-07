@@ -141,6 +141,16 @@
     <% end %>
   </div>
 
-  <div class="look-at-me"></div>
+  <%
+  look_title = ''
+  if asset.submitted
+    look_title = 'Submitted for Approval'
+  elsif asset.approved
+    look_title = 'Approved by Denny'
+  elsif asset.revision
+    look_title = 'New Revision'
+  end
+  %>
+  <div class="look-at-me" title="<%= look_title %>"></div>
 
 </div>
