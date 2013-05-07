@@ -8,7 +8,7 @@ class Asset < ActiveRecord::Base
     ['Effect', 'effect'],
     ['Audio', 'audio'],
     ['Animatic', 'animatic'],
-    ['Design', 'design'],
+    ['Roughs', 'roughs'],
   ]
 
   STATUS = [
