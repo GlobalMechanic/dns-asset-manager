@@ -103,13 +103,11 @@
         </ul>
         </div>
 
-        <% if @search %>
         <div id="asset-search">
-          <%= form_for @search, :url => url_for(:only_path => false) do |f| %>
+          <%= form_for @search do |f| %>
             <% f.text_field :description_or_taggings_tag_name_contains, :placeholder => 'Search' %>
           <% end %>
         </div>
-        <% end %>
 
       </div>
     </nav>

@@ -9,20 +9,8 @@ class AssetsController < ApplicationController
   # GET /assets.json
   def index
     @search = Asset.joins('LEFT OUTER JOIN "assets_scenes" ON "assets_scenes"."asset_id" = "assets"."id" LEFT OUTER JOIN "scenes" ON "scenes"."id" = "assets_scenes"."scene_id"').where(:assets_scenes => { :scene_id => nil }).search(params[:search])
-
-    if params[:search]
-      @title = "Search: #{params[:search].values.join(', ')} (#{@search.count})"
-    else
-      @title = "All Assets (#{Asset.count})"
-    end
-
-    if ['director', 'client', 'category'].include? params[:where]
-      @assets = @search.order('LOWER(' + params[:where] + ') ASC, title ASC')
-    elsif ['technique', 'keyword'].include? params[:where]
-      @assets = @search.order('title').uniq
-    else
-      @assets = @search.order('created_at DESC').uniq
-    end
+    @assets = @search.order('created_at DESC').uniq
+    @title = params[:search] ? "Search: #{params[:search].values.join(', ')} (#{@search.count})" : "All Assets (#{Asset.count})"
     
     # per_page = 20
     # @assets = Asset.limit(per_page).offset(params[:page] ? params[:page].to_i * per_page : 0)
@@ -131,8 +119,7 @@ class AssetsController < ApplicationController
   end
 
   def type
-    @search = Asset.where(:asset_type => params[:asset_type]).search(params[:search])
-    @assets = @search.all.uniq
+    @assets = Asset.where(:asset_type => params[:asset_type])
     @title = "#{params[:asset_type].titleize.pluralize} (#{@assets.count})"
     render 'index'
   end

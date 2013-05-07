@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
       session[:layout] = params[:layout]
     end
     @layout = session[:layout] ? session[:layout] : 'grid'
-    puts session.inspect
+    @search = Asset.search
   end
 
   def add_reels
