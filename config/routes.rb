@@ -7,7 +7,7 @@ AssetManager::Application.routes.draw do
   end
 
   scope "/plum-landing" do
-    root :to => redirect("/plum-landing/assets");
+    root :to => 'application#redirect'
     resources :assets do
       collection do
         match 'type/:asset_type(/:layout)' => 'assets#type', :as => :type
@@ -94,7 +94,7 @@ AssetManager::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => redirect("/plum-landing/assets")
+  root :to => 'application#redirect'
 
   # See how all your routes lay out with "rake routes"
 

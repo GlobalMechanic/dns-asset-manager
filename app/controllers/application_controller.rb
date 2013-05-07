@@ -6,6 +6,14 @@ class ApplicationController < ActionController::Base
     redirect_to request.referer || root_path, :alert => exception.message
   end
 
+  def redirect
+    if current_user.has_role?(:animator)
+      redirect_to episodes_path
+    else
+      redirect_to assets_path
+    end
+  end
+
   private
   def page_variables
     @current_reel = current_user && current_user.current_reel_slug? && Reel.exists?(current_user.current_reel_slug) ? Reel.find(current_user.current_reel_slug) : nil
