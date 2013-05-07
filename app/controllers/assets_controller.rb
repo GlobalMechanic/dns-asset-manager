@@ -8,6 +8,7 @@ class AssetsController < ApplicationController
   # GET /assets
   # GET /assets.json
   def index
+    puts params[:search].first[1].gsub(/stk/, '').inspect
     @search = Asset.joins('LEFT OUTER JOIN "assets_scenes" ON "assets_scenes"."asset_id" = "assets"."id" LEFT OUTER JOIN "scenes" ON "scenes"."id" = "assets_scenes"."scene_id"').where(:assets_scenes => { :scene_id => nil }).search(params[:search])
     @assets = @search.order('created_at DESC').uniq
     @title = params[:search] ? "Search: #{params[:search].values.join(', ')} (#{@search.count})" : "All Assets (#{Asset.count})"
