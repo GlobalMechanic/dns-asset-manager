@@ -14,26 +14,37 @@ $(document).ready(function() {
         return entityMap[s];
       });
     }
+    var layout = $('.assets.list-view').length > 0 ? 'list' : 'tile';
+    var dimensions = {
+      'tile': {
+        width: 734,
+        height: 330
+      },
+      'list': {
+        width: 860,
+        height: 433
+      }
+    }
     // var flashURL = 'http://osmf.org/videos/cathy2.flv';
     var flashURL = escapeHtml($(element).data('flash-url'));
-    var video = ['<object id="object-player" width="734" height="330">',
+    var video = ['<object id="object-player" width="' + dimensions[layout]['width'] + ' " height="' + dimensions[layout]['height'] + '">',
       '<param name="movie" value="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf"></param>',
       '<param name="flashvars" value="src=' + flashURL + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true&backgroundColor=#ffffff&javascriptCallbackFunction=gm.playerReady"></param>',
       '<param name="allowFullScreen" value="true"></param>',
       '<param name="allowscriptaccess" value="always"></param>',
       '<param name="javascriptCallbackFunction" value="gm.playerReady"></param>',
-      '<embed src="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="734" height="330" flashvars="src=' + flashURL + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true&backgroundColor=#ffffff&javascriptCallbackFunction=gm.playerReady"></embed>',
+      '<embed src="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="' + dimensions[layout]['width'] + '" height="' + dimensions[layout]['height'] + '" flashvars="src=' + flashURL + '&controlBarMode=none&playButtonOverlay=false&loop=true&autoPlay=true&backgroundColor=#ffffff&javascriptCallbackFunction=gm.playerReady"></embed>',
       '</object>'];
 
     $(element).append(video.join("\n"));
     gm.playerReady = function(playerId) {
       $player = $('#object-player');
       window.setTimeout(function() {
-        if ($player.attr('width') == 734) {
-          $player.attr('width', 733);  
+        if ($player.attr('width') == dimensions[layout]['width']) {
+          $player.attr('width', dimensions[layout]['width'] - 1);  
         }
         else {
-          $player.attr('width', 734);
+          $player.attr('width', dimensions[layout]['width']);
         }
       }, 500);
     }
