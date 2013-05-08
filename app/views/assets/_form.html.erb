@@ -39,6 +39,7 @@
   <%= f.autocomplete_field :name_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Object Name' %>
   <%= f.autocomplete_field :keyword_list, autocomplete_tag_keywords_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
   <%= f.check_box :stock %><%= f.label :stock, 'Stock animation', :class => 'inline' %>
+  <%= f.check_box :reuse %><%= f.label :reuse, 'Reusable', :class => 'inline' %>
   <%= f.text_area :description, :placeholder => 'Description', :rows => 4 %>
 
   <h2>Workflow</h2>

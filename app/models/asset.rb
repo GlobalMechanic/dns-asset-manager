@@ -46,7 +46,8 @@ class Asset < ActiveRecord::Base
                   :approved,
                   :revision,
                   :checked_out,
-                  :user_id
+                  :user_id,
+                  :reuse
 
   # Parses filenames, like:
   # - stk_character_oliver_123.fla
