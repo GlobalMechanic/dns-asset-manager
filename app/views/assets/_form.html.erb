@@ -2,7 +2,6 @@
   <% if @asset.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@asset.errors.count, "error") %> prohibited this asset from being saved:</h2>
-
       <ul>
       <% @asset.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,7 +10,8 @@
     </div>
   <% end %>
 
-  <div class="row">
+
+  <div id="new-version" class="row">
     <label for="asset_asset">Add a new version</label>
     <%= f.file_field :asset, multiple: true, name: "asset[asset]" %>
     <div>
@@ -19,36 +19,44 @@
     </div>
   </div>
 
-  <div class="row">
-    <label for="asset_preview">Image preview</label>
-    <%= image_tag @asset.preview_url(:thumb).to_s, :class => 'preview' if @asset.preview? %>
-    <%= f.file_field :preview, multiple: true, name: "asset[preview]" %>
+  <div class="fieldset">
+    <h2>Preview</h2>
+    <div class="row">
+      <label for="asset_preview">Image</label>
+      <%= image_tag @asset.preview_url(:thumb).to_s, :class => 'preview' if @asset.preview? %>
+      <%= f.file_field :preview, multiple: true, name: "asset[preview]" %>
+    </div>
+
+    <div class="row">
+      <label for="asset_preview_swf">SWF</label>
+      <% if @asset.preview_swf? %>
+      <div data-flash-url="<%= @asset.preview_swf %>"></div>
+      <% end %>
+      <%= f.file_field :preview_swf, multiple: true, name: "asset[preview_swf]" %>
+    </div>
   </div>
 
-  <div class="row">
-    <label for="asset_preview_swf">SWF preview</label>
-    <% if @asset.preview_swf? %>
-    <div data-flash-url="<%= @asset.preview_swf %>"></div>
-    <% end %>
-    <%= f.file_field :preview_swf, multiple: true, name: "asset[preview_swf]" %>
+  <div class="fieldset">
+    <h2>Metadata</h2>
+    <%= f.select :asset_type, Asset::TYPES %>
+    <%= f.select :episode_id, Episode.order('number').all.map {|x| [x.number.pad + ' - ' + x.title, x.id]}, { :include_blank => '- Episode -' } %>
+    <%= f.select :scene_ids, Scene.all.map {|x| [x.episode.number.pad + ' - ' + x.episode.title + ' - Scene ' + x.number.pad, x.id]}, { :include_blank => '- Scene -' }, :multiple => true %>
+    <%= f.autocomplete_field :name_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Object Name' %>
+    <%= f.autocomplete_field :keyword_list, autocomplete_tag_keywords_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
+    <%= f.check_box :stock %><%= f.label :stock, 'Stock animation', :class => 'inline' %>
+    <%= f.check_box :reuse %><%= f.label :reuse, 'Reusable', :class => 'inline' %>
+    <%= f.text_area :description, :placeholder => 'Description', :rows => 4 %>
   </div>
 
-  <%= f.select :asset_type, Asset::TYPES %>
-  <%= f.select :episode_id, Episode.order('number').all.map {|x| [x.number.pad + ' - ' + x.title, x.id]}, { :include_blank => true } %>
-  <%= f.select :scene_ids, Scene.all.map {|x| [x.episode.number.pad + ' - ' + x.episode.title + ' - Scene ' + x.number.pad, x.id]}, { :include_blank => true }, :multiple => true %>
-  <%= f.autocomplete_field :name_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Object Name' %>
-  <%= f.autocomplete_field :keyword_list, autocomplete_tag_keywords_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
-  <%= f.check_box :stock %><%= f.label :stock, 'Stock animation', :class => 'inline' %>
-  <%= f.check_box :reuse %><%= f.label :reuse, 'Reusable', :class => 'inline' %>
-  <%= f.text_area :description, :placeholder => 'Description', :rows => 4 %>
-
-  <h2>Workflow</h2>
-  <%= f.select :status, Asset::STATUS %>
-  <%= f.check_box :submitted %><%= f.label :submitted, 'Submitted for approval', :class => 'inline' %>
-  <%= f.check_box :approved %><%= f.label :approved, 'Denny Checked', :class => 'inline' %>
-  <%= f.check_box :revision %><%= f.label :revision, 'Needs Revision', :class => 'inline' %>
-  <%= f.check_box :checked_out %><%= f.label :checked_out, 'Checked out', :class => 'inline' %>
-  <%= f.select :user_id, User.order('name').with_role(:animator).map {|x| [x.name, x.id]}, { :include_blank => true } %>
+  <div class="fieldset">
+    <h2>Workflow</h2>
+    <%= f.select :status, Asset::STATUS %>
+    <%= f.check_box :submitted %><%= f.label :submitted, 'Submitted for approval', :class => 'inline' %>
+    <%= f.check_box :approved %><%= f.label :approved, 'Denny Checked', :class => 'inline' %><br>
+    <%= f.check_box :revision %><%= f.label :revision, 'Needs Revision', :class => 'inline' %>
+    <%= f.check_box :checked_out %><%= f.label :checked_out, 'Checked out', :class => 'inline' %>
+    <%= f.select :user_id, User.order('name').with_role(:animator).map {|x| [x.name, x.id]}, { :include_blank => '- Assigned to -' } %>
+  </div>
   
   <%# f.label :asset %>
   <%# f.file_field :asset, multiple: true, name: "asset[asset]" %>

@@ -1,7 +1,7 @@
 <% if @asset.scene_ids.length > 0 %>
-<%= link_to '&larr; Back to Episode'.html_safe, episode_scenes_path(@asset.episode) %>
+<%= link_to '&larr; Back to Episode'.html_safe, episode_scenes_path(@asset.episode), :class => 'edit-back' %>
 <% else %>
-<%= link_to '&larr; All Assets'.html_safe, assets_path %>
+<%= link_to '&larr; All Assets'.html_safe, assets_path, :class => 'edit-back' %>
 <% end %>
 
 <h1>Editing asset</h1>

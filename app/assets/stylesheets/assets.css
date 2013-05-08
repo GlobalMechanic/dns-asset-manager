@@ -495,6 +495,22 @@ Asset search, filters & results
 /* -------
 Asset add, edit, delete forms
 ------- */
+.asset-form .fieldset {
+  background: #efefef;
+  padding: 15px 20px;
+  margin: 40px 0;
+}
+.asset-form h1 {
+  padding: 10px 20px;
+}
+.asset-form #new-version {
+  padding: 15px 0px;
+
+}
+.edit-back {
+  margin: 30px 0px;
+  display: block;
+}
 .asset-form input,
 .asset-form textarea,
 .asset-form select { font-size: 20px; margin-bottom: 22px; }
@@ -536,6 +552,33 @@ Asset add, edit, delete forms
 .asset-form select[multiple=multiple] { width: 520px; }
 
 .asset-form .preview { display: block; margin: 10px 0; }
+
+.asset-form label[for="asset_submitted"] {
+  background: url('/assets/ui/all-seeing-list.gif') left top no-repeat;
+  background-size: 29px 28px;
+  padding-left: 35px;
+}
+.asset-form label[for="asset_approved"] {
+  background: url('/assets/ui/approved-list.gif') left top no-repeat;
+  background-size: 29px 28px;
+  padding-left: 35px;
+}
+.asset-form label[for="asset_revision"] {
+  background: url('/assets/ui/revision-list.gif') left top no-repeat;
+  background-size: 29px 28px;
+  padding-left: 35px; 
+}
+.asset-form label[for="asset_checked_out"] {
+  background: url('/assets/ui/utility-tabs.png') left -7px no-repeat;
+  background-size: 29px 141px;
+  padding-left: 35px;  
+}
+
+#asset_status.setup { background: #f39bbb; }
+#asset_status.layout { background: #f1e662; }
+#asset_status.posing { background: #aa99f0; }
+#asset_status.animation { background: #3ed9d0; }
+#asset_status.approved { }
 
 /* -------
 Asset upload modal 

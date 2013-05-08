@@ -151,6 +151,13 @@ $(document).ready(function() {
     return false;
   });
 
+  $('.asset-form #asset_status').addClass(function() { return $(this).val(); });
+  $('.asset-form #asset_status').change(function() {
+    $(this).attr('class', function() {
+      return $(this).val();
+    });
+  });
+
   // Asset download
   $('.asset-state').on('click', 'a[href*="#download-asset"]', function(event) {
     event.preventDefault();
