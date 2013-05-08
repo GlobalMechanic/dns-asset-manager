@@ -22,7 +22,15 @@ class ApplicationController < ActionController::Base
     if params[:layout] == 'grid' || params[:layout] == 'list'
       session[:layout] = params[:layout]
     end
-    @layout = session[:layout] ? session[:layout] : 'grid'
+    if session[:layout]
+      @layout = session[:layout]
+    else
+      if current_user && current_user.has_role?(:animator)
+        @layout = 'list'
+      else
+        @layout = 'grid'
+      end
+    end
     @search = Asset.search
   end
 
