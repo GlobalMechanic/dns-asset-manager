@@ -98,7 +98,7 @@
           <li><a href="#filter-by-episode">Worlds</a></li>
           <li><%= link_to 'All Worlds', episodes_path %></li>
           <% Episode.order('number').all.each do |episode| %>
-          <li><%= link_to episode.number.pad + ' - ' + episode.title, episode %></li>
+          <li><%= link_to episode.number.pad + ' - ' + episode.title, current_user && current_user.has_role?(:animator) ? episode_scenes_path(episode) : episode %></li>
           <% end %>
         </ul>
         </div>
