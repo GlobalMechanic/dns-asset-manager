@@ -50,7 +50,9 @@
 
   <div class="fieldset">
     <h2>Workflow</h2>
-    <%= f.select :status, Asset::STATUS %>
+    <div id="asset_swatch">
+      <%= f.select :status, Asset::STATUS %>
+    </div>
     <%= f.check_box :submitted %><%= f.label :submitted, 'Submitted for approval', :class => 'inline' %>
     <%= f.check_box :approved %><%= f.label :approved, 'Denny Checked', :class => 'inline' %><br>
     <%= f.check_box :revision %><%= f.label :revision, 'Needs Revision', :class => 'inline' %>

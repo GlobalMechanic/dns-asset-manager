@@ -151,10 +151,10 @@ $(document).ready(function() {
     return false;
   });
 
-  $('.asset-form #asset_status').addClass(function() { return $(this).val(); });
+  $('.asset-form #asset_swatch').addClass(function() { return $('.asset-form #asset_status').val(); });
   $('.asset-form #asset_status').change(function() {
-    $(this).attr('class', function() {
-      return $(this).val();
+    $('.asset-form #asset_swatch').attr('class', function() {
+      return $('.asset-form #asset_status').val();
     });
   });
 

@@ -574,11 +574,19 @@ Asset add, edit, delete forms
   padding-left: 35px;  
 }
 
-#asset_status.setup { background: #f39bbb; }
-#asset_status.layout { background: #f1e662; }
-#asset_status.posing { background: #aa99f0; }
-#asset_status.animation { background: #3ed9d0; }
-#asset_status.approved { }
+#asset_status {
+  margin: 0;
+}
+#asset_swatch {
+  padding: 6px;
+  width: 220px;
+  margin-bottom: 5px;
+}
+#asset_swatch.setup { background: #f39bbb; }
+#asset_swatch.layout { background: #f1e662; }
+#asset_swatch.posing { background: #aa99f0; }
+#asset_swatch.animation { background: #3ed9d0; }
+#asset_swatch.approved { }
 
 /* -------
 Asset upload modal 
