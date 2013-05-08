@@ -373,13 +373,11 @@ Asset list view
 
 .list-view .title { width: 410px; }
 
-.list-view .asset.open .extended { width: 455px; height: 230px; }
+.list-view .asset.open .extended { width: 950px; height: 469px; }
 
 .list-view .extended .title { width: 410px; }
 
-.list-view .tab-tile { height: 170px; }
-
-.list-view .tile { width: 455px; height: 230px; }
+.list-view .tile { width: 930px; height: 469px; }
 
 .list-view .extended .downloads { margin: 10px auto 0; width: 200px; text-align: center; }
 .list-view .downloads .button { 
@@ -388,7 +386,7 @@ Asset list view
   width: 175px;
   margin-bottom: 10px;
   padding:10px;
-  float: none;          
+  float: none;
   font-size: 16px;
   border: 1px solid rgb(120,120,120); 
 }
@@ -399,14 +397,14 @@ Asset list view
 .list-view  .asset:nth-child(10n+6) .extended { left: 0; }
 .list-view  .asset:nth-child(10n+6).open .reel { right: 0px; }
 
-.list-view .asset.open .extended { width: 455px; height: 310px; }
-.list-view .asset.open .reel { right: 0px; z-index: 30; }
-.list-view .extended .title { width: 410px; }
+.list-view .asset.open .extended { width: 956px; height: 549px; }
+.list-view .asset.open .reel { right: -501px; z-index: 30; }
+.list-view .extended .title { width: 911px; }
 
-.list-view .tab-tile { height: 200px; }
+.list-view .tab-tile { height: 439px; }
 
-.list-view .tile { width: 432px; height: 205px; }
-.list-view .tile.media img { height: 205px; }
+.list-view .tile { width: 930px; height: 438px; } /* width: 950 - 10px -10px padding */
+.list-view .tile.media img { height: 433px; }
 .list-view .tile.media .fullsize { width: inherit; height: inherit; }
 
 .list-view .extended .downloads { margin: 10px auto 0; width: 200px; text-align: center; }
@@ -634,11 +632,12 @@ Media queries
 
   .list-view .assigned-to { width: 372px; padding-bottom: 4px; }  
 
-  .list-view .asset.open .extended { width: 420px; }
+  .list-view .asset.open .extended { width: 880px; }
+  .list-view .asset.open .reel { right: -460px; }
 
   .list-view .extended .title { width: 375px }
 
-  .list-view .tile { width: 400px; }
+  .list-view .tile { width: 860px; } /* 880px - 10px -10px padding */
 
   .list-view .extended input[type="text"] { width: 57%; }
 
@@ -646,6 +645,7 @@ Media queries
   .list-view .asset.approved-denny .look-at-me,
   .list-view .asset.revision .look-at-me { left: 154px; }
 
+  .list-view .extended .title { width: 835px; }
   .list-view .extended .downloads { margin: 20px auto 0; }
 
   .list-view .detail-list .asset-workflow { width: 146px; padding-bottom: 4px;}
