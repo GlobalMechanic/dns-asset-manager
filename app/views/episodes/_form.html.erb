@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :number %>
-    <%= f.text_field :number %>
-  </div>
-
-  <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
@@ -24,6 +19,16 @@
   <div class="field">
     <%= f.label :season %>
     <%= f.text_field :season %>
+  </div>
+
+  <div class="field">
+    <%= f.label :world %>
+    <%= f.select :world, Episode::WORLD %>
+  </div>
+
+  <div class="field">
+    <%= f.label :number %>
+    <%= f.text_field :number %>
   </div>
 
   <div class="actions">
