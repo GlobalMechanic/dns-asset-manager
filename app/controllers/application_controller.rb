@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect
-    if current_user.has_role?(:animator)
+    if current_user && current_user.has_role?(:animator)
       redirect_to episodes_path
     else
       redirect_to assets_path
