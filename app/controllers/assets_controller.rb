@@ -12,8 +12,8 @@ class AssetsController < ApplicationController
       @assets = Asset.find_with_index(params[:search])
       @title = "Search: #{params[:search]} (#{@assets.count})"
     else
-      @assets = Asset.joins('LEFT OUTER JOIN "assets_scenes" ON "assets_scenes"."asset_id" = "assets"."id" LEFT OUTER JOIN "scenes" ON "scenes"."id" = "assets_scenes"."scene_id"').where(:assets_scenes => { :scene_id => nil })
-      @title = "All Assets (#{@assets.count})"
+      @assets = Asset.joins('LEFT OUTER JOIN "assets_scenes" ON "assets_scenes"."asset_id" = "assets"."id" LEFT OUTER JOIN "scenes" ON "scenes"."id" = "assets_scenes"."scene_id"').where(:assets_scenes => { :scene_id => nil }).page(params[:page]).per(params[:number])
+      @title = "All Assets (#{Asset.count})"
     end
 
     # per_page = 20

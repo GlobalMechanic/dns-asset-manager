@@ -19,6 +19,8 @@ class Asset < ActiveRecord::Base
     ['Approved', 'approved'],
   ]
 
+  paginates_per 70
+
 	has_paper_trail
   mount_uploader :asset, AssetUploader
   mount_uploader :preview, AssetUploader

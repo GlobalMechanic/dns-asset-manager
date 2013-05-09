@@ -296,6 +296,18 @@ ul[id="secondary"] a.button { height: 30px; padding-bottom: 0; } /* download but
 .open.filters li a:hover,
 .open.filters li a.active { background: #000; color: #f7f4d6; font-weight: bold; }
 
+.pager { margin: 40px 0; }
+.pager nav { display: inline-block; }
+.pager a, .pager .current {
+  display: inline-block;
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.pager .current {
+  background: #ddd;
+}
+
 /* Skeleton button override */
 a.button,
 .button,

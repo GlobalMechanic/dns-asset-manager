@@ -15,6 +15,7 @@ gem "cancan"
 # Controllers
 gem 'acts_as_indexed'
 gem 'rubyzip', :require => 'zip/zip'
+gem 'kaminari' # For pagination
 
 # Models
 gem 'inherited_resources'

@@ -31,7 +31,6 @@ class ApplicationController < ActionController::Base
         @layout = 'grid'
       end
     end
-    @search = Asset.search
   end
 
   def add_reels

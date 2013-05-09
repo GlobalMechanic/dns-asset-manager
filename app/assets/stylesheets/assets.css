@@ -361,6 +361,9 @@ Asset extended
 .slot:last-child .region { width: 238px; left: -48px; }
 
 .assets.dragging .slot .region { display: block; }
+.controller-assets.action-index .slot:last-child {
+  height: 0px;
+}
 
 /* ???? [END] */
 
