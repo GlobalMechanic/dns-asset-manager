@@ -18,6 +18,8 @@ class AssetsController < ApplicationController
     @assets = @search.order('created_at DESC').uniq
     @title = params[:search] ? "Search: #{params[:search].values.join(', ')} (#{@search.count})" : "All Assets (#{Asset.count})"
     
+    @assets = Asset.find_with_index(params[:search].first[1])
+
     # per_page = 20
     # @assets = Asset.limit(per_page).offset(params[:page] ? params[:page].to_i * per_page : 0)
 

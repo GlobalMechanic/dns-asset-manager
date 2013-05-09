@@ -30,6 +30,21 @@ class Asset < ActiveRecord::Base
   has_many :reel_assets, :dependent => :delete_all
 
   acts_as_taggable_on :keywords, :name
+  acts_as_indexed :fields => [
+    :filename,
+    :description,
+    :asset_type,
+    :name_list,
+    :keyword_list,
+    :stock_string,
+    :status,
+    :submitted_string,
+    :approved_string,
+    :revision_string,
+    :checked_out_string,
+    :user_string,
+    :reuse_string,
+  ]
 
   attr_accessible :description,
                   :asset_type,
@@ -110,5 +125,33 @@ class Asset < ActiveRecord::Base
     end
     filename = filename.join('_')
     filename += File.extname self.asset_url
+  end
+
+  def stock_string
+    self.stock? ? 'stk' : nil
+  end
+
+  def submitted_string
+    self.submitted? ? 'submitted' : nil
+  end
+
+  def approved_string
+    self.approved? ? 'approved' : nil
+  end
+
+  def revision_string
+    self.revision? ? 'revision' : nil
+  end
+
+  def checked_out_string
+    self.checked_out? ? 'checked out' : nil
+  end
+
+  def user_string
+    self.user_id? ? self.user.name : nil
+  end
+
+  def reuse_string
+    self.reuse? ? 'reuse' : nil
   end
 end

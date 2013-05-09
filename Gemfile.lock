@@ -38,6 +38,7 @@ GEM
       multi_json (~> 1.0)
     acts-as-taggable-on (2.3.3)
       rails (~> 3.0)
+    acts_as_indexed (0.8.3)
     airbrake (3.1.8)
       activesupport
       builder
@@ -232,6 +233,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 2.3.3)
+  acts_as_indexed
   airbrake
   cancan
   carrierwave
