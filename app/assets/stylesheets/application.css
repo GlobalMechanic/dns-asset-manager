@@ -329,5 +329,5 @@ Media queries
 @media all and (min-width:1440px) {
   .container,
   .top-bar nav:first-child { width: 1347px; }
-  form[id="asset_search"] input[type="text"] { min-width: 608px; }
+  #asset-search input { min-width: 608px; }
 }

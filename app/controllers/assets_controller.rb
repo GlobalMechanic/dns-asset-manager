@@ -8,17 +8,13 @@ class AssetsController < ApplicationController
   # GET /assets
   # GET /assets.json
   def index
-    # Hack to include stk
-    if params[:search] && params[:search].first[1][/stk/]
-      searching = { 'description_or_taggings_tag_name_contains' => params[:search].first[1].gsub(/stk\s/, '') }
-      @search = Asset.joins('LEFT OUTER JOIN "assets_scenes" ON "assets_scenes"."asset_id" = "assets"."id" LEFT OUTER JOIN "scenes" ON "scenes"."id" = "assets_scenes"."scene_id"').where(:assets_scenes => { :scene_id => nil }, :assets => { :stock => true }).search(searching)
+    if params[:search]
+      @assets = Asset.find_with_index(params[:search])
+      @title = "Search: #{params[:search]} (#{@assets.count})"
     else
-      @search = Asset.joins('LEFT OUTER JOIN "assets_scenes" ON "assets_scenes"."asset_id" = "assets"."id" LEFT OUTER JOIN "scenes" ON "scenes"."id" = "assets_scenes"."scene_id"').where(:assets_scenes => { :scene_id => nil }).search(params[:search])
-    end      
-    @assets = @search.order('created_at DESC').uniq
-    @title = params[:search] ? "Search: #{params[:search].values.join(', ')} (#{@search.count})" : "All Assets (#{Asset.count})"
-    
-    @assets = Asset.find_with_index(params[:search].first[1])
+      @assets = Asset.joins('LEFT OUTER JOIN "assets_scenes" ON "assets_scenes"."asset_id" = "assets"."id" LEFT OUTER JOIN "scenes" ON "scenes"."id" = "assets_scenes"."scene_id"').where(:assets_scenes => { :scene_id => nil })
+      @title = "All Assets (#{@assets.count})"
+    end
 
     # per_page = 20
     # @assets = Asset.limit(per_page).offset(params[:page] ? params[:page].to_i * per_page : 0)

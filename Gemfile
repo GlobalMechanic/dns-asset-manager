@@ -13,7 +13,6 @@ gem "rolify"
 gem "cancan"
 
 # Controllers
-gem 'meta_search'
 gem 'acts_as_indexed'
 gem 'rubyzip', :require => 'zip/zip'
 
