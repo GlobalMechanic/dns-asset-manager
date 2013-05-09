@@ -1,5 +1,5 @@
 <%= render :partial => 'shared/layout', :locals => { :layout => params['layout'] } %>
-<%= render :partial => 'shared/assets', :locals => { :assets => @assets }%>
+<%= render :partial => 'shared/assets', :locals => { :assets => @assets } %>
 <% if @pager == true %>
 <div class="pager">
   <%= link_to 'All', :number => Asset.count %>

@@ -11,6 +11,7 @@
     <% end %>
   <% end %>
 <% end %>
+<%= render :partial => 'shared/layout', :locals => { :layout => params['layout'] } %>
 <%= render :partial => 'shared/assets', :locals => { :assets => assets } %>
 
 

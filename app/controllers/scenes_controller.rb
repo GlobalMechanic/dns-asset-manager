@@ -8,6 +8,6 @@ class ScenesController < InheritedResources::Base
   protected
   def collection
     @scenes = end_of_association_chain.order('number')
-    @title = "Scenes - #{ @episode.number.pad } - #{ @episode.title }"
+    @title = "Scenes - #{ @episode.number.pad } - #{ @episode.title } (#{ @scenes.length })"
   end
 end
