@@ -26,7 +26,7 @@
   <% unless @reel.assets.length > 0 %>
   <%= content_tag(:p, 'No assets yet.') %>
   <% else %>
-  <%= render :partial => 'shared/layout', :locals => { :layout => params['layout'] } %>
+  <% @layout = 'grid' %>
   <%= render :partial => 'shared/assets', :locals => { :assets => @reel.assets } %>
   <% end %>
 </div>
