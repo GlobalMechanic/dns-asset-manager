@@ -2,5 +2,5 @@
 <%= render :partial => 'shared/assets', :locals => { :assets => @assets }%>
 <div class="pager">
   <%= link_to 'All', :number => Asset.count %>
-  <%= paginate @assets %>
+  <%= paginate @assets, :window => 10 %>
 </div>
