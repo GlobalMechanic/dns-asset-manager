@@ -6,7 +6,8 @@ class EpisodesController < InheritedResources::Base
 
   def show
     super do |format|
-      @title = "Designs - #{ @episode.number.pad } - #{ @episode.title } (#{ @episode.assets.length })"
+      @assets = @episode.assets.joins('LEFT OUTER JOIN "assets_scenes" ON "assets_scenes"."asset_id" = "assets"."id" LEFT OUTER JOIN "scenes" ON "scenes"."id" = "assets_scenes"."scene_id"').where(:assets_scenes => { :scene_id => nil }).where('asset_type != ?', 'animatic').order('created_at DESC')
+      @title = "Designs - #{ @episode.number.pad } - #{ @episode.title } (#{ @assets.length })"
     end
   end
 
