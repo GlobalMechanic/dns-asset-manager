@@ -135,7 +135,7 @@
           <dt>Description:</dt>
           <dd><%= asset.description %></dd>
           <% end %>
-          <% if asset.scene.length <= 0 && asset.name.length <= 0 && asset.keyword.length <= 0 && !asset.description? %>
+          <% if asset.scene.length <= 0 && asset.name.length <= 0 && asset.keywords.length <= 0 && !asset.description? %>
            <p>No extra information.</p>
           <% end %>
         </dl>
