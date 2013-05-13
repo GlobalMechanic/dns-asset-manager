@@ -124,13 +124,13 @@ class AssetsController < ApplicationController
   end
 
   def type
-    @assets = Asset.where(:asset_type => params[:asset_type])
+    @assets = Asset.joins('LEFT OUTER JOIN "assets_scenes" ON "assets_scenes"."asset_id" = "assets"."id" LEFT OUTER JOIN "scenes" ON "scenes"."id" = "assets_scenes"."scene_id"').includes(:versions, :episode, :scene, :taggings).where(:assets_scenes => { :scene_id => nil }, :asset_type => params[:asset_type]).order('created_at DESC')
     @title = "#{params[:asset_type].titleize.pluralize} (#{@assets.count})"
     render 'index'
   end
 
   def keyword
-    @assets = Asset.tagged_with(params[:keyword])
+    @assets = Asset.tagged_with(params[:keyword]).order('created_at DESC')
     @title = "Tag: #{params[:keyword]} (#{@assets.count})"
     render 'index'
   end

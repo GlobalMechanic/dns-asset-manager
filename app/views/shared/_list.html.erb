@@ -82,11 +82,19 @@
             <% end %>
           </dd>
           <% end %>
-          <% if asset.keyword_list.length > 0 %>
+          <% if asset.name.length > 0 %>
+          <dt>Object Name:</dt>
+          <dd>
+            <% asset.name.each do |keyword| %>
+              <%= link_to keyword.name, keyword_assets_path(keyword.name) %>
+            <% end %>
+          </dd>
+          <% end %>
+          <% if asset.keywords.length > 0 %>
           <dt>Keywords:</dt>
           <dd>
-            <% asset.keyword_list.each do |keyword| %>
-              <%= link_to keyword, keyword_assets_path(keyword) %>
+            <% asset.keywords.each do |keyword| %>
+              <%= link_to keyword.name, keyword_assets_path(keyword.name) %>
             <% end %>
           </dd>
           <% end %>

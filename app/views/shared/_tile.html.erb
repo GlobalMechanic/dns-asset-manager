@@ -119,7 +119,7 @@
           <dt>Object Name:</dt>
           <dd>
             <% asset.name.each do |keyword| %>
-              <%= link_to keyword, keyword_assets_path(keyword) %>
+              <%= link_to keyword.name, keyword_assets_path(keyword.name) %>
             <% end %>
           </dd>
           <% end %>
@@ -127,7 +127,7 @@
           <dt>Keywords:</dt>
           <dd>
             <% asset.keywords.each do |keyword| %>
-              <%= link_to keyword, keyword_assets_path(keyword) %>
+              <%= link_to keyword.name, keyword_assets_path(keyword.name) %>
             <% end %>
           </dd>
           <% end %>
