@@ -73,7 +73,7 @@ class AssetUploader < CarrierWave::Uploader::Base
   # therefore this code does not run in the context of an object instance  
   # and we cannot access uploader instance fields from this block.
   version :thumb do
-    process_extensions AssetUploader::IMAGE_EXTENSIONS, :resize_to_fill => [188, 106]
+    process_extensions AssetUploader::IMAGE_EXTENSIONS, resize_to_fill: [188, 106]
   end
 
   protected

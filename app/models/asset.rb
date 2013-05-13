@@ -48,7 +48,8 @@ class Asset < ActiveRecord::Base
     :reuse_string,
   ]
 
-  attr_accessible :description,
+  attr_accessible :title,
+                  :description,
                   :asset_type,
                   :name_list,
                   :keyword_list,
@@ -65,6 +66,8 @@ class Asset < ActiveRecord::Base
                   :checked_out,
                   :user_id,
                   :reuse
+
+  before_save :set_title_filename
 
   # Parses filenames, like:
   # - stk_character_oliver_123.fla
@@ -105,8 +108,8 @@ class Asset < ActiveRecord::Base
     end
   end
 
-  def title
-    self.filename
+  def set_title_filename
+    self.title = self.filename
   end
 
   def filename

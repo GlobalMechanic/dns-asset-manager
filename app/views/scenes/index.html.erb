@@ -4,7 +4,7 @@
 </div>
 
 <% assets = [] %>
-<% @scenes.each_with_index do |scene, index| %>
+<% @scenes.includes(:assets).each_with_index do |scene, index| %>
   <% if scene.assets.length > 0 %>
     <% scene.assets.each do |asset| %>
       <% assets << asset %>

@@ -69,19 +69,16 @@
         <a href="<%= asset_path asset %>/edit" class="button">Edit Asset</a>
         <% end %>
         <dl>
-          <% if asset.scene.length > 0 %>
-          <dt>Worlds:</dt>
-          <dd>
-            <% Episode.joins(:scenes).where(:scenes => { :id => asset.scene.map {|item| item.id} }).uniq.order("episodes.number ASC").each do |episode| %>
-              <%= link_to episode.title, episode %>
-            <% end %>
-          </dd>
+          <% if asset.episode %>
+          <dt>Episode:</dt>
+          <dd><%= link_to asset.episode.title, asset.episode %></dd>
           <% end %>
-          <% if asset.name_list.length > 0 %>
-          <dt>Name:</dt>
+
+          <% if asset.scene.length > 0 %>
+          <dt>Scenes:</dt>
           <dd>
-            <% asset.name_list.each do |keyword| %>
-              <%= link_to keyword, keyword_assets_path(keyword) %>
+            <% asset.scene.each do |scene| %>
+              <%= link_to scene.number, episode_scene_path(asset.episode, scene) %>
             <% end %>
           </dd>
           <% end %>
