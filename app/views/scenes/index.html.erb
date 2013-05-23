@@ -1,7 +1,9 @@
 <div id="tabs">
   <%= link_to 'Designs', @episode, :class => 'item' %>
   <%= link_to 'Scenes', episode_scenes_path(@episode), :class => 'item active' %>
+  <%= link_to 'Download', episode_download_path(@episode), :class => 'download' %>
 </div>
+
 
 <% assets = [] %>
 <% @scenes.includes(:assets).each_with_index do |scene, index| %>
