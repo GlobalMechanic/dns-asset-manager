@@ -25,7 +25,7 @@ class EpisodesController < InheritedResources::Base
     Zip::ZipOutputStream.open(t.path) do |z|
       assets.each do |asset|
         z.put_next_entry(asset.filename)
-        Kernel::open('https://asset-manager.s3.amazonaws.com/uploads/asset/asset/' + asset.id.to_s + '/' + File.basename(asset.preview_swf_url).to_s) {|file|
+        Kernel::open('https://asset-manager.s3.amazonaws.com/uploads/asset/preview_swf/' + asset.id.to_s + '/' + File.basename(asset.preview_swf_url).to_s) {|file|
           z.print file.read
         }
       end
