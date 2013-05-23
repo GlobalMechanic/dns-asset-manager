@@ -80,8 +80,8 @@ class Asset < ActiveRecord::Base
       leftover, filename, extension = newAsset.split(/^(.*)\.(.*)$/)
       elements = filename.split('_')
 
-      if filename.match(/[0-9]{3}_[0-9]{3}/)
-        leftover, season, episode, scene = filename.split(/([0-9]{1})([0-9]{2})_([0-9]{3})/)
+      if filename.match(/[0-9]{3}_[0-9]{3}[a-zA-Z]?/)
+        leftover, season, episode, scene, scene_alt = filename.split(/([0-9]{1})([0-9]{2})_([0-9]{3})([a-zA-Z]?)/)
         episode = Episode.find_by_season_and_number(season, episode)
         scene = Scene.find_or_create_by_number_and_episode_id(scene, episode.id)
         self.episode_id = episode.id
