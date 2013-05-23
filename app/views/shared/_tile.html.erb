@@ -111,7 +111,7 @@
           <dt>Scenes:</dt>
           <dd>
             <% asset.scene.each do |scene| %>
-              <%= link_to scene.number, episode_scene_path(asset.episode, scene) %>
+              <%= link_to scene.number.to_s + scene.part, episode_scene_path(asset.episode, scene) %>
             <% end %>
           </dd>
           <% end %>

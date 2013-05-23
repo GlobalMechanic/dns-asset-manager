@@ -81,9 +81,9 @@ class Asset < ActiveRecord::Base
       elements = filename.split('_')
 
       if filename.match(/[0-9]{3}_[0-9]{3}[a-zA-Z]?/)
-        leftover, season, episode, scene, scene_alt = filename.split(/([0-9]{1})([0-9]{2})_([0-9]{3})([a-zA-Z]?)/)
+        leftover, season, episode, scene, part = filename.split(/([0-9]{1})([0-9]{2})_([0-9]{3})([a-zA-Z]?)/)
         episode = Episode.find_by_season_and_number(season, episode)
-        scene = Scene.find_or_create_by_number_and_episode_id(scene, episode.id)
+        scene = Scene.find_or_create_by_number_and_part_and_episode_id(scene, part, episode.id)
         self.episode_id = episode.id
         self.scene << scene
       else
@@ -117,7 +117,7 @@ class Asset < ActiveRecord::Base
     if self.scene_ids.length > 0
       filename << '1' + self.episode.number.pad
       self.scene.each do |scene|
-          filename << scene.number.pad(3)
+          filename << scene.number.pad(3) + (scene.part || '')
         end
     else
       if self.stock?

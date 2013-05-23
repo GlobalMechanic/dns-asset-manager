@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :part %>
+    <%= f.text_field :part %>
+  </div>
+
+  <div class="field">
     <%= f.label :episode_id %>
     <%= f.select :episode_id, Episode.order('number').all.map {|x| [x.number.pad + ' - ' + x.title, x.id]}, { :include_blank => true } %>
   </div>
