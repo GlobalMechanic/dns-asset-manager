@@ -1,6 +1,6 @@
 <% Episode::WORLD.each do |type| %>
   <% @episodes.all.select {|episode| episode.world == type[1] }.each do |episode| %>
-    <h3 class="result-headers"><%= link_to "#{type[0]} #{episode.number.pad} - #{episode.title}", current_user && current_user.has_role?(:animator) ? episode_scenes_path(episode) : episode %><% if can? :update, Episode %><span class="actions"><%= link_to 'Edit', edit_episode_path(episode) %></span><% end %></h3>
+    <h3 class="result-headers"><%= link_to "#{episode.title}", current_user && current_user.has_role?(:animator) ? episode_scenes_path(episode) : episode %><% if can? :update, Episode %><span class="actions"><%= link_to 'Edit', edit_episode_path(episode) %></span><% end %></h3>
     <% end %>
 <% end %>
 
