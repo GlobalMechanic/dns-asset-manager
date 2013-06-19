@@ -7,6 +7,8 @@ class Reel < ActiveRecord::Base
 
   self.primary_key = "slug"
   before_create :set_hash
+
+  paginates_per 10
  
   def set_hash
     self.slug = Digest::MD5.hexdigest(Time.now.to_s)
