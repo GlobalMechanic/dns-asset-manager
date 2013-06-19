@@ -1,6 +1,29 @@
 $(document).ready(function() {
-
+  var layout = $('.assets.list-view').length > 0 ? 'list' : 'tile';
+  var dimensions = {
+    'tile': {
+      width: 734,
+      height: 330
+    },
+    'list': {
+      width: 860,
+      height: 433
+    }
+  }
+  gm.playerReady = function(playerId) {
+    $player = $('#object-player');
+    window.setTimeout(function() {
+      if ($player.attr('width') == dimensions[layout]['width']) {
+        $player.attr('width', dimensions[layout]['width'] - 1);  
+      }
+      else {
+        $player.attr('width', dimensions[layout]['width']);
+      }
+    }, 500);
+  }
   var setupFlash = function(i, element) {
+    console.log(element);
+    window.tylor = element;
     var entityMap = {
       "&": "&amp;",
       "<": "&lt;",
@@ -14,17 +37,6 @@ $(document).ready(function() {
         return entityMap[s];
       });
     }
-    var layout = $('.assets.list-view').length > 0 ? 'list' : 'tile';
-    var dimensions = {
-      'tile': {
-        width: 734,
-        height: 330
-      },
-      'list': {
-        width: 860,
-        height: 433
-      }
-    }
     // var flashURL = 'http://osmf.org/videos/cathy2.flv';
     var flashURL = escapeHtml($(element).data('flash-url'));
     var video = ['<object id="object-player" width="' + dimensions[layout]['width'] + ' " height="' + dimensions[layout]['height'] + '">',
@@ -37,22 +49,11 @@ $(document).ready(function() {
       '</object>'];
 
     $(element).append(video.join("\n"));
-    gm.playerReady = function(playerId) {
-      $player = $('#object-player');
-      window.setTimeout(function() {
-        if ($player.attr('width') == dimensions[layout]['width']) {
-          $player.attr('width', dimensions[layout]['width'] - 1);  
-        }
-        else {
-          $player.attr('width', dimensions[layout]['width']);
-        }
-      }, 500);
-    }
   }
   $('body.controller-assets.action-edit [data-flash-url]:empty').each(setupFlash);
 
   // Asset add/remove click events.
-  $('.asset .reel').click(function(e) {
+  $('body').on('click', '.asset .reel', function(e) {
     var $asset = $(this);
     $asset.toggleClass('add').toggleClass('remove').addClass('loading');
     if ($asset.hasClass('add')) {
@@ -89,16 +90,15 @@ $(document).ready(function() {
   });
 
   // Handle image preview
-  $('.media .detail').on('click', 'img', function() {
+  $('body').on('click', '.media .detail img', function() {
     $(this).toggleClass('fullsize');
   });
 
-  // Handle video player.
-  $('.asset .default, .asset .title').click(function(e) {
+  var toggleTile = function($asset) {
     $('[data-flash-url]').empty();
-    if ($(this).parents('.asset').hasClass('open')) {
-      $(this).parents('.asset').removeClass('open');
-      $(this).parent().find('.video-js.full-size').each(function(i, item) {
+    if ($asset.hasClass('open')) {
+      $asset.removeClass('open');
+      $asset.find('.video-js.full-size').each(function(i, item) {
         var video = _V_($(item).attr('id'));
         video.pause();
         if (video.currentTime() > 0) {
@@ -114,28 +114,59 @@ $(document).ready(function() {
           video.currentTime(0);
         }
       });
-      $(this).parent().find('[data-image-url]:empty').each(function() {
+      $asset.find('[data-image-url]:empty').each(function() {
         $(this).append($('<img>', { 'src': $(this).data('image-url') }));
       });
-      $(this).parent().find('[data-flash-url]:empty').each(setupFlash);
+      $asset.find('.video-js').each(function(i, item) {
+        _V_($(item).attr('id'), { "preload": "none", "controls": "true" }, function(){
+        });
+        // _V_($(item).attr('id')).play();
+      });
+      $asset.find('[data-flash-url]:empty').each(setupFlash);
       $('.asset.open').removeClass('open');
       $('.tile.open').removeClass('open');
       $('.fullsize').removeClass('fullsize');
       $('.tab-tile .tile:last-child').addClass('open');
       $('.asset-utilities a').removeClass('active');
       $('.asset-utilities li:last-child a').addClass('active');
-      $(this).parents('.asset').addClass('open');
-      $(this).parent().find('.video-js.full-size').each(function(i, item) {
+      $asset.addClass('open');
+      $asset.find('.video-js.full-size').each(function(i, item) {
         _V_($(item).attr('id')).play();
       });
-    }    
+    }   
+  }
+
+  var setupExtended = function($asset, callback) {
+    var $extended = $asset.find('.extended');
+    if ($extended.html() === '') {
+      var id = $asset.attr('id').replace('asset-', '');
+      $.ajax({
+        url: '/plum-landing/assets/' + id + '/extended.json',
+        type: 'GET',
+        success: function(data) {
+          $extended.html(data.html);
+          callback();
+        }
+      });
+    }
+    else {
+      callback();
+    }
+  }
+
+  // Handle video player.
+  $('body').on('click', '.asset .default, .asset .title', function(e) {
+    var $this = $(this);
+    setupExtended($this.parents('.asset'), function() {
+      toggleTile($this.parents('.asset'));
+    });
   });
 
-  $('.extended .title').click(function() {
+  $('body').on('click', '.extended .title', function() {
       $(this).parents('.asset').removeClass('open');
   });
 
-  $('.extended .inline-autocomplete .edit_asset').submit(function() {
+  $('body').on('submit', '.extended .inline-autocomplete .edit_asset', function() {
     var $this = $(this);
     $this.addClass('active');
     $.ajax(gm.root_url + 'assets/' + $this.attr('id').replace('edit_asset_', '') + '.json', {
@@ -160,18 +191,22 @@ $(document).ready(function() {
 
   // Asset download
   $('.asset-state').on('click', 'a[href*="#download-asset"]', function(event) {
-    event.preventDefault();
-    
-    $('.asset-utilities').find('.active').removeClass('active');
-    $('.tab-tile .tile').removeClass('open');
-    $('.asset').removeClass('open');
-    $(this).parents('.asset').addClass('open');
-    $(this).parents('.asset').find('.asset-utilities li:first-child a').addClass('active');
-    $(this).parents('.asset').find('.tile:first-child').addClass('open');
+    var $this = $(this);
+    setupExtended($this.parents('.asset'), function() {
+      $('.asset-utilities').find('.active').removeClass('active');
+      $('.tab-tile .tile').removeClass('open');
+      $('.asset').removeClass('open');
+      toggleTile($this.parents('.asset'));
+      $this.parents('.asset').find('.asset-utilities li a.active').removeClass('active');
+      $this.parents('.asset').find('.asset-utilities li:first-child a').addClass('active');
+      $this.parents('.asset').find('.tile.open').removeClass('open');
+      $this.parents('.asset').find('.tile:first-child').addClass('open');
+    });
+    return false;
   });  
 
   // Reveal relevant tile
-  $('.asset-utilities a').click(function (event) {
+  $('body').on('click', '.asset-utilities a', function (event) {
     event.preventDefault();
     var currentTile = $(this).parent('li').index() + 1;
 

@@ -18,6 +18,7 @@ AssetManager::Application.routes.draw do
       end
       get 'download'
       get 'checkout'
+      get 'extended'
     end
 
     resources :episodes do

@@ -151,7 +151,6 @@ class AssetsController < ApplicationController
   end
 
   def checkout
-    puts params.inspect
     @asset = Asset.find(params[:asset_id])
     if params[:download] == "true"
       redirect = asset_download_path(@asset)
@@ -166,6 +165,15 @@ class AssetsController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @asset.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def extended
+    @asset = Asset.find(params[:asset_id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: { :html => render_to_string(:template => "assets/extended.html.erb") } }
     end
   end
 
