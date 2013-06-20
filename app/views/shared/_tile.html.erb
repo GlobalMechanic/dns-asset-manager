@@ -14,7 +14,7 @@
   <%= image_tag asset.asset_url(:thumb).to_s, :class => 'default preview', :draggable => 'false' %>
   <% elsif is_movie asset.asset %>
   <video id="video-preview-<%= asset.id %>" class="video-js vjs-default-skin preview" width="188" height="106" data-setup='{ "preload": "auto" }' preload="auto">
-    <source src="<%= asset.asset_url %>" type="video/mp4">
+    <source src="<%= @asset.asset_url.gsub(/https/, 'http') %>" type="video/mp4">
   </video>
   <% else %>
   <%= image_tag '/assets/placeholders/' + clean_extension(asset.asset) + '.png', :class => 'default preview', :draggable => 'false' %>
