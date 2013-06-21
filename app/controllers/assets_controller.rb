@@ -53,8 +53,7 @@ class AssetsController < ApplicationController
 
   # GET /assets/1/edit
   def edit
-    session[:return_to] = request.referer
-    puts session.inspect
+    # session[:return_to] = request.referer
     @asset = Asset.find(params[:id])
     @title = @asset.title
   end
@@ -94,8 +93,6 @@ class AssetsController < ApplicationController
 
     respond_to do |format|
       if @asset.update_attributes(params[:asset])
-        puts "Did it save?"
-        puts session.inspect
         # format.html { redirect_to session.delete(:return_to) || edit_asset_path(@asset), notice: 'Asset was successfully updated.' }
         format.html { redirect_to edit_asset_path(@asset), notice: 'Asset was successfully updated.' }
         format.json { head :no_content }

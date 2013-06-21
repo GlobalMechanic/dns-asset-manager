@@ -42,7 +42,7 @@ AssetManager::Application.routes.draw do
       get 'close'
       get 'open'
       get 'download'
-      get 'checkout'
+      # get 'checkout'
     end
   end
 
