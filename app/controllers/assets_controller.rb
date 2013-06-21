@@ -12,7 +12,7 @@ class AssetsController < ApplicationController
       @assets = Asset.find_with_index(params[:search])
       @title = "Search: #{params[:search]} (#{@assets.count})"
     else
-      @assets = Asset.joins('LEFT OUTER JOIN "assets_scenes" ON "assets_scenes"."asset_id" = "assets"."id" LEFT OUTER JOIN "scenes" ON "scenes"."id" = "assets_scenes"."scene_id"').includes(:versions, :episode, :scene, :taggings).where(:assets_scenes => { :scene_id => nil }).where('asset_type != ?', 'animatic').order('created_at DESC').page(params[:page]).per(params[:number])
+      @assets = Asset.includes(:user, :scene).where(:assets_scenes => { :scene_id => nil }).where('asset_type != ?', 'animatic').order('assets.created_at DESC').page(params[:page]).per(params[:number])
       @pager = true
       @title = "All Assets (#{Asset.count})"
     end
@@ -125,7 +125,7 @@ class AssetsController < ApplicationController
   end
 
   def type
-    @assets = Asset.joins('LEFT OUTER JOIN "assets_scenes" ON "assets_scenes"."asset_id" = "assets"."id" LEFT OUTER JOIN "scenes" ON "scenes"."id" = "assets_scenes"."scene_id"').includes(:versions, :episode, :scene, :taggings).where(:assets_scenes => { :scene_id => nil }, :asset_type => params[:asset_type]).order('created_at DESC')
+    @assets = Asset.includes(:user, :scene).where(:assets_scenes => { :scene_id => nil }, :asset_type => params[:asset_type]).order('assets.created_at DESC')
     @title = "#{params[:asset_type].titleize.pluralize} (#{@assets.count})"
     render 'index'
   end
