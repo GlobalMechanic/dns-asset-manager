@@ -79,22 +79,22 @@ class ReelsController < ApplicationController
     t.close
   end
 
-  # def checkout
-  #   @reel = Reel.find(params[:id])
-  #   t = Tempfile.new("temp-reel-zip-#{Time.now.strftime("%Y-%m-%d-%H-%M")}")
-  #   Zip::ZipOutputStream.open(t.path) do |z|
-  #     @reel.assets.each do |asset|
-  #       z.put_next_entry(asset.filename)
-  #       Kernel::open('https://asset-manager.s3.amazonaws.com/uploads/asset/asset/' + asset.id.to_s + '/' + File.basename(asset.asset_url).to_s) {|img|
-  #         z.print img.read
-  #       }
-  #       asset.update_attributes({ :user_id => current_user.id, :checked_out => true })
-  #     end
-  #   end
-  #   item_text = @reel.assets.length > 1 ? 'items' : 'item'
-  #   send_file t.path, :type => 'application/zip', :disposition => 'attachment', :filename => "plum_landing_#{Time.now.strftime("%m-%d-%H-%M")}_#{@reel.assets.length}_#{item_text}.zip"
-  #   t.close
-  # end
+  def checkout
+    @reel = Reel.find(params[:id])
+    t = Tempfile.new("temp-reel-zip-#{Time.now.strftime("%Y-%m-%d-%H-%M")}")
+    Zip::ZipOutputStream.open(t.path) do |z|
+      @reel.assets.each do |asset|
+        z.put_next_entry(asset.filename)
+        Kernel::open('https://asset-manager.s3.amazonaws.com/uploads/asset/asset/' + asset.id.to_s + '/' + File.basename(asset.asset_url).to_s) {|img|
+          z.print img.read
+        }
+        asset.update_attributes({ :user_id => current_user.id, :checked_out => true })
+      end
+    end
+    item_text = @reel.assets.length > 1 ? 'items' : 'item'
+    send_file t.path, :type => 'application/zip', :disposition => 'attachment', :filename => "plum_landing_#{Time.now.strftime("%m-%d-%H-%M")}_#{@reel.assets.length}_#{item_text}.zip"
+    t.close
+  end
 
   # GET /reels/new
   # GET /reels/new.json

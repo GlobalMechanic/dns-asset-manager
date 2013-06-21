@@ -1,9 +1,9 @@
 class AssetsController < ApplicationController
-  # before_filter :authenticate_user!, :except => [:download, :extended]
-  before_filter :authenticate_user!, :except => [:download]
+  before_filter :authenticate_user!, :except => [:download, :extended]
+  # before_filter :authenticate_user!, :except => [:download]
   before_filter :add_reels
-  # load_and_authorize_resource :except => [:download, :extended]
-  load_and_authorize_resource :except => [:download]
+  load_and_authorize_resource :except => [:download, :extended]
+  # load_and_authorize_resource :except => [:download]
   autocomplete :tag, :keywords, { :column_name => 'name', :class_name => 'ActsAsTaggableOn::Tag', :full => true, :where => "(select context from taggings where tag_id = tags.id and context = 'keywords' group by context) = 'keywords'" }
   autocomplete :tag, :name, { :column_name => 'name', :class_name => 'ActsAsTaggableOn::Tag', :full => true, :where => "(select context from taggings where tag_id = tags.id and context = 'name' group by context) = 'name'" }
 
@@ -14,8 +14,8 @@ class AssetsController < ApplicationController
       @assets = Asset.find_with_index(params[:search])
       @title = "Search: #{params[:search]} (#{@assets.count})"
     else
-      # @assets = Asset.includes(:user, :scene).where(:assets_scenes => { :scene_id => nil }).where('asset_type != ?', 'animatic').order('assets.created_at DESC').page(params[:page]).per(params[:number])
-      @assets = Asset.joins('LEFT OUTER JOIN "assets_scenes" ON "assets_scenes"."asset_id" = "assets"."id" LEFT OUTER JOIN "scenes" ON "scenes"."id" = "assets_scenes"."scene_id"').includes(:versions, :episode, :scene, :taggings).where(:assets_scenes => { :scene_id => nil }).where('asset_type != ?', 'animatic').order('created_at DESC').page(params[:page]).per(params[:number])
+      @assets = Asset.includes(:user, :scene).where(:assets_scenes => { :scene_id => nil }).where('asset_type != ?', 'animatic').order('assets.created_at DESC').page(params[:page]).per(params[:number])
+      # @assets = Asset.joins('LEFT OUTER JOIN "assets_scenes" ON "assets_scenes"."asset_id" = "assets"."id" LEFT OUTER JOIN "scenes" ON "scenes"."id" = "assets_scenes"."scene_id"').includes(:versions, :episode, :scene, :taggings).where(:assets_scenes => { :scene_id => nil }).where('asset_type != ?', 'animatic').order('created_at DESC').page(params[:page]).per(params[:number])
       @pager = true
       @title = "All Assets (#{Asset.count})"
     end
@@ -53,7 +53,7 @@ class AssetsController < ApplicationController
 
   # GET /assets/1/edit
   def edit
-    # session[:return_to] = request.referer
+    session[:return_to] = request.referer
     @asset = Asset.find(params[:id])
     @title = @asset.title
   end
@@ -93,8 +93,8 @@ class AssetsController < ApplicationController
 
     respond_to do |format|
       if @asset.update_attributes(params[:asset])
-        # format.html { redirect_to session.delete(:return_to) || edit_asset_path(@asset), notice: 'Asset was successfully updated.' }
-        format.html { redirect_to edit_asset_path(@asset), notice: 'Asset was successfully updated.' }
+        format.html { redirect_to session.delete(:return_to) || edit_asset_path(@asset), notice: 'Asset was successfully updated.' }
+        # format.html { redirect_to edit_asset_path(@asset), notice: 'Asset was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
