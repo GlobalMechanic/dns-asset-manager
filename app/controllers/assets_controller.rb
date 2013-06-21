@@ -91,6 +91,8 @@ class AssetsController < ApplicationController
 
     respond_to do |format|
       if @asset.update_attributes(params[:asset])
+        puts "Did it save?"
+        puts session.inspect
         format.html { redirect_to session.delete(:return_to) || edit_asset_path(@asset), notice: 'Asset was successfully updated.' }
         format.json { head :no_content }
       else
