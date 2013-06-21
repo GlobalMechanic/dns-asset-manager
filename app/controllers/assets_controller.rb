@@ -1,7 +1,9 @@
 class AssetsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:download, :extended]
+  # before_filter :authenticate_user!, :except => [:download, :extended]
+  before_filter :authenticate_user!, :except => [:download]
   before_filter :add_reels
-  load_and_authorize_resource :except => [:download, :extended]
+  # load_and_authorize_resource :except => [:download, :extended]
+  load_and_authorize_resource :except => [:download]
   autocomplete :tag, :keywords, { :column_name => 'name', :class_name => 'ActsAsTaggableOn::Tag', :full => true, :where => "(select context from taggings where tag_id = tags.id and context = 'keywords' group by context) = 'keywords'" }
   autocomplete :tag, :name, { :column_name => 'name', :class_name => 'ActsAsTaggableOn::Tag', :full => true, :where => "(select context from taggings where tag_id = tags.id and context = 'name' group by context) = 'name'" }
 
