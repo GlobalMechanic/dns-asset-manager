@@ -86,7 +86,7 @@ Asset default
   background-size: 144px 113px; 
 }
 .asset.approved-denny .look-at-me { background-image: url('/assets/ui/approved-big.gif'); }
-.asset.revision .look-at-me { background-image: url('/assets/ui/revision-big.gif'); }
+.asset.revision .look-at-me { background-image: url('/assets/ui/revision-big.png'); }
 
 .submitted.open .look-at-me,
 .approved-denny.open .look-at-me,
@@ -567,7 +567,7 @@ Asset add, edit, delete forms
   padding-left: 35px;
 }
 .asset-form label[for="asset_revision"] {
-  background: url('/assets/ui/revision-list.gif') left top no-repeat;
+  background: url('/assets/ui/revision-list.png') left top no-repeat;
   background-size: 29px 28px;
   padding-left: 35px; 
 }
