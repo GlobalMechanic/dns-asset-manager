@@ -5,7 +5,7 @@
     <ul>
       <li><%= f.submit 'Update' %></li>
       <li><%= link_to 'Download all', download_reel_path(@reel) %></li>
-      <li><%= link_to 'Download & Checkout all', download_reel_path(@reel) %></li>
+      <li><%= link_to 'Download & Checkout all', checkout_reel_path(@reel) %></li>
       <li><%= link_to 'View', reel_path %></li>
       <li><%= link_to 'Copy Link', '#', :id => 'copy-link' %></li>
       <li><%= link_to 'Destroy', @reel, method: :delete, data: { confirm: 'Are you sure?' } %></li>
