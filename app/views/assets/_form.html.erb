@@ -40,7 +40,7 @@
     <h2>Metadata</h2>
     <%= f.select :asset_type, Asset::TYPES %>
     <%= f.select :episode_id, Episode.order('number').all.map {|x| [x.number.pad + ' - ' + x.title, x.id]}, { :include_blank => '- Episode -' } %>
-    <%= f.select :scene_ids, Scene.all.map {|x| [x.episode.number.pad + ' - ' + x.episode.title + ' - Scene ' + x.number.pad + (x.part || ''), x.id]}, { :include_blank => '- Scene -' }, :multiple => true %>
+    <%= f.select :scene_ids, Scene.includes(:episode).all.map {|x| [x.episode.number.pad + ' - ' + x.episode.title + ' - Scene ' + x.number.pad + (x.part || ''), x.id]}, { :include_blank => '- Scene -' }, :multiple => true %>
     <%= f.autocomplete_field :name_list, autocomplete_tag_name_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Object Name' %>
     <%= f.autocomplete_field :keyword_list, autocomplete_tag_keywords_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List' %>
     <%= f.check_box :stock %><%= f.label :stock, 'Stock animation', :class => 'inline' %>

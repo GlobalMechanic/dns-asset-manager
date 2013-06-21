@@ -50,7 +50,8 @@ class AssetsController < ApplicationController
 
   # GET /assets/1/edit
   def edit
-    session[:return_to] ||= request.referer
+    session[:return_to] = request.referer
+    puts session.inspect
     @asset = Asset.find(params[:id])
     @title = @asset.title
   end
