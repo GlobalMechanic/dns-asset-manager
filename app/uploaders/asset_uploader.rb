@@ -72,7 +72,7 @@ class AssetUploader < CarrierWave::Uploader::Base
   # Version actually defines a class method with the given block
   # therefore this code does not run in the context of an object instance  
   # and we cannot access uploader instance fields from this block.
-  version :thumb do
+  version :thumb, :if => :image? do
     process_extensions AssetUploader::IMAGE_EXTENSIONS, resize_to_fill: [188, 106]
   end
 
@@ -80,5 +80,9 @@ class AssetUploader < CarrierWave::Uploader::Base
   def version
     var = :"@#{mounted_as}_version"
     model.instance_variable_get(var) or model.instance_variable_set(var, model.versions.length)
+  end
+
+  def image?(new_file)
+    new_file.content_type.start_with? 'image'
   end
 end
