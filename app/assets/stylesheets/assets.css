@@ -270,6 +270,7 @@ Asset extended
 }
 .extended .edit form select {
   width: 200px;
+  padding: 0;
   margin: 0 0 5px;
 }
 .extended .edit form #asset_user_id {
@@ -291,6 +292,7 @@ Asset extended
 .extended .edit form textarea {
   margin-bottom: 0;
   min-width: 580px;
+  height: 60px;
 }
 .extended .edit form input[type="submit"] {
   padding: 23px;

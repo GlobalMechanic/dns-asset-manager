@@ -22,15 +22,27 @@
 @font-face {
   font-family: Transit;
   src: url("transit/TransitWebPro.eot?") format('eot'), url("transit/TransitWebPro.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Transit;
+  src: url("transit/TransitWebPro-Bold.eot?") format('eot'), url("transit/TransitWebPro-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
   font-family: Clarendon;
+  font-weight: normal;
+  font-style: normal;
   src: url("clarendon/c070002tWeb.eot?") format('eot'), url("clarendon/c070002tWeb.woff") format("woff");
 }
 @font-face {
   font-family: Clarendon;
   font-weight: bold;
+  font-style: normal;
   src: url("clarendon/c070004tWeb.eot?") format('eot'), url("clarendon/c070004tWeb.woff") format("woff");
 }
 
