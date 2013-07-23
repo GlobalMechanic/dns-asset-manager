@@ -126,9 +126,9 @@ $(document).ready(function() {
       $('.asset.open').removeClass('open');
       $('.tile.open').removeClass('open');
       $('.fullsize').removeClass('fullsize');
-      $('.tab-tile .tile:last-child').addClass('open');
+      $('.tab-tile .tile.edit').addClass('open');
       $('.asset-utilities a').removeClass('active');
-      $('.asset-utilities li:last-child a').addClass('active');
+      $('.asset-utilities .edit a').addClass('active');
       $asset.addClass('open');
       $asset.find('.video-js.full-size').each(function(i, item) {
         _V_($(item).attr('id')).play();
@@ -160,6 +160,10 @@ $(document).ready(function() {
     setupExtended($this.parents('.asset'), function() {
       toggleTile($this.parents('.asset'));
     });
+  });
+
+  $('.controller-assets.action-show .asset').each(function(i, asset) {
+    toggleTile($(asset));
   });
 
   $('body').on('click', '.extended .title', function() {

@@ -55,48 +55,56 @@
   </div>
 
   <%# Asset details section %>
-  <div class="tile">
-    <% if can? :update, Asset %>
-    <a href="<%= asset_path @asset %>/edit" class="button">Edit Asset</a>
+  <div class="tile edit">
+    <%= form_for @asset, :html => { :multipart => true, :class => 'asset-form' } do |f| %>
+      <div class="row first clearfix">
+        <div class="column">
+          <%= link_to 'Download', asset_download_path(@asset), :class => 'button' %>
+          <% if can? :update, Asset %>
+          <%= link_to raw('Download &amp; Checkout'), asset_checkout_path(@asset, :download => true), :class => 'button' %>
+          <% end %>
+        </div>
+        <div class="column">
+          <label for="asset[asset]">Upload File</label>
+          <%= f.file_field :asset, multiple: true, name: "asset[asset]", value: "Upload File" %>
+          <label for="asset[preview">Upload SWF Preview</label>
+          <%= f.file_field :preview, multiple: true, name: "asset[preview]", value: "Upload Preview" %>
+        </div>
+        <div class="column">
+          <a href="<%= asset_path @asset %>/edit" class="edit-button button">Edit Asset</a>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="column">
+          <label for="asset[status]">Stage</label>
+          <div id="asset_swatch">
+          <%= f.select :status, Asset::STATUS %>
+          </div>
+          <label for="asset[user_id]">Assigned To</label>
+          <%= f.select :user_id, User.order('name').with_role(:animator).map {|x| [x.name, x.id]}, { :include_blank => '- Assigned to -' } %>
+        </div>
+        <div class="status">
+          <label>Status</label>
+          <div class="status-row">
+            <%= f.check_box :submitted %><%= f.label :submitted, 'Submitted for approval', :class => 'inline' %>
+            <%= f.check_box :approved %><%= f.label :approved, 'Denny Checked', :class => 'inline' %>
+          </div>
+          <div>
+            <%= f.check_box :revision %><%= f.label :revision, 'Needs Revision', :class => 'inline' %>
+            <%= f.check_box :checked_out %><%= f.label :checked_out, 'Checked out', :class => 'inline' %>
+          </div>
+        </div>
+      </div>
+      <div class="row last clearfix">
+        <div class="column">
+          <%= f.text_area :description, :placeholder => 'Notes', :rows => 2 %>
+        </div>
+        <div class="column">&nbsp;</div>
+        <div class="column">
+          <%= f.submit "Update" %>
+        </div>
+      </div>
     <% end %>
-    <dl>
-      <% if @asset.episode %>
-      <dt>Episode:</dt>
-      <dd><%= link_to @asset.episode.title, @asset.episode %></dd>
-      <% end %>
-
-      <% if @asset.scene.length > 0 %>
-      <dt>Scenes:</dt>
-      <dd>
-        <% @asset.scene.each do |scene| %>
-          <%= link_to scene.number.to_s + (scene.part || ''), episode_scene_path(@asset.episode, scene) %>
-        <% end %>
-      </dd>
-      <% end %>
-      <% if @asset.name.length > 0 %>
-      <dt>Object Name:</dt>
-      <dd>
-        <% @asset.name.each do |keyword| %>
-          <%= link_to keyword.name, keyword_assets_path(keyword.name) %>
-        <% end %>
-      </dd>
-      <% end %>
-      <% if @asset.keywords.length > 0 %>
-      <dt>Keywords:</dt>
-      <dd>
-        <% @asset.keywords.each do |keyword| %>
-          <%= link_to keyword.name, keyword_assets_path(keyword.name) %>
-        <% end %>
-      </dd>
-      <% end %>
-      <% if @asset.description? %>
-      <dt>Description:</dt>
-      <dd><%= @asset.description %></dd>
-      <% end %>
-      <% if @asset.scene.length <= 0 && @asset.name.length <= 0 && @asset.keywords.length <= 0 && !@asset.description? %>
-       <p>No extra information.</p>
-      <% end %>
-    </dl>
   </div>
 
   <%# Video section%>
@@ -115,13 +123,13 @@
     <% end %> 
   </div>
   <% end %>
-</div>   
+</div>
 
 <nav class="row asset-utilities">
   <ul>
     <li><a href="#download" title="Download or Checkout">Download</a></li>
     <li><a href="#versions" title="Versions">Versions</a></li>
-    <li><a href="#details" title="Details">Details</a></li>
+    <li class="edit"><a href="#details" title="Details">Details</a></li>
     <% if previewable(@asset.preview) || previewable(@asset.preview_swf) || is_movie(@asset.asset) %>
     <li><a href="#video" title="Preview">Preview</a></li>
     <% end %>

@@ -227,18 +227,89 @@ Asset extended
 .extended video.default { border: 0; }
 
 /* Details tile */
-.extended dl { font-size: 16px; line-height: 24px; }
-.extended dl a { text-decoration: underline; color: #333; }
-.extended dl a:hover { background: inherit; }
-.extended dt { margin-top: 8px; text-transform: uppercase; font-weight: bold; }
-.tile .button { 
-  position: absolute; 
-  top: 6px; 
-  right: 10px; 
-  padding: 4px 7px 1px 7px; 
-  font-size: 13px; 
+.extended .edit form .button {
+  margin-bottom: 10px;
+}
+.extended .edit form .button:visited {
   color: #f7f4d6;
 }
+.extended .edit form {
+  width: 740px;
+  margin-bottom: 0;
+}
+.extended .edit .edit-button { float: right; }
+.extended form .row {
+  /*margin: 0;*/
+  margin: 7px 0;
+  padding: 8px 0;
+  border-bottom: 1px solid #777;
+  /*background: red;*/
+  /*width: 744px;  .tile width */
+  /*width: 100%;*/
+}
+.extended form select {
+  width: 200px;
+  margin: 0 0 5px;
+}
+.extended #asset_user_id {
+  width: 206px;
+}
+.extended form textarea {
+  /*margin-top: 10px;*/
+  margin-bottom: 0;
+  min-width: 580px;
+}
+.extended form input[id="asset_asset"],
+.extended form input[id="asset_preview"] {
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.extended form input[type="submit"] {
+  padding: 23px;
+  margin-bottom: 0;
+  /*margin-left: 150px;*/
+  float: right;
+}
+.extended form #asset_swatch {
+  display: inline-block;
+  width: auto;
+}
+.extended form .status {
+  /*clear: both;*/
+}
+.extended form .status input {
+  margin-bottom: 0;
+  margin-left: 0;
+}
+.extended form .status-row {
+  margin-top: 3px;
+  margin-bottom: 25px;
+}
+.extended form .status label.inline {
+  line-height: 31px;
+  width: 170px;
+}
+
+.extended form .row.last {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.extended form .row.first {
+  /*padding-top: 0;*/
+  margin-top: 0;
+}
+
+.extended form .column {
+  float: left;
+  width: 33%;
+  margin: 0;
+}
+
+/*.extended dl { font-size: 16px; line-height: 24px; }
+.extended dl a { text-decoration: underline; color: #333; }
+.extended dl a:hover { background: inherit; }
+.extended dt { margin-top: 8px; text-transform: uppercase; font-weight: bold; }*/
 
 /* Versions tile */
 

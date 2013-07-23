@@ -1,7 +1,7 @@
 <%= link_to '&larr; All Assets'.html_safe, assets_path %>
 <h1><%= @asset.title %></h1>
 <div class="row single-asset">
-  <div class="asset open" draggable="true">
+  <div class="asset" draggable="true">
     <div class="title"><%= @asset.title %></div>
     
     <% if is_image (@asset.asset) %>
