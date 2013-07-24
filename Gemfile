@@ -6,6 +6,7 @@ gem 'pg'
 # gem 'mysql2'
 gem 'json'
 gem 'airbrake'
+gem 'newrelic_rpm'
 
 # Auth
 gem 'devise'
