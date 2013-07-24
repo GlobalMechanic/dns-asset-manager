@@ -36,7 +36,7 @@
           <% if old_asset.asset != nil %>
           <div class="checkin asset-state">
             <% # Sometimes assets are loaded with the path twice, clean it up %>
-            <a href="<%= old_asset.asset_url.gsub(/http(.*)http/, 'http') %>">Download Asset</a>
+            <a href="<%= old_asset.asset_url.to_s.gsub(/http(.*)http/, 'http') %>">Download Asset</a>
           </div>
           <% end %>
           <% if old_asset.checked_out == true %>

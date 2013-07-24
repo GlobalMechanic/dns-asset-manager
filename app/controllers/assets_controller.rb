@@ -93,7 +93,7 @@ class AssetsController < ApplicationController
 
     respond_to do |format|
       if @asset.update_attributes(params[:asset])
-        format.html { redirect_to session.delete(:return_to) || edit_asset_path(@asset), notice: 'Asset was successfully updated.' }
+        format.html { redirect_to session.delete(:return_to) || request.referer || edit_asset_path(@asset), notice: 'Asset was successfully updated.' }
         format.json { render json: { asset: @asset, assigned_to: @asset.user_id ? User.find(@asset.user_id).name : nil } }
       else
         format.html { render action: "edit" }

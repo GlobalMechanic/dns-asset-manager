@@ -191,57 +191,62 @@ $(document).ready(function() {
     var $this = $(this);
     var $asset = $this.parents('.asset');
     $asset.addClass('loading');
-    $.ajax($this.attr('action') + '.json', {
-      type: 'PUT',
-      data: $this.serialize(),
-      success: function(data) {
-        $asset.removeClass('loading');
-        toggleTile($this.parents('.asset'));
-        $asset.find('.extended').html(''); // Next time opened, reload from server.
-        var classes = [
-          'asset',
-          data.asset.status
-        ];
-        if (data.asset.submitted) {
-          classes.push('submitted');
-        } 
-        if (data.asset.approved) {
-          classes.push('approved-denny');
-        } 
-        if (data.asset.revision) {
-          classes.push('revision');
-        } 
-        $asset.attr('class', classes.join(' '));
+    if ($asset.find('input[type="file"]').val() === '') {
+      $.ajax($this.attr('action') + '.json', {
+        type: 'PUT',
+        data: $this.serialize(),
+        success: function(data) {
+          $asset.removeClass('loading');
+          toggleTile($this.parents('.asset'));
+          $asset.find('.extended').html(''); // Next time opened, reload from server.
+          var classes = [
+            'asset',
+            data.asset.status
+          ];
+          if (data.asset.submitted) {
+            classes.push('submitted');
+          } 
+          if (data.asset.approved) {
+            classes.push('approved-denny');
+          } 
+          if (data.asset.revision) {
+            classes.push('revision');
+          } 
+          $asset.attr('class', classes.join(' '));
 
-        var $workflow = $asset.find('.asset-workflow');
-        $workflow.html('');
+          var $workflow = $asset.find('.asset-workflow');
+          $workflow.html('');
 
-        if (data.asset.checked_out) {
-          $workflow.append('<div class="checkout asset-state" title="Checked Out">out</div>');
+          if (data.asset.checked_out) {
+            $workflow.append('<div class="checkout asset-state" title="Checked Out">out</div>');
+          }
+          else {
+            $workflow.append([
+              '<div class="checkin asset-state">',
+                '<a href="#download-asset" title="Download Asset">Download Asset</a>',
+              '</div>',
+            ].join(''));
+            //.. link up to download.
+          }
+          if (data.assigned_to) {
+            $workflow.append([
+              '<p class="assigned-to" title="Assigned To">',
+                data.assigned_to,
+              '</p>',
+            ].join(''));
+          }
+        },
+        error: function(data) {
+          $asset.removeClass('loading');
+          $asset.addClass('error');
+          $asset.find('.title').html('There was a problem updating your asset, try editing directly.');
         }
-        else {
-          $workflow.append([
-            '<div class="checkin asset-state">',
-              '<a href="#download-asset" title="Download Asset">Download Asset</a>',
-            '</div>',
-          ].join(''));
-          //.. link up to download.
-        }
-        if (data.assigned_to) {
-          $workflow.append([
-            '<p class="assigned-to" title="Assigned To">',
-              data.assigned_to,
-            '</p>',
-          ].join(''));
-        }
-      },
-      error: function(data) {
-        $asset.removeClass('loading');
-        $asset.addClass('error');
-        $asset.find('.title').html('There was a problem updating your asset, try editing directly.');
-      }
-    });
-    return false;
+      });
+      return false;
+    }
+    else {
+      return true;
+    }
   });
 
   $('body').on('submit', '.extended .inline-autocomplete .edit_asset', function() {
