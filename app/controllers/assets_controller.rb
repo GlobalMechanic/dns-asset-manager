@@ -179,7 +179,7 @@ class AssetsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: { :html => render_to_string(:template => "assets/_extended.html.erb") } }
+      format.json { render json: { :html => render_to_string(:template => "assets/_extended") } }
     end
   end
 

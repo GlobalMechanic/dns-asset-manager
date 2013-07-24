@@ -1,0 +1,145 @@
+<div title="<%= @asset.title %>" class="title"><%= @asset.title %></div>
+<div class="tab-tile">
+
+  <%# Download section %>
+  <div class="tile">
+    <nav class="downloads">
+      <%= link_to 'Download', asset_download_path(@asset), :class => 'button' %>
+      <% if can? :update, Asset %>
+      <%= link_to 'Checkout', asset_checkout_path(@asset), :class => 'button' %>
+      <%= link_to 'Download & Checkout', asset_checkout_path(@asset, :download => true), :class => 'button' %>
+      <% end %>
+    </nav>
+  </div> 
+
+  <%# Versions section %>
+  <div class="tile">
+    <h3>Updates</h3>
+    <ul class="detail-list">
+      <% @asset.versions.reverse.each do |version| %>
+      <% 
+         # Carrierwave instantiates Uploader with a timestamp as part of the class name.
+         # Papertrail can't deal with that, so manually remove the timestamp before reify.
+         version.object = version.object.to_s.gsub(/AssetUploader::Uploader([0-9]+)/, '') 
+      %>
+      <% old_asset = version.reify rescue nil %>
+      <li class="row">
+        <p class="summary <%= old_asset == nil ? '' : old_asset.status %>">
+          By
+          <%= version.whodunnit? ? User.find(version.whodunnit).name : '-' %> 
+          on 
+          <span class="time-placement"><%= time_ago_in_words(version.created_at) %> ago</span>
+        </p>
+
+        <div class="asset-workflow row">
+        <% if old_asset %>
+          <% if old_asset.asset != nil %>
+          <div class="checkin asset-state">
+            <% # Sometimes assets are loaded with the path twice, clean it up %>
+            <a href="<%= old_asset.asset_url.gsub(/http(.*)http/, 'http') %>">Download Asset</a>
+          </div>
+          <% end %>
+          <% if old_asset.checked_out == true %>
+          <div class="checkout asset-state">out</div>
+          <% end %>              
+          <% if old_asset.user %>
+          <p class="assigned-to"><%= old_asset.user.name %></p>
+          <% end %>
+        <% else %>
+          <div>-</div>
+        <% end %>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <%# Asset details section %>
+  <div class="tile edit">
+    <%= form_for @asset, :html => { :multipart => true, :class => 'asset-form' } do |f| %>
+      <div class="row first clearfix">
+        <div class="column">
+          <%= link_to 'Download', asset_download_path(@asset), :class => 'button' %>
+          <% if can? :update, Asset %>
+          <%= link_to raw('Download &amp; Checkout'), asset_checkout_path(@asset, :download => true), :class => 'button' %>
+          <% end %>
+        </div>
+        <div class="column">
+          <label for="asset[asset]">Upload File</label>
+          <%= f.file_field :asset, multiple: true, name: "asset[asset]", value: "Upload File" %>
+          <label for="asset[preview">Upload SWF Preview</label>
+          <%= f.file_field :preview, multiple: true, name: "asset[preview]", value: "Upload Preview" %>
+        </div>
+        <div class="column">
+          <a href="<%= asset_path @asset %>/edit" class="edit-button button">Edit Asset</a>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="column">
+          <label for="asset[status]">Stage</label>
+          <div id="asset_swatch">
+          <%= f.select :status, Asset::STATUS %>
+          </div>
+          <label for="asset[user_id]">Assigned To</label>
+          <%= f.select :user_id, User.order('name').with_role(:animator).map {|x| [x.name, x.id]}, { :include_blank => '- Assigned to -' } %>
+        </div>
+        <div class="status">
+          <label>Status</label>
+          <div class="status-row">
+            <%= f.check_box :submitted %><%= f.label :submitted, 'Submitted for approval', :class => 'inline' %>
+            <%= f.check_box :approved %><%= f.label :approved, 'Denny Checked', :class => 'inline' %>
+          </div>
+          <div>
+            <%= f.check_box :revision %><%= f.label :revision, 'Needs Revision', :class => 'inline' %>
+            <%= f.check_box :checked_out %><%= f.label :checked_out, 'Checked out', :class => 'inline' %>
+          </div>
+        </div>
+      </div>
+      <div class="row last clearfix">
+        <div class="column">
+          <%= f.text_area :description, :placeholder => 'Notes', :rows => 2 %>
+        </div>
+        <div class="column">&nbsp;</div>
+        <div class="column">
+          <%= f.submit "Update" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%# Video section%>
+  <% if previewable(@asset.preview) || previewable(@asset.preview_swf) || is_movie(@asset.asset) %>
+  <div class="tile media">
+    <% if @asset.preview_swf? %>
+    <div data-flash-url="<%= @asset.preview_swf %>"></div>
+    <% elsif is_movie(@asset.asset) %>
+    <video id="video-asset-<%= @asset.id %>" class="video-js vjs-default-skin" width="100%" height="100%" data-setup='{ "preload": "none", "controls": "true" }' preload="none" controls>
+      <source src="<%= @asset.asset_url.gsub(/https/, 'http') %>" type="video/mp4">
+    </video>
+    <% elsif is_image(@asset.preview) %>
+    <div class="detail" data-image-url="<%= @asset.preview_url %>"></div>
+    <% else %>
+    <% image_tag '/assets/placeholders/' + clean_extension(@asset.send(preview)) + '.png', :class => 'default', :draggable => 'false' %>
+    <% end %> 
+  </div>
+  <% end %>
+</div>
+
+<nav class="row asset-utilities">
+  <ul>
+    <li><a href="#download" title="Download or Checkout">Download</a></li>
+    <li><a href="#versions" title="Versions">Versions</a></li>
+    <li class="edit"><a href="#details" title="Details">Details</a></li>
+    <% if previewable(@asset.preview) || previewable(@asset.preview_swf) || is_movie(@asset.asset) %>
+    <li><a href="#video" title="Preview">Preview</a></li>
+    <% end %>
+  </ul>
+</nav>
+
+<% if can? :update, Asset %>
+  <div class="inline-autocomplete">
+    <%= form_for @asset do |f| %>
+      <%= f.autocomplete_field :keyword_list, autocomplete_tag_keywords_assets_path, :"data-delimiter" => ', ', :multiple => true, :placeholder => 'Keyword List', :title => 'Add Keywords' %>
+    <% end %>
+  </div>
+<% end %>
