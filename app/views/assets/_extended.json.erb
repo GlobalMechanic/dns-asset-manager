@@ -72,6 +72,7 @@
         </div>
         <div class="column">
           <a href="<%= asset_path @asset %>/edit" class="edit-button button">Edit Asset</a>
+          <small>Downloads and uploads are ~<span class="internet-speed">1.14</span> seconds/MB based on your current internet connection.</small>
         </div>
       </div>
       <div class="row clearfix">
@@ -114,7 +115,7 @@
     <div data-flash-url="<%= @asset.preview_swf %>"></div>
     <% elsif is_movie(@asset.asset) %>
     <video id="video-asset-<%= @asset.id %>" class="video-js vjs-default-skin" width="100%" height="100%" data-setup='{ "preload": "none", "controls": "true" }' preload="none" controls>
-      <source src="<%= @asset.asset_url.gsub(/https/, 'http') %>" type="video/mp4">
+      <source src="<%= @asset.asset_url.to_s.gsub(/https/, 'http') %>" type="video/mp4">
     </video>
     <% elsif is_image(@asset.preview) %>
     <div class="detail" data-image-url="<%= @asset.preview_url %>"></div>

@@ -274,6 +274,13 @@ Asset extended
   font-size: 12px;
 }
 .extended .edit form .edit-button { float: right; }
+.extended .edit form small {
+  font-size: 13px;
+  width: 129px;
+  display: block;
+  line-height: 17px;
+  margin-top: 8px;
+}
 /* Second row */
 .extended .edit form #asset_swatch {
   display: inline-block;

@@ -36,7 +36,7 @@
           <% if old_asset.asset != nil %>
           <div class="checkin asset-state">
             <% # Sometimes assets are loaded with the path twice, clean it up %>
-            <a href="<%= old_asset.asset_url.gsub(/http(.*)http/, 'http') %>">Download Asset</a>
+            <a href="<%= old_asset.asset_url.to_s.gsub(/http(.*)http/, 'http') %>">Download Asset</a>
           </div>
           <% end %>
           <% if old_asset.checked_out == true %>
@@ -72,6 +72,7 @@
         </div>
         <div class="column">
           <a href="<%= asset_path @asset %>/edit" class="edit-button button">Edit Asset</a>
+          <small>Downloads and uploads are ~<span class="internet-speed">1.14</span> seconds/MB based on your current internet connection.</small>
         </div>
       </div>
       <div class="row clearfix">

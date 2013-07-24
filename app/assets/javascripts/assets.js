@@ -1,4 +1,31 @@
 $(document).ready(function() {
+  var currentMbps = null;
+
+  // Modified from: http://stackoverflow.com/a/5529841
+  var imageAddr = "/assets/ui/loading.gif" + "?n=" + Math.random();
+  var startTime, endTime;
+  var downloadSize = 43976;
+  var download = new Image();
+  download.onload = function () {
+    endTime = (new Date()).getTime();
+    showResults();
+  }
+  startTime = (new Date()).getTime();
+  download.src = imageAddr;
+
+  function showResults() {
+    // var bitsLoaded = downloadSize * 8;
+    // var speedBps = (bitsLoaded / duration).toFixed(2);
+    // var speedKbps = (speedBps / 1024).toFixed(2);
+    // var speedMbps = (speedKbps / 1024).toFixed(2);
+    var duration = (endTime - startTime) / 1000;
+    var bytesLoaded = downloadSize;
+    var speedBytesps = (bytesLoaded / duration).toFixed(2);
+    var speedKBps = (speedBytesps / 1024).toFixed(2);
+    var speedMBps = (speedKBps / 1024).toFixed(2);
+    currentMbps = (1/speedMBps).toFixed(2);
+  }
+
   var layout = $('.assets.list-view').length > 0 ? 'list' : 'tile';
   var dimensions = {
     'tile': {
@@ -145,6 +172,9 @@ $(document).ready(function() {
         type: 'GET',
         success: function(data) {
           $extended.html(data.html);
+          if (currentMbps) {
+            $extended.find('.internet-speed').html(currentMbps);
+          }
           $extended.find('#asset_swatch').addClass(function() {
             return $(this).find('#asset_status').val();
           });
