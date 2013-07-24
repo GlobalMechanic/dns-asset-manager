@@ -157,10 +157,18 @@ $(document).ready(function() {
   // Handle video player.
   $('body').on('click', '.asset .default, .asset .title', function(e) {
     var $this = $(this);
+    $this.parents('.asset').addClass('loading');
     setupExtended($this.parents('.asset'), function() {
+      $this.parents('.asset').removeClass('loading');
       toggleTile($this.parents('.asset'));
     });
   });
+  // $('.asset').hover(function() {
+  //   var $this = $(this);
+  //   setupExtended($this, function() {
+  //     console.log('setup!', $this)
+  //   });
+  // });
 
   $('.controller-assets.action-show .asset').each(function(i, asset) {
     toggleTile($(asset));

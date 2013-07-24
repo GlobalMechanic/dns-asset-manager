@@ -145,6 +145,13 @@ p.animation { background: #3ed9d0; }
 /* -------  
 Asset extended 
 ------- */
+.asset.loading .title {
+  background-image: url('/assets/ui/loading.gif');
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  padding-left: 45px;
+}
 .asset .extended { display: none; }
 .asset.open .extended {
   width: 764px; /* (188px * 4) tiles + (4px * 3) slots */
