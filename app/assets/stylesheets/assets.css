@@ -272,6 +272,7 @@ Asset extended
 .extended .edit form input[id="asset_preview"] {
   margin-bottom: 8px;
   font-size: 12px;
+  min-width: 240px;
 }
 .extended .edit form .edit-button { float: right; }
 .extended .edit form small {

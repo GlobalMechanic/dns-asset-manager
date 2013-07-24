@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var currentMbps = null;
+  var currentMBps = null;
 
   // Modified from: http://stackoverflow.com/a/5529841
   var imageAddr = "/assets/ui/loading.gif" + "?n=" + Math.random();
@@ -23,7 +23,7 @@ $(document).ready(function() {
     var speedBytesps = (bytesLoaded / duration).toFixed(2);
     var speedKBps = (speedBytesps / 1024).toFixed(2);
     var speedMBps = (speedKBps / 1024).toFixed(2);
-    currentMbps = (1/speedMBps).toFixed(2);
+    currentMBps = (1/speedMBps).toFixed(2);
   }
 
   var layout = $('.assets.list-view').length > 0 ? 'list' : 'tile';
@@ -172,8 +172,8 @@ $(document).ready(function() {
         type: 'GET',
         success: function(data) {
           $extended.html(data.html);
-          if (currentMbps) {
-            $extended.find('.internet-speed').html(currentMbps);
+          if (currentMBps) {
+            $extended.find('.internet-speed').html(currentMBps);
           }
           $extended.find('#asset_swatch').addClass(function() {
             return $(this).find('#asset_status').val();
@@ -184,6 +184,15 @@ $(document).ready(function() {
               return $(that).val();
             });
           });
+          $extended.find('#asset_asset').change(function() {
+            var size = ($(this).get(0).files[0].size / (1024*1024)).toFixed(1);
+            $extended.find('label[for="asset[asset]"]').html('Upload File (' + size + 'MB, ~' + (size / currentMBps).toFixed(1) + 's)');
+          });
+          $extended.find('#asset_preview').change(function() {
+            var size = ($(this).get(0).files[0].size / (1024*1024)).toFixed(1);
+            $extended.find('label[for="asset[preview]"]').html('Upload SWF Preview (' + size + 'MB, ~' + (size / currentMBps).toFixed(1) + 's)');
+          });
+          // $('.extended .asset-form input#asset_asset').get(0).files[0].size /(1024 * 1024);
           callback();
         }
       });
