@@ -152,6 +152,10 @@ Asset extended
   background-size: 40px 40px;
   padding-left: 45px;
 }
+.asset.error .title {
+  background: #f00;
+  color: white;
+}
 .asset .extended { display: none; }
 .asset.open .extended {
   width: 764px; /* (188px * 4) tiles + (4px * 3) slots */
