@@ -16,7 +16,6 @@ class Asset < ActiveRecord::Base
     ['Layout', 'layout'],
     ['Posing', 'posing'],
     ['Animation', 'animation'],
-    ['Approved', 'approved'],
   ]
 
   paginates_per 70
