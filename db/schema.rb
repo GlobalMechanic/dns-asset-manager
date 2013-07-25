@@ -11,19 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725205034) do
+ActiveRecord::Schema.define(:version => 20130725211320) do
 
   create_table "assets", :force => true do |t|
     t.text     "description"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
+    t.datetime "created_at",                                                  :null => false
+    t.datetime "updated_at",                                                  :null => false
     t.string   "asset"
-    t.string   "asset_type",  :default => "character", :null => false
+    t.string   "asset_type",                         :default => "character", :null => false
     t.boolean  "stock"
     t.string   "preview"
     t.integer  "episode_id"
     t.string   "preview_swf"
-    t.string   "status",      :default => "setup",     :null => false
+    t.string   "status",                             :default => "setup",     :null => false
     t.boolean  "submitted"
     t.boolean  "checked_out"
     t.integer  "user_id"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(:version => 20130725205034) do
     t.boolean  "revision"
     t.boolean  "reuse"
     t.string   "title"
+    t.string   "cached_keyword_list", :limit => 500
+    t.string   "cached_name_list"
   end
 
   create_table "assets_scenes", :id => false, :force => true do |t|
