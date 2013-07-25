@@ -116,8 +116,8 @@ class Asset < ActiveRecord::Base
     if self.scene_ids.length > 0
       filename << '1' + self.episode.number.pad
       self.scene.each do |scene|
-          filename << scene.number.pad(3) + (scene.part || '')
-        end
+        filename << scene.number.pad(3) + (scene.part || '')
+      end
     else
       if self.stock?
         filename << 'STK'
