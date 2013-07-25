@@ -243,8 +243,8 @@ Asset extended
   margin-bottom: 0;
 }
 .extended .edit form .row {
-  margin: 7px 0;
-  padding: 8px 0;
+  margin: 6px 0;
+  padding: 6px 0;
   border-bottom: 1px solid #777;
 }
 .extended .edit form .row.last {
@@ -283,6 +283,9 @@ Asset extended
   margin-top: 8px;
 }
 /* Second row */
+.extended .edit form .second {
+  padding-top: 0;
+}
 .extended .edit form #asset_swatch {
   display: inline-block;
   width: auto;
@@ -296,16 +299,33 @@ Asset extended
   width: 206px;
 }
 .extended .edit form .status-row {
-  margin-top: 3px;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
+
+}
+.extended .edit form .status-button {
+  display: inline-block;
+  background: #eee;
+  padding: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.extended .edit form .status-button.checked {
+  background: #888;
+  color: white;
 }
 .extended .edit form .status input {
-  margin-bottom: 0;
-  margin-left: 0;
+  display: none;
 }
-.extended .edit form .status label.inline {
+.extended .edit form .status .status-label {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.extended .edit form .status label.inline,
+.extended .edit form .status .status-label {
   line-height: 31px;
-  width: 170px;
+  width: 160px;
+  cursor: pointer;
 }
 /* Third row */
 .extended .edit form textarea {
@@ -635,22 +655,26 @@ Asset add, edit, delete forms
 
 .asset-form .preview { display: block; margin: 10px 0; }
 
-.asset-form label[for="asset_submitted"] {
+.asset-form label[for="asset_submitted"],
+.asset-form .status-label.asset_submitted {
   background: url('/assets/ui/all-seeing-list.gif') left top no-repeat;
   background-size: 29px 28px;
   padding-left: 35px;
 }
-.asset-form label[for="asset_approved"] {
+.asset-form label[for="asset_approved"],
+.asset-form .status-label.asset_approved {
   background: url('/assets/ui/approved-list.gif') left top no-repeat;
   background-size: 29px 28px;
   padding-left: 35px;
 }
-.asset-form label[for="asset_revision"] {
+.asset-form label[for="asset_revision"],
+.asset-form .status-label.asset_revision {
   background: url('/assets/ui/revision-list.png') left top no-repeat;
   background-size: 29px 28px;
   padding-left: 35px; 
 }
-.asset-form label[for="asset_checked_out"] {
+.asset-form label[for="asset_checked_out"],
+.asset-form .status-label.asset_checked_out {
   background: url('/assets/ui/utility-tabs.png') left -7px no-repeat;
   background-size: 29px 141px;
   padding-left: 35px;  

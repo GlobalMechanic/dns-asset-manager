@@ -192,6 +192,21 @@ $(document).ready(function() {
             var size = ($(this).get(0).files[0].size / (1024*1024)).toFixed(1);
             $extended.find('label[for="asset[preview]"]').html('Upload SWF Preview (' + size + 'MB, ~' + (size / currentMBps).toFixed(1) + 's)');
           });
+
+          $('.status input[type="checkbox"]:checked').parent().addClass('checked');
+          $extended.find('.status .status-button').click(function() {
+            $this = $(this);
+            if (!$this.hasClass('checked')) {
+              $('.status .status-button').removeClass('checked');
+              $('.status .status-button input[type="checkbox"]').prop('checked', false);
+              $this.addClass('checked');
+              $this.find('input[type="checkbox"]').prop('checked', true);
+            }
+            else {
+              $this.removeClass('checked');
+              $this.find('input[type="checkbox"]').prop('checked', false);
+            }
+          });
           // $('.extended .asset-form input#asset_asset').get(0).files[0].size /(1024 * 1024);
           callback();
         }

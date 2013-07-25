@@ -75,7 +75,7 @@
           <small>Downloads and uploads are ~<span class="internet-speed">1.14</span> seconds/MB based on your current internet connection.</small>
         </div>
       </div>
-      <div class="row clearfix">
+      <div class="row second clearfix">
         <div class="column">
           <label for="asset[status]">Stage</label>
           <div id="asset_swatch">
@@ -87,12 +87,12 @@
         <div class="status">
           <label>Status</label>
           <div class="status-row">
-            <%= f.check_box :submitted %><%= f.label :submitted, 'Submitted for approval', :class => 'inline' %>
-            <%= f.check_box :approved %><%= f.label :approved, 'Denny Checked', :class => 'inline' %>
+            <div class="status-button"><%= f.check_box :submitted %><span class="status-label asset_submitted inline">Submitted for approval</span></div>
+            <div class="status-button"><%= f.check_box :approved %><span class="status-label asset_approved inline">Denny Checked</span></div>
           </div>
           <div>
-            <%= f.check_box :revision %><%= f.label :revision, 'Needs Revision', :class => 'inline' %>
-            <%= f.check_box :checked_out %><%= f.label :checked_out, 'Checked out', :class => 'inline' %>
+            <div class="status-button"><%= f.check_box :revision %><span class="status-label asset_revision inline">Needs Revision</span></div>
+            <div class="status-button"><%= f.check_box :checked_out %><span class="status-label asset_checked_out inline">Checked out</span></div>
           </div>
         </div>
       </div>
@@ -120,7 +120,7 @@
     <% elsif is_image(@asset.preview) %>
     <div class="detail" data-image-url="<%= @asset.preview_url %>"></div>
     <% else %>
-    <% image_tag '/assets/placeholders/' + clean_extension(@asset.send(preview)) + '.png', :class => 'default', :draggable => 'false' %>
+    <% image_tag '/assets/placeholders/' + clean_extension(@asset.preview_url) + '.png', :class => 'default', :draggable => 'false' %>
     <% end %> 
   </div>
   <% end %>
