@@ -28,6 +28,7 @@ gem 'paperclip'
 gem 'mini_magick'
 
 # Frontend
+gem 'asset_sync'
 gem 'zeroclipboard-rails'
 gem 'underscore-rails'
 gem 'simple_form'

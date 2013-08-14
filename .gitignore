@@ -19,4 +19,5 @@ pickle-email-*.html
 push_*
 pull_*
 public/uploads
+public/static
 config/database.yml
