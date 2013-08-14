@@ -221,14 +221,14 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
 }
 #layout .list, #layout .grid {
   text-indent: -9999px;
-  background: url('/assets/ui/layout-list.png') no-repeat center center;
+  background: url('ui/layout-list.png') no-repeat center center;
   width: 32px;
   height: 32px;
   display: inline-block;
   margin-left: 5px;
   padding: 0px 5px;
 }
-#layout .grid { background-image: url('/assets/ui/layout-grid.png'); }
+#layout .grid { background-image: url('ui/layout-grid.png'); }
 #layout .active { background-color: #ddd; }
 
 #tabs { border-bottom: 3px #ddd solid; }
@@ -249,7 +249,7 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
   width: 35px;
   height: 30px;
   text-indent: -9999em;
-  background: rgba(33,33,33, .5) url('/assets/ui/arrow-down.png') 0 0 no-repeat;
+  background: rgba(33,33,33, .5) url('ui/arrow-down.png') 0 0 no-repeat;
   background-position: center;
   background-size: 20px 20px;
 }

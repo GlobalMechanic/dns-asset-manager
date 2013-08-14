@@ -44,6 +44,9 @@ GEM
       builder
       json
     arel (3.0.2)
+    asset_sync (0.5.4)
+      activemodel
+      fog
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
     cancan (1.6.9)
@@ -232,6 +235,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 2.3.3)
   acts_as_indexed
   airbrake
+  asset_sync
   cancan
   carrierwave
   coffee-rails (~> 3.2.1)

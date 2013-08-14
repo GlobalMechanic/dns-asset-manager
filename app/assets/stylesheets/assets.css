@@ -51,7 +51,7 @@ Asset default
 
 .asset .reel {
   -webkit-transition: background-position-y, background-color 0.1s linear;
-  background: #eee url('/assets/ui/add-remove.png') no-repeat;
+  background: #eee url('ui/add-remove.png') no-repeat;
   position: absolute;
   top: 0;
   right: 0;
@@ -82,11 +82,11 @@ Asset default
   top: 40px;
   width: 188px;
   height: 75px;
-  background: url('/assets/ui/all-seeing-eye-big.gif') center center no-repeat;
+  background: url('ui/all-seeing-eye-big.gif') center center no-repeat;
   background-size: 144px 113px; 
 }
-.asset.approved-denny .look-at-me { background-image: url('/assets/ui/approved-big.gif'); }
-.asset.revision .look-at-me { background-image: url('/assets/ui/revision-big.png'); }
+.asset.approved-denny .look-at-me { background-image: url('ui/approved-big.gif'); }
+.asset.revision .look-at-me { background-image: url('ui/revision-big.png'); }
 
 .submitted.open .look-at-me,
 .approved-denny.open .look-at-me,
@@ -120,7 +120,7 @@ p.animation { background: #3ed9d0; }
   width:28px; 
   padding: 5px 5px 3px;
   text-indent: -9999em;
-  background: rgba(33,33,33, .5) url('/assets/ui/arrow-down.png') 0 0 no-repeat;
+  background: rgba(33,33,33, .5) url('ui/arrow-down.png') 0 0 no-repeat;
   background-position: center;
   background-size: 20px 20px;
 }
@@ -146,7 +146,7 @@ p.animation { background: #3ed9d0; }
 Asset extended 
 ------- */
 .asset.loading .title {
-  background-image: url('/assets/ui/loading.gif');
+  background-image: url('ui/loading.gif');
   background-position: left center;
   background-repeat: no-repeat;
   background-size: 40px 40px;
@@ -196,13 +196,13 @@ Asset extended
 }
 
 .tile.media { 
-  background: url('/assets/ui/loading.gif') center center no-repeat; 
+  background: url('ui/loading.gif') center center no-repeat; 
 }
 
 .tile.media .detail { margin-bottom: 0; text-align: center; }
 
-.tile.media img { height: 346px; cursor: url(/assets/ui/zoom-in.png),auto; background: #d2d2d2; }
-.tile.media .fullsize { width: inherit; height: inherit; cursor: url(/assets/ui/zoom-out.png),auto; }
+.tile.media img { height: 346px; cursor: url(ui/zoom-in.png),auto; background: #d2d2d2; }
+.tile.media .fullsize { width: inherit; height: inherit; cursor: url(ui/zoom-out.png),auto; }
 
 /* Asset tile nav */
 .asset-utilities { float: right; width: 160px; }
@@ -218,7 +218,7 @@ Asset extended
   text-indent:-9999em;
   text-align: center;
 }
-.asset-utilities a { background: url('/assets/ui/utility-tabs.png'); }
+.asset-utilities a { background: url('ui/utility-tabs.png'); }
 .asset-utilities a[href="#download"] { background-position: 0 0; }
 .asset-utilities a[href="#versions"] { background-position: 0 -50px; }
 .asset-utilities a[href="#details"] { background-position: 0 -100px; }
@@ -657,25 +657,25 @@ Asset add, edit, delete forms
 
 .asset-form label[for="asset_submitted"],
 .asset-form .status-label.asset_submitted {
-  background: url('/assets/ui/all-seeing-list.gif') left top no-repeat;
+  background: url('ui/all-seeing-list.gif') left top no-repeat;
   background-size: 29px 28px;
   padding-left: 35px;
 }
 .asset-form label[for="asset_approved"],
 .asset-form .status-label.asset_approved {
-  background: url('/assets/ui/approved-list.gif') left top no-repeat;
+  background: url('ui/approved-list.gif') left top no-repeat;
   background-size: 29px 28px;
   padding-left: 35px;
 }
 .asset-form label[for="asset_revision"],
 .asset-form .status-label.asset_revision {
-  background: url('/assets/ui/revision-list.png') left top no-repeat;
+  background: url('ui/revision-list.png') left top no-repeat;
   background-size: 29px 28px;
   padding-left: 35px; 
 }
 .asset-form label[for="asset_checked_out"],
 .asset-form .status-label.asset_checked_out {
-  background: url('/assets/ui/utility-tabs.png') left -7px no-repeat;
+  background: url('ui/utility-tabs.png') left -7px no-repeat;
   background-size: 29px 141px;
   padding-left: 35px;  
 }
@@ -1019,4 +1019,4 @@ Progress bar
         .asset.submitted .detail-list .look-at-mess {
           width: 462px;
           padding: 10px 5px 5px 40px;
-          background: url('/assets/ui/all-seeing-eye-big.gif') 0 0 no-repeat;        }
+          background: url('ui/all-seeing-eye-big.gif') 0 0 no-repeat;        }
