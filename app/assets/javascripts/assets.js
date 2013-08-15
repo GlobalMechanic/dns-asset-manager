@@ -2,7 +2,7 @@ $(document).ready(function() {
   var currentMBps = null;
 
   // Modified from: http://stackoverflow.com/a/5529841
-  var imageAddr = "http://s3.amazonaws.com/asset-manager/static/ui/loading.gif" + "?n=" + Math.random();
+  var imageAddr = "http://s3.amazonaws.com/asset-manager-static/static/ui/loading.gif" + "?n=" + Math.random();
   var startTime, endTime;
   var downloadSize = 43976;
   var download = new Image();
