@@ -120,7 +120,7 @@
     <% elsif is_image(@asset.preview) %>
     <div class="detail" data-image-url="<%= @asset.preview_url %>"></div>
     <% else %>
-    <% image_tag '/assets/placeholders/' + clean_extension(@asset.preview_url) + '.png', :class => 'default', :draggable => 'false' %>
+    <% image_tag '/static/placeholders/' + clean_extension(@asset.preview_url) + '.png', :class => 'default', :draggable => 'false' %>
     <% end %> 
   </div>
   <% end %>
