@@ -27,6 +27,8 @@ AssetManager::Application.routes.draw do
     end 
   end
 
+  resources :signed_url, only: :index
+
   # resources :assets do
   #   collection do
   #     post 'batch'

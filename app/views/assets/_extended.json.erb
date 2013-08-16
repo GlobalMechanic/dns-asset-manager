@@ -56,7 +56,7 @@
 
   <%# Asset details section %>
   <div class="tile edit">
-    <%= form_for @asset, :html => { :multipart => true, :class => 'asset-form' } do |f| %>
+    <div class="tile-columns">
       <div class="row first clearfix">
         <div class="column">
           <%= link_to 'Download', asset_download_path(@asset), :class => 'button' %>
@@ -65,47 +65,72 @@
           <% end %>
         </div>
         <div class="column">
-          <label for="asset[asset]">Upload File</label>
-          <%= f.file_field :asset, multiple: true, name: "asset[asset]", value: "Upload File" %>
-          <label for="asset[preview]">Upload SWF Preview</label>
-          <%= f.file_field :preview, multiple: true, name: "asset[preview]", value: "Upload Preview" %>
+          <form data-asset-id="<%= @asset.id %>" data-asset-type="asset" action="https://<%= ENV['S3_BUCKET_NAME'] %>.s3.amazonaws.com" method="post" multipart="true" class="direct-upload">
+            <%= hidden_field_tag(:key) %>
+            <%= hidden_field_tag("AWSAccessKeyId", ENV['S3_KEY']) %>
+            <%= hidden_field_tag(:acl, 'public-read') %>
+            <%= hidden_field_tag(:policy) %>
+            <%= hidden_field_tag(:signature) %>
+            <%= hidden_field_tag(:success_action_status, "201") %>
+            <%= label_tag(:file, "Upload File") %>
+            <%= file_field_tag(:file) %>
+            <div class="progress progress-striped active"><div class="bar" style="width: 0%;"></div></div>
+          </form>
+          <form data-asset-id="<%= @asset.id %>" data-asset-type="preview" action="https://<%= ENV['S3_BUCKET_NAME'] %>.s3.amazonaws.com" method="post" multipart="true" class="direct-upload">
+            <%= hidden_field_tag(:key) %>
+            <%= hidden_field_tag("AWSAccessKeyId", ENV['S3_KEY']) %>
+            <%= hidden_field_tag(:acl, 'public-read') %>
+            <%= hidden_field_tag(:policy) %>
+            <%= hidden_field_tag(:signature) %>
+            <%= hidden_field_tag(:success_action_status, "201") %>
+            <%= label_tag(:file, "Upload SWF Preview") %>
+            <%= file_field_tag(:file) %>
+            <div class="progress progress-striped active"><div class="bar" style="width: 0%;"></div></div>
+          </form>
+          
+
+          <!-- <label for="asset[preview]">Upload SWF Preview</label> -->
+          <% # f.file_field :preview, multiple: true, name: "asset[preview]", value: "Upload Preview" %>
+
         </div>
         <div class="column">
           <a href="<%= asset_path @asset %>/edit" class="edit-button button">Edit Asset</a>
           <small>Downloads and uploads are ~<span class="internet-speed">1.14</span> seconds/MB based on your current internet connection.</small>
         </div>
       </div>
-      <div class="row second clearfix">
-        <div class="column">
-          <label for="asset[status]">Stage</label>
-          <div id="asset_swatch">
-          <%= f.select :status, Asset::STATUS %>
+      <%= form_for @asset, :html => { :multipart => true, :class => 'asset-form' } do |f| %>
+        <div class="row second clearfix">
+          <div class="column">
+            <label for="asset[status]">Stage</label>
+            <div id="asset_swatch">
+            <%= f.select :status, Asset::STATUS %>
+            </div>
+            <label for="asset[user_id]">Assigned To</label>
+            <%= f.select :user_id, User.order('name').with_role(:animator).map {|x| [x.name, x.id]}, { :include_blank => '- Assigned to -' } %>
           </div>
-          <label for="asset[user_id]">Assigned To</label>
-          <%= f.select :user_id, User.order('name').with_role(:animator).map {|x| [x.name, x.id]}, { :include_blank => '- Assigned to -' } %>
-        </div>
-        <div class="status">
-          <label>Status</label>
-          <div class="status-row">
-            <div class="status-button"><%= f.check_box :submitted %><span class="status-label asset_submitted inline">Submitted for approval</span></div>
-            <div class="status-button"><%= f.check_box :approved %><span class="status-label asset_approved inline">Denny Checked</span></div>
-          </div>
-          <div>
-            <div class="status-button"><%= f.check_box :revision %><span class="status-label asset_revision inline">Needs Revision</span></div>
-            <div class="status-button"><%= f.check_box :checked_out %><span class="status-label asset_checked_out inline">Checked out</span></div>
+          <div class="status">
+            <label>Status</label>
+            <div class="status-row">
+              <div class="status-button"><%= f.check_box :submitted %><span class="status-label asset_submitted inline">Submitted for approval</span></div>
+              <div class="status-button"><%= f.check_box :approved %><span class="status-label asset_approved inline">Denny Checked</span></div>
+            </div>
+            <div>
+              <div class="status-button"><%= f.check_box :revision %><span class="status-label asset_revision inline">Needs Revision</span></div>
+              <div class="status-button"><%= f.check_box :checked_out %><span class="status-label asset_checked_out inline">Checked out</span></div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row last clearfix">
-        <div class="column">
-          <%= f.text_area :description, :placeholder => 'Notes', :rows => 2 %>
+        <div class="row last clearfix">
+          <div class="column">
+            <%= f.text_area :description, :placeholder => 'Notes', :rows => 2 %>
+          </div>
+          <div class="column">&nbsp;</div>
+          <div class="column">
+            <%= f.submit "Update" %>
+          </div>
         </div>
-        <div class="column">&nbsp;</div>
-        <div class="column">
-          <%= f.submit "Update" %>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 
   <%# Video section%>

@@ -238,44 +238,48 @@ Asset extended
 .extended video.default { border: 0; }
 
 /* Details tile */
-.extended .edit form {
+.extended .edit .tile-columns {
   width: 740px;
   margin-bottom: 0;
 }
-.extended .edit form .row {
+.extended .edit .tile-columns form {
+  width: auto;
+}
+.extended .edit .tile-columns .row {
   margin: 6px 0;
   padding: 6px 0;
   border-bottom: 1px solid #777;
 }
-.extended .edit form .row.last {
+.extended .edit .tile-columns .row.last {
   border-bottom: 0;
   padding-bottom: 0;
   margin-bottom: 0;
 }
-.extended .edit form .row.first {
+.extended .edit .tile-columns .row.first {
   /*padding-top: 0;*/
   margin-top: 0;
 }
-.extended .edit form .column {
+.extended .edit .tile-columns .column {
   float: left;
   width: 33%;
   margin: 0;
 }
 /* First row */
-.extended .edit form .button {
+.extended .edit .tile-columns .button {
   margin-bottom: 10px;
 }
-.extended .edit form .button:visited {
+.extended .edit .tile-columns .button:visited {
   color: #f7f4d6;
 }
-.extended .edit form input[id="asset_asset"],
-.extended .edit form input[id="asset_preview"] {
+.extended .edit .tile-columns input[id="asset_asset"],
+.extended .edit .tile-columns input[id="asset_preview"] {
   margin-bottom: 8px;
   font-size: 12px;
   min-width: 240px;
 }
-.extended .edit form .edit-button { float: right; }
-.extended .edit form small {
+.extended .edit .tile-columns .progress { width: 225px; }
+.extended .edit .tile-columns .edit-button { float: right; }
+.extended .edit .tile-columns small {
   font-size: 13px;
   width: 129px;
   display: block;
@@ -283,57 +287,57 @@ Asset extended
   margin-top: 8px;
 }
 /* Second row */
-.extended .edit form .second {
+.extended .edit .tile-columns .second {
   padding-top: 0;
 }
-.extended .edit form #asset_swatch {
+.extended .edit .tile-columns #asset_swatch {
   display: inline-block;
   width: auto;
 }
-.extended .edit form select {
+.extended .edit .tile-columns select {
   width: 200px;
   padding: 0;
   margin: 0 0 5px;
 }
-.extended .edit form #asset_user_id {
+.extended .edit .tile-columns #asset_user_id {
   width: 206px;
 }
-.extended .edit form .status-row {
+.extended .edit .tile-columns .status-row {
   margin-bottom: 10px;
 
 }
-.extended .edit form .status-button {
+.extended .edit .tile-columns .status-button {
   display: inline-block;
   background: #eee;
   padding: 5px;
   cursor: pointer;
   margin-right: 5px;
 }
-.extended .edit form .status-button.checked {
+.extended .edit .tile-columns .status-button.checked {
   background: #888;
   color: white;
 }
-.extended .edit form .status input {
+.extended .edit .tile-columns .status input {
   display: none;
 }
-.extended .edit form .status .status-label {
+.extended .edit .tile-columns .status .status-label {
   font-weight: bold;
   font-size: 13px;
 }
 
-.extended .edit form .status label.inline,
-.extended .edit form .status .status-label {
+.extended .edit .tile-columns .status label.inline,
+.extended .edit .tile-columns .status .status-label {
   line-height: 31px;
   width: 160px;
   cursor: pointer;
 }
 /* Third row */
-.extended .edit form textarea {
+.extended .edit .tile-columns textarea {
   margin-bottom: 0;
   min-width: 580px;
   height: 60px;
 }
-.extended .edit form input[type="submit"] {
+.extended .edit .tile-columns input[type="submit"] {
   padding: 23px;
   margin-bottom: 0;
   float: right;
