@@ -184,14 +184,6 @@ $(document).ready(function() {
               return $(that).val();
             });
           });
-          $extended.find('#asset_asset').change(function() {
-            var size = ($(this).get(0).files[0].size / (1024*1024)).toFixed(1);
-            $extended.find('label[for="asset[asset]"]').html('Upload File (' + size + 'MB, ~' + (size / currentMBps).toFixed(1) + 's)');
-          });
-          $extended.find('#asset_preview').change(function() {
-            var size = ($(this).get(0).files[0].size / (1024*1024)).toFixed(1);
-            $extended.find('label[for="asset[preview]"]').html('Upload SWF Preview (' + size + 'MB, ~' + (size / currentMBps).toFixed(1) + 's)');
-          });
 
           $('.status input[type="checkbox"]:checked').parent().addClass('checked');
           $extended.find('.status .status-button').click(function() {
@@ -315,8 +307,10 @@ $(document).ready(function() {
         data: $this.serialize(),
         success: function(data) {
           $asset.removeClass('loading');
-          toggleTile($this.parents('.asset'));
-          $asset.find('.extended').html(''); // Next time opened, reload from server.
+          if ($this.parents('.asset').find('.progress.active').length === 0) {
+            toggleTile($this.parents('.asset'));
+            $asset.find('.extended').html(''); // Next time opened, reload from server.
+          }
           var classes = [
             'asset',
             data.asset.status
