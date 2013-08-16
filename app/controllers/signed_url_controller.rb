@@ -5,7 +5,6 @@ class SignedUrlController < ApplicationController
       signature: s3_upload_signature,
       key: "uploads/#{SecureRandom.uuid}/asset/#{params[:type]}/#{params[:id]}/#{params[:version]}_#{sanitize(params[:file])}",
       success_action_redirect: "/",
-      'X-Requested-With' => 'xhr'
     }
   end
 
