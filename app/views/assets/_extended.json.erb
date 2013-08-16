@@ -65,7 +65,7 @@
           <% end %>
         </div>
         <div class="column">
-          <form data-asset-id="<%= @asset.id %>" data-asset-type="asset" action="https://<%= ENV['S3_BUCKET_NAME'] %>.s3.amazonaws.com" method="post" multipart="true" class="direct-upload">
+          <form data-asset-id="<%= @asset.id %>" data-asset-type="asset" data-asset-version="<%= @asset.versions.length %>" action="https://<%= ENV['S3_BUCKET_NAME'] %>.s3.amazonaws.com" method="post" multipart="true" class="direct-upload">
             <%= hidden_field_tag(:key) %>
             <%= hidden_field_tag("AWSAccessKeyId", ENV['S3_KEY']) %>
             <%= hidden_field_tag(:acl, 'public-read') %>
@@ -76,7 +76,7 @@
             <%= file_field_tag(:file) %>
             <div class="progress progress-striped"><div class="bar" style="width: 0%;"></div></div>
           </form>
-          <form data-asset-id="<%= @asset.id %>" data-asset-type="preview" action="https://<%= ENV['S3_BUCKET_NAME'] %>.s3.amazonaws.com" method="post" multipart="true" class="direct-upload">
+          <form data-asset-id="<%= @asset.id %>" data-asset-type="preview_swf" data-asset-version="<%= @asset.versions.length %>" action="https://<%= ENV['S3_BUCKET_NAME'] %>.s3.amazonaws.com" method="post" multipart="true" class="direct-upload">
             <%= hidden_field_tag(:key) %>
             <%= hidden_field_tag("AWSAccessKeyId", ENV['S3_KEY']) %>
             <%= hidden_field_tag(:acl, 'public-read') %>

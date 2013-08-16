@@ -217,6 +217,7 @@ $(document).ready(function() {
                     file: data.files[0].name,
                     id: form.data('asset-id'),
                     type: form.data('asset-type'),
+                    version: form.data('asset-version'),
                   },
                   async: false,
                   success: function(data) {
@@ -242,18 +243,9 @@ $(document).ready(function() {
                 var percent = Math.round((e.loaded / e.total) * 100)
                 form.find('.bar').css('width', percent + '%')
               },
-              fail: function(e, data) {
-                $asset.addClass('error');
-                $asset.find('.title').html('There was a problem uploading your asset.');
-                form.find('.progress').removeClass('active').addClass('progress-danger');
-              },
-              success: function(data) {
-                // Here we get the file url on s3 in an xml doc
-                // var url = $(data).find('Location').text()
-
-                // $('#real_file_url').val(url) // Update the real input in the other form
-              },
               done: function (event, data) {
+                console.log(data);
+                window.tylor = data.result.getElementsByTagName('Key');
                 form.find('.progress').removeClass('active').addClass('progress-success')
                 window.setTimeout(function() {
                   form.find('.progress').fadeOut(300, function() {
@@ -261,6 +253,11 @@ $(document).ready(function() {
                     form.find('input[name=file]').fadeIn();
                   });
                 }, 1000);
+              },
+              fail: function(e, data) {
+                $asset.addClass('error');
+                $asset.find('.title').html('There was a problem uploading your asset.');
+                form.find('.progress').removeClass('active').addClass('progress-danger');
               },
             })
           });

@@ -3,7 +3,7 @@ class SignedUrlController < ApplicationController
     render json: {
       policy: s3_upload_policy_document,
       signature: s3_upload_signature,
-      key: "uploads/#{SecureRandom.uuid}/#{params[:id]}/#{params[:type]}/#{params[:file]}",
+      key: "uploads/#{SecureRandom.uuid}/asset/#{params[:type]}/#{params[:id]}/#{params[:version]}_#{sanitize(params[:file])}",
       success_action_redirect: "/",
       'X-Requested-With' => 'xhr'
     }
@@ -33,5 +33,15 @@ class SignedUrlController < ApplicationController
         s3_upload_policy_document
       )
     ).gsub(/\n/, '')
+  end
+
+  # From CarrierWave::SanitizedFile.
+  def sanitize(name)
+    name = name.gsub("\\", "/") # work-around for IE
+    name = File.basename(name)
+    name = name.gsub(/[^a-zA-Z0-9\.\-\+_]/,"_")
+    name = "_#{name}" if name =~ /\A\.+\z/
+    name = "unnamed" if name.size == 0
+    return name.mb_chars.to_s
   end
 end
