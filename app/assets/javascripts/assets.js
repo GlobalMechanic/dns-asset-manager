@@ -201,7 +201,8 @@ $(document).ready(function() {
           });
 
           $('.direct-upload').each(function() {
-            var form = $(this)
+            var form = $(this);
+            var $asset = form.parents('.asset');
             $(this).fileupload({
               url: form.attr('action'),
               type: 'POST',
@@ -242,8 +243,9 @@ $(document).ready(function() {
                 form.find('.bar').css('width', percent + '%')
               },
               fail: function(e, data) {
-                console.log(data);
-                console.log('fail');
+                $asset.addClass('error');
+                $asset.find('.title').html('There was a problem uploading your asset.');
+                form.find('.progress').removeClass('active').addClass('progress-danger');
               },
               success: function(data) {
                 // Here we get the file url on s3 in an xml doc
