@@ -49,8 +49,6 @@ $(document).ready(function() {
     }, 500);
   }
   var setupFlash = function(i, element) {
-    console.log(element);
-    window.tylor = element;
     var entityMap = {
       "&": "&amp;",
       "<": "&lt;",
@@ -205,10 +203,12 @@ $(document).ready(function() {
             var $asset = form.parents('.asset');
             $(this).fileupload({
               url: form.attr('action'),
+              dropZone: null,
               type: 'POST',
               autoUpload: true,
-              dataType: 'xml', // This is really important as s3 gives us back the url of the file in a XML document
+              dataType: 'xml',
               add: function (event, data) {
+                // Start by getting the key (url), policy, and signature from our server.
                 $.ajax({
                   url: "/signed_url",
                   type: 'GET',
@@ -220,17 +220,14 @@ $(document).ready(function() {
                     version: form.data('asset-version'),
                   },
                   async: false,
-                  success: function(data) {
-                    // Now that we have our data, we update the form so it contains all
-                    // the needed data to sign the request
-                    form.find('input[name=key]').val(data.key)
-                    form.find('input[name=policy]').val(data.policy)
-                    form.find('input[name=signature]').val(data.signature)
+                  success: function(meta) {
+                    form.data('asset-filename', meta.filename)
+                    form.find('input[name=key]').val(meta.key)
+                    form.find('input[name=policy]').val(meta.policy)
+                    form.find('input[name=signature]').val(meta.signature)
+                    data.submit(); // Now we can upload to S3.
                   }
-                })
-                // form.find('input[name=file]').val('Hello world!');
-                // form.find('input[name=file]').attr('type', 'text').val('Hello world!');
-                data.submit();
+                });
               },
               send: function(e, data) {
                 form.find('input[name=file]').fadeOut(300, function() {
@@ -238,31 +235,40 @@ $(document).ready(function() {
                 });
               },
               progress: function(e, data){
-                // This is what makes everything really cool, thanks to that callback
-                // you can now update the progress bar based on the upload progress
                 var percent = Math.round((e.loaded / e.total) * 100)
                 form.find('.bar').css('width', percent + '%')
               },
               done: function (event, data) {
-                console.log(data);
-                window.tylor = data.result.getElementsByTagName('Key');
-                form.find('.progress').removeClass('active').addClass('progress-success')
-                window.setTimeout(function() {
-                  form.find('.progress').fadeOut(300, function() {
-                    form.find('.bar').css('width', 0);
-                    form.find('input[name=file]').fadeIn();
-                  });
-                }, 1000);
+                // Now save the new filename to the system.
+                $.ajax('/plum-landing/assets/' + form.data('asset-id') + '/s3.json', {
+                  type: 'PUT',
+                  data: {
+                    type: form.data('asset-type'),
+                    filename: form.data('asset-filename')
+                  },
+                  success: function(data) {
+                    form.find('.progress').removeClass('active').addClass('progress-success');
+                    window.setTimeout(function() {
+                      form.find('.progress').fadeOut(300, function() {
+                        form.find('.bar').css('width', 0);
+                        form.find('input[name=file]').fadeIn();
+                      });
+                    }, 1000);
+                  },
+                  fail: function() {
+                    $asset.addClass('error');
+                    $asset.find('.title').html('There was a problem uploading your asset and updating the metadata.');
+                    form.find('.progress').removeClass('active').addClass('progress-danger');
+                  }
+                });
               },
               fail: function(e, data) {
                 $asset.addClass('error');
-                $asset.find('.title').html('There was a problem uploading your asset.');
+                $asset.find('.title').html('There was a problem uploading your asset to Amazon S3.');
                 form.find('.progress').removeClass('active').addClass('progress-danger');
               },
             })
           });
-
-          // $('.extended .asset-form input#asset_asset').get(0).files[0].size /(1024 * 1024);
           callback();
         }
       });

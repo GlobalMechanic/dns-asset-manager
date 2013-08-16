@@ -16,6 +16,7 @@ AssetManager::Application.routes.draw do
         get :autocomplete_tag_keywords
         get :autocomplete_tag_name
       end
+      put 's3'
       get 'download'
       get 'checkout'
       get 'extended'

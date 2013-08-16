@@ -3,8 +3,8 @@ class SignedUrlController < ApplicationController
     render json: {
       policy: s3_upload_policy_document,
       signature: s3_upload_signature,
-      key: "uploads/#{SecureRandom.uuid}/asset/#{params[:type]}/#{params[:id]}/#{params[:version]}_#{sanitize(params[:file])}",
-      success_action_redirect: "/",
+      key: "uploads/asset/#{params[:type]}/#{params[:id]}/#{params[:version]}_#{sanitize(params[:file])}",
+      filename: "#{params[:version]}_#{sanitize(params[:file])}",
     }
   end
 
