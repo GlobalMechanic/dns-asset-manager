@@ -107,6 +107,11 @@ class AssetsController < ApplicationController
     @asset = Asset.find(params[:asset_id])
     @asset[:"#{params[:type]}"] = params[:filename];
 
+    # # @asset.save
+    # @asset.asset.cache!
+    # @asset.asset.retrieve_from_cache!(@asset.asset.cache_name)
+    # @asset.asset.recreate_versions!
+
     respond_to do |format|
       if @asset.save
         format.html { redirect_to session.delete(:return_to) || request.referer || edit_asset_path(@asset), notice: 'Asset was successfully updated.' }
