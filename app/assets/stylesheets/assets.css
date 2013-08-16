@@ -244,6 +244,10 @@ Asset extended
 }
 .extended .edit .tile-columns form {
   width: auto;
+  margin-bottom: 6px;
+}
+.extended .edit .tile-columns form.asset-form {
+  margin-bottom: 0;
 }
 .extended .edit .tile-columns .row {
   margin: 6px 0;
@@ -277,7 +281,12 @@ Asset extended
   font-size: 12px;
   min-width: 240px;
 }
-.extended .edit .tile-columns .progress { width: 225px; }
+.extended .edit .tile-columns .progress {
+  width: 225px;
+  height: 23px;
+  display: none;
+  margin-bottom: 0;
+}
 .extended .edit .tile-columns .edit-button { float: right; }
 .extended .edit .tile-columns small {
   font-size: 13px;

@@ -208,7 +208,6 @@ $(document).ready(function() {
             }
           });
 
-          $('.progress').hide();
           $('.direct-upload').each(function() {
             var form = $(this)
             $(this).fileupload({
@@ -221,7 +220,11 @@ $(document).ready(function() {
                   url: "/signed_url",
                   type: 'GET',
                   dataType: 'json',
-                  data: { doc: { title: data.files[0].name } }, // send the file name to the server so it can generate the key param
+                  data: {
+                    file: data.files[0].name,
+                    id: form.data('asset-id'),
+                    type: form.data('asset-type'),
+                  },
                   async: false,
                   success: function(data) {
                     // Now that we have our data, we update the form so it contains all
@@ -236,13 +239,15 @@ $(document).ready(function() {
                 data.submit();
               },
               send: function(e, data) {
-                $('.progress').fadeIn();
+                form.find('input[name=file]').fadeOut(300, function() {
+                  form.find('.progress').addClass('active').fadeIn();
+                });
               },
               progress: function(e, data){
                 // This is what makes everything really cool, thanks to that callback
                 // you can now update the progress bar based on the upload progress
                 var percent = Math.round((e.loaded / e.total) * 100)
-                $('.bar').css('width', percent + '%')
+                form.find('.bar').css('width', percent + '%')
               },
               fail: function(e, data) {
                 console.log(data);
@@ -251,15 +256,17 @@ $(document).ready(function() {
               success: function(data) {
                 // Here we get the file url on s3 in an xml doc
                 // var url = $(data).find('Location').text()
-                console.log(data);
-                window.tylor_data = data;
 
                 // $('#real_file_url').val(url) // Update the real input in the other form
               },
               done: function (event, data) {
-                $('.progress').fadeOut(300, function() {
-                  $('.bar').css('width', 0)
-                })
+                form.find('.progress').removeClass('active').addClass('progress-success')
+                window.setTimeout(function() {
+                  form.find('.progress').fadeOut(300, function() {
+                    form.find('.bar').css('width', 0);
+                    form.find('input[name=file]').fadeIn();
+                  });
+                }, 1000);
               },
             })
           });
