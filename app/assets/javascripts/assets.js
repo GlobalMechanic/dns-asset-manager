@@ -49,8 +49,6 @@ $(document).ready(function() {
     }, 500);
   }
   var setupFlash = function(i, element) {
-    console.log(element);
-    window.tylor = element;
     var entityMap = {
       "&": "&amp;",
       "<": "&lt;",
@@ -184,14 +182,6 @@ $(document).ready(function() {
               return $(that).val();
             });
           });
-          $extended.find('#asset_asset').change(function() {
-            var size = ($(this).get(0).files[0].size / (1024*1024)).toFixed(1);
-            $extended.find('label[for="asset[asset]"]').html('Upload File (' + size + 'MB, ~' + (size / currentMBps).toFixed(1) + 's)');
-          });
-          $extended.find('#asset_preview').change(function() {
-            var size = ($(this).get(0).files[0].size / (1024*1024)).toFixed(1);
-            $extended.find('label[for="asset[preview]"]').html('Upload SWF Preview (' + size + 'MB, ~' + (size / currentMBps).toFixed(1) + 's)');
-          });
 
           $('.status input[type="checkbox"]:checked').parent().addClass('checked');
           $extended.find('.status .status-button').click(function() {
@@ -207,7 +197,78 @@ $(document).ready(function() {
               $this.find('input[type="checkbox"]').prop('checked', false);
             }
           });
-          // $('.extended .asset-form input#asset_asset').get(0).files[0].size /(1024 * 1024);
+
+          $('.direct-upload').each(function() {
+            var form = $(this);
+            var $asset = form.parents('.asset');
+            $(this).fileupload({
+              url: form.attr('action'),
+              dropZone: null,
+              type: 'POST',
+              autoUpload: true,
+              dataType: 'xml',
+              add: function (event, data) {
+                // Start by getting the key (url), policy, and signature from our server.
+                $.ajax({
+                  url: "/signed_url",
+                  type: 'GET',
+                  dataType: 'json',
+                  data: {
+                    file: data.files[0].name,
+                    id: form.data('asset-id'),
+                    type: form.data('asset-type'),
+                    version: form.data('asset-version'),
+                  },
+                  async: false,
+                  success: function(meta) {
+                    form.data('asset-filename', meta.filename)
+                    form.find('input[name=key]').val(meta.key)
+                    form.find('input[name=policy]').val(meta.policy)
+                    form.find('input[name=signature]').val(meta.signature)
+                    data.submit(); // Now we can upload to S3.
+                  }
+                });
+              },
+              send: function(e, data) {
+                form.find('input[name=file]').fadeOut(300, function() {
+                  form.find('.progress').addClass('active').fadeIn();
+                });
+              },
+              progress: function(e, data){
+                var percent = Math.round((e.loaded / e.total) * 100)
+                form.find('.bar').css('width', percent + '%')
+              },
+              done: function (event, data) {
+                // Now save the new filename to the system.
+                $.ajax('/plum-landing/assets/' + form.data('asset-id') + '/s3.json', {
+                  type: 'PUT',
+                  data: {
+                    type: form.data('asset-type'),
+                    filename: form.data('asset-filename')
+                  },
+                  success: function(data) {
+                    form.find('.progress').removeClass('active').addClass('progress-success');
+                    window.setTimeout(function() {
+                      form.find('.progress').fadeOut(300, function() {
+                        form.find('.bar').css('width', 0);
+                        form.find('input[name=file]').fadeIn();
+                      });
+                    }, 1000);
+                  },
+                  fail: function() {
+                    $asset.addClass('error');
+                    $asset.find('.title').html('There was a problem uploading your asset and updating the metadata.');
+                    form.find('.progress').removeClass('active').addClass('progress-danger');
+                  }
+                });
+              },
+              fail: function(e, data) {
+                $asset.addClass('error');
+                $asset.find('.title').html('There was a problem uploading your asset to Amazon S3.');
+                form.find('.progress').removeClass('active').addClass('progress-danger');
+              },
+            })
+          });
           callback();
         }
       });
@@ -251,8 +312,10 @@ $(document).ready(function() {
         data: $this.serialize(),
         success: function(data) {
           $asset.removeClass('loading');
-          toggleTile($this.parents('.asset'));
-          $asset.find('.extended').html(''); // Next time opened, reload from server.
+          if ($this.parents('.asset').find('.progress.active').length === 0) {
+            toggleTile($this.parents('.asset'));
+            $asset.find('.extended').html(''); // Next time opened, reload from server.
+          }
           var classes = [
             'asset',
             data.asset.status
