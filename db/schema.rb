@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725211320) do
+ActiveRecord::Schema.define(:version => 20130818053503) do
 
   create_table "assets", :force => true do |t|
     t.text     "description"
@@ -42,6 +42,22 @@ ActiveRecord::Schema.define(:version => 20130725211320) do
 
   add_index "assets_scenes", ["asset_id"], :name => "index_assets_scenes_on_asset_id"
   add_index "assets_scenes", ["scene_id"], :name => "index_assets_scenes_on_scene_id"
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0, :null => false
+    t.integer  "attempts",   :default => 0, :null => false
+    t.text     "handler",                   :null => false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "episodes", :force => true do |t|
     t.string  "title"

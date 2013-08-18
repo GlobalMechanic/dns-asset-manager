@@ -7,6 +7,7 @@ gem 'pg'
 gem 'json'
 gem 'airbrake'
 gem 'newrelic_rpm'
+gem 'delayed_job_active_record'
 
 # Auth
 gem 'devise'
