@@ -17,8 +17,7 @@ class Episode < ActiveRecord::Base
     assets = []
     filenames = []
     alpha = ['a', 'b', 'c', 'd', 'e', 'f']
-    self.scenes[10..11].each do |scene|
-    # self.scenes.each do |scene|
+    self.scenes.each do |scene|
       if scene.assets.length > 0
         scene.assets.each do |asset|
           filename = asset.filename
@@ -43,29 +42,17 @@ class Episode < ActiveRecord::Base
     t = Tempfile.new("temp-episode-zip-#{Time.now.strftime("%Y-%m-%d-%H-%M")}.zip")
     Zip::ZipOutputStream.open(t.path) do |z|
       assets.each_with_index do |asset, index|
-        # puts asset[:filename]
-        puts filenames[index]
-        # puts asset.filename
-        # z.put_next_entry(asset[:filename])
+        puts "Adding file: #{filenames[index]}"
         z.put_next_entry(filenames[index])
-        # Kernel::open('https://asset-manager.s3.amazonaws.com/uploads/asset/preview_swf/' + asset.id.to_s + '/' + File.basename(asset.preview_swf_url).to_s) {|file|
-        # Kernel::open(asset[:path]) {|file|
-        #   z.print file.read
-        # }
-        # z.print Kernel::open('https://asset-manager.s3.amazonaws.com/uploads/asset/preview_swf/' + asset.id.to_s + '/' + File.basename(asset.preview_swf_url).to_s)
-        # z.print 
-        # puts 'uploads/asset/preview_swf/' + asset.id.to_s + '/' + File.basename(asset.preview_swf_url).to_s
         # ENV['S3_BUCKET_NAME'],
         connection.get_object('asset-manager', 'uploads/asset/preview_swf/' + asset.id.to_s + '/' + File.basename(asset.preview_swf_url).to_s) do |data|
           z.print data
         end
       end
     end
-    t.close # Does this help close the zip?
-    # send_file t.path, :type => 'application/zip', :disposition => 'attachment', :filename => "1#{self.number.pad}_assets_#{Time.now.strftime("%Y-%m-%d-%H-%M")}.zip"
-    puts t.path
+    t.close
 
-    puts "Sending up to S3"
+    puts "Sending up to S3: #{t.path}"
     connection = Fog::Storage.new(
       :provider              => 'AWS',
       :aws_access_key_id     => ENV['S3_KEY'],
@@ -84,8 +71,7 @@ class Episode < ActiveRecord::Base
     DownloadMailer.download_ready(email, self, upload_name).deliver
     puts "Sent an email"
 
-    # Send email
-    # t.unlink # Clean up
+    t.unlink # Delete temp file.
   end
   handle_asynchronously :download_scenes_assets
 
