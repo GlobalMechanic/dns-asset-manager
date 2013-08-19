@@ -13,10 +13,10 @@ class Episode < ActiveRecord::Base
     ['Jungle', 'jngl'],
   ]
 
-  def download_scenes_assets
+  def download_scenes_assets(email)
     assets = []
     filenames = []
-    alpha = ['A', 'B', 'C', 'D', 'E', 'F']
+    alpha = ['a', 'b', 'c', 'd', 'e', 'f']
     self.scenes[10..11].each do |scene|
     # self.scenes.each do |scene|
       if scene.assets.length > 0
@@ -25,7 +25,7 @@ class Episode < ActiveRecord::Base
           duplicates = filenames.select { |a| a[/^#{filename}/] }
           if duplicates.length > 0
             leftover, name, extension = filename.split(/^(.*)\.(.*)$/)
-            filenames << name + '_' + alpha[duplicates.length] + '.' + extension
+            filenames << name + alpha[duplicates.length] + '.' + extension
           else
             filenames << asset.filename
           end
@@ -45,7 +45,7 @@ class Episode < ActiveRecord::Base
       assets.each_with_index do |asset, index|
         # puts asset[:filename]
         puts filenames[index]
-        puts asset.filename
+        # puts asset.filename
         # z.put_next_entry(asset[:filename])
         z.put_next_entry(filenames[index])
         # Kernel::open('https://asset-manager.s3.amazonaws.com/uploads/asset/preview_swf/' + asset.id.to_s + '/' + File.basename(asset.preview_swf_url).to_s) {|file|
@@ -80,12 +80,8 @@ class Episode < ActiveRecord::Base
     )
     puts "Sent up to S3"
 
-    puts "Send an email"
-    mail(
-      to: current_user.email,
-      subject: "Your episode is ready #{self.number} #{self.title}",
-      body: "Here is your link: https://asset-manager-testing.s3.amazonaws.com/#{upload_name}",
-    )
+    puts "Send an email: #{email}"
+    DownloadMailer.download_ready(email, self, upload_name).deliver
     puts "Sent an email"
 
     # Send email
