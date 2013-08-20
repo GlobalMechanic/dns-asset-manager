@@ -14,7 +14,10 @@ class EpisodesController < InheritedResources::Base
   def download
     @episode = Episode.find(params[:episode_id])
     @episode.download_scenes_assets(current_user.email)
-    render json: true
+    respond_to do |format|
+      format.html
+      format.json { render json: true }
+    end
   end
 
   protected
