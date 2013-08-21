@@ -20,15 +20,17 @@ class Episode < ActiveRecord::Base
     self.scenes.each do |scene|
       if scene.assets.length > 0
         scene.assets.each do |asset|
-          filename = asset.filename
-          duplicates = filenames.select { |a| a[/^#{filename}/] }
-          if duplicates.length > 0
-            leftover, name, extension = filename.split(/^(.*)\.(.*)$/)
-            filenames << name + alpha[duplicates.length] + '.' + extension
-          else
-            filenames << asset.filename
+          if asset.preview_swf_url != nil
+            filename = asset.filename
+            duplicates = filenames.select { |a| a[/^#{filename}/] }
+            if duplicates.length > 0
+              leftover, name, extension = filename.split(/^(.*)\.(.*)$/)
+              filenames << name + alpha[duplicates.length] + '.' + extension
+            else
+              filenames << asset.filename
+            end
+            assets << asset
           end
-          assets << asset
         end
       end
     end
