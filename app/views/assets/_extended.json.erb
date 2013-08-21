@@ -25,8 +25,21 @@
       <% old_asset = version.reify rescue nil %>
       <li class="row">
         <p class="summary <%= old_asset == nil ? '' : old_asset.status %>">
+        <%
+          if version.whodunnit?
+            begin
+              versionPerson = User.find(version.whodunnit)
+              versionName = versionPerson.name
+            rescue ActiveRecord::RecordNotFound => e
+              versionName = '-'
+            end
+          else
+            versionName = '-'
+          end
+        %>
+
           By
-          <%= version.whodunnit? ? User.find(version.whodunnit).name : '-' %> 
+          <%= versionName %> 
           on 
           <span class="time-placement"><%= time_ago_in_words(version.created_at) %> ago</span>
         </p>
