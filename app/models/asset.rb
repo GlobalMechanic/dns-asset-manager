@@ -154,7 +154,11 @@ class Asset < ActiveRecord::Base
   end
 
   def user_string
-    self.user_id? ? self.user.name : nil
+    begin
+      self.user_id? ? self.user.name : nil
+    rescue
+      nil
+    end
   end
 
   def reuse_string
