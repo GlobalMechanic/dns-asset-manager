@@ -169,29 +169,6 @@ ul[id="secondary"] .button { width: 244px; margin-bottom: 30px; }
 
 .utilities { position: absolute; width:100%; margin-left:-10px; }
 
-.filters {
-  float: left;
-  width: 165px; 
-  margin: 14px 20px 0 0; 
-  padding: 5px; 
-  background: #000;
-  border: 1px solid #777;
-  box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
-}
-
-.filters ul { float:left; width:165px; }
-.filters li { display: block; margin: 0; }
-.filters li:nth-child(1n+2) { display:none; }
-
-#episode-filters, #episode-filters ul { width: 185px; }
- 
-.open.filters { background: #fafafa; border:none; border:1px solid rgb(240,240,240);}
-.open.filters ul { background: #fafafa; }
-.open.filters li { border-bottom: 1px solid #e6e6e6; }
-.open.filters li:first-child { font-weight:bold; border-bottom:none; }
-.open.filters li:nth-child(1n+2) { display:block; }
-.open.filters li:last-child { border-bottom: none; }
-
 #asset-search {
   float: left;
   width: 230px;
@@ -310,14 +287,48 @@ ul[id="secondary"] a.button { height: 30px; padding-bottom: 0; } /* download but
   color: #333; 
 }
 
-.filters li a { display: block; padding: 4px 5px 6px; text-decoration: none; }
-.filters li:first-child a { text-align: center; font-weight: bold; color: #f7f4d6; }
-.filters li:nth-child(1n+2) a { font-family: Transit; }
+.filters {
+  float: left;
+  width: 165px; 
+  margin: 14px 20px 0 0; 
+  padding: 5px; 
+  background: #000;
+  border: 1px solid #777;
+  box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
+}
+.filters .tab {
+  display: block;
+  margin: 0;
+}
 
+.filters ul { display: none; }
+.filters li a, .filters .tab a { display: block; padding: 4px 5px 6px; text-decoration: none; }
+.filters .tab a { text-align: center; font-weight: bold; color: #f7f4d6; line-height: 18px; }
+.filters li a { font-family: Transit; }
+
+.open.filters { background: #fafafa; border:none; border:1px solid rgb(240,240,240);}
+.open.filters ul { display: block; background: #fafafa; }
+.open.filters .tab a,
 .open.filters li a { padding: 8px 5px 12px; color: #333; }
-.open.filters li:first-child a:hover { background: #fafafa; color: #333; }
+.open.filters li { margin: 0; display:block; border-bottom: 1px solid #e6e6e6; }
+#asset-filters li:last-child { border-bottom: none; }
 .open.filters li a:hover,
 .open.filters li a.active { background: #000; color: #f7f4d6; font-weight: bold; }
+
+#episode-filters.open { box-shadow: none; }
+#episode-filters ul {
+  padding: 5px 0;
+  width: 525px;
+  position: relative;
+  top: 5px;
+  left: -5px;
+  box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
+}
+#episode-filters li {
+  float: left;
+  width: 165px;
+  margin: 0 5px;
+}
 
 .pager { margin: 40px 0; }
 .pager nav { display: inline-block; }

@@ -9,12 +9,12 @@ $(document).ready(function() {
     $('#reel_title').focus();
   });
 
-  $('#asset-filters li:first-child a').on("click", function() {
+  $('#asset-filters .tab a').on("click", function() {
     $(this).parents('#asset-filters').toggleClass('open');
     return false;
   });
 
-  $('#episode-filters li:first-child a').on("click", function() {
+  $('#episode-filters .tab a').on("click", function() {
     $(this).parents('#episode-filters').toggleClass('open');
     return false;
   });
