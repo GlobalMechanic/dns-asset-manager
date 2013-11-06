@@ -1,4 +1,13 @@
 class SignedUrlController < ApplicationController
+
+  def search
+    render json: {
+      tmp_index: `du #{Rails.root}/tmp/index`.split("\n"),
+      tmp_index_h: `du -h #{Rails.root}/tmp/index`.split("\n"),
+      process: Process.pid,
+    }
+  end
+
   def index
     render json: {
       policy: s3_upload_policy_document,

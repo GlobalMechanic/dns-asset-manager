@@ -30,6 +30,8 @@ AssetManager::Application.routes.draw do
 
   resources :signed_url, only: :index
 
+  get 'search-health', to: 'signed_url#search'
+
   # resources :assets do
   #   collection do
   #     post 'batch'
