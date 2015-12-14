@@ -1,3 +1,5 @@
+.ruby-version
+.ruby-gemset
 *.rbc
 *.sassc
 .sass-cache
