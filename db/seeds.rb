@@ -14,7 +14,7 @@ Reel.delete_all
 
 admin = User.create!(
   :name => 'Admin',
-  :email => 'tylor@denimandsteel.com',
+  :email => 'weston@netsign.com',
   :password => 'password',
   :password_confirmation => 'password'
 )
@@ -23,14 +23,14 @@ PaperTrail.whodunnit = admin.id
 
 regular = User.create!(
   :name => 'Regular',
-  :email => 'tylor+regular@denimandsteel.com',
+  :email => 'weston+regular@netsign.com',
   :password => 'password',
   :password_confirmation => 'password'
 )
 
 animator = User.create!(
   :name => 'Animator',
-  :email => 'tylor+animator@denimandsteel.com',
+  :email => 'weston+animator@netsign.com',
   :password => 'password',
   :password_confirmation => 'password'
 )
@@ -47,7 +47,7 @@ pilot = Episode.create! :number => 1, :season => 1, :title => "Pilot"
       :stock => true,
       :name_list => 'clementine',
       :keyword_list => 'jump',
-      :asset => File.open(File.join(Rails.root, 'db', '20101123_BBA_Sig_Fresno_243.jpg'))
+      :asset => File.open(File.join(Rails.root, 'public', 'test', 'apollo_13.jpg'))
     )
 
   pilotSceneTwo = pilot.scenes.create! :number => 2
@@ -58,7 +58,7 @@ pilot = Episode.create! :number => 1, :season => 1, :title => "Pilot"
       :stock => true,
       :name_list => 'oliver',
       :keyword_list => '3/4 walk',
-      :asset => File.open(File.join(Rails.root, 'db', '20100818_Scout_Schiphol_stills-081.jpg'))
+      :asset => File.open(File.join(Rails.root, 'public', 'test', 'drawing.png'))
     )
 
     pilotSceneTwo.assets.create!(
@@ -66,7 +66,7 @@ pilot = Episode.create! :number => 1, :season => 1, :title => "Pilot"
       :asset_type => 'background',
       :stock => false,
       :keyword_list => 'cloud',
-      :asset => File.open(File.join(Rails.root, 'db', 'clouds.mov'))
+      :asset => File.open(File.join(Rails.root, 'public', 'test', 'isolator.jpg'))
     )
 
 finale = Episode.create! :number => 2, :season => 1, :title => "Finale"
@@ -74,30 +74,30 @@ finale = Episode.create! :number => 2, :season => 1, :title => "Finale"
   finaleSceneOne = finale.scenes.create! :number => 1
 
     finaleSceneOne.assets.create!(
-      :description => 'Clementine skip and kicks', 
-      :asset_type => 'character', 
+      :description => 'Clementine skip and kicks',
+      :asset_type => 'character',
       :stock => false,
       :name_list => 'clementine',
-      :keyword_list => 'skip, kick', 
-      :asset => File.open(File.join(Rails.root, 'db', '20111201-BBA-Boca-15127-04b.jpg'))
+      :keyword_list => 'skip, kick',
+      :asset => File.open(File.join(Rails.root, 'public', 'test', 'man_cycling.jpg'))
     )
 
   finaleSceneTwo = finale.scenes.create! :number => 2
 
     finaleSceneTwo.assets.create!(
-      :description => 'Oliver gets booted', 
-      :asset_type => 'character', 
+      :description => 'Oliver gets booted',
+      :asset_type => 'character',
       :name_list => 'oliver',
-      :keyword_list => 'jump', 
-      :asset => File.open(File.join(Rails.root, 'db', '20111202-BBA-Boca-15155-04a.jpg'))
+      :keyword_list => 'jump',
+      :asset => File.open(File.join(Rails.root, 'public', 'test', 'meow.jpg'))
     )
 
 background = Asset.create!(
-  :description => 'Desert background', 
-  :asset_type => 'background', 
+  :description => 'Desert background',
+  :asset_type => 'background',
   :stock => true,
-  :keyword_list => 'australia, dessert', 
-  :asset => File.open(File.join(Rails.root, 'db', 'STK_BG_Australia_Dessert.fla'))
+  :keyword_list => 'australia, dessert',
+  :asset => File.open(File.join(Rails.root, 'public', 'test', 'your_brain.png'))
 )
 
 pilotSceneOne.assets << background
