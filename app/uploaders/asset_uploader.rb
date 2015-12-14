@@ -1,11 +1,16 @@
 # encoding: utf-8
 
+require 'carrierwave/processing/mime_types'
 require 'carrierwave/processing/mini_magick'
+
 class AssetUploader < CarrierWave::Uploader::Base
 
+  include CarrierWave::MimeTypes
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+
+  process :set_content_type
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   # include Sprockets::Helpers::RailsHelper
@@ -15,7 +20,7 @@ class AssetUploader < CarrierWave::Uploader::Base
   MOVIE_EXTENSIONS = %w(mov mp4)
   FLASH_EXTENSIONS = %w(fla flv swf)
   AUDIO_EXTENSIONS = %w(mp3 wav)
-  
+
   # Choose what kind of storage to use for this uploader:
   #storage :file
   # storage :fog
@@ -37,15 +42,15 @@ class AssetUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
- 
+
   # def cache_dir
-  #   "#{::Rails.root.to_s}/tmp/uploads" 
+  #   "#{::Rails.root.to_s}/tmp/uploads"
   # end
- 
+
   def extension_white_list
     IMAGE_EXTENSIONS + MOVIE_EXTENSIONS + FLASH_EXTENSIONS + AUDIO_EXTENSIONS
   end
- 
+
   # Create a new "process_extensions" method. It is like "process", except
   # it takes an array of extensions as the first parameter, and registers
   # a trampoline method which checks the extension before invocation.
@@ -61,16 +66,16 @@ class AssetUploader < CarrierWave::Uploader::Base
       end
     end
   end
- 
+
   # Our trampoline method which only performs processing if the extension matches.
   def process_trampoline(extensions, method, args)
     extension = File.extname(original_filename).downcase
     extension = extension[1..-1] if extension[0,1] == '.'
     self.send(method, *args) if extensions.include?(extension)
   end
-  
+
   # Version actually defines a class method with the given block
-  # therefore this code does not run in the context of an object instance  
+  # therefore this code does not run in the context of an object instance
   # and we cannot access uploader instance fields from this block.
   version :thumb, :if => :image? do
     process_extensions AssetUploader::IMAGE_EXTENSIONS, resize_to_fill: [188, 106]
