@@ -51,6 +51,7 @@ class AssetUploader < CarrierWave::Uploader::Base
     IMAGE_EXTENSIONS + MOVIE_EXTENSIONS + FLASH_EXTENSIONS + AUDIO_EXTENSIONS
   end
 
+  # Lifted from: http://stackoverflow.com/a/7520086/68655
   # Create a new "process_extensions" method. It is like "process", except
   # it takes an array of extensions as the first parameter, and registers
   # a trampoline method which checks the extension before invocation.
