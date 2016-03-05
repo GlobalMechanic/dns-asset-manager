@@ -16,6 +16,7 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+Reference
 
 .DS_Store
 push_*
