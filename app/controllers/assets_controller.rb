@@ -17,7 +17,7 @@ class AssetsController < ApplicationController
       @assets = Asset.includes(:user, :scene).where(:assets_scenes => { :scene_id => nil }).where('asset_type != ?', 'animatic').order('assets.created_at DESC').page(params[:page]).per(params[:number])
       # @assets = Asset.joins('LEFT OUTER JOIN "assets_scenes" ON "assets_scenes"."asset_id" = "assets"."id" LEFT OUTER JOIN "scenes" ON "scenes"."id" = "assets_scenes"."scene_id"').includes(:versions, :episode, :scene, :taggings).where(:assets_scenes => { :scene_id => nil }).where('asset_type != ?', 'animatic').order('created_at DESC').page(params[:page]).per(params[:number])
       @pager = true
-      @title = "All Assets (#{Asset.count})"
+      @title = "All Assets (#{@assets.count})"
     end
 
     # per_page = 20
