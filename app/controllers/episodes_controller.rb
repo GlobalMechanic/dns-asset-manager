@@ -1,5 +1,5 @@
 class EpisodesController < InheritedResources::Base
-  respond_to :html, :json
+  respond_to :json
   load_and_authorize_resource
   before_filter :authenticate_user!
   before_filter :add_reels
@@ -23,7 +23,14 @@ class EpisodesController < InheritedResources::Base
 
   protected
   def collection
-    @episodes = end_of_association_chain.order('number')
-    @title = "All Worlds (#{ @episodes.length })"
+
+    @episodes = end_of_association_chain.order(:number)
+
+    season = params[:season]
+    @episodes = @episodes.where(season: season.to_i) if season
+
+    describer = season ? "Season #{season} Episodes" : "All Episodes"
+    @title = "#{describer} (#{ @episodes.length })"
+
   end
 end

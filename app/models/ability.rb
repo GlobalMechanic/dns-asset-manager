@@ -31,8 +31,7 @@ class Ability
     #can :destroy, Reel, :id => Reel.user_id = user.id
     #can(:manage, Reel) { |reel| true }
     #can :manage, Reel, :user_id => false
-    #can(:manage, Reel) {|reel| false }
-
+    #can(:manage, Reel) { |reel| false }
 
       # if user.admin?
       #   can :manage, :all

@@ -13,6 +13,17 @@ class Episode < ActiveRecord::Base
     ['Jungle', 'jngl'],
   ]
 
+  def self.seasons
+    list_seasons = []
+
+    self.all.each do |episode|
+      next if list_seasons.include? episode.season
+      list_seasons.push episode.season
+    end
+
+    list_seasons.sort!
+  end
+
   def download_scenes_assets(email)
     assets = []
     filenames = []

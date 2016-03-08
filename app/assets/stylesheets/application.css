@@ -312,18 +312,19 @@ ul[id="secondary"] a.button { height: 30px; padding-bottom: 0; } /* download but
 .open.filters li a { padding: 8px 5px 12px; color: #333; }
 .open.filters li { margin: 0; display:block; border-bottom: 1px solid #e6e6e6; }
 #asset-filters li:last-child { border-bottom: none; }
+#episode-filters li:last-child { border-bottom: none; }
 .open.filters li a:hover,
 .open.filters li a.active { background: #000; color: #f7f4d6; font-weight: bold; }
 
 #episode-filters.open { box-shadow: none; }
-#episode-filters ul {
+/*#episode-filters ul {
   padding: 5px 0;
   width: 525px;
   position: relative;
   top: 5px;
   left: -5px;
   box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
-}
+}*/
 #episode-filters li {
   float: left;
   width: 165px;

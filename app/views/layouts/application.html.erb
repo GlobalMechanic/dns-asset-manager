@@ -78,27 +78,28 @@
       </div>
 
       <div class="row utilities"> 
-        <div class="filters" id="queue-link">
+        <!--<div class="filters" id="queue-link">
           <div class="tab"><%= link_to 'Queue', queue_assets_path %></div>
-        </div>
+        </div>-->
         <div class="filters" id="asset-filters">
           <div class="tab"><a href="#filter-by-asset">Assets</a></div>
           <ul>
-            <li><%= link_to 'All assets', assets_path, :class => (params[:controller] == 'assets' && params[:action] == 'index' ? 'active' : '') %></li>
+            <li><%= link_to 'All Assets', assets_path, :class => (params[:controller] == 'assets' && params[:action] == 'index' ? 'active' : '') %></li>
             <% Asset::TYPES.each do |type| %>
-            <li><%= link_to type[0],  type_assets_path(type[1]), :class => (params[:controller] == 'assets' && params[:action] == 'type' && params[:asset_type] == type[1] ? 'active' : '') %></li>
+              <li><%= link_to type[0], type_assets_path(type[1]), :class => (params[:controller] == 'assets' && params[:action] == 'type' && params[:asset_type] == type[1] ? 'active' : '') %></li>
             <% end %>
           </ul>
         </div>
 
         <div class="filters" id="episode-filters">
-          <div class="tab"><a href="#filter-by-episode">Worlds</a></div>
-          <ul class="clearfix">
-            <li><%= link_to 'All Worlds', episodes_path %></li>
-            <% Episode::WORLD.each do |type| %>
-              <% Episode.find_all_by_world(type[1], :order => 'number').each do |episode| %>
-                <li><%= link_to "#{episode.title}", current_user && current_user.has_role?(:animator) ? episode_scenes_path(episode) : episode %></li>
-              <% end %>
+          <div class="tab"><a href="#filter-by-episode">Episodes</a></div>
+          <ul class = "clearfix">
+            <li><%= link_to 'All Episodes', episodes_path %></li>
+            <% Episode.seasons.each do |season| %>
+              <li><%= link_to "Season #{season}", episodes_path(:season => season) %></li>
+              <!--<% Episode.find_all_by_season(season, :order => 'number').each do |episode| %>
+                <li><%= link_to "S#{season}E#{episode.number} #{episode.title}", current_user && current_user.has_role?(:animator) ? episode_scenes_path(episode) : episode %></li>
+              <% end %>-->
             <% end %>
           </ul>
         </div>

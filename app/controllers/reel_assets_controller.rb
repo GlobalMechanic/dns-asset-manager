@@ -14,7 +14,6 @@ class ReelAssetsController < ApplicationController
     @reel_asset.order = next_order
 
     # puts @reel_asset.inspect
-
     respond_to do |format|
       if @reel_asset.save
         format.html { redirect_to reel_path(@reel, :anchor => 'asset-' + @asset.id.to_s), notice: 'Reel was successfully updated.' }
